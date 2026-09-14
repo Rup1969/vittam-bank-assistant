@@ -1,0 +1,27 @@
+SOURCE: https://www.axis.bank.in/business-banking/sme/zero-collateral-loans (official page)
+DOCUMENT_ID: axis_loan_msme
+BANK: AXIS
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-15
+===
+Axis Bank MSME / Zero-Collateral Loans
+
+Zero-Collateral Loans:
+Axis Bank offers collateral-free business loans up to Rs. 2 crore
+specifically for MSMEs — a notably higher collateral-free ceiling than
+several public sector banks' typical Rs. 10 lakh threshold. In line
+with RBI regulatory requirements, no collateral security is required at
+all for loans up to Rs. 10 lakh (this floor applies across the industry,
+not just to Axis).
+
+Digital MSME Lending (RBI Innovation Hub Partnership):
+Axis Bank has partnered with the RBI Innovation Hub to offer Kisan
+Credit Card and unsecured MSME loans through the Public Tech Platform
+for Frictionless Credit — a fully digital process requiring no document
+submission. As of the pilot phase, MSME loans through this channel are
+available nationally up to Rs. 10 lakh.
+
+This is a headline reference — confirm current interest rates,
+processing fees, and eligibility criteria (including which channel/
+scheme applies) with the bank before advising a customer.

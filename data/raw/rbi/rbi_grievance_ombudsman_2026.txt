@@ -1,0 +1,41 @@
+SOURCE: https://www.rbi.org.in/commonman/Upload/English/FAQs/PDFs/RBIOS01072026.pdf
+DOCUMENT_ID: rbi_grievance_ombudsman_2026
+BANK: RBI
+CATEGORY: GRIEVANCE
+SOURCE_TYPE: RBI_MASTER_DIRECTION
+DATE: 2026-07-01
+===
+RBI Grievance Redressal — Reserve Bank - Integrated Ombudsman Scheme, 2026 (RB-IOS 2026)
+
+RB-IOS 2026 came into force on 1 July 2026 (issued 16 January 2026),
+replacing the Reserve Bank - Integrated Ombudsman Scheme, 2021 (RB-IOS
+2021). This is the current scheme in effect.
+
+If a customer has a complaint about deficiency in service by a bank or
+other RBI-regulated entity, and it is not resolved to their satisfaction
+or not replied to within the applicable time limit, they can escalate it
+under RB-IOS 2026.
+
+Key points of the current scheme:
+- No monetary limit on the amount in dispute that can be brought before
+  the RBI Ombudsman.
+- The RBI Ombudsman can award compensation up to Rs. 30 lakh for
+  consequential loss, plus up to Rs. 3 lakh separately for the
+  complainant's time, expenses, and mental anguish/harassment.
+- Complaints can be filed online via the Complaint Management System at
+  cms.rbi.org.in, or by email/physical mode.
+- Coverage includes all Commercial Banks, Regional Rural Banks, State and
+  Central Co-operative Banks (subject to deposit-size thresholds), NBFCs,
+  payment system operators, and Credit Information Companies.
+- A Regulated Entity or a complainant can appeal an Ombudsman's Award to
+  the Appellate Authority within 30 days of receiving it.
+- Complaints received before 1 July 2026, and appeals/execution of
+  earlier Awards, continue to be governed by the older RB-IOS 2021 rules.
+
+Within the bank, the Principal Nodal Officer (typically a General
+Manager-level official) represents the bank and provides information for
+complaints filed against it.
+
+This scheme replaced RB-IOS 2021 — if you encounter older material citing
+the 2021 scheme's monetary caps or procedures, treat this 2026 version as
+current and the 2021 material as superseded.

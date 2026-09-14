@@ -1,0 +1,33 @@
+SOURCE: https://centralbank.bank.in/en/cent-business-loan (page rendered in Hindi at time of fetch — figures verified, translated here)
+DOCUMENT_ID: centralbank_loan_msme
+BANK: CENTRAL_BANK
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-19
+===
+Central Bank of India MSME / Business Loan (Cent Business Loan)
+
+Central Bank of India offers working capital, term loans, and non-fund-
+based facilities under Cent Business Loan for manufacturers, traders,
+processors, self-employed individuals, and professionals holding
+enterprise registration certificates.
+
+Loan Amount:
+Maximum Rs. 25 crore.
+
+Margin:
+25% own contribution required from the borrower.
+
+Tenure:
+Maximum 84 months, including a 6-month moratorium period.
+
+Collateral:
+Mortgage of self-occupied or vacant residential, commercial, or
+industrial property, located in metro/urban/semi-urban/rural areas,
+registered under the bank's sole charge.
+
+Interest Rate:
+Not explicitly published on this product page — the page directs
+customers to the bank's separate lending-rate card / branch for the
+current effective rate on business loans; verify directly with the
+bank before relying on any assumed figure.

@@ -1,0 +1,26 @@
+SOURCE: https://bankofbaroda.bank.in/loans/education-loan and https://bankofbaroda.bank.in/interest-rate-and-service-charges/retail-loans-interest-rates
+DOCUMENT_ID: bob_loan_education
+BANK: BOB
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2025-12-06
+===
+Bank of Baroda Education Loan
+
+Interest Rate (linked to BRLLR, 7.90% as of 6 December 2025):
+- PM Vidyalaxmi Scheme: BRLLR - 1.05% (top institutions) to BRLLR +
+  0.50% (category C institutions) — a government-backed scheme with
+  the most favourable rates, scaled by institution ranking.
+- Baroda Scholar: BRLLR + 0.55% to BRLLR + 4.55%, depending on
+  institution.
+- Baroda Gyan: BRLLR + 2.00% to BRLLR + 1.90% (general education loan
+  scheme).
+
+Key Point: rate depends heavily on which specific scheme applies and
+the ranking/category of the educational institution — PM Vidyalaxmi
+offers the best rates but only for eligible institutions under that
+government scheme.
+
+For eligibility, loan amount, moratorium, and documentation, check the
+specific scheme's own page (PM Vidyalaxmi vs. Baroda Scholar vs.
+Baroda Gyan each has different terms) or a branch.

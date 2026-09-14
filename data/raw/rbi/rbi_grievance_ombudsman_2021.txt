@@ -1,0 +1,26 @@
+SOURCE: https://www.business-standard.com/finance/news/central-state-co-op-banks-brought-under-ambit-of-rbi-s-ombudsman-scheme-125100701358_1.html
+DOCUMENT_ID: rbi_grievance_ombudsman_2021
+BANK: RBI
+CATEGORY: GRIEVANCE
+SOURCE_TYPE: RBI_MASTER_DIRECTION
+DATE: 2021-11-12
+===
+RBI Grievance Redressal — Reserve Bank - Integrated Ombudsman Scheme, 2021 (RB-IOS 2021) [SUPERSEDED]
+
+NOTE: This scheme was replaced by RB-IOS 2026, effective 1 July 2026. This
+document is kept only as historical/reference context — do not present
+this as the current scheme.
+
+RB-IOS 2021 was launched in November 2021, unifying three earlier RBI
+ombudsman schemes into a single "One Nation, One Ombudsman" framework. It
+provided a cost-free, expeditious grievance redress mechanism for
+customers of RBI-regulated entities.
+
+In October 2025, coverage was extended to state and central co-operative
+banks, and non-scheduled primary (urban) co-operative banks with deposits
+of Rs. 50 crore or more, alongside existing coverage of commercial banks,
+regional rural banks, and most NBFCs.
+
+Under RB-IOS 2021, the scheme had different (lower) compensation limits
+and procedural rules than the current 2026 version — for exact current
+figures, refer to the RB-IOS 2026 document, not this one.

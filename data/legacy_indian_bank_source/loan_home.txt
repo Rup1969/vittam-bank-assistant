@@ -1,0 +1,66 @@
+DOCUMENT_ID: loan_home
+CATEGORY: LOAN
+PRODUCT: IB Home Loan
+SOURCE: indianbank.bank.in/category/home-loan/ (base product) and Indian Bank_Interest rate.docx, official retail lending rate card, user-supplied 2026-08-24, independently read by this session (interest rate figures below)
+============================================================
+
+IB HOME LOAN
+
+Interest Rate:
+- IB Home Loan / IB Home Loan (NRI): 7.15%-8.55% p.a. — the lowest
+  published rate among Indian Bank's home loan family.
+- Home Loan to Corporate Entity: 7.60%-9.10% p.a.
+- IB Home Loan Plus: 7.65%-8.75% p.a.
+- IB Home Loan (CRE): 7.65%-9.05% p.a.
+- Home Loan for EWS, LIG & MIG Individuals (Urban Areas): 7.75%-9.15% p.a.
+- Plot Loan / Plot Loan (NRI): 8.15%-9.55% p.a.
+- IB Home Improve: 8.15%-9.55% p.a.
+- IB Home Enrich: 8.15%-8.70% p.a.
+- Rates are linked to RLLR (Repo Linked Lending Rate) — floating; a
+  Fixed ROI option is also available under Fixed ROI for Retail Loans.
+
+Purpose:
+Purchase or construction of house/flat, purchase of plot and construction thereon, renovation/repair/extension of existing house.
+
+Target Group:
+- Salaried class employees (Govt, PSU, reputed private companies)
+- Professionals, self-employed, businessmen
+- NRIs (separate NRI Home Loan product available)
+- Corporate entities (separate product available)
+
+Eligibility:
+- Resident individuals with regular source of income
+- Minimum age: 18 years; Maximum age: 70 years at loan maturity
+- Joint applicants permitted; co-obligant income can be clubbed
+
+Loan Amount:
+- No upper ceiling — based on repayment capacity and property value
+- Rural/Semi-urban areas: special consideration
+- Maximum LTV ratio: 75% to 90% depending on loan amount
+
+Repayment:
+- Maximum tenure: 30 years (including moratorium)
+- EMI-based repayment
+- Moratorium period: up to 18–36 months during construction
+
+Special Schemes under Home Loan:
+1. IB Plot Loan — for purchase of residential plot
+2. NRI Home Loan — for Non-Resident Indians
+3. NRI Plot Loan — for NRIs buying residential plots
+4. Home Loan to Corporate Entity — for companies/LLPs/firms
+5. IB Home Loan Flexi — for existing and prospective home loan customers
+6. IB Home Improve — renovation/repair for existing home loan borrowers
+7. IB Home Enrich — for individuals owning residential property
+8. Home Loan for EWS/LIG/MIG — for economically weaker sections
+9. PMAY Urban 2.0 (ISS) — interest subsidy scheme for eligible borrowers
+
+Security:
+- Equitable/registered mortgage of the property being financed
+
+Processing Fee:
+- As per bank's schedule of charges (visit indianbank.bank.in/service-charges-forex-rates/)
+
+Online Apply:
+- dlp.indianbank.bank.in/loanPortalHL/
+
+Helpline: 1800 1700

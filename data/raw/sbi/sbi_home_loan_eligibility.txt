@@ -1,0 +1,49 @@
+SOURCE: https://sbi.bank.in/web/interest-rates/interest-rates/loan-schemes-interest-rates/home-loans-interest-rates-current and https://homeloans.sbi.bank.in/faq (same source as sbi_home_loan — split into a separate doc 2026-08-25 so the headline rate chunk stays short and competitive in retrieval; see PROJECT_STATUS.md §27-28)
+DOCUMENT_ID: sbi_home_loan_eligibility
+BANK: SBI
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-04-01
+===
+SBI Home Loan — Eligibility, LTV, Tenure, Fees, and Documents
+
+Eligibility:
+- Resident of India, or NRI.
+- Minimum age 18 years at loan commencement; repayment must be
+  completed by age 70.
+- Loan amount is sized off the EMI-to-Net-Monthly-Income (EMI/NMI)
+  ratio, which ranges roughly 20%-70% depending on the applicant's
+  income slab. Including a co-applicant can increase eligible amount.
+
+Loan-to-Value (LTV):
+Up to 75% (for balance-transfer-with-top-up cases per the FAQ page);
+LTV for a fresh purchase depends on property value and is governed by
+regulatory LTV slabs.
+
+Tenure:
+3 to 30 years. Shorter tenure means a higher EMI but less total
+interest paid; longer tenure lowers the EMI but increases total
+interest.
+
+Processing Fee:
+0.35% of the loan amount plus GST, subject to a minimum of Rs. 2,000 +
+GST and a maximum of Rs. 10,000 + GST. Additional out-of-pocket costs
+may apply: CERSAI charges, legal opinion fee, and valuation fee.
+
+Prepayment:
+No prepayment penalty — the loan can be prepaid at any time without
+charge.
+
+Documents Required:
+- KYC: PAN, proof of identity, proof of address.
+- Property papers: sale agreement, occupancy certificate, building
+  plans.
+- Last 6 months' bank statements.
+- Salaried applicants: last 3 months' salary slips plus 2 years'
+  Form 16/IT returns.
+- Non-salaried applicants: 3 years' IT returns, balance sheets, and
+  business licence.
+
+This is a headline/summary reference — confirm the applicant's exact
+eligible amount and rate slab with a branch or SBI's home loan portal
+before quoting.

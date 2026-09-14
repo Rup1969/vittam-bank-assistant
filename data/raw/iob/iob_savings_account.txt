@@ -1,0 +1,51 @@
+SOURCE: https://www.iob.bank.in/en/regular-sb-account and https://www.iob.bank.in/en/bsbda (official pages, fetched directly)
+DOCUMENT_ID: iob_savings_account
+BANK: IOB
+CATEGORY: DEPOSIT
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-16
+===
+Indian Overseas Bank Savings Account — Minimum Balance Requirements
+
+Indian Overseas Bank's savings account minimum balance ranges from zero
+(Basic Savings Bank Deposit Account) to Rs. 2,000 (Regular Savings
+Account with cheque book, metro/urban), tracked as a Quarterly Average
+Balance (QAB) rather than a monthly figure.
+
+Regular SB Account — Quarterly Average Balance requirement (confirmed
+directly from IOB's official page):
+
+Accounts WITH cheque book:
+- Metro & Urban: Rs. 2,000
+- Rural & Semi Urban: Rs. 500
+- Pensioners: Rs. 250
+
+Accounts WITHOUT cheque book:
+- Metro & Urban: Rs. 500
+- Rural & Semi Urban: Rs. 100
+- Pensioners: Rs. 5
+
+Charges for non-maintenance of minimum balance: currently WAIVED, with
+effect from 01.10.2025 (per IOB's official page).
+
+Basic Savings Bank Deposit Account (BSBDA): "This account shall not have
+the requirement of any minimum balance." Available to all as a normal
+banking service. Maximum 4 withdrawals per month (including ATM),
+unlimited deposits, free ATM/debit card, no charges for the account or
+for non-operation of an inoperative account.
+
+Regular SB Account eligibility: individuals, joint accounts, clubs,
+associations, trusts, government bodies, societies (including
+co-operatives), educational institutions; minors aged 10 and above can
+apply in their own name.
+
+IOB also offers several other savings account variants (IOB Freedom
+Savings Account, SB MAX, SB Super Star, SB HNI, Ultra-HNI SB Scheme,
+IOB Insta Digital Savings Account, IOB Eco Savings Account, IOB Parivaar,
+Government and Institutional Savings Account) — each may carry a
+different minimum-balance requirement; check the specific scheme's page
+before quoting.
+
+Verify current minimum balance requirements and the non-maintenance
+charge waiver status against IOB's official website before quoting to a
+customer as final, since these are periodically revised.

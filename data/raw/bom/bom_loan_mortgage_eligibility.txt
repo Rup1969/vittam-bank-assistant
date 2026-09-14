@@ -1,0 +1,37 @@
+SOURCE: https://bankofmaharashtra.bank.in/loan-against-property (same source as bom_loan_mortgage — split into a separate doc 2026-08-25 so the headline chunk stays short and competitive in retrieval; see PROJECT_STATUS.md §27-28)
+DOCUMENT_ID: bom_loan_mortgage_eligibility
+BANK: BOM
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-19
+===
+Bank of Maharashtra Loan Against Property — Eligibility, LTV, and Fees
+
+Eligibility:
+Permanent employees of Central/State Government or PSUs, plus
+individual businessmen, professionals, and self-employed individuals
+who own unencumbered residential or commercial property. Minimum annual
+income Rs. 5 lakh.
+
+Loan Amount:
+Minimum Rs. 5 lakh; maximum Rs. 10 crore (metro properties) or Rs. 5
+crore (other locations), determined by repaying capacity and property
+valuation.
+
+Loan-to-Value (LTV) / Margin:
+- Up to Rs. 1 crore: 60% LTV (40% margin).
+- Above Rs. 1 crore: 50% LTV (50% margin).
+
+Tenure:
+Maximum 10 years, or until the borrower turns 75, whichever is earlier.
+
+Fees:
+Processing fee 1% of loan amount + GST. Debt obligation ratio (all EMIs
+including proposed) must not exceed 60% of gross income.
+
+Security:
+Mortgage of the property.
+
+Interest Rate:
+Not stated as a specific percentage on this product page — refer to the
+bank's "Retail Interest Rates" page for the current effective rate.

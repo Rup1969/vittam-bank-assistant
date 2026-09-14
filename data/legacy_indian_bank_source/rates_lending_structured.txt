@@ -1,0 +1,101 @@
+DOCUMENT_ID: rates_lending_structured
+CATEGORY: RATES
+SOURCE: indianbank.bank.in/departments/interest-rates-on-personal-segment-loan-products/ (last updated February 27, 2026)
+============================================================
+
+INDIAN BANK — LENDING INTEREST RATES (FLOATING)
+All rates are RLLR-linked floating rates unless noted otherwise.
+
+BASE RATE: 9.55% p.a. (w.e.f. 03.04.2026)
+BENCHMARK PRIME LENDING RATE (BPLR): 13.80% p.a. (w.e.f. 03.04.2026)
+
+============================
+HOME LOANS
+============================
+IB Home Loan / IB Home Loan NRI:              7.15% to 8.55%
+IB Home Loan CRE (Commercial Real Estate):   7.65% to 9.05%
+Home Loan EWS / LIG / MIG (Urban Areas):     7.75% to 9.15%
+Home Loan to Corporate Entity:                7.60% to 9.10%
+IB Home Loan Plus (Top-up):                  7.65% to 8.75%
+IB Home Improve (Renovation):                8.15% to 9.55%
+IB Home Enrich:                              8.15% to 8.70%
+
+============================
+PLOT LOANS
+============================
+Plot Loan / Plot Loan NRI:                   8.15% to 9.55%
+
+============================
+MORTGAGE LOANS
+============================
+Ind Mortgage Loan (Term Loan) up to Rs.7.5 Cr:   8.95% to 10.35%
+Ind Mortgage Loan (Term Loan) above Rs.7.5 Cr:   9.00% to 10.85%
+Ind Mortgage Loan (Overdraft):               9.95% to 11.60%
+Reverse Mortgage Loan:                       9.40% (fixed)
+
+============================
+LOAN AGAINST RENT RECEIVABLES
+============================
+IB Rent Encash:                              8.75% to 10.25%
+IB Rental:                                   8.45% to 10.45%
+IB Rental CRE:                               8.95% to 10.95%
+Note: 0.50% concession if lessee is PSB/Govt/PSU/rated-A entity
+
+============================
+EDUCATION LOANS
+============================
+PM Vidyalaxmi Scheme:                        7.25% to 8.45%
+Education Loan (General):                    7.05% to 10.15%
+IB SKILL Loan:                               9.45% (fixed)
+
+============================
+VEHICLE LOANS
+============================
+IB Vehicle Loan (New Car):                   7.55% to 8.85%
+IB Vehicle Loan Eco Vahan (Electric):        7.50% to 8.75%
+IB Vehicle Loan (Used Car):                  9.55% to 11.65%
+Vehicle Loan (Two Wheeler):                  8.90% to 10.40%
+Van/Minibus/Bus/Ambulance (Institutions):    8.75% to 9.40%
+
+============================
+PERSONAL LOANS
+============================
+Pre-approved Personal Loan (Pensioners/Salaried): 11.15% (fixed)
+Pre-approved Personal Loan (Self-employed):        11.75% to 13.75%
+Pre-approved Personal Loan (Home Loan customers):  9.75% (fixed)
+Clean Loan to Salaried Class (Term Loan):          9.65% to 10.15%
+Clean Loan to Salaried Class (Overdraft):         10.65% to 11.15%
+Pension Loan:                                      9.90% to 10.15%
+IB Saral:                                          9.35% (fixed)
+IB Professional:                                   9.00% to 9.25%
+IB Insta Cash:                                     9.00% (fixed)
+
+============================
+JEWEL LOANS
+============================
+Jewel Loan (Non-Priority) / OD against Gold:       8.50% to 8.80%
+
+============================
+OTHER RETAIL LOANS
+============================
+Sovereign Gold Bond:                               9.15% to 10.00%
+Loan/OD against NSC/KVP/LIC/RBI Bonds:            9.50% (fixed)
+Term Loan/OD against own FD:                       1% above deposit rate
+Loan against Third-party INR Deposit:             10.80% (fixed)
+Loan against own FCNR(B) Deposit:                 10.30% (fixed)
+Loan against Third-party FCNR(B) Deposit:         10.80% (fixed)
+Non-Priority Term Loan for GMRA Premium:           8.75% to 8.90%
+
+============================
+EXPORT CREDIT (Repo-based, MSME/Non-MSME)
+============================
+Pre-Shipment Credit (up to 360 days):             Repo + 3.40%
+Post-Shipment Credit (Demand/Usance Bills):       Repo + 3.40%
+Post-Shipment Credit (up to 180 days):            Repo + 3.40%
+Overdue Export Bills (first 15 days):             Repo + 6.40%
+Overdue Export Bills (beyond 15 days):            Repo + 8.40%
+
+NOTE: Rates are floating and linked to RLLR (Repo Linked Lending Rate).
+      Actual rate depends on credit score, loan amount, tenure, and
+      risk profile. Contact nearest Indian Bank branch for exact rate.
+      Helpline: 1800 1700

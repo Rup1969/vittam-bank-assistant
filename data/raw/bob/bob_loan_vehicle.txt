@@ -1,0 +1,27 @@
+SOURCE: https://bankofbaroda.bank.in/loans/vehicle-loan and https://bankofbaroda.bank.in/interest-rate-and-service-charges/retail-loans-interest-rates
+DOCUMENT_ID: bob_loan_vehicle
+BANK: BOB
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2025-12-06
+===
+Bank of Baroda Auto Loan (Car / Two-Wheeler)
+
+Interest Rate (linked to BRLLR, 7.90% as of 6 December 2025, plus a
+Strategic Premium (S.P.) that varies by applicant):
+- Baroda Car Loan (New): BRLLR - 0.30% to BRLLR + S.P. + 3.15%
+  (approximately 7.60%-11.30%).
+- Digital Car Loan: BRLLR - 0.30% to BRLLR + S.P. + 0.60%
+  (approximately 7.60%-8.75%) — narrower, generally cheaper band than
+  the standard branch-assisted car loan, for the fully-digital
+  application route.
+- Baroda Two-Wheeler Loan: BRLLR + S.P. + 4.25% (approximately
+  12.40%).
+
+Purpose: financing new car purchases (Baroda Car Loan / Digital Car
+Loan) and two-wheeler purchases.
+
+For eligibility, loan amount, tenure, and documents, check the
+specific product page or a branch, since the Digital Car Loan and
+standard Baroda Car Loan have different application processes and
+eligibility criteria despite overlapping rate bands.

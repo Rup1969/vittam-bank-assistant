@@ -1,0 +1,45 @@
+SOURCE: https://uco.bank.in/en/web/guest/agriculture-credit
+DOCUMENT_ID: uco_loan_agriculture
+BANK: UCO
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-19
+===
+UCO Bank Kisan Credit Card (KCC)
+
+UCO Bank's Kisan Credit Card interest rate:
+- Up to Rs. 3 lakh: 7%.
+- Above Rs. 3 lakh to Rs. 25 lakh: MCLR + 1%.
+- Above Rs. 25 lakh to Rs. 1 crore: MCLR + 2%.
+
+Purpose:
+Meets farmers' short-term credit needs for crop cultivation, post-
+harvest expenses, produce marketing, household consumption, and
+maintenance of farm assets.
+
+Eligibility:
+Individual or joint-borrower owner cultivators, tenant farmers, oral
+lessees, sharecroppers, and Self-Help Groups (SHGs) or Joint Liability
+Groups (JLGs) of farmers.
+
+Loan Amount:
+Need-based finance, considering cropping pattern, acreage, and the
+Scale of Finance (SOF) determined by the District Level Technical
+Committee (DLTC).
+
+Margin:
+Nil.
+
+Repayment:
+5 years, with a 10% annual increase in the sanctioned limit, subject to
+annual review.
+
+Security:
+Primary security is hypothecation of crops. No collateral required for
+limits up to Rs. 2 lakh, or up to Rs. 3 lakh under a recovery tie-up
+arrangement.
+
+Incentives:
+Interest subvention of 1.5% (up to Rs. 3 lakh limit), plus a Prompt
+Repayment Incentive of 3% (also up to Rs. 3 lakh limit) — together
+these can lower the effective rate well below the headline 7%.

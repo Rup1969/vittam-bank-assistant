@@ -1,0 +1,36 @@
+SOURCE: RBI Master Direction (Commercial Banks - Credit Cards and Debit Cards: Issuance and Conduct) Directions, 2025, issued 28 November 2025; catalog PDF: rbidocs.rbi.org.in/rdocs/notification/PDFs/155MD.PDF (CAPTCHA-gated for direct fetch — content below is cross-checked from multiple regulatory-tracking sources reporting the official text; verify against the primary Direction before treating as legally binding)
+DOCUMENT_ID: rbi_md_credit_debit_card
+BANK: RBI
+CATEGORY: DIGITAL
+SOURCE_TYPE: RBI_MASTER_DIRECTION
+DATE: 2025-11-28
+===
+RBI Master Direction — Credit Cards and Debit Cards: Issuance and Conduct (Commercial Banks)
+
+Applies immediately to all commercial banks, including SBI and other
+new banks (a consolidation of prior circulars into a single Direction).
+
+Board-Approved Policy Required, Covering:
+Interest rates, fees, credit limits, customer consent procedures,
+grievance redressal, and co-branding arrangements (co-branded cards
+issued jointly with a non-bank partner).
+
+Consent and Issuance Rules:
+- Explicit customer consent is required before issuing a card.
+- Unsolicited or unilateral credit-limit upgrades are prohibited — a
+  bank cannot raise a customer's limit without the customer's
+  agreement.
+- Charges and Annual Percentage Rate (APR) must be clearly disclosed
+  upfront, not buried in fine print.
+
+Billing, Refunds, and Reviews:
+Strict adherence to billing-cycle and refund-processing procedures is
+required. Card-issuers must review their card operations semi-annually
+through their Audit Committee, actively monitor credit risk on the
+card portfolio, and ensure EMI-conversion offers on card spends are
+transparent (clear disclosure of the effective interest rate, not just
+the EMI amount).
+
+This Direction is the regulatory basis for card-related customer
+protections — e.g. why a bank cannot silently raise a credit limit, or
+must clearly disclose the APR on a card before issuance.

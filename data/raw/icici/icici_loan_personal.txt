@@ -1,0 +1,19 @@
+SOURCE: https://www.icici.bank.in/personal-banking/loans/personal-loan/personal-loan-interest-rates (official page confirms starting rate; broader range cross-referenced from secondary sources)
+DOCUMENT_ID: icici_loan_personal
+BANK: ICICI
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-15
+===
+ICICI Bank Personal Loan
+
+Interest Rate:
+Officially advertised starting rate: 9.99% p.a. Broader reported range
+across applicant profiles: 9.99%-16.5% p.a., depending on credit
+score, monthly income, and the applicant's existing relationship with
+ICICI Bank (existing customers with a strong banking history typically
+get more preferential pricing).
+
+This is a headline reference — personal loan pricing is highly
+profile-dependent; always confirm the applicant's actual quoted rate
+and eligibility with the bank.

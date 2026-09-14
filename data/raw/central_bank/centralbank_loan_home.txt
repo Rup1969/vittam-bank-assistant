@@ -1,0 +1,37 @@
+SOURCE: https://centralbank.bank.in/en/node/417 and https://centralbank.bank.in/retail-scheme-interest (rate card)
+DOCUMENT_ID: centralbank_loan_home
+BANK: CENTRAL_BANK
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-19
+===
+Central Bank of India Home Loan (Cent Home)
+
+Central Bank of India's home loan interest rate ranges from 7.00% to
+9.25% p.a., floating, benchmarked to the Repo-Linked Benchmark Rate
+(RBLR = 8.25% as of this rate card):
+- Cent Grih Lakshmi: Repo + 1.75% to Repo + 3.00% (7.00%-8.25%).
+- Cent Home (standard, new/existing property): RBLR - 1.05% to
+  RBLR + 0.50% (7.20%-8.75%).
+- Cent Home for 3rd/4th/5th house or flat: RBLR - 0.55% to
+  RBLR + 1.00% (7.70%-9.25%).
+
+Eligibility:
+Individuals aged 18+ with a steady source of income, including those
+engaged in agriculture and allied activities. Co-borrowers with
+independent income are permitted if the property holder lacks sufficient
+income on their own. Minimum credit score of 700 across all major
+bureaus (CIBIL, Experian, Equifax, CRIF).
+
+Loan Amount / Loan-to-Value (LTV):
+- Up to Rs. 30 lakh: 90% LTV, minimum 10% margin.
+- Rs. 30 lakh to Rs. 75 lakh: 80% LTV, minimum 20% margin.
+- Above Rs. 75 lakh: 75% LTV, minimum 25% margin.
+
+Tenure:
+Maximum 30 years, or until the borrower turns 75, whichever is earlier.
+Loans for repairs/renovation are capped at 10 years.
+
+Processing Fee:
+0.50% of loan amount + GST, subject to a maximum of Rs. 20,000 — fully
+waived until 31 December 2026.

@@ -1,0 +1,28 @@
+SOURCE: https://www.iob.bank.in/en/Lending-Interest-Rates (real published rate card, added 2026-08-20 via the automation pipeline's manual-load path; this RAG doc updated 2026-08-24 to match)
+DOCUMENT_ID: iob_loan_education
+BANK: IOB
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-24
+===
+Indian Overseas Bank Education Loan
+
+Coverage:
+IOB offers education loans covering a range of courses, including
+technical/vocational courses at recognised training institutes and
+polytechnics, alongside standard degree-course education loans that
+most public sector banks offer under IBA's common education-loan-scheme
+framework.
+
+Interest Rate:
+IOB's education loan rates range approximately 7.50%-11.75% p.a. across
+its various schemes — per IOB's own published rate card. Representative
+rates: Vidya Shresht for A-rated institutions 7.50% (the lowest
+published rate); Vidya Jyothi for the general public 9.75%; IOB Scholar
+above Rs. 7.50 lakh up to Rs. 60 lakh 11.30%; IOB Career Dream secured
+by immovable property, above Rs. 2 lakh, 11.75% (the highest published
+rate). Typical public-sector-bank structure applies (moratorium of
+course duration plus one year, repayment tenure up to 15 years,
+collateral required above a certain loan threshold, per the pattern
+seen across other banks in this dataset) — confirm the exact scheme,
+rate, and terms applicable to a specific applicant with the bank.

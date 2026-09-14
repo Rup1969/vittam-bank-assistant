@@ -1,0 +1,38 @@
+SOURCE: https://uco.bank.in/en/web/guest/education-loan and https://uco.bank.in/repo (rate card)
+DOCUMENT_ID: uco_loan_education
+BANK: UCO
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-19
+===
+UCO Bank Education Loan (UCO Udaan)
+
+UCO Bank's education loan interest rate ranges from 7.50% to 10.65%
+p.a. (UCO Float benchmark 8.30%, depending on institute category and
+collateral). List A institutes with 100% collateral get the best rate:
+a -0.80% spread, landing at 7.50%.
+
+UCO Udaan is specifically positioned for meritorious female students at
+premier educational institutes.
+
+Eligibility:
+Indian nationals who have secured admission through an entrance test or
+selection process. No minimum or maximum age criteria.
+
+Loan Amount:
+Need-based, determined by actual educational expenses.
+
+Margin:
+Nil up to Rs. 30 lakh; 15% above Rs. 30 lakh.
+
+Collateral:
+No security required, only a parent/spouse/guardian as co-borrower, for
+loans up to Rs. 30 lakh at List A premier institutes. For higher
+amounts or lower-category institutions, tangible collateral equal to
+100% of the loan value is required along with a co-borrower.
+
+Repayment:
+Maximum 180 EMIs (15 years). Moratorium: course period + 1 year.
+
+Fees:
+Processing and documentation charges: nil.

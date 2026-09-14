@@ -1,0 +1,34 @@
+SOURCE: https://www.canarabank.bank.in/swarna-express and https://www.canarabank.bank.in/swarna-monthly-interest-loan
+DOCUMENT_ID: canara_loan_gold
+BANK: CANARA
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-03-12
+===
+Canara Bank Gold Loan (Swarna Schemes)
+
+Interest Rate:
+Starting from approximately 8.75%-8.90% p.a., typically ranging
+8.85%-9.60% p.a. Swarna-branded products specifically priced at RLLR +
+0.95% effective 12 March 2026.
+
+Loan-to-Value (LTV):
+Capped at 75%, per RBI's regulatory LTV limit for gold loans (Canara
+Bank adheres to this cap, does not exceed it).
+
+Scheme Variants:
+- Swarna Loan (standard) — repaid within 12 months from sanction as a
+  bullet payment (principal + interest together at the end of term).
+- Swarna Express — a faster/instant-disbursal gold loan variant.
+- Swarna Overdraft — an overdraft facility against pledged gold,
+  rather than a standard term loan.
+- Swarna Monthly Interest Loan — interest serviced monthly rather than
+  at bullet maturity.
+
+Loan Amount:
+Up to Rs. 35 lakh, depending on gold valuation, purity assessment, and
+the applicable LTV limit.
+
+For eligibility and documentation specifics, check the relevant Swarna
+scheme's own page or a branch, since bullet-repayment, overdraft, and
+monthly-interest variants have different repayment structures.

@@ -1,0 +1,36 @@
+SOURCE: https://bankofbaroda.bank.in/interest-rate-and-service-charges/deposits-interest-rates/fixed-deposits-callable-and-non-callable-upto-ten-crores
+DOCUMENT_ID: bob_fd_rates
+BANK: BOB
+CATEGORY: DEPOSIT
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-06-12
+===
+Bank of Baroda Fixed Deposit Interest Rates (Callable, below Rs. 3 crore)
+
+Effective 12 June 2026, General Public | Senior Citizen:
+- 7-14 days:                3.50% | 4.00%
+- 15-45 days:               3.50% | 4.00%
+- 46-90 days:               5.00% | 5.50%
+- 91-180 days:              5.00% | 5.50%
+- 181-210 days:             5.50% | 6.00%
+- 211-270 days:             5.75% | 6.25%
+- 271 days to <1 year:      6.00% | 6.50%
+- 1 year:                   6.25% | 6.75%
+- >1 year to 400 days:      6.25% | 6.75%
+- >2-3 years:                6.25% | 6.75%
+- >3-5 years:                6.30% | 6.90%
+- >5-10 years:               6.00% | 7.00%
+
+Special-Tenor Deposits:
+- bob Square Drive (444 days): 6.45% | 6.95%
+- bob Golden Goal (555 days):  6.75% | 7.25%
+
+Senior citizens generally receive a 0.50% premium over the general
+public rate, though this varies slightly by tenor (e.g. the >5-10 year
+and special-tenor slabs).
+
+These are callable (premature-withdrawal-permitted) rates for deposits
+below Rs. 3 crore — bulk deposits (Rs. 3 crore+) and non-callable
+variants are priced on a separate table. Verify the current rate
+against Bank of Baroda's live page before quoting, since FD rates are
+revised periodically.

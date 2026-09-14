@@ -1,0 +1,28 @@
+SOURCE: https://bankofmaharashtra.bank.in/personal-banking/loans/personal-loan (same source as bom_loan_personal — split into a separate doc 2026-08-25 so the headline rate chunk stays short and competitive in retrieval; see PROJECT_STATUS.md §27-28)
+DOCUMENT_ID: bom_loan_personal_eligibility
+BANK: BOM
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-19
+===
+Bank of Maharashtra Personal Loan — Eligibility, Tenure, and Fees
+
+Eligibility:
+Salaried employees, professionals, or business owners. Minimum annual
+income Rs. 3 lakh. Self-employed individuals need 2-3 years of IT
+returns.
+
+Tenure:
+- Salaried customers with a Bank of Maharashtra salary account: 84
+  months.
+- Salaried customers with an account at another bank: 60 months.
+- Professionals: 60 months.
+- Business-class applicants with an existing home loan: 84 months.
+
+Processing Fee:
+1.00% of loan amount + GST.
+
+Other Features:
+No guarantor required, no prepayment penalty, no hidden charges,
+minimal documentation. Digital application available via the MahaMobile
+app or online portal with QR-code scanning.

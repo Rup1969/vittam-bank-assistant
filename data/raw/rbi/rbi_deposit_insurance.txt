@@ -1,0 +1,30 @@
+SOURCE: https://www.dicgc.org.in/guide-to-deposit-insurance
+DOCUMENT_ID: rbi_deposit_insurance
+BANK: RBI
+CATEGORY: DEPOSIT_INSURANCE
+SOURCE_TYPE: RBI_CITIZENS_CORNER
+===
+Deposit Insurance in India (DICGC)
+
+Bank deposits in India are insured by the Deposit Insurance and Credit
+Guarantee Corporation (DICGC), a wholly owned subsidiary of the Reserve
+Bank of India, established under the DICGC Act, 1961.
+
+Each depositor in a bank is insured up to a maximum of Rs. 5,00,000
+(Rupees Five Lakh) for both principal and interest amount held by them,
+across all their deposits in that bank, taken together. This limit
+covers savings, fixed, current, and recurring deposit accounts.
+
+This insurance is automatic and free to the depositor — banks pay the
+premium to DICGC, not the customer. No application or opt-in is required.
+
+Coverage applies per bank, not per branch — deposits held in the same
+capacity and same right across all branches of one bank are added
+together and insured up to the Rs. 5,00,000 limit as a whole, not per
+branch.
+
+Nearly all commercial banks operating in India, including foreign bank
+branches, local area banks, regional rural banks, and cooperative banks,
+are covered by DICGC insurance. This limit is set by DICGC/RBI and is
+subject to revision by the government from time to time — always confirm
+the current limit on dicgc.org.in or rbi.org.in before stating it as final.

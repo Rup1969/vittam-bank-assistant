@@ -1,0 +1,202 @@
+{
+  "banks": [
+    {
+      "id": "indian_bank",
+      "name": "Indian Bank",
+      "read_only": true,
+      "urls": {
+        "fd_rates": "https://indianbank.bank.in/category/term-deposits/"
+      }
+    },
+    {
+      "id": "sbi",
+      "name": "State Bank of India",
+      "read_only": false,
+      "urls": {
+        "fd_rates": "https://sbi.bank.in/web/interest-rates/deposit-rates/retail-domestic-term-deposits",
+        "education_loan": "https://sbi.bank.in/web/personal-banking/loans/education-loans"
+      },
+      "note_education_loan": "EDUCATION LOAN BATCH 2 PRE-FLIGHT (2026-08-19): confirmed via WebFetch — a single flat 'ROI 6.90% p.a.*' figure shown directly on the page, no tiered table. The page's 'View All' link goes to the external pmvidyalaxmi.co.in government portal, not a richer sbi.bank.in page — this appears to be the extent of what's published on SBI's own domain for the general product.",
+      "note_home_loan": "STAGE 3 PRE-FLIGHT (2026-08-16): SBI's home loan rate card (sbi.bank.in/web/interest-rates/interest-rates/loan-schemes-interest-rates/home-loans-interest-rates-current) is published ONLY as a JPG IMAGE (.../01042026_RATE+OF+INTEREST+01042026.jpg), not as HTML text or a table — confirmed zero <table> elements and zero numeric rate matches anywhere in the page's extracted text, only an embedded image URL. This is a genuinely different obstacle from every other bank's rate page (all of which are text/HTML, even when hard to parse) — would require OCR to extract, which is out of scope for this pass. No home_loan URL configured; logged as a known gap, same category as Indian Bank/BOI's fd_rates block, just for a different underlying reason (format, not access)."
+    },
+    {
+      "id": "bob",
+      "name": "Bank of Baroda",
+      "read_only": false,
+      "urls": {
+        "fd_rates": "https://bankofbaroda.bank.in/interest-rate-and-service-charges/deposits-interest-rates/fixed-deposits-callable-and-non-callable-upto-ten-crores",
+        "home_loan": "https://bankofbaroda.bank.in/interest-rate-and-service-charges/retail-loans-interest-rates"
+      },
+      "note_home_loan": "STAGE 3 (2026-08-16): this one page has 21+ HTML tables covering every retail loan product (home, personal, car, education, gold, mortgage...), each usually split into 2 rows (Salaried/Non-Salaried) x 2 sub-variants (Staff/Non-Staff). extract_bob_home_loan_rows() anchors on 'Baroda Home Loan to Non-Staff members' specifically as the representative retail product, ignoring Staff-only and other home-loan variant tables (Green Home Loan, EWS/LIG/MIG, etc.) on the same page. Rate is published as a FORMULA only ('BRLLR - 0.70% to BRLLR + 1.05%'), not a precomputed number on this page — the 'Effective Rate of Interest' column shows a placeholder 0.00%, not real data; the actual rate must be computed from BRLLR (fetched separately, see bob_rates_lending_structured.txt's benchmark note) plus the published spread."
+    },
+    {
+      "id": "canara",
+      "name": "Canara Bank",
+      "read_only": false,
+      "urls": {
+        "fd_rates": "https://www.canarabank.bank.in/pages/deposit-interest-rates",
+        "home_loan": "https://www.canarabank.bank.in/pages/rates-of-interest-for-retail-lending-schemes-linked-to-rllr",
+        "education_loan": "https://www.canarabank.bank.in/vidya-turant"
+      },
+      "note_education_loan": "EDUCATION LOAN BATCH 2 PRE-FLIGHT (2026-08-19): confirmed via WebFetch — a single flat 'Rate of Interest: 6.85% p.a.' figure on the Vidya Turant product page, no tiered table. Its own 'INTEREST RATES' nav link is the same navigation-hub dead-end already found while researching home_loan (/rates-of-interest-for-retail-loans, no data on it) — no richer table found elsewhere.",
+      "note": "FIXED (2026-07-25): this page shows a language-selection popup on load, and its numeric term-deposit table only renders after clicking a 'Term Deposits' accordion header — neither happens on a plain page load. The 'interactions' list below tells fetch_source to dismiss the popup, then click the header, before capturing content.",
+      "note_home_loan": "LOAN RATES EXTENSION (2026-08-19), previously logged as 'not yet assessed' — found via the housing-loan product page's own 'INTEREST RATES' link, then traced one more hop to the RLLR-linked variant specifically (a sibling 'Fixed Rate' page also exists, out of scope). Rich real table: CRG-PRIME/CRG:1-4 tiers (a credit-risk-group system, not a raw CIBIL score) x Women/Other-borrower columns x 4 loan-amount slabs (up to 50L, 50-100L, 100-250L, above 250L). Benchmark RLLR = 8.00%. Same interactions (popup dismiss) as fd_rates may apply here too — confirm on the real fetch before assuming a clean load.",
+      "interactions": [
+        {"action": "click", "selector": "#canara-popup-close", "optional": true},
+        {"action": "click", "selector": "h2:has-text('TERM DEPOSITS-Rate of Interest')"}
+      ]
+    },
+    {
+      "id": "pnb",
+      "name": "Punjab National Bank",
+      "read_only": false,
+      "urls": {
+        "fd_rates": "https://pnb.bank.in/Interest-Rates-Deposit.html",
+        "home_loan": "https://pnb.bank.in/Retail-Advances-interst-rate-on-advances-linked-to-mclr.html"
+      },
+      "note_home_loan": "STAGE 3 (2026-08-16): page has 30 HTML tables covering many retail loan products; the home loan tables are CIBIL-score-tiered with REAL COMPUTED rates already embedded in the formula text, e.g. 'RLLR+BSP-0.70% (presently 7.40%)' — the '(presently X%)' parenthetical is the actual effective rate, extracted directly rather than computed from a separate benchmark fetch (unlike BOB). Tiered by CIBIL band (800+, 750-799, 700-749, ...) x tenure (<=10yrs / >10yrs) x fixed/floating."
+    },
+    {
+      "id": "boi",
+      "name": "Bank of India",
+      "read_only": true,
+      "urls": {
+        "fd_rates": "https://bankofindia.bank.in/interest-rate/rupee-term-deposit-rate"
+      },
+      "note": "CONFIRMED (2026-08-15): bankofindia.bank.in is behind Cloudflare bot-defense — a real headless-browser fetch lands on a 'Performing security verification... this website uses a security service to protect against malicious bots' challenge page, not the real rate table (same class of block as Indian Bank, different vendor). Tracked read-only like Indian Bank. UNLIKE Indian Bank, there is no precise verified tenure-by-tenure source file to legacy-load from for BOI — the RAG content (data/raw/boi/boi_fd_rates.txt) is deliberately a headline range from cross-referenced secondary sources, not an exact per-tenure table, so fabricating a legacy loader from it would risk inventing precision that doesn't exist. BOI's fd_rates table stays unpopulated until either the site becomes fetchable or a precise official tenure table is sourced by hand."
+    },
+    {
+      "id": "union_bank",
+      "name": "Union Bank of India",
+      "read_only": false,
+      "urls": {
+        "fd_rates": "https://www.unionbankofindia.bank.in/en/details/rate-of-interest"
+      },
+      "note": "unionbankofindia.bank.in's WAF is INTERMITTENT, not a hard block like Indian Bank/BOI: a standalone Playwright test got 'Web Page Blocked! ... Attack ID', but the very next run through fetch_and_track.py's actual browser session succeeded with real, precise content (2026-08-15) — confirmed 18 tenure rows matching the bank's own page exactly via extract_union_bank_rows(). If a future run logs an ERROR here, don't assume it's permanent — retry once before falling back to automation/load_union_bank_legacy.py, which reads the already-verified data/raw/union_bank/union_bank_fd_rates.txt as a manual backstop.",
+      "note_home_loan": "STAGE 3 BOUNDED SEARCH (2026-08-17): the home-loan-interest-rate page itself has NO inline table, only a 'Click Here' link to a PDF (unionbankofindia.bank.in/pdf/retail_roi.pdf) — a genuine, real URL found within the single-attempt budget. Fetching that PDF returns HTTP 500 and the response body is NOT a valid PDF (pdfplumber: 'No /Root object!'). This is a real, currently-broken link server-side, not a fetch-tooling problem — distinct from both a clean success and a not-found. No home_loan URL configured; revisit if the PDF link is ever confirmed working again."
+    },
+    {
+      "id": "iob",
+      "name": "Indian Overseas Bank",
+      "read_only": false,
+      "urls": {
+        "fd_rates": "https://www.iob.bank.in/en/retail-deposit-interest-rates-domestic-nro-and-nre",
+        "home_loan": "https://www.iob.bank.in/en/lending-interest-rates1",
+        "education_loan": "https://www.iob.bank.in/en/Lending-Interest-Rates"
+      },
+      "note_education_loan": "RE-RESEARCHED (2026-08-20), reversing the §4i pre-flight's 'no education section' finding on the sibling 'lending-interest-rates1' URL: the real page is a DIFFERENT capitalization/slug, 'Lending-Interest-Rates' (found via Vidya Jyothi's own 'Rate of Interest -> Click here' link), and it has 5 real named-scheme tables (Vidya Jyothi Public/Staff, Vidya Suraksha, Vidya Shresht A/B, IOB Scholar x3, plus Skill/Vocational/Career Dream x2/Bihar Student Credit Card under 'Other Education Loan Schemes') — 13 rows total, RLLR=8.10% (w.e.f 15.12.2025). Two of the 13 real rate figures (Vidya Jyothi Public/Staff) print WITHOUT a trailing '%' in the source HTML while every other row has one — a naive regex requiring the literal '%' silently skips past both and merges them into the next real match's label; the parser makes the trailing '%' optional to catch these two.",
+      "note": "Confirmed fetchable via real headless Playwright (2026-08-15, no bot-defense). Page shows BOTH an 'Existing' (w.e.f. 15.09.2025) and 'Revised' (w.e.f. 15.12.2025) rate column for the same tenure list, plus a separate 'Non-Callable' column — extraction must take the Revised/callable column only, not the Existing or Non-Callable ones.",
+      "note_home_loan": "RE-SEARCHED (2026-08-19), reversing the 2026-08-17 bounded-search miss: this SAME 'lending-interest-rates1' hub URL was checked before and reported as having 'none matched housing/home/RLLR' among its 27 tables — a fresh WebFetch pass this session found a real Housing Loan table on it after all (Risk Grade | RLLR-based rate | ROI, split Salaried/Non-Salaried, CIC-1 >=800 tier at RLLR-1.00/7.10% salaried), consistent with the 8.40%/8.50% starting rate secondary sources already had on record. Needs confirmation via the real Playwright fetch (not just WebFetch) before trusting the parser design — the earlier miss on the identical URL is a reason for caution, not proof either finding is wrong; could be a since-added table, or the earlier WebFetch pass simply missed it on a 27-table page."
+    },
+    {
+      "id": "hdfc",
+      "name": "HDFC Bank",
+      "read_only": false,
+      "urls": {
+        "fd_rates": "https://www.hdfc.bank.in/fixed-deposit/fd-interest-rate",
+        "home_loan": "https://homeloans.hdfc.bank.in/ps/home-loans-in-india/interest-rates",
+        "education_loan": "https://www.hdfc.bank.in/education-loan/interest-rates-and-charges"
+      },
+      "note_education_loan": "EDUCATION LOAN BATCH 2 PRE-FLIGHT (2026-08-19): confirmed fetchable via a real Playwright fetch during pre-flight (54KB, same intermittent-not-permanent CloudFront pattern as every other hdfc.bank.in page) — single flat 'Starting from 10.50% p.a.' figure for domestic education, no tiered table on this specific page. Secondary sources mention a separate ~8.64% abroad-education rate not yet confirmed on-domain.",
+      "note": "CORRECTED (2026-08-15): an earlier standalone test got a CloudFront 403 and this was initially classified read_only like Indian Bank/BOI — but a later real fetch_and_track.py run succeeded completely (75KB of real content), proving the block is INTERMITTENT, not permanent, the same category as Union Bank's WAF. fetch_and_track.py now retries every source up to 2 times with a short delay before giving up, specifically to ride out this kind of transient block. Page has two sequential tables (retail '< 3 Crore' first, then '>=3 Crore to <5 Crore' bulk tier) — extract_hdfc_rows() stops at the first 'RESIDENT CUSTOMERS:' marker to capture only the retail one.",
+      "note_home_loan": "STAGE 3 (2026-08-16): home_loan URL is on a COMPLETELY SEPARATE subdomain (homeloans.hdfc.bank.in, not hdfc.bank.in) — confirmed this subdomain is NOT behind the same CloudFront block that hit every other HDFC content category that same day (savings, education, vehicle, mortgage, deposit-schemes, loan-against-deposit all failed via hdfc.bank.in). Simplest rate structure of any bank in this batch: one single formula, no tiering — 'Policy Repo Rate + 2.50% to 7.95% = 7.75% to 13.20%', benchmarked to Repo Rate 5.25%."
+    },
+    {
+      "id": "icici",
+      "name": "ICICI Bank",
+      "read_only": false,
+      "urls": {
+        "fd_rates": "https://www.icici.bank.in/content/dam/icicibank-revamp/deposits/fixed-deposits/json/fd-interest-rate.json",
+        "home_loan": "https://www.icici.bank.in/personal-banking/loans/home-loan/home-loan-interest-rates",
+        "education_loan": "https://www.icici.bank.in/personal-banking/loans/education-loan/interest-rates"
+      },
+      "note_education_loan": "CONFIRMED in the education-loan pre-flight (§4i, 2026-08-19) — the RAG doc's original 'no rate found' was a research miss (secondary-source search only), a real official page exists. Rich real table set (confirmed via WebFetch at pre-flight time, re-verified via real Playwright fetch before parsing, per standing discipline): Abroad Secured/Unsecured, Domestic Engineering/Management by institute tier (Select vs Others), Medical (Secured/Unsecured, all institutes), I-Group Employees, EXBT cases (applicant working). Was confirmed-ready but fell through the cracks of both education-loan batches — built 2026-08-20 once the gap was noticed.",
+      "note": "DELIBERATELY points at ICICI's own JSON data API, not the HTML rate page — the rendered page (personal-banking/deposits/fixed-deposit/fd-interest-rates) only shows 2 of the ~10 real tenure rows statically (the rest render via this same JSON, fetched client-side); pointing the config here instead gets the full precise dataset directly, no HTML/table parsing needed at all. interestData[0] is the correct <3Cr retail General/Senior table (fields tenure/c1=general/c2=senior) — verified 2026-08-15 by cross-checking against the live page's visibly-rendered rows (senior = general + 0.50%, with a couple of tenures carrying a larger +0.60% promotional premium, both confirmed matching exactly). c3/c4 in this JSON are unrelated internal fields, not additional rate columns — do not use them.",
+      "note_home_loan": "STAGE 3 (2026-08-16): TWO separate clean HTML tables on the same page, both real and worth keeping — 'Special Home Loan Interest rates' tiered by credit score (800+, 750-800) x Salaried/Self-Employed, valid only for pre-approved digital-journey loans; and 'Standard Home Loan interest rate' tiered by loan slab (<=35L, 35-75L, >75L) x Salaried/Self-Employed, the general-purpose table. extract_icici_home_loan_rows() extracts both, distinguished via tier_type ('credit_score' vs 'loan_amount'). Processing fee explicitly stated: 0.5% of loan amount + taxes."
+    },
+    {
+      "id": "kotak",
+      "name": "Kotak Mahindra Bank",
+      "read_only": false,
+      "urls": {
+        "fd_rates": "https://www.kotak.bank.in/en/personal-banking/deposits/fixed-deposit/fixed-deposit-interest-rate.html",
+        "home_loan": "https://www.kotak.bank.in/en/personal-banking/loans/home-loan/interest-rates.html"
+      },
+      "note": "Confirmed fetchable via real headless Playwright (2026-08-15, no bot-defense). Page has 4 numeric columns per retail row (Regular <3Cr, Regular 3-5Cr, Senior <3Cr, Senior 3-5Cr — confirmed genuinely distinct values, not duplicated) — extract_kotak_rows() takes columns 0 and 2 for the <3Cr retail tier. Two more tables follow immediately after on the same page (bulk tiers Rs.5cr+, then a separate Non-Withdrawable-FD table) — extraction stops before the first of those.",
+      "note_home_loan": "STAGE 3 (2026-08-16): unlike Kotak's car loan (via subsidiary KMPL, no fixed rate published) and education loan (via partner Credila, no Kotak-branded rate), Kotak's HOME loan is originated by Kotak Mahindra Bank itself and DOES publish a real starting rate: 7.60% p.a. onwards, floating, Repo Rate 5.25% benchmark. Simple 3-row table (Floating for Salaried/Self-Employed; Fixed-rate switch options) — no CIBIL/amount tiering on this page."
+    },
+    {
+      "id": "axis",
+      "name": "Axis Bank",
+      "read_only": false,
+      "content_type": "pdf",
+      "urls": {
+        "fd_rates": "https://www.axis.bank.in/docs/default-source/default-document-library/interest-rates/domestic-fixed-deposits-14-august-26.pdf",
+        "home_loan": "https://www.axis.bank.in/loans/home-loan/interest-rates-charges",
+        "education_loan": "https://www.axis.bank.in/loans/education-loan"
+      },
+      "note_education_loan": "RE-RESEARCHED (2026-08-20), reversing the §4i pre-flight's 'no table found' verdict on the dedicated 'interest-rates-charges' sub-page (checked twice, real Playwright fetch both times, genuinely has NO rate table — just Repo-rate/processing-fee prose, confirmed again this pass via BeautifulSoup table scan: 1 table, fees only). The real table lives on the EDUCATION LOAN LANDING page itself (`/loans/education-loan`), not the rates sub-page — 3 loan-amount tiers (up to ₹4L / ₹4-7.5L / above ₹7.5L), 15.20%/14.70%/13.70% effective ROI. KNOWN ODDITY, flagged not silently resolved: this table's own 'Repo Rate' column reads 6.50% per row, but Axis's Repo Rate is 5.25% everywhere else in this project (FD/home_loan parsers) — the effective-ROI numbers are internally self-consistent with the table's own stated 6.50% (6.50+8.70=15.20 checks out), so used as printed rather than reconciled against the different figure used elsewhere; may indicate this specific page/table is stale.",
+      "note": "GENUINELY DIFFERENT from every other source: Axis's real retail rate table only exists in a downloadable PDF, not on any HTML page — the HTML landing page (deposits/fixed-deposits/fd-interest-rates) only shows 2 'popular' summary rows even after checking the dedicated FD-rates sub-page. fetch_and_track.py now has a PDF-specific fetch path (fetch_pdf_bytes) for content_type:'pdf' sources, and extract_axis_rows() (in extract_structured.py) uses pdfplumber's TABLE-aware extraction directly on the saved PDF file rather than flattening to text and regexing it. KNOWN CAVEAT: this PDF's URL is DATE-STAMPED ('...-14-august-26.pdf') — unlike every other bank's stable page URL, this exact URL will go stale (404, most likely) the next time Axis republishes rates under a new dated filename. When that happens this will surface as an honest fetch ERROR (not a silent wrong-data problem), and the URL will need re-discovering from the landing page's 'VIEW RATES' link by hand — auto-discovering the current PDF link was explicitly out of scope for this pass. IMPORTANT: `content_type: 'pdf'` above applies ONLY to the fd_rates URL — home_loan is a normal HTML page; fetch_and_track.py's per-URL-type loop deliberately does NOT apply this bank-level flag to any URL type except fd_rates, specifically to avoid this exact bank breaking its own new home_loan fetch.",
+      "note_home_loan": "STAGE 3 (2026-08-16): clean 2-row CIBIL-tiered table (751+, and below-750/no-history), same simple format as Axis's already-built LAP and education-loan docs. Repo + spread formula with precomputed effective range."
+    },
+    {
+      "id": "indusind",
+      "name": "IndusInd Bank",
+      "read_only": false,
+      "wait_until": "commit",
+      "urls": {
+        "fd_rates": "https://www.indusind.bank.in/in/en/personal/fixed-deposit-interest-rate.html",
+        "home_loan": "https://www.indusind.bank.in/in/en/personal/other/know-more-about-APR-data.html"
+      },
+      "note_home_loan": "STAGE 3 (2026-08-17): found via one bounded-effort search (per user instruction) after the home-loan product page itself only linked out to this page rather than showing the table inline. Same 'Bank ROI Min/Max/Average, APR Min/Max' single-row format IndusInd's Loan-Against-Property page already used (see loan_against_deposit RAG doc). This is a SHARED APR-disclosure page — likely also covers other IndusInd loan products' APR data on the same page, not just home loan; the parser anchors specifically on the 'Home Loan Interest Rate' heading preceding this bank's table to avoid picking up a different product's numbers.",
+      "note": "CONFIRMED (2026-08-15): this page never reaches Playwright's default 'networkidle' wait condition — some persistent background request (analytics/chat widget, never identified further, not worth chasing) keeps the network from settling, so the default wait_until times out every time even though the real rate table itself renders almost immediately. fetch_source() now supports a per-source 'wait_until' override (this config field) plus a fixed 3s settle wait after goto() whenever a non-default wait_until is used, since a weaker wait condition doesn't guarantee the DOM has actually finished rendering the instant goto() returns. 'commit' (page has started receiving a response) was confirmed to reliably load this page's real content. Table is a simple 2-column layout (period + general% + senior%, no crore-tier split) — the simplest structure of any private bank onboarded so far."
+    },
+    {
+      "id": "central_bank",
+      "name": "Central Bank of India",
+      "read_only": false,
+      "urls": {
+        "fd_rates": "https://centralbank.bank.in/en/interest-rates-on-deposit",
+        "home_loan": "https://centralbank.bank.in/retail-scheme-interest"
+      },
+      "note": "PSB EXPANSION (2026-08-19): confirmed fetchable via WebFetch pre-flight, no bot-defense. Table prints separate Rate AND Yield columns per customer category (General/Senior) — same disambiguation Canara/UCO need. 12 retail rows (7-14 days to 5-10 years), effective 10.08.2026. Needs a deterministic parser (extract_central_bank_rows) using the Rate column only, same pattern as Canara/PNB/BOB.",
+      "note_home_loan": "LOAN RATES EXTENSION (2026-08-19): confirmed via WebFetch pre-flight — simple 3-row scheme table (Cent Grih Lakshmi / Cent Home / Cent Home for 3rd-5th house), NOT CIBIL-tiered on this page (asterisk notes CIC-score-based pricing exists but isn't broken out numerically). Columns: Scheme Name | Rate of Interest (Range, as RBLR formula) | Present Range (%). Benchmark RBLR = 8.25% (Repo 5.25% + 3.00% spread). tier_type should be 'scheme', not 'credit_score'."
+    },
+    {
+      "id": "punjab_sind",
+      "name": "Punjab & Sind Bank",
+      "read_only": false,
+      "wait_until": "commit",
+      "urls": {
+        "fd_rates": "https://punjabandsind.bank.in/content/interestdom",
+        "home_loan": "https://punjabandsind.bank.in/content/prlr"
+      },
+      "note": "PSB EXPANSION (2026-08-19): confirmed fetchable via WebFetch pre-flight, no bot-defense. Simplest structure of the 4 new banks — single Rate column, no Yield column. Genuinely has explicit Callable vs Non-Callable dual rows for 375/444/666/999-day tenures (e.g. 444 days: 6.80% Callable / 6.90% Non-Callable, both real) — parser should tag these via FDRateRecord.deposit_variant from the start, same mechanism built for SBI's dual-product fix (see feedback_multibank_rag_gotchas memory). 18 total rows including both variants of the 4 special tenures, effective 16/06/2026. CONFIRMED (2026-08-19): first live fetch attempt timed out waiting for 'networkidle' (same class of issue as IndusInd's FD/home-loan pages) — added wait_until='commit' override; retry needed to confirm this resolves it.",
+      "note_home_loan": "LOAN RATES EXTENSION (2026-08-19): the housing-loan product page itself (content/housing) has no rate table, only a 'click here for rate of interest' link — traced to the real PRLR page at content/prlr (NOT punjabandsindbank.co.in, a different-looking domain that also surfaced in research but is not this bank's confirmed real domain — stayed on punjabandsind.bank.in, consistent with every other PSB page for this bank). Real 7-row CIBIL-tiered table (825+ down to 649-and-below), columns: CIBIL Credit Vision Score | Repo % | Markup % | CRP % | BSP % | Effective EBLR %. Benchmark Repo 5.25% (eff. 16.07.2026), Markup fixed 2.10%. Footnote: minimum ROI floor 7.15% after concession — capture as a note, not a per-row field."
+    },
+    {
+      "id": "bom",
+      "name": "Bank of Maharashtra",
+      "read_only": false,
+      "urls": {
+        "fd_rates": "https://bankofmaharashtra.bank.in/domestic-term-deposits",
+        "home_loan": "https://bankofmaharashtra.bank.in/retail-interest-rates",
+        "education_loan": "https://bankofmaharashtra.bank.in/educational-loans"
+      },
+      "note_education_loan": "EDUCATION LOAN BATCH 2 PRE-FLIGHT (2026-08-19): confirmed via WebFetch — a single flat '6.85 % P.A' figure shown directly (repeated in the hero section and EMI calculator), no tiered table. No separate rates page for education specifically; the page's general 'More Interest Rates & Charges' link just goes to the same retail-interest-rates page already used for home_loan.",
+      "note": "PSB EXPANSION (2026-08-19): confirmed fetchable via WebFetch pre-flight, no bot-defense. Multi-crore-tier table (<3Cr / 3-10Cr / 10-100Cr / 100-400Cr / >400Cr) plus a Callable/Non-Callable column split — same complexity class as BOB's parser (anchor on the <3Cr retail column only). The retail (<3Cr) tier's own Non-Callable column is explicitly blank ('xx', not published) in the real data, so no deposit_variant ambiguity for the core 12-row retail table itself. Real special-tenor Non-Callable-ONLY products exist separately off the main table ('400 Days Special Scheme' 6.65%, 'Green Deposit' 1777 days 6.05%/5.45%) — not part of the core parser scope, logged in bom_deposits_schemes_all.txt RAG doc instead. 12 retail rows, effective 10.08.2026.",
+      "note_home_loan": "LOAN RATES EXTENSION (2026-08-19): the home-loan product page itself (personal-banking/loans/home-loan) only shows a single headline '7.00% p.a.' rate, no table — traced via its own 'More Interest Rates & Charges' link to the real tiered page at /retail-interest-rates. Real 7-row CIBIL-tiered table (800+ down to below-600, plus a separate NTC/no-credit-history row), split into Salaried and Non-Salaried columns sharing the same tiers — benchmark RLLR for both. Sample: '800 & above | RLLR | -1.05% | 7.00% (salaried) | RLLR | -0.95% | 7.10% (non-salaried)'. tier_type='credit_score', capture salaried/non-salaried as two rows per tier like ICICI's Salaried/Self-Employed split."
+    },
+    {
+      "id": "uco",
+      "name": "UCO Bank",
+      "read_only": false,
+      "urls": {
+        "fd_rates": "https://uco.bank.in/en/web/guest/interest-rates-on-deposit-schemes",
+        "home_loan": "https://uco.bank.in/repo"
+      },
+      "note": "PSB EXPANSION (2026-08-19): confirmed fetchable via WebFetch pre-flight, no bot-defense. Table prints separate Rate AND Yield columns per row — same disambiguation as Central Bank/Canara, use Rate only. Has real named-special-tenor rows (333/444/535 days) and 'Green Deposit' rows (1000/2000/3000 days) paying a distinctly HIGHER rate than the immediately-surrounding standard slab (e.g. 444 days = 6.45% vs neighboring 445-534 days = 6.10%) — a DIFFERENT shape of multi-rate-per-tenure than SBI/Punjab & Sind's callable/non-callable case (named bonus product vs withdrawal-flexibility variant). Recommend tagging these with a distinct deposit_variant value (e.g. 'special_tenor') rather than reusing 'non_callable', since they're not a callable/non-callable pair — decide before writing the parser. 26 total rows including all special/Green tenures, effective 21.05.2026.",
+      "note_home_loan": "LOAN RATES EXTENSION (2026-08-19): confirmed via WebFetch pre-flight — this same 'repo' URL (also serves as the FD-rate benchmark page) carries a real CIBIL/equivalent-score-tiered home-loan table, columns: Loan Category Description | Spread (%) | Strategic Discount (%) | Effective Rate (%). Tiers named by UCO's own loyalty-tier labels tied to score bands (e.g. 'UCO Super Platina' >=850, 'UCO Premia' 750-799), down through a >=600-649 tier at 9.50%. Also has a separate UCO Corporate Home Loan section (tiered by Internal Credit Rating, not CIBIL) and a Top-Up Home Loan section — parser scope is the individual/CIBIL-tiered table only, same as every other bank's home_loan scope in this project (corporate/top-up variants out of scope)."
+    }
+  ]
+}

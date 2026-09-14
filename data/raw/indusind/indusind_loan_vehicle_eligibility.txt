@@ -1,0 +1,41 @@
+SOURCE: https://www.indusind.bank.in/in/en/personal/loans/vehicle-loan/new-cars-loan.html (official page, fetched directly) — same source as indusind_loan_vehicle, split into a separate doc 2026-08-26 so the headline chunk stays short and competitive in retrieval; see PROJECT_STATUS.md
+DOCUMENT_ID: indusind_loan_vehicle_eligibility
+BANK: INDUSIND
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-16
+===
+IndusInd Bank Car / Vehicle Loan — Features, Eligibility, Documentation
+
+IndusInd Bank's car loan (new car loan / vehicle loan) offers new car
+loan, used car loan, and two-wheeler loan variants.
+
+Key Features:
+- Car loan / new car loan financing up to 100% of new car value (varies
+  with vehicle cost and credit parameters).
+- Repayment tenure: 1-5 years, extendable up to 7 years in some cases
+  (elsewhere on the page also stated as "up to 60 months").
+- Minimum credit score required: above 600.
+
+Eligibility (by applicant type):
+- Salaried Individuals: minimum income Rs. 2.5 lakh p.a.; age 23-60
+  years; minimum 3 years' employment stability, at least 1 year in
+  current job; residence stability 2 years in city, 1 year at current
+  address (waived if own house).
+- Self-Employed Individuals: minimum income Rs. 3 lakh p.a. (per latest
+  ITR); age 23-65 years; minimum 3 years' business stability.
+- Self-Employed — No Income Proof: 3 years' business stability; age
+  23-65 years; own residence stability required.
+- Self-Employed, Commercial Use (FTU): minimum 3 years' valid driving
+  license with badge; age 25-60 years; mandatory guarantor with 12+
+  months of commercial driving experience.
+
+Documentation (salaried): latest Form 16/ITR, last 3 months' salary
+slips, 3 months' bank statements.
+
+Contact for loan queries: 1860 267 7777 (or 022 6857 7777 for Two
+Wheeler loans specifically); email reach4loan@indusind.com.
+
+This is a headline reference — since no fixed rate is published (rate
+is set per applicant profile and vehicle at application time), confirm
+the current applicable rate with the bank before quoting.

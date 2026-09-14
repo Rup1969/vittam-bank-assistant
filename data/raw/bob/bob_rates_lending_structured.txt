@@ -1,0 +1,41 @@
+SOURCE: https://bankofbaroda.bank.in/interest-rate-and-service-charges/retail-loans-interest-rates and https://bankofbaroda.bank.in/interest-rate-and-service-charges/msme-loans-interest-rates
+DOCUMENT_ID: bob_rates_lending_structured
+BANK: BOB
+CATEGORY: RATES
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2025-12-06
+===
+Bank of Baroda — Structured Lending Rate Table
+
+Benchmark: BRLLR (Baroda Repo Linked Lending Rate) = 7.90% as of 6
+December 2025 (RBI Repo Rate + Mark-Up + Strategic Premium). Most
+retail/MSME loan rates below are quoted as BRLLR plus a spread — the
+final rate to an individual customer also includes a borrower-specific
+Strategic Premium (S.P.) based on credit profile.
+
+Home Loan: BRLLR - 0.70% to BRLLR + 1.05% (floating); BRLLR + 1.00% to
+  BRLLR + 2.05% (fixed)
+Personal Loan: BRLLR + S.P. + 2.00% to BRLLR + S.P. + 7.35%
+  (~10.15%-15.50%)
+Digital Personal Loan: BRLLR + S.P. + 3.50% to BRLLR + S.P. + 8.85%
+  (~11.65%-17.00%)
+Loan to Pensioners: 8.75%-11.40%
+Education Loan (PM Vidyalaxmi): BRLLR - 1.05% to BRLLR + 0.50%
+Education Loan (Baroda Scholar): BRLLR + 0.55% to BRLLR + 4.55%
+Education Loan (Baroda Gyan): BRLLR + 2.00% to BRLLR + 1.90%
+Car Loan (New): BRLLR - 0.30% to BRLLR + S.P. + 3.15% (~7.60%-11.30%)
+Digital Car Loan: BRLLR - 0.30% to BRLLR + S.P. + 0.60% (~7.60%-8.75%)
+Two-Wheeler Loan: BRLLR + S.P. + 4.25% (~12.40%)
+Gold Loan (EMI): BRLLR + S.P. + 1.00% (~9.15%)
+Gold Loan (Overdraft): BRLLR + S.P. + 1.10% (~9.25%)
+Mortgage Loan (Loan Against Property): BRLLR + S.P. + 0.75% to BRLLR +
+  S.P. + 3.35% (~8.90%-11.50%)
+Loan Against FCNR(B) Deposit (foreign currency): 1.5% over 6-month
+  LIBOR, or 1.5% over the FCNR(B) rate, whichever is higher
+Loan Against FCNR(B) Deposit (in INR): MCLR + 1.00%
+
+All rates above are headline "starting from"/benchmark-plus-spread
+figures — the rate actually offered to an individual applicant depends
+on credit profile, loan amount, tenure, and scheme chosen. Reverify
+BRLLR and any spread before quoting, since it moves with RBI's repo
+rate.

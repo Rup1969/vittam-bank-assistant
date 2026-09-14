@@ -1,0 +1,37 @@
+SOURCE: https://www.kotak.bank.in/en/business/loans/loan-against-property.html (official page, fetched directly)
+DOCUMENT_ID: kotak_loan_mortgage
+BANK: KOTAK_MAHINDRA
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-16
+===
+Kotak Mahindra Bank Loan Against Property (LAP) / Mortgage Loan
+
+Kotak Mahindra Bank's Loan Against Property offers loan values from
+Rs. 10 lakh to Rs. 5 crore against commercial, residential, or
+industrial property, for both personal and business needs.
+
+Interest Rate Structure — Hybrid Interest Rate:
+Offers a fixed interest rate for an initial tenure of 39, 52, or 65
+months, followed by a floating rate linked to the prevailing Repo Rate
+plus an applicable interest spread thereafter (the exact spread is
+communicated at onboarding, not published as a fixed headline figure).
+
+Key Benefits:
+- Predictable EMIs during the initial fixed-rate tenure.
+- Protection from interest rate volatility during that period.
+- Flexibility to benefit from future market-linked rate movements
+  once the floating period begins.
+
+Loan Structure Options:
+- EMI-based loans, or
+- Overdraft facility.
+
+Fees: A non-refundable processing fee of up to 1% is charged.
+
+Eligible Property Types: Commercial, residential, or industrial
+property.
+
+This is a headline reference — the exact applicable interest spread is
+disclosed only at onboarding, not published generally. Confirm the
+current rate and spread with the bank before quoting to a customer.

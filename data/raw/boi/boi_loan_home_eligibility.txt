@@ -1,0 +1,24 @@
+SOURCE: https://www.nobroker.in/home-loan/bank-of-india/star-home-loan-interest-rates/ and https://www.creditmantri.com/bank-of-india-home-loan-interest-rate/, https://www.mymoneymantra.com/bank-of-india-home-loan-interest-rates (cross-referenced secondary sources; official pages returned HTTP 403 on direct automated fetch; same source as boi_loan_home — split into a separate doc 2026-08-25 so the headline rate chunk stays short and competitive in retrieval; see PROJECT_STATUS.md §27-28; verify current rate with the bank)
+DOCUMENT_ID: boi_loan_home_eligibility
+BANK: BOI
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-01-01
+===
+Bank of India Star Home Loan — Rate Detail, LTV, and Tenure
+
+Interest Rate detail:
+RBLR was cut from 8.85% to 8.35% effective 6 June 2025, and reported at
+8.10% as of 1 January 2026. Below-600-CIBIL-score applicants start
+around 8.50% — third-party aggregator figures vary, so always confirm
+the exact quoted rate with the bank.
+
+Loan Amount & LTV:
+Up to 90% of the property value financed.
+
+Tenure:
+Up to 360 months (30 years).
+
+This is a floating, RBLR-linked rate — it moves with RBI repo-rate
+changes over the loan tenure. Confirm the current RBLR value and the
+applicant's specific quoted spread with the bank before quoting.

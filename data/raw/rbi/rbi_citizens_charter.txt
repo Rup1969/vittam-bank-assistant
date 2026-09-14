@@ -1,0 +1,43 @@
+SOURCE: https://rbi.org.in/Scripts/CitiChart.aspx
+DOCUMENT_ID: rbi_citizens_charter
+BANK: RBI
+CATEGORY: GENERAL
+SOURCE_TYPE: RBI_CITIZENS_CORNER
+===
+RBI Citizen's Charter — Service Delivery Commitments
+
+RBI's Citizen's Charter lists roughly 213 distinct services across 9
+RBI departments, each with a committed processing timeline.
+
+Departments Covered:
+- Currency Management — currency chest applications, note exchange.
+- Government & Bank Accounts — challans, drafts, cash transactions,
+  refinancing.
+- Payment Systems — certificate authorisation, membership applications.
+- Regulation — licensing/approvals for banks, NBFCs, Asset
+  Reconstruction Companies (ARCs), and other financial institutions.
+- Supervision — statutory auditor appointment approvals.
+- Enforcement — compounding of contraventions (regulatory violations).
+- Financial Markets — benchmark administration, trading platform
+  authorisation.
+- Foreign Exchange — Authorised Dealer (AD) authorisations, External
+  Commercial Borrowing (ECB) approvals, investment transaction
+  approvals.
+- Internal Debt Management — primary dealer licensing, government
+  securities account services.
+
+Service Timelines:
+Committed processing windows range from as short as 3 days to as long
+as 270 days, with most falling between 15 and 90 calendar days. The
+timeline clock starts only once RBI has received a complete
+application (all required documents/information submitted) —
+incomplete submissions do not start the countdown.
+
+Application Channel:
+Most applications for RBI services under this Charter are submitted
+through the PRAVAAH platform (RBI's centralised regulatory application
+portal).
+
+This is a general service-standard reference — the exact timeline for
+a specific service should be checked against the current published
+Charter, since individual service timelines can be revised.

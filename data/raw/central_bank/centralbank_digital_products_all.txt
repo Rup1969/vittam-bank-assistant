@@ -1,0 +1,23 @@
+SOURCE: https://centralbank.bank.in/en/digital-banking
+DOCUMENT_ID: centralbank_digital_products_all
+BANK: CENTRAL_BANK
+CATEGORY: DIGITAL
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-19
+===
+Central Bank of India Digital Banking Products
+
+Central Bank of India's UPI payment app is called Cent PAY (also
+available as BHIM Cent UPI), supporting digital payments and fund
+transfers over the unified payments infrastructure.
+
+Other digital products:
+- Mobile Banking App: account management and transactions from a
+  smartphone, available on both Android and iOS.
+- Cent M-Passbook: mobile access to account activity/statement.
+- Cent eeZ: the bank's broader digital banking platform.
+- Internet Banking: full online banking portal.
+
+Fund transfer support: IMPS (immediate), NEFT (next-day settlement),
+and RTGS (real-time gross settlement), alongside UPI and bill-payment
+integration.

@@ -1,0 +1,33 @@
+SOURCE: https://sbi.bank.in/web/interest-rates/interest-rates/loan-schemes-interest-rates/loans-against-property; Cross-checked page last showed "updated 11-11-2019" — treat as indicative only and verify current rate before quoting a customer
+DOCUMENT_ID: sbi_loan_mortgage
+BANK: SBI
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+===
+SBI Loan Against Property (Mortgage Loan)
+
+Yes — SBI offers a Loan Against Property (mortgage loan), priced as a
+spread over the 1-year MCLR, reset annually from the date of first
+disbursement.
+
+For applicants where salary income is >50% of net monthly income:
+- Loan up to Rs. 1 crore: 1.45% + 1-year MCLR
+- Rs. 1-2 crore: 2.10% + 1-year MCLR
+- Rs. 2-7.50 crore: 2.50% + 1-year MCLR
+
+For applicants where business/profession/rental income is >50% of net
+monthly income:
+- Loan up to Rs. 1 crore: 2.10% + 1-year MCLR
+- Rs. 1-2 crore: 2.60% + 1-year MCLR
+- Rs. 2-7.50 crore: 3.00% + 1-year MCLR
+
+Purpose (per SBI's Personal Loan Against Property product, P-LAP):
+Personal needs such as education, marriage, or healthcare expenses —
+not permitted for business purposes under this scheme. Minimum loan
+amount Rs. 10 lakh, maximum Rs. 5 crore (subject to property location),
+maximum tenure 15 years.
+
+IMPORTANT: The source page for this rate table was last shown as
+updated in 2019 — this is stale relative to SBI's other current-rate
+pages. Given the stale source date, confirm the current MCLR and
+spread with a branch or SBI's live rates page before quoting.

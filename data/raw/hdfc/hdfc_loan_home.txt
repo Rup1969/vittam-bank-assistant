@@ -1,0 +1,30 @@
+SOURCE: https://homeloans.hdfc.bank.in/ps/home-loans-in-india/interest-rates (official page) cross-referenced with secondary aggregators for the broader range; verify current rate with the bank
+DOCUMENT_ID: hdfc_loan_home
+BANK: HDFC
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-15
+===
+HDFC Bank Home Loan
+
+HDFC Bank's home loan interest rate currently starts from around 7.75%
+to 8.15% per annum for well-qualified applicants, with a broader
+reported range of roughly 7.75%-13.20% p.a. depending on credit
+profile, loan amount, and employment type.
+
+Loan Types:
+- Standard floating-rate (adjustable-rate) home loan.
+- TruFixed Loan: interest rate stays fixed for an initial period (e.g.
+  the first two years of the tenure), then converts to a floating
+  rate for the remainder of the loan.
+
+Special Category Rate:
+A dedicated home loan scheme for government employees is reported at a
+notably preferential 6.90% p.a., with repayment tenure of 5 to 20
+years — a meaningfully lower rate than the general-public range,
+reflecting the lower credit risk of a government-salaried applicant
+base.
+
+This is a headline reference — confirm the current rate, applicable
+loan type, and the applicant's specific quoted spread with the bank
+before quoting.

@@ -1,0 +1,33 @@
+SOURCE: https://www.unionbankofindia.bank.in/en/details/kisan-credit-card-union-green-card and https://www.paisabazaar.com/union-bank-of-india/kisan-credit-card/ (cross-referenced; verify current rate with the bank)
+DOCUMENT_ID: union_bank_loan_agriculture
+BANK: UNION_BANK
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-15
+===
+Union Bank of India — Kisan Credit Card (Union Green Card)
+
+Purpose:
+A revolving credit facility for farmers, branded by Union Bank as the
+"Union Green Card," covering short-term and long-term credit needs for
+cultivation, post-harvest expenses, produce marketing loans,
+consumption requirements of farmer households, and working capital for
+farm-asset maintenance and allied agricultural activities.
+
+Security Requirements:
+- Limits up to Rs. 1.60 lakh: hypothecation of crops only (no
+  additional collateral).
+- Limits up to Rs. 3 lakh under a tie-up arrangement: also just crop
+  hypothecation.
+- Limits above these thresholds: mortgage of land and/or third-party
+  guarantee required, in addition to hypothecated crops/assets.
+
+Interest Rate:
+Not confirmed from public secondary sources for the current period —
+Union Bank participates in the government's Interest Subvention Scheme
+for short-term crop loans (like other public sector banks, typically
+around 7% p.a. effective rate for qualifying loans up to Rs. 3 lakh);
+confirm the current effective rate with the bank.
+
+This is a headline reference — confirm the current effective rate and
+exact collateral thresholds with the bank or nearest branch.

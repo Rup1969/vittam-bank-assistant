@@ -1,0 +1,81 @@
+DOCUMENT_ID: loan_agriculture
+CATEGORY: LOAN
+PRODUCT: Agriculture Loans
+SOURCE: indianbank.bank.in/category/loans/agriculture/ (general products list); sanction-rule detail below from Indian Bank's own dedicated KCC page, indianbank.bank.in/en/kisan-credit-card-kcc, read directly 2026-08-24 — this specific page was reachable even though Indian Bank's general site has real bot-defense confirmed elsewhere in this project.
+============================================================
+
+AGRICULTURE LOANS — KISAN CREDIT CARD (KCC)
+
+Yes — Indian Bank offers a Kisan Credit Card (KCC) scheme, a revolving
+credit facility for farmers to meet crop production, post-harvest
+expenses, and allied agricultural activities, under the nationwide
+Kisan Credit Card scheme.
+
+Purpose:
+Comprehensive credit support for farming, allied activities, and rural livelihoods.
+
+Products:
+
+1. KISAN CREDIT CARD (KCC)
+   - For crop production, post-harvest expenses, allied activities
+   - Revolving credit — withdraw and repay as per crop cycle
+   - Interest subvention available from Government of India
+   - ATM card provided for easy withdrawal
+
+2. AGRICULTURAL TERM LOAN
+   - For land development, farm mechanisation, irrigation
+   - Repayment linked to crop harvest cycles
+
+3. JEWEL LOAN (AGRICULTURE)
+   - Against gold jewellery for agricultural purposes
+   - Lower interest rate than regular jewel loan
+   - Concessional rate under interest subvention scheme
+
+4. SHG LOANS (Self Help Group)
+   - For groups of 10–20 women/individuals
+   - Credit linkage after 6 months of group savings
+
+5. JLG LOANS (Joint Liability Group)
+   - For tenant farmers, oral lessees, share croppers
+   - No collateral required
+
+6. DAIRY / ANIMAL HUSBANDRY LOANS
+   - For purchase of milch animals, poultry, fishery
+
+7. MUDRA LOANS (PMMY)
+   - Shishu: up to Rs.50,000
+   - Kishore: Rs.50,001 to Rs.5 Lakh
+   - Tarun: Rs.5 Lakh to Rs.10 Lakh
+
+Interest:
+- Crop loans up to Rs.3 lakh: 7% p.a. with Govt interest subvention
+- Prompt repayment incentive: effective rate as low as 4% p.a.
+
+KCC Sanction Rules (from Indian Bank's own official KCC page):
+
+Eligibility: All Farmers — Individuals/Joint Borrowers who are owner
+cultivators, plus tenant farmers, oral lessees, share croppers, and
+groups (Self Help Groups / Joint Liability Groups) of farmers.
+
+Credit Limit: Scale of finance for the crop (as decided by the
+District Level Technical Committee) x extent of area cultivated, plus
+10% toward post-harvest/household/consumption needs, plus 20% for
+farm asset repairs. An additional 10% increase in the Crop Loan
+Component applies for every successive year.
+
+Margin: No Margin — explicitly stated as a salient feature; farmers
+need not contribute equity.
+
+Security:
+- Up to Rs.2 lakh, or up to Rs.3 lakh under a tie-up arrangement:
+  hypothecation of crops only.
+- Above Rs.2 lakh (without tie-up): hypothecation of crops plus
+  pledge of jewels, or deposit receipts/LIC/NSC assignment, or
+  collateral security by way of MOD (Memorandum of Deposit of title
+  deeds) / charge creation.
+
+Validity: KCC is valid for 5 years. Short-term withdrawals must be
+liquidated within 12 months; the term-loan component follows Indian
+Bank's existing investment-credit guidelines.
+
+Helpline: 1800 1700

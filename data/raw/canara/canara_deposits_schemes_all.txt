@@ -1,0 +1,48 @@
+SOURCE: https://www.canarabank.bank.in/pages/deposit-interest-rates, https://www.canarabank.bank.in/savings-bank-account, and https://www.canarabank.bank.in/interest-computation-methodology-in-savings-bank-accounts
+DOCUMENT_ID: canara_deposits_schemes_all
+BANK: CANARA
+CATEGORY: DEPOSIT
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-06-01
+===
+Canara Bank — Deposit Schemes Overview
+
+SECTION A: SAVINGS BANK ACCOUNT
+Interest rate range: 2.90% to 4.00% p.a. depending on balance slab,
+calculated on a daily-product basis and credited quarterly. Effective
+June 2026, Canara Bank made all savings accounts zero-balance accounts
+— the earlier minimum balance requirement (Rs. 500 rural / Rs. 1,000
+semi-urban-urban-metro) no longer applies to any savings account.
+
+SECTION B: TERM / FIXED DEPOSITS
+See canara_fd_rates / canara_rates_deposit_structured for the full
+tenor-wise table. Interest is compounded quarterly. Senior citizens get
+an additional 0.50% on deposits below Rs. 2 crore with tenor of 180
+days or more; super senior citizens get an extra 0.60% on select
+special-tenor schemes.
+
+SECTION C: SPECIAL / NAMED DEPOSIT SCHEMES
+- Kamadhenu Deposit — a term deposit scheme (specific terms on its own
+  page).
+- Canara Tax Saver Scheme — 5-year lock-in term deposit qualifying for
+  Section 80C tax deduction, same general structure as other banks'
+  tax-saver FDs.
+- Canara Dhanvarsha — a term deposit product (specific terms on its
+  own page).
+- Nitya Nidhi Deposit Scheme — a recurring/systematic deposit-style
+  product.
+- 444 Days Deposit and 555 Days Deposit — special-tenor FDs (rates in
+  canara_fd_rates); the 555-day scheme currently offers 7.10% p.a. for
+  senior citizens, with an extra 0.60% for super senior citizens on
+  select special-tenor schemes (444/555 days).
+- Canara Green Deposit — an environmentally-themed term deposit,
+  matching the "green deposit" pattern seen at SBI and Bank of Baroda.
+
+SECTION D: NON-RESIDENT ACCOUNTS
+NRO/NRE Savings and Term Deposits, and FCNR(B) accounts, are priced on
+a separate NRI-specific rate table — do not quote a domestic rate to
+an NRI customer or vice versa.
+
+Verify all rates against Canara Bank's live interest-rates page before
+quoting, since both standard and special-tenor deposit rates are
+revised periodically.

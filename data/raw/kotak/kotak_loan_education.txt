@@ -1,0 +1,44 @@
+SOURCE: https://www.kotak.bank.in/en/personal-banking/loans/education-loan/education-loans-from-credila.html (official page, fetched directly)
+DOCUMENT_ID: kotak_loan_education
+BANK: KOTAK_MAHINDRA
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-16
+===
+Kotak Mahindra Bank Education Loan
+
+Interest Rate:
+Not published by Kotak Mahindra Bank directly — the education loan is
+administered by partner NBFC Credila Financial Services under its own
+credit and underwriting norms, so the applicable rate is set by
+Credila, not disclosed as a fixed Kotak Mahindra Bank rate.
+
+Kotak Mahindra Bank's education loan is an unsecured loan of up to
+Rs. 75 lakh for higher studies, offered through its "Education Loans
+from Credila" program — a tie-up with Credila Financial Services, a
+dedicated education-loan NBFC, rather than a loan Kotak underwrites
+directly in-house. As of March 2024, Credila had funded 178,000+
+Indian students across 63 countries and 4,600+ institutes under this
+partnership.
+
+Loan Amount: Unsecured loan up to Rs. 75 lakh.
+
+Collateral Options:
+- Moveable/liquid collateral, such as a fixed deposit.
+- Immovable collateral, such as a flat, house, bungalow, non-agricultural
+  land, or shop.
+
+Special Benefits:
+- Tax benefits under Section 80E of the Income Tax Act.
+- Seamless loan sanctions.
+- NIL TCS (Tax Collected at Source) on foreign remittance.
+- Up to 100% financing, covering tuition fee and ancillary expenses.
+
+Eligibility: Applicant and co-applicant(s) must meet Credila's own
+credit and underwriting norms, applicable from time to time. Sanctioning
+is at Credila's sole discretion, not Kotak Mahindra Bank's.
+
+Note: because this is a third-party-administered partnership product
+rather than a Kotak-underwritten loan, exact interest rates, tenure, and
+processing fees are set by Credila and should be confirmed on Credila's
+own terms before quoting a rate to a customer.

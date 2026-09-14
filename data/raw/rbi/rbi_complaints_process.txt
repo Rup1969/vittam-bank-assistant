@@ -1,0 +1,36 @@
+SOURCE: https://rbi.org.in/Scripts/Complaints.aspx
+DOCUMENT_ID: rbi_complaints_process
+BANK: RBI
+CATEGORY: GRIEVANCE
+SOURCE_TYPE: RBI_CITIZENS_CORNER
+===
+RBI Complaint Process — How To File a Complaint
+
+Two Distinct Complaint Channels:
+
+1. Complaint AGAINST a Regulated Entity (bank, NBFC, or System
+   Participant):
+   File online through RBI's Complaint Management System (CMS) at
+   cms.rbi.org.in. This is the correct channel for a customer's
+   grievance against their own bank or any other RBI-regulated entity
+   (deficient service, unresolved dispute, etc.) — this is also the
+   intake point that feeds into the Reserve Bank - Integrated
+   Ombudsman Scheme (RB-IOS) process (see rbi_grievance_ombudsman_2026
+   for the substantive scheme rules — no monetary cap, escalation
+   timelines, etc.).
+
+2. Complaint AGAINST RBI Itself:
+   For a grievance about an RBI department directly (not about a bank
+   or other regulated entity), email crpc@rbi.org.in with: name,
+   address, the specific RBI department concerned, and supporting
+   documents.
+
+Key Distinction To Get Right:
+A customer complaint about their OWN BANK's service should go through
+CMS (cms.rbi.org.in) and, if unresolved, escalates under the
+Ombudsman Scheme — NOT to crpc@rbi.org.in, which is only for
+complaints about RBI's own departments/conduct.
+
+This is a process/channel reference — the substantive rules for what
+qualifies, escalation timelines, and monetary limits are covered
+separately in the Ombudsman Scheme documents, not repeated here.

@@ -1,0 +1,49 @@
+SOURCE: https://www.icici.bank.in/personal-banking/loans/home-loan/loan-against-property/interest-rates and https://www.icici.bank.in/personal-banking/loans/home-loan/loan-against-property (official pages, fetched directly)
+DOCUMENT_ID: icici_loan_mortgage
+BANK: ICICI
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-16
+===
+ICICI Bank Loan Against Property (LAP) / Mortgage Loan
+
+ICICI Bank's Loan Against Property interest rate ranges from 10.60% to
+12.25% per annum, Repo-Rate-linked, depending on loan amount and
+customer segment (rates valid till 31 July 2026, per the bank's own
+page).
+
+Rate Table — Non-Housing Loans (LAP / Non-Residential Premises / Lease
+Rental Discounting):
+- Up to Rs. 50 lakh: Salaried/Self-Employed PSL customers 11.10%-11.75%;
+  Self-Employed Non-PSL customers 11.60%-12.25%.
+- Rs. 50 lakh to Rs. 100 lakh: Salaried/Self-Employed PSL customers
+  10.85%-11.50%; Self-Employed Non-PSL customers 11.35%-12.00%.
+- Above Rs. 100 lakh: Salaried/Self-Employed PSL customers 10.60%-11.25%;
+  Self-Employed Non-PSL customers 11.10%-11.75%.
+
+Benchmark: rates are linked to the RBI Repo Rate, effective 5.25% as of
+5 December 2025. Actual rate within each band depends on Bureau Score
+(credit score), customer profile, and segment.
+
+Loan Features:
+- Loan up to 75% of the property's market value.
+- Loan tenure of up to 15 years.
+- Overdraft facility available — interest charged only on the amount
+  utilised.
+- Nil foreclosure charges for SMEs.
+- Top-up facility available on an existing mortgage loan.
+- Special LTV (Loan-to-Value) terms for doctors.
+- Online application with minimal documentation and instant provisional
+  sanction.
+
+Eligibility:
+- Age: Salaried 20-65 years; Self-employed 21-70 years.
+- Employment type: salaried, self-employed professionals, and
+  self-employed non-professionals.
+- Credit Score: 700 and above required.
+- Citizenship: Indian residents and NRIs eligible.
+- Income proof: stable and regular income required.
+
+Rates are Repo-Rate-linked and revised periodically (the current table
+is explicitly valid only till 31 July 2026); verify the current rate
+band and repo rate with the bank before quoting to a customer.

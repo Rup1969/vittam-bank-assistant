@@ -1,0 +1,21 @@
+SOURCE: https://uco.bank.in/repo (rate card — no dedicated product page found)
+DOCUMENT_ID: uco_loan_mortgage
+BANK: UCO
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-19
+===
+UCO Bank Mortgage / Loan Against Property
+
+Genuine content gap, not a fetch failure: three separately-guessed URL
+paths for a mortgage/loan-against-property product page all returned
+404 (`/en/web/guest/mortgage-loan`, `/en/web/guest/retail-loan`,
+`/en/web/guest/loan-against-property`), and UCO's consolidated lending
+rate card (`https://uco.bank.in/repo`) does not list mortgage or loan
+against property as a line item at all — only home, personal, vehicle,
+education, gold, and MSME loans are listed there.
+
+This suggests UCO Bank either does not offer this as a separately
+branded/rated retail product, or it exists under a name not discovered
+within this bounded search. For loan-against-property needs, contact
+the bank directly (toll-free 1800 8910) or visit a branch.

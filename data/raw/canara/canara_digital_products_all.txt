@@ -1,0 +1,42 @@
+SOURCE: https://www.canarabank.bank.in/pages/mobile-banking, https://www.canarabank.bank.in/canara-ai, and https://www.canarabank.bank.in/pages/net-banking
+DOCUMENT_ID: canara_digital_products_all
+BANK: CANARA
+CATEGORY: DIGITAL
+SOURCE_TYPE: PRODUCT_PAGE
+===
+Canara Bank — Digital Products Overview
+
+Canara ai1 (Mobile Banking Super App)
+Canara Bank's primary mobile banking app, marketed as a "Super App"
+with 300+ features under a "One Bank, One App" approach. Supports fund
+transfer via IMPS, UPI, RTGS, and NEFT; a Scan & Pay facility available
+even from the pre-login screen. Also used to invest in Fixed Deposits,
+and to access Public Provident Fund (PPF), Sukanya Samriddhi Yojana,
+and Senior Citizen Savings Scheme investment products. Additional
+features: FD/RD opening, FASTag recharge, loan/EMI payment, locker
+management, insurance, scheduled payments, nomination, and integrated
+bill pay.
+
+Canara ai1Pe (Unified UPI App)
+A dedicated UPI app, separate from the main ai1 super app — allows
+users of ANY bank (not just Canara Bank customers) to link accounts
+for transfers, QR-code payments, bill payments, and set up auto-debit
+mandates for recurring payments.
+
+Canara ai1 Merchant Application
+A UPI/BHIM QR merchant-facing app, available to onboarded merchant
+customers holding a satisfactorily-running Savings/Current/OD/OCC
+account with the bank — used to accept customer payments via QR code.
+
+Corporate ai1 Mobile App
+A separate app for Corporate Internet Banking users, letting business
+customers transact via mobile without needing a desktop/laptop.
+
+Net Banking
+Standard browser-based internet banking portal, separate from the
+mobile apps, for customers who prefer desktop access to the same core
+banking services.
+
+For product-specific transaction limits and eligibility, check Canara
+Bank's current digital-banking help pages, since these limits are
+revised periodically.

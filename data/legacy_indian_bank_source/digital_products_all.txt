@@ -1,0 +1,296 @@
+DOCUMENT_ID: digital_products_all
+CATEGORY: DIGITAL
+SOURCE: indianbank.bank.in (Digital Products section)
+============================================================
+
+INDIAN BANK — COMPLETE DIGITAL PRODUCTS & SERVICES
+
+========================================
+SECTION A: MOBILE BANKING
+========================================
+
+--------------------------------------------
+1. IndSMART — RETAIL MOBILE BANKING APP
+--------------------------------------------
+For: Savings Bank and Current Account holders
+Platform: Android and iOS
+Key Features:
+- Account balance enquiry and mini statement
+- Fund transfers: NEFT, RTGS, IMPS, UPI
+- Bill payments (electricity, gas, water, mobile recharge)
+- Fixed Deposit and Recurring Deposit opening
+- Account statement download
+- Cheque stop payment request
+- Debit card block/unblock
+- Credit card payment
+- FASTag recharge
+- Loan EMI payment
+- UPI payments via QR code
+How to Register: Download from Play Store/App Store,
+                 register with account number and mobile number
+
+--------------------------------------------
+2. IndSMART BIZ — CORPORATE MOBILE BANKING
+--------------------------------------------
+For: Corporate and business account holders
+Key Features:
+- Bulk payment processing
+- Multi-user access with maker-checker workflow
+- Corporate fund management
+- Business-specific transaction reporting
+- High-value RTGS/NEFT transfers
+
+========================================
+SECTION B: INTERNET BANKING
+========================================
+
+--------------------------------------------
+3. IND NET BANKING
+--------------------------------------------
+For: SB and Current Account holders
+Access: indianbank.bank.in → Internet Banking
+Key Features:
+- Complete fund transfers (NEFT/RTGS/IMPS)
+- Account statement for any period
+- FD/RD opening and closing online
+- TDS certificate download
+- Interest certificate download
+- Cheque book request
+- Stop payment of cheques
+- Tax payment (direct and indirect)
+- Utility bill payments
+- Loan account details
+How to Register: Visit branch or register online with debit card
+
+========================================
+SECTION C: UPI & PAYMENTS
+========================================
+
+--------------------------------------------
+4. WHATSAPP BANKING
+--------------------------------------------
+Service: Banking services via WhatsApp messenger
+Available Services:
+- Account balance enquiry
+- Mini statement (last 5 transactions)
+- Account details
+- Loan account details
+- FD details
+How to Use: Save Indian Bank WhatsApp number and send "Hi"
+Access: indianbank.bank.in/departments/whatsapp-banking/
+
+--------------------------------------------
+5. SMS BANKING / MISSED CALL SERVICE
+--------------------------------------------
+Balance Enquiry: Give a missed call to designated number
+Mini Statement: Send SMS to designated number
+Language: Available in English
+Free Service: No charge for mandatory SMS alerts
+
+--------------------------------------------
+6. UPI THROUGH USSD (*99#)
+--------------------------------------------
+For: Feature phone users without internet/smartphone
+How: Dial *99# on any mobile phone
+Languages: English and Hindi
+Services: UPI fund transfer, balance check, mini statement
+Benefit: Banking without internet — useful for rural areas
+
+--------------------------------------------
+7. BHIM AADHAAR PAY
+--------------------------------------------
+For: Merchant payments using Aadhaar biometric authentication
+How: Customer gives Aadhaar number and fingerprint at merchant
+No Need: No card, no smartphone required from customer
+Benefit: Payments for those without debit cards
+Access: indianbank.bank.in/departments/bhimaadhaarpay/
+
+--------------------------------------------
+8. MERCHANT UPI QR CODE
+--------------------------------------------
+For: Merchants accepting UPI payments
+Types: Static QR (fixed amount) and Dynamic QR (variable amount)
+Benefit: Accept payments from any UPI app (GPay, PhonePe, Paytm, etc.)
+Settlement: T+1 settlement to merchant account
+Access: indianbank.bank.in/departments/merchant-upi-qr-code/
+
+--------------------------------------------
+9. IND QWIKCOLLECT
+--------------------------------------------
+For: Institutions and businesses collecting payments from customers
+Use Cases: Schools, colleges, hospitals, housing societies,
+           utilities, e-commerce
+Features: Payment gateway, bulk collection, MIS reports
+Portal: indianbank.qwikcollect.in
+
+========================================
+SECTION D: CARDS
+========================================
+
+--------------------------------------------
+10. DEBIT CARDS / ATM CARDS
+--------------------------------------------
+Networks Available: RuPay, Visa, Mastercard
+Variants: Classic, Gold, Platinum
+Features:
+- ATM cash withdrawal across India (NPCI/Visa/Mastercard network)
+- POS payments at merchant outlets
+- Online shopping
+- Contactless tap-and-pay
+- International usage (on Visa/Mastercard variants)
+Daily Limits: Varies by card variant
+Access: indianbank.bank.in/departments/debit-cards/
+
+--------------------------------------------
+11. CREDIT CARDS
+--------------------------------------------
+Networks: RuPay and Visa variants
+Types: Classic, Gold, Platinum (varies)
+Features:
+- Reward points on every spend
+- Cashback on select categories
+- EMI conversion for large purchases
+- Fuel surcharge waiver
+- Airport lounge access (premium variants)
+- Contactless payments
+- Online shopping with OTP security
+Apply: creditcard.indianbank.bank.in
+Block Lost Card: indianbank.bank.in/departments/block-lost-credit-card/
+
+--------------------------------------------
+12. PREPAID CARDS
+--------------------------------------------
+Types:
+- Gift Card: Preloaded for gifting
+- Travel Card: For foreign travel in foreign currency
+- General Purpose Reloadable Card
+- Payroll Card: For disbursing salaries to unbanked employees
+Features: No bank account required, works like debit card
+Access: indianbank.bank.in/departments/prepaid-cards/
+
+--------------------------------------------
+13. NATIONAL COMMON MOBILITY CARD (NCMC)
+--------------------------------------------
+Also Known As: One Nation One Card
+Purpose: Single card for all transit and retail payments
+Works For: Metro rail, buses, parking, toll, retail shopping
+Interoperable: All NCMC-enabled transit systems across India
+How: Tap card at reader — balance deducted automatically
+Recharge: Online via IndSMART app or net banking
+Access: indianbank.bank.in/departments/national-common-mobility-card-ncmc/
+
+========================================
+SECTION E: OTHER DIGITAL SERVICES
+========================================
+
+--------------------------------------------
+14. NETC FASTAG
+--------------------------------------------
+Purpose: RFID-based electronic toll collection on National Highways
+How: Stick tag on windscreen; toll deducted automatically
+Recharge: Via IndSMART app, net banking, UPI
+Minimum Balance: Rs.150 (low balance alerts sent)
+Benefit: No stopping at toll booths; 5% cashback on some plazas
+Access: indianbank.bank.in/departments/netc-fastag/
+
+--------------------------------------------
+15. INDIAN BANK DIGITAL CURRENCY (e-Rupee / CBDC)
+--------------------------------------------
+What: RBI's Central Bank Digital Currency pilot
+Type: Digital Rupee issued by Reserve Bank of India
+How: Digital wallet linked to bank account
+Use: Retail payments like cash but in digital form
+Access: indianbank.bank.in/departments/terms-conditions-indian-bank-digital-currency/
+
+--------------------------------------------
+16. POINT OF SALE (PoS) / SoftPoS
+--------------------------------------------
+For: Merchants wanting to accept card payments
+PoS Terminal: Physical card-swiping machine at merchant location
+SoftPoS: Convert any NFC-enabled Android smartphone into a PoS terminal
+         No physical machine needed
+Accepts: Debit cards, credit cards, contactless, UPI
+Settlement: Daily settlement to merchant account
+Access: indianbank.bank.in/departments/pos/
+
+--------------------------------------------
+17. E-SHOPPING (IB CHEGGOUT)
+--------------------------------------------
+What: Online shopping portal integrated with Indian Bank account
+Portal: ib.cheggout.com
+Payment: Directly from Indian Bank account
+Products: Electronics, appliances, lifestyle, and more
+
+--------------------------------------------
+18. MUTUAL FUNDS / IPO / DEMAT / TRADING
+--------------------------------------------
+Partner: Fisdom (SEBI-registered investment platform)
+Services:
+- Mutual fund investment (SIP and lumpsum)
+- IPO application (ASBA facility)
+- Demat account opening
+- Share trading (NSE and BSE)
+Access: app.fisdom.com/login?referrer=indb
+Documents: PAN and Aadhaar required
+
+--------------------------------------------
+19. VIRTUAL BANKING EXPERIENCE (VBX)
+--------------------------------------------
+What: Immersive 3D virtual branch experience online
+Features: Explore bank services in a virtual environment
+Access: indianbank.bank.in/departments/virtual-banking-experience/
+
+--------------------------------------------
+20. ONLINE COLLECTION PRODUCTS
+--------------------------------------------
+For: Educational institutions, housing societies,
+     utilities, corporates — collecting fees/dues online
+Features:
+- Customised payment pages
+- Bulk collection tracking
+- Automated reconciliation
+- MIS and reporting
+Access: indianbank.bank.in/departments/online-collection-products/
+
+--------------------------------------------
+21. E-PAYMENT OF TAXES
+--------------------------------------------
+Direct Tax (Income Tax): Pay online via Indian Bank net banking
+Indirect Tax (GST/Customs): Pay online via Indian Bank net banking
+Benefit: Instant acknowledgement, no branch visit needed
+
+--------------------------------------------
+22. IND ADVANTAGE — REWARDS PROGRAM
+--------------------------------------------
+What: Loyalty reward points for Indian Bank customers
+Earn: Points on card spends, digital transactions
+Redeem: Against products, cashback, partner offers
+Access: indianbank.bank.in/departments/ind-advantage-reward-program/
+
+--------------------------------------------
+23. DOORSTEP BANKING
+--------------------------------------------
+Services Available at Your Doorstep:
+- Cash pickup and delivery
+- Cheque pickup
+- Account-related document collection
+- Form submission assistance
+For: Senior citizens and differently-abled customers primarily
+Access: indianbank.bank.in/departments/doorstep-banking/
+
+--------------------------------------------
+24. RE-KYC (ONLINE)
+--------------------------------------------
+What: Update KYC details without visiting branch
+How: Online portal using Aadhaar OTP
+Portal: apps.indianbank.bank.in/Rekyc/rekyc.aspx
+
+--------------------------------------------
+25. AADHAAR SEEDING ONLINE
+--------------------------------------------
+What: Link Aadhaar to bank account online
+Portal: apps.indianbank.bank.in/aadhaarseeding/
+Required For: DBT benefit receipt, subsidy payments
+
+Helpline: 1800 1700 (Toll Free, 24x7)
+Website: indianbank.bank.in

@@ -1,0 +1,36 @@
+SOURCE: https://play.google.com/store/apps/details?id=com.boi.ua.android, https://bankofindia.bank.in/smart-banking-upi, https://bankofindia.bank.in/digital-pos/boi-biz-pay (cross-referenced secondary sources)
+DOCUMENT_ID: boi_digital_products_all
+BANK: BOI
+CATEGORY: DIGITAL
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-01
+===
+Bank of India — Digital Banking Products
+
+BOI Mobile:
+Bank of India's mobile banking app (Android/iOS) — view and transact
+across all linked accounts including loans and deposits, check balances,
+view/email detailed statements and passbook, and transfer funds via
+IMPS/NEFT/RTGS/UPI. Includes a "Favourite" feature for fast repeat
+transfers, ATM locator, cheque-book requests, and cheque status
+tracking.
+
+UPI:
+Supported within the BOI Mobile app — instant 24x7 fund transfer linked
+directly to the customer's BOI account, using account number+IFSC, VPA,
+or QR code.
+
+Omni Neo (replacing StarConnect):
+Bank of India's next-generation internet banking platform — a unified
+digital framework converging retail, corporate, and mobile banking
+features, positioned as the successor to the bank's older StarConnect
+internet banking service.
+
+BOI Biz Pay:
+A dedicated app for BOI merchants to accept digital payments (a
+merchant-side UPI/QR payment-acceptance product, distinct from the
+customer-facing BOI Mobile app).
+
+Confirm current app names and feature availability with the bank, since
+BOI's platform (Omni Neo) is described as a recent migration from its
+older StarConnect service and naming may still be in transition.

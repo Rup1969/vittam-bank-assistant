@@ -1,0 +1,26 @@
+SOURCE: https://www.canarabank.bank.in/fixed-deposit and general Canara Bank loan-against-FD product information
+DOCUMENT_ID: canara_loan_against_deposit
+BANK: CANARA
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+===
+Canara Bank Loan / Overdraft Against Fixed Deposit
+
+Interest Rate:
+Typically 1% to 2% above the interest rate being earned on the
+underlying fixed deposit — broadly 2 to 2.5 percentage points cheaper
+than a standard personal loan, since the FD itself secures the
+facility.
+
+Loan Amount:
+Up to 90% of the fixed deposit's value, available as an overdraft
+facility.
+
+Note on Overdraft Pricing:
+There is no single standard published overdraft rate — the applicable
+rate depends on the borrower's profile and relationship history with
+the bank, in addition to the underlying FD rate. Confirm the exact
+effective rate with a branch before quoting to a customer.
+
+This product lets a depositor access liquidity without breaking the
+FD, so the deposit continues earning its own interest throughout.

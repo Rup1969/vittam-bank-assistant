@@ -1,0 +1,10 @@
+SOURCE: https://punjabandsind.bank.in/content/psb-mortgage (Loan Amount/Eligibility/LTV/Tenure/Purpose — official page, no numeric rate stated there); Interest Rate below is secondary-sourced from paisabazaar.com's Punjab & Sind Bank Loan Against Property page, read 2026-08-25 — its Purpose text (marriage/medical/education/repairs/renovation/consumer durables/unforeseen expenses) matches this doc's own official-page Purpose text almost word-for-word, a real cross-check, though the page itself may not be freshly dated; confirm current rate with the bank.
+DOCUMENT_ID: psb_loan_mortgage
+BANK: PUNJAB_SIND
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-25
+===
+Yes, Punjab & Sind Bank offers a Mortgage Loan / Loan Against Property
+(PSB Mortgage), interest rate 10.75%-11.35% p.a. for loans up to
+Rs. 5 crore, tenure up to 10 years.

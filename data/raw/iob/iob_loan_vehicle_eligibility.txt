@@ -1,0 +1,23 @@
+SOURCE: https://www.creditmantri.com/indian-overseas-bank-car-loan-interest-rates/ and https://www.codeforbanks.com/banking/car-loan/Indian-overseas-bank/car-loan-interest-rates/ (cross-referenced secondary sources; verify current rate with the bank) — same source as iob_loan_vehicle, split into a separate doc 2026-08-26 so the headline chunk stays short and competitive in retrieval; see PROJECT_STATUS.md
+DOCUMENT_ID: iob_loan_vehicle_eligibility
+BANK: IOB
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-07-21
+===
+Indian Overseas Bank Vehicle Loans-Pushpaka — Scheme Coverage, Loan Amount, Eligibility
+
+Scheme Coverage:
+Branded "Vehicle Loans-Pushpaka" — covers new cars, old/used cars, and
+two-wheelers under one product family.
+
+Loan Amount:
+Up to 90% of the vehicle's cost for new cars.
+
+Eligibility:
+Applicant must be in confirmed service with take-home pay above 50% of
+gross salary (after PF/insurance deductions); minimum total monthly
+income of Rs. 8,000 for car loans and Rs. 5,000 for two-wheeler loans.
+
+This is a headline reference — confirm the current rate and eligibility
+thresholds with the bank before quoting.

@@ -1,0 +1,18 @@
+SOURCE: https://www.icici.bank.in/personal-banking/loans/car-loan/interest-rate
+DOCUMENT_ID: icici_loan_vehicle
+BANK: ICICI
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-15
+===
+ICICI Bank Car Loan
+
+Interest Rate:
+Officially advertised starting rate: 8.35%-8.40% p.a. (reported
+slightly differently across search snapshots, both from the bank's own
+page — likely reflecting a rate revision between snapshots). Actual
+quoted rate depends on the applicant's credit score, income profile,
+and the vehicle being financed.
+
+This is a headline reference — confirm the current starting rate and
+the applicant's specific quoted rate with the bank before quoting.

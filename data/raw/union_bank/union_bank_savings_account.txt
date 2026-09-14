@@ -1,0 +1,43 @@
+SOURCE: https://www.unionbankofindia.bank.in/en/details/savings-bank-account-sbgen and https://www.unionbankofindia.bank.in/en/details/basic-savings-bank-deposit-account-small-accounts-bsbds (official pages, fetched directly)
+DOCUMENT_ID: union_bank_savings_account
+BANK: UNION_BANK
+CATEGORY: DEPOSIT
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-16
+===
+Union Bank of India Savings Account — Minimum Balance Requirements
+
+Union Bank of India's savings account minimum balance ranges from zero
+(Basic Savings Bank Deposit Account — Small Accounts) to Rs. 1,000
+(Regular Savings Bank Account, metro/urban), tracked as an average
+quarterly balance.
+
+Regular Savings Bank Account (SBGEN) — confirmed directly from Union
+Bank's official page FAQ: "For metro and urban branches, you must
+maintain an average quarterly balance of Rs. 1000, for semi-urban
+branches of Rs. 500, and rural branches of Rs. 250 in your savings bank
+account."
+
+Regular SBGEN account also includes: nil debit card issuance charges,
+free personal accidental insurance (death) cover of Rs. 2 lakh with the
+debit card, 20 free personalized cheque leaves per year, 5 free ATM
+transactions per month (3 free at metro centres), nil account closure
+charges within 14 days or after 12 months.
+
+Basic Savings Bank Deposit Account — Small Accounts (BSBDS): "Enjoy all
+basic banking services and facilities without any minimum balance
+requirement and simple paperwork." Opened under the PMJDY scheme;
+requires only a self-attested photo and declaration. Comes with a RuPay
+debit card at no issuance/annual maintenance charge, plus accidental
+insurance cover.
+
+Union Digital Savings Account (UDSA): per Union Bank's own product
+listing, opening this account requires no minimum balance.
+
+Premium tier — SB High Networth Customers (SBHNI): minimum Quarterly
+Average Balance (QAB) of Rs. 1,00,000, for customers seeking a
+relationship-manager-backed premium account.
+
+Verify current minimum balance requirements against Union Bank of
+India's official website before quoting to a customer as final, since
+these are periodically revised.

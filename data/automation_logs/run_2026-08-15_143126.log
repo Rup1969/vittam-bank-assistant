@@ -1,0 +1,19 @@
+﻿=== Daily fetch+extract run started 2026-08-15 14:31:26 ===
+--- fetch_and_track.py ---
+
+Source          Status       Detail
+----------------------------------------------------------------------
+indian_bank     ERROR        Fetched content doesn't look like a real deposit-rates page (length=138 chars, no expected finance terms found) — likely a bot-defense challenge page rather than the actual site content. Not something this script tries to work around.
+sbi             unchanged    C:\Users\hp\Indian Bank Rag Project\data\scraped\sbi\2026-08-15_143129.html
+bob             unchanged    C:\Users\hp\Indian Bank Rag Project\data\scraped\bob\2026-08-15_143139.html
+canara          unchanged    C:\Users\hp\Indian Bank Rag Project\data\scraped\canara\2026-08-15_143147.html
+pnb             unchanged    C:\Users\hp\Indian Bank Rag Project\data\scraped\pnb\2026-08-15_143155.html
+boi             ERROR        Page load timed out: Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://bankofindia.bank.in/interest-rate/rupee-term-deposit-rate", waiting until "networkidle"
+
+union_bank      unchanged    C:\Users\hp\Indian Bank Rag Project\data\scraped\union_bank\2026-08-15_143237.html
+iob             unchanged    C:\Users\hp\Indian Bank Rag Project\data\scraped\iob\2026-08-15_143250.html
+--- extract_structured.py ---
+Nothing new to extract — all 10 already-processed source(s) up to date.
+=== Run finished 2026-08-15 14:33:00 (fetch exit=0, extract exit=0) ===

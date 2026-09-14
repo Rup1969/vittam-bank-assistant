@@ -1,0 +1,20 @@
+SOURCE: https://www.nobroker.in/home-loan/iob-bank/ and https://www.iob.bank.in/en/lending-rates-mclr, https://www.wishfin.com/home-loans/indian-overseas-bank-home-loan-interest-rate-9341/ (cross-referenced secondary sources; same source as iob_loan_home — split into a separate doc 2026-08-25 so the headline rate chunk stays short and competitive in retrieval; see PROJECT_STATUS.md §27-28; verify current rate with the bank)
+DOCUMENT_ID: iob_loan_home_eligibility
+BANK: IOB
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2025-12-15
+===
+Indian Overseas Bank Home Loan — Rate Structure
+
+Interest Rate detail:
+The bank adds its own spread (margin) to RLLR, and the final rate
+resets periodically with RBI repo-rate changes.
+
+Structure:
+Floating-rate loan — an RBI repo-rate cut typically reduces either the
+EMI or the tenure, and vice versa for a rate increase.
+
+This is a headline, RLLR-linked reference — confirm the current RLLR
+value and the applicant's specific quoted spread with the bank before
+quoting.

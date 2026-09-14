@@ -1,0 +1,27 @@
+SOURCE: secondary aggregators (Paisabazaar, CreditMantri, BankBazaar, Tata neu blog) — official IndusInd MSME loan page did not display a static numeric rate table at time of research
+DOCUMENT_ID: indusind_loan_msme
+BANK: INDUSIND
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-16
+===
+IndusInd Bank MSME / Business Loan
+
+IndusInd Bank's MSME loan interest rates range from approximately 18%
+to 26% per annum for unsecured MSME lending. Its broader unsecured
+business loan product (which may overlap with the MSME offering) is
+reported at a lower fixed range of roughly 13% to 22% per annum,
+depending on the specific loan scheme and applicant risk profile.
+
+Key Features:
+- Maximum loan amount: up to Rs. 50 lakh
+- Repayment tenure: up to 4 years
+- Unsecured lending, primarily targeting rural, semi-urban, and urban
+  MSME customers
+- Rate depends on business profitability, turnover, credit score, and
+  internal credit policy
+
+This is a headline reference from secondary sources, not the bank's
+own published rate card — MSME/business loan pricing at IndusInd is
+individually risk-assessed. Confirm the current applicable rate and
+scheme-specific terms with the bank before quoting.

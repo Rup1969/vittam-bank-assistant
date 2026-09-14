@@ -1,0 +1,26 @@
+SOURCE: Cross-checked across multiple financial data aggregators citing RBI Monetary Policy; verify against rbi.org.in before treating as final
+DOCUMENT_ID: rbi_current_policy_rates
+BANK: RBI
+CATEGORY: RATES
+SOURCE_TYPE: RBI_CURRENT_RATES
+DATE: 2025-12-05
+===
+RBI Current Policy Rates
+
+As of the last confirmed change (5 December 2025), RBI's key policy rates are:
+
+Repo Rate: 5.25% p.a.
+Reverse Repo Rate: 3.35% p.a.
+Marginal Standing Facility (MSF) Rate: 5.50% p.a.
+Bank Rate: 5.50% p.a.
+Cash Reserve Ratio (CRR): 3.00%
+Statutory Liquidity Ratio (SLR): 18.00%
+
+IMPORTANT: This category (RBI_CURRENT_RATES) is explicitly flagged in the
+system prompt as volatile — these rates change at RBI's bi-monthly
+Monetary Policy Committee reviews (and occasionally between reviews).
+This document reflects the rate as of the DATE above, not necessarily
+today's rate. Always verify the current figure on rbi.org.in or via
+RBI's official Monetary Policy Statement before quoting it as current.
+This is the clearest example in the whole pool of why a static file
+needs a refresh cadence rather than being treated as permanently correct.

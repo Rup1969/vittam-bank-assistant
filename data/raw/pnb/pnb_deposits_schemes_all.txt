@@ -1,0 +1,53 @@
+SOURCE: https://www.policybazaar.com/savings-account/pnb-savings-account/ and https://www.paisabazaar.com/punjab-national-bank/savings-account/ (secondary sources cross-referenced against pnb.bank.in; official product pages returned errors during direct fetch — verify exact current terms with the bank)
+DOCUMENT_ID: pnb_deposits_schemes_all
+BANK: PNB
+CATEGORY: DEPOSIT
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-01
+===
+Punjab National Bank — Savings Account Variants
+
+PNB Salary Savings Account:
+For salaried customers — employees of central/state government, PSUs, and
+private organisations — typically with zero/relaxed minimum balance, a
+free chequebook, and salary-credit facilities.
+
+PNB Rise Savings Account:
+Targeted at younger investors, roughly age 18-28, positioned as a starter
+account for first-time earners/investors.
+
+PNB Grow Savings Account:
+A minors' savings account — a minor can operate/manage the account
+(subject to bank rules) from around age 10, intended to build early
+banking habits.
+
+PNB Power Savings Account:
+Designed for women customers, aimed at simplifying day-to-day banking
+and financial management.
+
+PNB Pension Savings Account:
+For pensioners — bundles standard savings features with pension-credit
+handling.
+
+PNB Shikshak Sweep Scheme:
+A savings-linked scheme for permanent teaching staff at recognized
+schools, colleges, and educational institutions, combining a savings
+account with a sweep-in term deposit facility.
+
+Defence/Police Salary Account:
+Supports salary and pension payments for serving and retired defence and
+police personnel, typically with zero-balance and preferential service
+terms.
+
+Central Government Staff Salary Account:
+A dedicated salary account for central government employees, generally
+with no minimum balance requirement.
+
+Gig Worker / Freelancer Savings Account:
+A savings account variant aimed at gig-economy and freelance customers,
+typically with no minimum balance and digital-first access.
+
+This is a summary of publicly reported PNB savings account variants —
+exact eligibility, minimum balance, and current features should be
+confirmed with the bank or its official website before advising a
+customer, since account names/features are periodically revised.

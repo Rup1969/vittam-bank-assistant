@@ -1,0 +1,29 @@
+SOURCE: https://sbi.bank.in/web/interest-rates/interest-rates/loan-schemes-interest-rates (hub page, consolidating the individual SBI loan product pages)
+DOCUMENT_ID: sbi_rates_lending_structured
+BANK: SBI
+CATEGORY: RATES
+SOURCE_TYPE: PRODUCT_PAGE
+===
+SBI — Structured Lending Rate Table
+
+Home Loan: from 7.25% p.a. (effective 1 April 2026)
+Personal Loan: from 10.00% p.a. (effective 1 April 2026)
+Education Loan: from 6.90% p.a.
+Gold Loan (Personal): from 9.15% p.a. (effective 1 April 2026)
+Auto Loan (Car): 8.70% - 9.85% p.a. (Green/EV: 8.75% - 9.85%)
+Two-Wheeler Loan: 11.70% - 15.70% p.a.
+PM Surya Ghar (Solar Rooftop) Loan: 5.75% - 7.90% p.a. (amount-tiered)
+Loan Against Property: 1-year MCLR + spread (1.45%-3.00% depending on
+  income type and loan size) — source page stale (2019), reverify.
+MSME/SME Loans: External Benchmark Rate (Repo + 2.65%) + product
+  spread, or 6-month MCLR for non-MSME business borrowers — detailed
+  spread table stale (2018/2020), reverify.
+Loan Against Fixed Deposit: 1.00% over the underlying FD's own rate.
+Loan Against Mutual Fund Units: 9.95% p.a. (w.e.f. 15 December 2025)
+Loan Against NSC/KVP: 11.20% p.a.
+
+All rates above are headline "starting from" or benchmark-plus-spread
+figures — the rate actually offered to an individual applicant depends
+on credit profile, loan amount, tenure, and scheme chosen. Rates
+flagged "stale" above should be re-verified against SBI's live pages
+before being quoted as current.

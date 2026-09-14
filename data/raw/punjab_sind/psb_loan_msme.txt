@@ -1,0 +1,21 @@
+SOURCE: https://punjabandsind.bank.in/content/msme-schemes
+DOCUMENT_ID: psb_loan_msme
+BANK: PUNJAB_SIND
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-19
+===
+Punjab & Sind Bank MSME / Business Loan Schemes
+
+Punjab & Sind Bank offers multiple MSME loan schemes: PSB Vyapar Loan,
+PSB Start Up Scheme, PSB Commercial Vehicle, PSB PMEGP Scheme, PM
+Vishwakarma Scheme, PM Svanidhi Scheme, PSB Professional Assist, Stand
+Up India Scheme, and PSB Pradhan Mantri Mudra Yojana.
+
+This is a summary-level entry only — the bank's MSME landing page names
+these schemes but does not publish inline interest rates, loan-amount
+ranges, collateral requirements, or CGTMSE coverage details; those live
+on each scheme's own sub-page, which was not separately fetched in this
+pass. The bank also references the Jansamarth Portal
+(jansamarth.in) for MSME loan applications. Confirm exact terms with the
+bank before relying on any figure for these specific schemes.

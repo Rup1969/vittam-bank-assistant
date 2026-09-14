@@ -1,0 +1,48 @@
+SOURCE: https://www.unionbankofindia.bank.in/en/details/rate-of-interest
+DOCUMENT_ID: union_bank_fd_rates
+BANK: UNION_BANK
+CATEGORY: DEPOSIT
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-04
+===
+Union Bank of India Fixed (Term) Deposit Interest Rates (below Rs. 3 crore)
+
+Union Bank of India's current fixed deposit (FD) interest rate for the
+general public ranges from 2.70% to 6.20% per annum across tenures from
+7 days to 10 years, with senior citizens earning an additional 0.50%
+and super senior citizens an additional 0.75% over the general rate.
+The 1-3 year FD interest rate is 6.20% for the general public and 6.70%
+for senior citizens — Union Bank's highest published slab on the
+standard callable table.
+
+Effective 4 August 2026, domestic retail term deposit rates by tenure
+(general public / senior citizen / super senior citizen):
+- 7-14 days: 2.70% / 3.20% / 3.45%
+- 15-30 days: 2.80% / 3.30% / 3.55%
+- 31-45 days: 3.00% / 3.50% / 3.75%
+- 46-90 days: 4.00% / 4.50% / 4.75%
+- 91-120 days: 4.30% / 4.80% / 5.05%
+- 121-180 days: 4.75% / 5.25% / 5.50%
+- 181-270 days: 5.40% / 5.90% / 6.15%
+- 271-364 days: 5.60% / 6.10% / 6.35%
+- 1 year to 3 years: 6.20% / 6.70% / 6.95%
+- Over 3 years to 10 years: 6.00% / 6.50% / 6.75%
+
+Senior Citizen Premium: an additional 0.50% for resident senior
+citizens over the general public rate; super senior citizens (per a
+scheme effective 1 December 2022 onward for new/renewed deposits)
+receive an additional 0.75% over the general rate.
+
+555-Day Special FD: reported by third-party aggregators as Union Bank's
+highest-yielding special-tenure retail scheme, though the exact current
+rate should be confirmed directly with the bank.
+
+Union Non-Callable Term Deposit Scheme: a non-callable variant offering
+a rate premium over the regular callable table above, available for
+deposits of Rs. 3 crore and above (not the retail below-Rs.-3-crore
+segment this document otherwise covers) — confirm current eligibility
+and rate with the bank.
+
+Minimum deposit amount was not specified on the bank's published rate
+table. Rates are revised periodically; verify the current card rate
+with the bank before quoting for a large deposit.

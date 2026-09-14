@@ -1,0 +1,31 @@
+SOURCE: https://www.canarabank.bank.in/pages/housing-loan, https://www.canarabank.bank.in/canara-apna-ghar, and https://www.canarabank.bank.in/pages/interest-rate-range-on-loans (same source as canara_loan_home — split into a separate doc 2026-08-25 so the headline rate chunk stays short and competitive in retrieval; see PROJECT_STATUS.md §27-28)
+DOCUMENT_ID: canara_loan_home_eligibility
+BANK: CANARA
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2025-12-12
+===
+Canara Bank Housing Loan — Eligibility, LTV, and Related Products
+
+Eligibility:
+- Eligible loan amount is generally up to 4 times gross annual income
+  (up to 5 years' gross income permitted in select cases).
+- A CIBIL score of 750 or above is recommended to improve approval
+  chances, though the bank's own minimum threshold may differ.
+
+Loan-to-Value (LTV):
+Up to 90% — meaning a lower upfront down payment is required compared
+to banks offering a lower LTV cap, depending on loan amount and
+eligibility.
+
+Tenure:
+Up to 30 years.
+
+Related Product — Canara Apna Ghar:
+A specific housing loan scheme under the Canara Bank umbrella (own
+distinct terms from the general Housing Loan product) — check its own
+page for scheme-specific eligibility and rate.
+
+This is a headline/summary reference — confirm the exact rate slab,
+eligible amount, and LTV for a specific applicant via a branch or
+Canara Bank's loan calculator before quoting.

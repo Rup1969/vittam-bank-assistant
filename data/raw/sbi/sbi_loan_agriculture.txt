@@ -1,0 +1,23 @@
+SOURCE: https://sbi.bank.in/web/get-business-product-information/agriculture-products
+DOCUMENT_ID: sbi_loan_agriculture
+BANK: SBI
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+===
+SBI Agriculture Loans
+
+SBI's agriculture lending page groups its offerings into two broad
+categories:
+- The Bank's own Agriculture Products.
+- Government Sponsored Schemes (routed through agriculture/rural
+  banking channels).
+
+The landing page states that interest rates "vary for different Agri
+Products" and does not display a single consolidated rate — each
+individual agriculture product/scheme has its own rate, eligibility,
+and loan-amount terms on its own page.
+
+This is a summary-level entry only. For a specific agriculture loan
+(e.g. crop loan, Kisan Credit Card, allied-activity loans), check the
+specific scheme page or a branch, since the rate and eligibility
+depend heavily on the exact product and government scheme involved.

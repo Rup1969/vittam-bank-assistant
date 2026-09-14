@@ -1,0 +1,21 @@
+SOURCE: https://punjabandsind.bank.in/content/interest-rates
+DOCUMENT_ID: psb_deposits_schemes_all
+BANK: PUNJAB_SIND
+CATEGORY: DEPOSIT
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-19
+===
+Punjab & Sind Bank — Other Deposit Schemes
+
+Beyond its core FD/term deposit table (see psb_fd_rates.txt, which
+already includes the bank's PSB Green Earth-style Callable/Non-Callable
+term-deposit variants), Punjab & Sind Bank also facilitates government
+small-savings schemes through its branches: Public Provident Fund (PPF),
+Senior Citizen Savings Scheme, Sovereign Gold Bond Scheme, and Sukanya
+Samriddhi Scheme.
+
+This is a summary-level entry only — the bank's deposit navigation page
+lists these products/schemes but does not publish inline figures
+(minimum amount, tenure, current rate) for them; those live on the
+scheme's own government-mandated terms or a separate bank sub-page, not
+separately fetched in this pass.

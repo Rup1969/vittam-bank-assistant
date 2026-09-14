@@ -1,0 +1,52 @@
+SOURCE: https://uco.bank.in/en/web/guest/interest-rates-on-deposit-schemes
+DOCUMENT_ID: uco_fd_rates
+BANK: UCO
+CATEGORY: DEPOSIT
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-19
+===
+UCO Bank Fixed Deposit (FD) Interest Rates
+
+UCO Bank's current fixed deposit (FD) interest rate for the general
+public ranges from 2.90% to 6.60% p.a. depending on tenure. The 1-year
+FD interest rate is 6.10% for the general public.
+
+Retail FD Rates (below Rs. 3 crore), effective 21.05.2026:
+
+Tenure                       General Rate p.a.
+7-14 days                    2.90%
+15-29 days                   2.90%
+30-45 days                   3.00%
+46-60 days                   3.50%
+61-90 days                   3.50%
+91-120 days                  4.25%
+121-150 days                 4.25%
+151-180 days                 4.75%
+181-332 days                 5.00%
+333 days (special)           6.30%
+334-364 days                 5.00%
+1 year                       6.10%
+Above 1 year to 443 days     6.10%
+444 days (special)           6.45%
+445-534 days                 6.10%
+535 days (special)           6.60%
+536 days to 2 years          6.10%
+Above 2 years to 999 days    6.00%
+1000 days (Green Deposit)    6.20%
+1001 days to 3 years         6.00%
+Above 3 years to 5 years     6.00%
+Above 5 years to 1999 days   6.00%
+2000 days (Green Deposit)    6.20%
+2001-2999 days               6.00%
+3000 days (Green Deposit)    6.20%
+Above 3000 days              6.00%
+
+Senior Citizen Additional Premium: +0.25% up to 1 year, +0.50% above 1
+year (over the general rate for the matching tenure).
+
+Note: several tenures (333 days, 444 days, 535 days, and the "Green
+Deposit" tenures at 1000/2000/3000 days) are named special products
+paying a distinctly HIGHER rate than the standard slab immediately
+surrounding them — e.g. 444 days pays 6.45% while both 445-534 days and
+536 days-2 years pay only 6.10%. These are real, separately published
+special-tenor rates, not a data error.

@@ -1,0 +1,33 @@
+SOURCE: https://www.axis.bank.in/loans/loan-against-fixed-deposit (official page, fetched directly)
+DOCUMENT_ID: axis_loan_against_deposit
+BANK: AXIS
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-16
+===
+Axis Bank Loan Against Fixed Deposit (Overdraft Against FD / ODFD)
+
+Axis Bank's Loan/Overdraft Against Fixed Deposit (ODFD) offers up to
+85% of the value of an Axis Bank Fixed Deposit, available 24x7 through
+a digital, instant process, with no fixed headline interest rate
+published — the page states only "competitive rates," confirm the
+exact rate at application.
+
+Key Features:
+- Avail up to 85% of the value of your Fixed Deposit (Axis Bank FDs
+  only — FDs held with other banks are not eligible).
+- 24x7 overdraft facility — digital, instant, simple application.
+- No prepayment charges.
+- Interest charged only on the amount utilised, for the duration
+  utilised.
+- No need to break/liquidate the FD to access funds — the FD continues
+  earning interest.
+
+Eligibility: the ODFD facility is available to Individuals (Resident
+Indian; Guardian/GPA against a deposit held by a minor; NRI / Person
+of Indian Origin / Overseas Citizen of India), HUF, and proprietorship
+concerns (per the bank's eligibility list).
+
+This is a headline reference — since no fixed rate is published on the
+page, confirm the current applicable rate with the bank before quoting
+to a customer.

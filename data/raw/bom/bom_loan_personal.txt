@@ -1,0 +1,9 @@
+SOURCE: https://bankofmaharashtra.bank.in/personal-banking/loans/personal-loan
+DOCUMENT_ID: bom_loan_personal
+BANK: BOM
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-19
+===
+Bank of Maharashtra personal loan interest rate starts from 9.75%
+p.a. Loan amount up to Rs. 20 lakh (20 times gross monthly income).

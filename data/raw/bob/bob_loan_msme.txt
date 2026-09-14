@@ -1,0 +1,37 @@
+SOURCE: https://bankofbaroda.bank.in/interest-rate-and-service-charges/msme-loans-interest-rates, https://bankofbaroda.bank.in/business-banking/msme-banking/loans-and-advances/msme-loan, and https://bankofbaroda.bank.in/business-banking/msme-banking/loans-and-advances/coverage-of-collateral-free-loans
+DOCUMENT_ID: bob_loan_msme
+BANK: BOB
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2025-12-06
+===
+Bank of Baroda MSME / Business Loans
+
+Pricing Basis:
+MSME loans are priced off BRLLR (Baroda Repo Linked Lending Rate),
+7.90% as of 6 December 2025 (derived from RBI's Repo Rate plus a
+Mark-Up and a Strategic Premium), plus a product/borrower-specific
+spread.
+
+Digital MSME Loan:
+A fully-digital working-capital loan, ranging from Rs. 10 lakh to
+Rs. 5 crore. Purpose includes acquisition of factory/land, building
+construction, purchase of plant and machinery, and working-capital
+needs (raw materials, finished goods financing).
+
+Baroda SME Loan Pack:
+A bundled business-loan product for SME financing needs beyond the
+digital working-capital product — check the specific pack's terms for
+a given business size/sector.
+
+CGTMSE (Collateral-Free Loan Coverage):
+Bank of Baroda participates in the CGTMSE scheme (Credit Guarantee
+Fund Scheme for Micro and Small Enterprises), allowing eligible MSE
+borrowers to access collateral-free credit — same underlying
+government scheme SBI participates in (see sbi_loan_msme for the
+scheme's general mechanics: 85% guarantee coverage, Udyam Registration
+required).
+
+For a specific MSME product's exact rate, eligibility, and
+documentation, check that product's own page or a branch, since rates
+and terms vary by loan size, sector, and whether CGTMSE cover applies.

@@ -1,0 +1,35 @@
+SOURCE: https://www.canarabank.bank.in/pages/canara-ready-cash, https://www.canarabank.bank.in/canara-my-money, and https://www.canarabank.bank.in/canara-budget
+DOCUMENT_ID: canara_loan_personal
+BANK: CANARA
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2025-12-12
+===
+Canara Bank Personal Loan
+
+Interest Rate:
+Starts from approximately 9.70% p.a. (headline "Budget Loan" category
+range: 9.70%-14.70%, mean ~11.86%, per the bank's retail loan interest
+rate range page dated 12 December 2025). The actual rate depends
+heavily on the applicant's credit profile.
+
+Canara Ready Cash (pre-approved personal loan for existing salaried
+Canara Bank customers):
+- Eligibility: existing salaried Canara Bank customers, age 21-55
+  years, minimum monthly income Rs. 50,000, minimum credit score 700.
+- EMI/Net Monthly Income (NMI) ratio: minimum 25%, or Rs. 1,000/month,
+  after accounting for existing and proposed EMIs.
+- Loan Amount: Rs. 50,000 to Rs. 10 lakh.
+- Tenure: 1 to 5 years.
+- Purpose: personal needs, other than speculative purposes.
+
+Other Personal Loan Variants:
+- Canara My Money — a separate personal loan scheme (own terms, check
+  its own page).
+- Canara Budget — a separate personal loan scheme, appears to
+  correspond to the "Budget Loan" rate category (9.70%-14.70%).
+
+For eligibility, exact amount, and documentation for Canara My Money
+or Canara Budget specifically, check that scheme's own page or a
+branch, since Canara Ready Cash's eligibility (existing salaried
+customers only) does not apply to all personal loan variants.

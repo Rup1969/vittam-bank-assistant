@@ -1,0 +1,24 @@
+SOURCE: https://www.hdfc.bank.in/agri-banking/rural-loans/agri-allied-financing-program/eligibility and https://www.bankbazaar.com/hdfc-bank-kisan-credit-card.html (cross-referenced)
+DOCUMENT_ID: hdfc_loan_agriculture
+BANK: HDFC
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-15
+===
+HDFC Bank Kisan Credit Card
+
+Purpose:
+A revolving credit facility for farmers' cultivation and allied
+agricultural credit needs, under the nationwide Kisan Credit Card
+scheme, aimed at providing access to collateral-free credit alongside
+skill training, modern farming tools, and market-linkage support.
+
+Credit Limit & Collateral:
+Credit limit up to Rs. 3 lakh. For amounts up to Rs. 1.60 lakh, no
+collateral is required. Above Rs. 1.60 lakh, the bank may require
+collateral in the form of tractors, trolleys, or by taking possession
+of the crop the loan financed.
+
+This is a headline reference — confirm the current effective rate
+(including any government interest subvention applicable) and exact
+collateral thresholds with the bank or nearest branch.

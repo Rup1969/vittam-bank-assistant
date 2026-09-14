@@ -1,0 +1,57 @@
+SOURCE: https://www.indusind.bank.in/in/en/personal/loans/agri-loan.html (official page)
+DOCUMENT_ID: indusind_loan_agriculture
+BANK: INDUSIND
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-16
+===
+IndusInd Bank Kisan Credit Card (KCC) — via Indus Kisan
+
+Yes — IndusInd Bank offers a Kisan Credit Card (KCC) scheme, provided
+under its "Indus Kisan" agricultural lending program: a revolving
+credit facility for farmers' crop production and allied agricultural
+needs, with KCC/crop loans up to Rs. 3 lakh for Small and Marginal
+Farmers carrying NIL processing fees.
+
+IndusInd Bank's agriculture loan interest rates for Q1 FY 2026-27
+range from 7.00% to 15.50% per annum depending on the facility type,
+offered under "Indus Kisan," a direct agri-funding product for
+progressive Indian farmers covering both short-term (crop/working
+capital) and long-term (investment) credit needs through a single
+window.
+
+Rate table by facility type (Q1 FY27, fixed ROI effective since
+Sept'24):
+- Production Loan (Cash Credit): 7.00% - 13.25% p.a. (mean 11.18%)
+- Investment Loan (Term Loan): 9.10% - 10.25% p.a. (mean 9.74%)
+- Overdraft Loan: 9.00% - 15.50% p.a. (mean 11.12%)
+
+Revised Annual Percentage Rate (APR) for Q1 FY27:
+- Term Loan: ROI 9.10%-10.25%, APR 9.35%-10.63%
+- Cash Credit/Overdraft: ROI 7.00%-15.50%, APR 7.00%-16.65%
+
+Product Features:
+- Crop Loan: working capital for agri and agri-allied activities
+- Investment Loan: long-term financing (e.g. pump sets, sprayers)
+- Tenure: up to 5 years
+- Bundled savings bank account, RuPay Debit Card, and internet banking
+- Flexible repayment cycle aligned to crop harvest cycle
+- Crop insurance facility for notified crops; Health/Life insurance also available
+
+Availability:
+Indus Kisan is presently available only at select branches in
+Maharashtra, Gujarat, Madhya Pradesh, Chhattisgarh, Punjab, Haryana,
+Rajasthan, and Kerala — not a pan-India product.
+
+Charges:
+- Processing Fee (fresh/renewal): up to 2% of sanctioned amount + GST
+  (NIL for KCC/Crop loans up to Rs. 3 lakh for Small/Marginal Farmers)
+- Penal charge: Term Loans 2% + GST per month on overdue amount (or
+  Rs. 100 + GST, whichever is higher); CC/OD 24% p.a. + GST on overdue
+  amount (or Rs. 100 + GST, whichever is higher)
+- Prepayment/foreclosure: NIL for floating-rate loans; fixed-rate
+  loans carry a 4% charge if closed within 3 years of first disbursement
+
+Rates are periodically revised (this table is specifically for Q1
+FY27); confirm the current rate and branch availability with the bank
+before quoting.

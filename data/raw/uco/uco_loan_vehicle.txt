@@ -1,0 +1,38 @@
+SOURCE: https://uco.bank.in/en/web/guest/vehicle-loan1 and https://uco.bank.in/repo (rate card)
+DOCUMENT_ID: uco_loan_vehicle
+BANK: UCO
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-19
+===
+UCO Bank Car Loan (UCO Car)
+
+UCO Bank's car loan interest rate ranges from 7.70% to 10.25% p.a.
+(UCO Float benchmark 8.30%, final rate depending on credit score).
+Borrowers with a CIBIL score of 825+ get the best rate: 0% spread with
+a -0.60% discount, landing at 7.70%.
+
+Eligibility:
+Age 21-70 years.
+
+Loan Amount:
+- New car: no upper cap.
+- Pre-used car (up to 3 years old): no upper cap, subject to the lower
+  of 75% of the OEM-backed certified dealer price or 75% of valuation/
+  market price; other purchases capped at 70% of agreed price or
+  approved-assessor valuation.
+- Reimbursement (new car): no upper cap.
+
+Margin (Down Payment):
+- New car: minimum 20%.
+- Pre-used car: 20% (dealer-sourced) or 30% (other sources).
+- Reimbursement: 25% (vehicle up to 3 months old) or 40% (3-6 months
+  old).
+
+Tenure:
+- New car: maximum 84 months.
+- Pre-used car: maximum 60 months.
+- Reimbursement: maximum 60 months.
+
+Processing Fee:
+Not stated as a specific figure on this product page.

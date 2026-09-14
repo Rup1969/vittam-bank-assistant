@@ -1,0 +1,40 @@
+SOURCE: https://www.axis.bank.in/loans/loan-against-property/interest-rate-on-loans (official page, fetched directly)
+DOCUMENT_ID: axis_loan_mortgage
+BANK: AXIS
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-16
+===
+Axis Bank Loan Against Property (LAP) / Mortgage Loan
+
+Axis Bank's Loan Against Property interest rate ranges from 9.15% to
+10.25% per annum (effective rate, floating, Repo-Rate-linked), for
+tenures of up to 20 years, with the exact rate depending on loan type
+and PSL (Priority Sector Lending) category.
+
+Rate Table — Term Loans:
+- Floating Rate, PSL Category: Repo Rate + 3.90% to Repo Rate + 4.75%;
+  effective rate 9.15% - 10.00% p.a.
+- Floating Rate, Non-PSL Category: Repo Rate + 4.15% to Repo Rate +
+  5.00%; effective rate 9.40% - 10.25% p.a.
+
+Rate Table — Overdraft Loans:
+- Floating Rate, PSL Category: Repo Rate + 4.15% to Repo Rate + 4.75%;
+  effective rate 9.40% - 10.00% p.a.
+- Floating Rate, Non-PSL Category: Repo Rate + 4.40% to Repo Rate +
+  5.00%; effective rate 9.65% - 10.25% p.a.
+
+Benchmark: floating rates are linked to the RBI Repo Rate (5.25% as of
+this rate card). The bank charges an additional spread over this
+benchmark. The lending rate for existing customers resets once every
+three months, or as decided by the bank, whichever is earlier. The
+benchmark rate and applicable spread are reviewed at the start of every
+month, and apply until the next review.
+
+Loan Structure: available as Term Loans or Overdraft facility.
+
+Tenure: up to 20 years.
+
+Rates are floating and revised monthly/quarterly per the schedule above;
+verify the current benchmark rate and applicable spread with the bank
+before quoting to a customer.

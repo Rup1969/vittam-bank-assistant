@@ -1,0 +1,46 @@
+SOURCE: https://punjabandsind.bank.in/content/pss1
+DOCUMENT_ID: psb_loan_agriculture
+BANK: PUNJAB_SIND
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-19
+===
+Punjab & Sind Bank — Kisan Credit Card (KCC) and Agriculture Loan Schemes
+
+The PSB Udyan Scheme interest rate at Punjab & Sind Bank (orchard and
+plantation development loan) is 1-Year MCLR + 1.10% for loans up to
+Rs. 2 lakh, and 1-Year MCLR + 2.10% above Rs. 2 lakh.
+
+Punjab & Sind Bank also offers a Kisan Credit Card (KCC) scheme, like
+every scheduled bank in India — the nationwide revolving credit
+facility for farmers' cultivation and allied agricultural needs.
+However, Punjab & Sind Bank's own agriculture financing page does not
+publish a dedicated KCC section with its own rate/eligibility detail —
+KCC is referenced only as an alternative working-capital facility
+under several other schemes, not documented separately. This is a
+genuine content gap on the bank's own site, not a fetch failure.
+
+Real agriculture schemes with published terms, found on this page:
+
+PSB Krishak Rath (farm vehicle financing):
+- Loan amount: two-wheelers up to Rs. 2 lakh; four-wheelers up to
+  Rs. 50 lakh.
+- Interest rate: new two-wheeler — 1-Year MCLR + 3.00%; new four-wheeler
+  — 1-Year MCLR + 0.50%.
+- Margin: 15% of on-road price (inclusive of one-time road tax,
+  registration, and insurance).
+- Tenure: 3 years (two-wheelers); 7 years (four-wheelers).
+
+PSB Udyan Scheme (orchard and plantation development):
+- Interest rate: up to Rs. 2 lakh — 1-Year MCLR + 1.10%; above Rs. 2
+  lakh — 1-Year MCLR + 2.10%.
+- Margin: nil up to Rs. 2 lakh; 15% above Rs. 2 lakh.
+- Tenure: 15 years for establishment.
+
+PSB Dairy Development Scheme:
+- Interest rate: 1-Year MCLR + 1% (up to Rs. 5 lakh).
+- Maximum loan: Rs. 50 lakh.
+- Margin: nil up to Rs. 2 lakh; 15% thereafter.
+
+For Kisan Credit Card (KCC) details specifically, contact the bank
+directly (toll-free 1800-419-8300) or check jansamarth.in.

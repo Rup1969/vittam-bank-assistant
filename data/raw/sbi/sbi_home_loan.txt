@@ -1,0 +1,10 @@
+SOURCE: https://sbi.bank.in/web/interest-rates/interest-rates/loan-schemes-interest-rates/home-loans-interest-rates-current and https://homeloans.sbi.bank.in/faq
+DOCUMENT_ID: sbi_home_loan
+BANK: SBI
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-04-01
+===
+SBI home loan interest rate starts from 7.25% p.a. onwards, effective
+1 April 2026. The actual rate depends on the applicant's credit score,
+loan amount, tenure, and the specific home loan scheme.

@@ -1,0 +1,25 @@
+SOURCE: https://www.paisabazaar.com/union-bank-of-india/personal-loan/ and https://www.urbanmoney.com/personal-loan/union-bank-of-india/interest-rate, https://www.unionbankofindia.bank.in/en/listing/personal-loan (cross-referenced secondary sources; verify current rate with the bank)
+DOCUMENT_ID: union_bank_loan_personal
+BANK: UNION_BANK
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-08
+===
+Union Bank of India Personal Loan
+
+Interest Rate:
+Reported starting from around 8.85% p.a. for the most-qualified
+applicants, with a broader reported range of 8.85%-14.45% p.a.
+depending on employment profile and credit score. A separate reported
+figure of 10.75% p.a. starting rate applies to loans up to Rs. 15 lakh
+with a maximum tenure of 5 years — confirm which pricing tier applies
+to a specific applicant with the bank.
+
+Loan Amount & Tenure:
+Up to Rs. 15 lakh (for the tenor-capped scheme noted above); broader
+personal loan amounts may be available depending on income and
+eligibility. Maximum tenure reported at 5 years for that scheme.
+
+This is a headline reference — personal loan pricing is highly
+profile-dependent; always confirm the applicant's actual quoted rate
+and eligibility with the bank.

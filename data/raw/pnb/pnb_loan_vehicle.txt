@@ -1,0 +1,28 @@
+SOURCE: https://www.creditmantri.com/punjab-national-bank-car-loan-interest-rates/ and https://www.bankbazaar.com/punjab-national-bank-car-loan.html, https://www.zeebiz.com/personal-finance/news-car-loan-rates-april-2026 (cross-referenced secondary sources; verify current rate with the bank)
+DOCUMENT_ID: pnb_loan_vehicle
+BANK: PNB
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-06-28
+===
+Punjab National Bank Car / Vehicle Loan
+
+Interest Rate:
+Reported starting rate around 7.30%-7.60% p.a. as of mid-2026, with a
+broader range up to roughly 10.70% p.a. depending on applicant profile;
+both floating and fixed-rate options are offered.
+
+Loan Amount:
+Up to 85% of the on-road vehicle value financed.
+
+Tenure:
+Up to 84 months.
+
+Fees & Concessions:
+Processing fee of 0.25% of the loan amount (subject to a stated minimum
+and maximum), charged at sanction. Women borrowers receive a rate
+concession of up to 0.05% across all car loan variants.
+
+This is a headline reference — the actual quoted rate depends on CIBIL
+score, income profile, and the vehicle being financed; confirm the
+current rate and processing-fee slab with the bank before quoting.

@@ -1,0 +1,25 @@
+SOURCE: https://bankofmaharashtra.bank.in/personal-banking/loans/home-loan (same source as bom_loan_home — split into a separate doc 2026-08-25 so the headline rate chunk stays short and competitive in retrieval; see PROJECT_STATUS.md §27-28)
+DOCUMENT_ID: bom_loan_home_eligibility
+BANK: BOM
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-19
+===
+Bank of Maharashtra Home Loan — Eligibility, LTV, and Fees
+
+Eligibility:
+Individual salaried employees with at least 1 year of continuous
+service, self-employed professionals and businessmen, and NRIs holding
+an Indian passport or PIOs/OCIs with a valid employment contract.
+
+Loan Amount / LTV:
+The sanctioned amount is the lowest of: the loan amount assessed via
+permissible-deduction norms, the maximum permissible LTV ratio, and the
+amount requested. Exact LTV percentage not separately published.
+
+Processing Fee:
+0.25% of loan amount + GST — fully waived through 31 December 2025.
+
+Other Features:
+No pre-payment, pre-closure, or part-payment charges. Online application
+available.

@@ -1,0 +1,41 @@
+SOURCE: RBI Master Direction (Commercial Banks - Asset Classification, Provisioning and Income Recognition) Directions, 2026, issued 27 April 2026, effective 1 April 2027 — SUPERSEDES the earlier (Commercial Banks - Income Recognition, Asset Classification and Provisioning) Directions, 2025 issued 28 November 2025; catalog PDFs: rbidocs.rbi.org.in/rdocs/notification/PDFs/MD39857992A3DBE7946619F0F76DF81E472CF.PDF (2026) and .../164MD.PDF (2025) — both CAPTCHA-gated for direct fetch; content below is cross-checked from multiple regulatory-tracking sources; verify against the primary Direction before treating as legally binding
+DOCUMENT_ID: rbi_md_asset_classification
+BANK: RBI
+CATEGORY: PRUDENTIAL
+SOURCE_TYPE: RBI_MASTER_DIRECTION
+DATE: 2026-04-27
+===
+RBI Master Direction — Asset Classification, Provisioning and Income Recognition (Commercial Banks)
+
+IMPORTANT — Two directions exist on this same topic, in force at
+different times:
+1. The 2025 Direction (issued 28 November 2025) — the current
+   applicable rules until the 2026 version takes effect.
+2. The 2026 Direction (issued 27 April 2026) — comes into force only
+   from 1 April 2027. Until then, the 2025 Direction's NPA
+   classification rules remain the operative standard.
+
+2025 Direction — Core Rules (currently in force):
+Defines NPA categories (Substandard, Doubtful, Loss assets), security
+valuation norms, and "out-of-order" criteria for overdraft/cash-credit
+facilities used to determine NPA status. Interest income is recognised
+on an accrual basis only for standard (performing) assets; NPAs must
+be recognised on a cash basis only (income is booked only when
+actually received). All accounts must be covered under an automated,
+IT-based system for classification, upgradation, and provisioning —
+classification as overdue, SMA (Special Mention Account), or NPA, and
+any upgradation, must happen automatically as part of the bank's
+day-end processing, not via manual/discretionary flagging.
+
+2026 Direction — What Changes From 1 April 2027:
+Introduces a staging framework for asset classification under an
+Expected Credit Loss (ECL) approach — a forward-looking provisioning
+model — while RETAINING the existing NPA classification norms
+alongside it. This is a significant methodology shift (from purely
+incurred-loss provisioning to a forward-looking ECL model), so banking
+staff should be aware a transition is coming, even though it isn't
+live yet.
+
+When answering a question about "current" asset classification rules,
+default to the 2025 Direction unless the question specifically asks
+about the post-April-2027 ECL framework.

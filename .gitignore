@@ -1,0 +1,36 @@
+.streamlit/secrets.toml
+__pycache__/
+*.pyc
+.env
+
+# Raw scraped HTML snapshots — large (100MB+), regenerable via
+# automation/fetch_and_track.py, not needed to run or evaluate the app.
+data/scraped/
+
+# The structured-data database — regenerable from the automation
+# pipeline (see README Setup); not committed so a fresh clone doesn't
+# ship a stale/local snapshot as if it were current.
+*.duckdb
+
+# Local tool/IDE state, not project source.
+.claude/
+.ipynb_checkpoints/
+.venv/
+venv/
+.vscode/
+.idea/
+
+# All three still contain the OLD hardcoded ALLOWED_USERS dict
+# ("rup"/"pass123" etc.) from before the .streamlit/secrets.toml fix —
+# found via a credential grep sweep 2026-09-14. app_vittam_backup.py is
+# dead/rejected code kept only for local reference; Untitled*.ipynb are
+# one-time historical build notebooks, not part of the live app. None
+# are needed to run or evaluate the app, so excluded rather than edited.
+app_vittam_backup.py
+Untitled.ipynb
+Untitled1.ipynb
+
+# Stray scratch file (raw scraped webpage text fragments) left at the
+# project root from content extraction — not part of the curated
+# data/raw/ structure, found during the dry-run review 2026-09-14.
+psb_edu_snip.txt

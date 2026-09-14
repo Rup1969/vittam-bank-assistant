@@ -1,0 +1,22 @@
+SOURCE: https://www.icici.bank.in/business-banking/business-loans/collateral-free-loan and https://www.icici.bank.in/business-banking/business-loans/cgtmse (official pages)
+DOCUMENT_ID: icici_loan_msme
+BANK: ICICI
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-15
+===
+ICICI Bank MSME / Collateral-Free Business Loans
+
+Collateral-Free Loan:
+ICICI Bank offers a dedicated Collateral-Free Loan product for MSMEs,
+built under the CGTMSE (Credit Guarantee Fund Trust for Micro and
+Small Enterprises) scheme — a joint SIDBI/Ministry of MSME government
+scheme under the MSMED Act, 2006. Loan amount ranges from Rs. 10 lakh
+to Rs. 5 crore, with the full range available without collateral under
+CGTMSE coverage — notably a higher collateral-free ceiling (Rs. 5
+crore) than several public sector banks' typical Rs. 10 lakh
+collateral-free threshold.
+
+This is a headline reference — confirm current interest rates,
+processing fees, and eligibility criteria with the bank before
+advising a customer.

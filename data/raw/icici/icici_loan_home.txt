@@ -1,0 +1,31 @@
+SOURCE: https://www.icici.bank.in/personal-banking/loans/home-loan/interest-rates (cross-referenced with secondary aggregators for the broader range; verify current rate with the bank)
+DOCUMENT_ID: icici_loan_home
+BANK: ICICI
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-15
+===
+ICICI Bank Home Loan
+
+ICICI Bank's home loan interest rate currently starts from 7.50% per
+annum for pre-approved/well-qualified applicants, linked to the bank's
+repo-rate-linked benchmark. This is the standard housing loan for
+purchasing or constructing a home.
+
+Interest Rate:
+Officially advertised starting rate: 7.50% p.a. (for customers with a
+pre-approved home loan sanction). Broader reported range across
+applicant profiles: 7.70%-10.05% p.a., depending on bureau/credit
+score, customer segment, and overall profile.
+
+Rate Type:
+Both fixed and floating interest rate options are offered. Floating
+rates are linked to the repo rate.
+
+Tenure & Fees:
+Tenure up to 30 years. Per RBI rules, no prepayment/foreclosure charges
+on floating-rate home loans for individual borrowers; fixed-rate home
+loans may carry a prepayment charge up to 2% of the prepaid amount.
+
+This is a headline reference — confirm the current rate and the
+applicant's specific quoted spread with the bank before quoting.

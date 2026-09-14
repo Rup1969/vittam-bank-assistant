@@ -1,0 +1,11 @@
+SOURCE: https://www.mymoneymantra.com/pnb-personal-loan-interest-rates and https://www.paisabazaar.com/punjab-national-bank/personal-loan/, https://www.codeforbanks.com/banking/personal-loan/punjab-national-bank/personal-loan-interest-rates/ (cross-referenced secondary sources; verify current rate with the bank)
+DOCUMENT_ID: pnb_loan_personal
+BANK: PNB
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-06-01
+===
+Punjab National Bank personal loan interest rate is roughly 10.25% to
+16.80% p.a., starting from around 11.40% p.a. for government and
+defence employees, and typically 12-13%+ p.a. for general salaried
+applicants. Loan amount up to 24 times gross monthly salary.

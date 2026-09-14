@@ -1,0 +1,31 @@
+SOURCE: https://sbi.bank.in/web/personal-banking/loans/auto-loans and https://sbi.bank.in/web/interest-rates/interest-rates/loan-schemes-interest-rates/auto-loans — same source as sbi_loan_vehicle, split into a separate doc 2026-08-26 so the headline rate chunk stays short and competitive in retrieval; see PROJECT_STATUS.md
+DOCUMENT_ID: sbi_loan_vehicle_eligibility
+BANK: SBI
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-07-01
+===
+SBI Auto Loan (Car / Two-Wheeler) — Scheme Variants, Purpose, Tenure
+
+Scheme Variants:
+- SBI New Car Loan Scheme.
+- Certified Pre-Owned Car Loan.
+- SBI Loyalty Car Loan Scheme — for existing SBI home loan borrowers.
+- SBI Assured Car Loan Scheme — for existing SBI term deposit holders.
+- Super Bike Loan Scheme — Rs. 1.50 lakh to Rs. 25 lakh, for premium
+  two-wheelers.
+- SBI Two-Wheeler Loan Scheme — up to Rs. 3 lakh.
+- Green Car Loan — for electric vehicles.
+
+Purpose:
+Financing new cars, certified pre-owned vehicles, electric vehicles,
+and two-wheelers (including premium bikes under the Super Bike scheme).
+
+Tenure:
+Available for 3-5 years and beyond 5 years, depending on the scheme.
+
+Eligibility, exact loan amount ranges (outside Super Bike/Two-Wheeler),
+processing fee, margin/down-payment, and documents required are not
+published on SBI's general auto loan landing page — these vary by the
+specific scheme chosen. Check the individual scheme's page or a branch
+for a firm quote.

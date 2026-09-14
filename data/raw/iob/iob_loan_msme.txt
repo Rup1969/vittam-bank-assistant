@@ -1,0 +1,26 @@
+SOURCE: https://www.iob.bank.in/en/msme-credit-schemes-at-a-glance and https://financedragon.com/msme-loans/indian-overseas-bank-msme-loans/ (cross-referenced; verify current rate with the bank)
+DOCUMENT_ID: iob_loan_msme
+BANK: IOB
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-15
+===
+Indian Overseas Bank MSME Loans
+
+Collateral-Free Lending:
+IOB's MSME Term Loan offers collateral-free credit up to Rs. 10 lakh
+for businesses seeking financial assistance for expansion and growth-
+related activities — in line with CGTMSE-backed collateral-free lending
+norms most public sector banks, including IOB, follow for smaller MSME
+loan amounts.
+
+Policy Context:
+The bank publishes a consolidated "MSME Credit Schemes at a Glance"
+reference covering its various MSME product lines — specific
+product-level interest rates were not found in public secondary sources
+during this research pass and should be confirmed directly with the
+bank.
+
+This is a partial reference — confirm current MSME product names,
+interest rates, and collateral-free thresholds above Rs. 10 lakh with
+the bank before advising a customer.

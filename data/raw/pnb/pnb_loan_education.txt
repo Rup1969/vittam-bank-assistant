@@ -1,0 +1,29 @@
+SOURCE: https://www.nomadcredit.com/blog/pnb-education-loan and https://cleartax.in/s/pnb-fd-interest-rates cross-referenced sources on PNB education loan terms (secondary sources; verify current rate with the bank)
+DOCUMENT_ID: pnb_loan_education
+BANK: PNB
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-01
+===
+Punjab National Bank Education Loan
+
+Interest Rate:
+Floating rate reported at approximately 8.10%-10.10% p.a.; a fixed-rate
+option is also reported at approximately 9.10%-11.60% p.a. Actual rate
+depends on the loan amount, course/institution category, and whether
+collateral is offered.
+
+Repayment Structure:
+Moratorium period of the course duration plus one year (i.e. repayment
+EMIs typically begin one year after course completion), with a
+repayment tenure of up to 15 years thereafter.
+
+Coverage:
+Covers tuition fees, hostel/accommodation charges, books and equipment,
+and other course-related expenses for eligible domestic and
+international courses, per standard IBA education-loan-scheme norms
+that most public sector banks including PNB follow.
+
+This is a headline reference — course eligibility lists, collateral
+requirements above a certain loan amount, and the exact applicable rate
+should be confirmed with the bank for a specific applicant and course.

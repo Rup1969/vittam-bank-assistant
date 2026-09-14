@@ -1,0 +1,39 @@
+SOURCE: https://centralbank.bank.in/en/central-kisan-credit-card
+DOCUMENT_ID: centralbank_loan_agriculture
+BANK: CENTRAL_BANK
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-19
+===
+Central Bank of India Kisan Credit Card (Central KCC)
+
+Central Bank of India's Kisan Credit Card interest rate is tiered by
+loan amount (for advances not covered under the government's Interest
+Subvention Scheme):
+- Up to Rs. 3 lakh: MCLR + 1.35%.
+- Rs. 3 lakh to Rs. 10 lakh: MCLR + 2.50%.
+- Rs. 10 lakh to Rs. 100 lakh: MCLR + 3.00%.
+
+Purpose:
+Covers crop cultivation, dairy, fisheries, poultry, post-harvest
+expenses, produce marketing, consumption needs, and maintenance of farm
+equipment.
+
+Eligibility:
+Individual or joint-borrower owner cultivators, tenant farmers, oral
+lessees, share croppers, and Self-Help Groups or Joint Liability Groups
+of farmers.
+
+Loan Amount:
+Cash credit limits sanctioned for 5-year periods as a short-term
+revolving credit facility.
+
+Margin:
+Nil — built into the scale of finance.
+
+Security/Collateral:
+- Up to Rs. 2 lakh: no collateral required.
+- Under a tie-up arrangement: no collateral up to Rs. 3 lakh.
+- Above Rs. 2 lakh (outside a tie-up): collateral security required.
+- Primary security: hypothecation of crops and farm assets financed by
+  the bank.

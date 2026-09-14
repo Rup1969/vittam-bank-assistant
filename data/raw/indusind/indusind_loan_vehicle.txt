@@ -1,0 +1,11 @@
+SOURCE: https://www.indusind.bank.in/in/en/personal/loans/vehicle-loan/new-cars-loan.html (official page, fetched directly)
+DOCUMENT_ID: indusind_loan_vehicle
+BANK: INDUSIND
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-16
+===
+IndusInd Bank car loan / vehicle loan interest rate is not published as
+a fixed figure — pricing is profile- and vehicle-based, disclosed at
+application. Up to 100% financing of the car value, minimum credit
+score above 600.

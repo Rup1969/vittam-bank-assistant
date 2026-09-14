@@ -1,0 +1,36 @@
+SOURCE: https://sbi.bank.in/web/personal-banking/loans/personal-loans/sbi-personal-loan and https://onlineapply.sbi.bank.in/personal-banking/personal-loan (same source as sbi_loan_personal — split into a separate doc 2026-08-25 so the headline rate/amount/tenure chunk stays short and competitive in retrieval; see PROJECT_STATUS.md §27)
+DOCUMENT_ID: sbi_loan_personal_eligibility
+BANK: SBI
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-04-01
+===
+SBI Personal Loan (Xpress Credit) — Eligibility, Fees, and Documents
+
+Eligibility:
+- For employees of government, defence, railway, police, PSU, and
+  corporate sectors holding an SBI Salary Package Account.
+- Age: 21 to 60 years (case-by-case consideration for government/
+  defence employees above 60).
+- Minimum service duration: 6 months for government/defence employees,
+  12 months for corporate employees.
+- Minimum monthly salary: Rs. 20,000 for government/defence employees,
+  Rs. 25,000 for corporate employees.
+- Indian national with a satisfactory credit score per bank policy.
+
+Processing Fee:
+Up to 1.50% of the loan amount (minimum Rs. 1,000, maximum Rs. 15,000)
+plus GST. Waivers/discounts available for defence-sector employees,
+certain salary package variants, government employees (50% waiver),
+and applicants with a CIBIL score of 800 or above.
+
+Documents Required:
+PAN, last 6 months' salary slips, employment proof, latest ITR/Form 16,
+6 months' salary account bank statements, and standard KYC documents
+(requirements are lighter for existing SBI customers).
+
+Other Features:
+Low/no hidden administrative charges, minimal documentation for
+existing customers, no prepayment penalty. An "Approval in Principle"
+letter (where issued) is valid for 45 days; final approval depends on
+satisfactory KYC, income, and credit-worthiness verification.

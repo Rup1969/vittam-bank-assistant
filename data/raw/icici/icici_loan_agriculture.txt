@@ -1,0 +1,27 @@
+SOURCE: https://www.icici.bank.in/personal-banking/loans/kisan-credit-card (official page) cross-referenced with general KCC scheme terms
+DOCUMENT_ID: icici_loan_agriculture
+BANK: ICICI
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-15
+===
+ICICI Bank Kisan Credit Card
+
+Purpose:
+A revolving credit facility for farmers' short-term crop cultivation,
+harvesting, and farm-maintenance credit needs, under the nationwide
+Kisan Credit Card scheme (launched by the Indian government in August
+1998) that ICICI Bank, like other banks, implements.
+
+Interest Rate:
+A subsidized rate of 7% p.a. is available for loans up to Rs. 3 lakh
+in rural or semi-urban branches, reflecting the government's Interest
+Subvention Scheme for short-term crop loans.
+
+Collateral:
+Collateral-free lending is available under the KCC scheme for amounts
+up to Rs. 1.60 lakh — no security required for loans at or below this
+threshold.
+
+This is a headline reference — confirm the current effective rate and
+exact collateral thresholds with the bank or nearest branch.

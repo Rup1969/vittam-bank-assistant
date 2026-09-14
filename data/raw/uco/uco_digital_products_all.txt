@@ -1,0 +1,30 @@
+SOURCE: https://uco.bank.in/en/web/guest/bhim-uco-upi
+DOCUMENT_ID: uco_digital_products_all
+BANK: UCO
+CATEGORY: DIGITAL
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-19
+===
+UCO Bank Digital Banking Products
+
+UCO Bank's UPI app is called BHIM UCO UPI. It works with any bank's
+customers, not just UCO account holders.
+
+Key Features:
+- Direct bank payments using a UPI ID or by scanning a QR code.
+- Virtual Payment Address (VPA) creation, format name@uco.
+- Send and request payments; QR code scanning and generation.
+- Merchant payments without revealing account details.
+- Balance inquiry.
+- Two-factor authentication and 12-digit transaction reference tracking
+  for security.
+
+Daily Transaction Limits:
+Person-to-person transfers up to Rs. 1,00,000; merchant payments up to
+Rs. 2,00,000.
+
+Available on Google Play Store and Apple App Store.
+
+UCO Bank also offers "UCO Bank mBanking Plus" as a mobile banking app,
+referenced in the bank's navigation but without a dedicated feature
+description page found in this pass.

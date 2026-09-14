@@ -1,0 +1,29 @@
+SOURCE: https://www.iob.bank.in/en/faq-on-loan-against-property and https://www.mymoneymantra.com/loan-against-property/indian-overseas-bank (cross-referenced; official FAQ page gives the RLLR-linked figure, other sources vary)
+DOCUMENT_ID: iob_loan_mortgage
+BANK: IOB
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-15
+===
+Yes, Indian Overseas Bank offers a Loan Against Property (mortgage
+loan), interest rate RLLR + 0.50% (approximately 9.85% p.a. per the
+bank's own FAQ page). Third-party aggregators report a somewhat wider
+9.90%-10.90% p.a. range — the bank's own RLLR-linked formula should be
+treated as more authoritative; confirm the current RLLR value with
+the bank.
+
+Loan Amount & Tenure:
+Up to 50% of the property's market value; maximum tenure 7 years —
+notably shorter than several peer banks' loan-against-property products
+(some offer 15 years), worth flagging to a customer comparing options.
+
+Security:
+Equitable mortgage of the property, or alternatively liquid assets such
+as LIC policies, IVPs, NSCs, or UTI units.
+
+Processing Charges:
+0.60% of the loan amount for loans up to Rs. 5 lakh; 0.75% of the loan
+amount for loans above Rs. 5 lakh.
+
+This is a headline reference — confirm the current RLLR value and the
+applicant's specific quoted spread with the bank before quoting.

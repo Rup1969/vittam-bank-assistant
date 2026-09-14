@@ -1,0 +1,31 @@
+SOURCE: https://www.indusind.bank.in/in/en/personal/loans/home-loan.html (official page, product blurb) cross-referenced with secondary aggregators (CreditMantri, BankBazaar, CodeForBanks) for the rate range
+DOCUMENT_ID: indusind_loan_gold
+BANK: INDUSIND
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-16
+===
+IndusInd Bank Gold Loan
+
+IndusInd Bank's gold loan interest rates range from approximately
+10.06% to 15.82% per annum (secondary sources also cite a "starting"
+figure around 10.38%-13.50% depending on the snapshot/date), applied
+against gold jewellery pledged as collateral.
+
+Key Features:
+- Maximum loan amount: up to Rs. 10 lakh
+- Tenure: 3 to 24 months
+- Minimum documentation, instant disbursal
+- No proof of income required for loans up to Rs. 10 lakh
+- Processing fee: 1% of the loan amount
+- Additional interest discounts available for women borrowers and
+  those in the agricultural profession
+
+Eligibility:
+Minimum age 18 years, maximum age 70 years.
+
+This is a headline reference — secondary sources show a wide reported
+range (10.06% to 15.82%) rather than one single confirmed rate.
+Confirm the current applicable rate with the bank before quoting, as
+gold loan pricing also depends on gold purity/weight and prevailing
+gold price at the time of the loan.

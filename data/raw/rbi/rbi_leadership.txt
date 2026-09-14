@@ -1,0 +1,38 @@
+SOURCE: https://www.rbi.org.in/scripts/deputygovernors.aspx and RBI press release, 11 December 2024 (Governor appointment)
+DOCUMENT_ID: rbi_leadership
+BANK: RBI
+CATEGORY: GENERAL
+SOURCE_TYPE: RBI_CITIZENS_CORNER
+DATE: 2026-05-04
+===
+RBI Leadership — Governor and Deputy Governors
+
+Governor:
+Shri Sanjay Malhotra took charge as Governor of the Reserve Bank of
+India on 11 December 2024, appointed for a 3-year term. He is the 26th
+Governor of RBI (the 15th to come from the civil services), and
+succeeded Shaktikanta Das, who completed a 6-year term. Sanjay Malhotra
+is a 1990-batch IAS officer of the Rajasthan cadre, and was Revenue
+Secretary in the Ministry of Finance immediately before this
+appointment.
+
+Deputy Governors (as listed on RBI's official Deputy Governors page,
+current as of the dates below):
+- Shri Rohit Jain — took charge 4 May 2026.
+- Shri Shirish Chandra Murmu — took charge 9 October 2025.
+- Dr. Poonam Gupta — took charge 2 May 2025.
+- Shri Swaminathan J — RBI's page listed his term as extending to
+  25 June 2026 at last check.
+
+IMPORTANT — verify before quoting: Deputy Governor terms are fixed and
+this is exactly the kind of fact that goes stale. Shri Swaminathan J's
+listed term end-date (25 June 2026) may already have passed depending
+on today's date — there may be a new 4th Deputy Governor not reflected
+here. Always cross-check the live list at
+rbi.org.in/scripts/deputygovernors.aspx before stating who currently
+holds all four Deputy Governor posts.
+
+This is general organizational information about RBI, not a
+regulatory rule or rate — kept in the RBI pool because bank staff may
+need this for correspondence, citations, or context, not because it is
+itself a directive.

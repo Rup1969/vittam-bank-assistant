@@ -1,0 +1,20 @@
+SOURCE: https://sbi.bank.in/web/personal-banking/loans/pm-surya-ghar-loan-for-solar-roof-top
+DOCUMENT_ID: sbi_loan_surya_ghar
+BANK: SBI
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+===
+SBI PM Surya Ghar Loan (Solar Rooftop)
+
+As shown on SBI's loan schemes summary page, the PM Surya Ghar Loan
+(for residential solar rooftop installation under the government's PM
+Surya Ghar: Muft Bijli Yojana) is priced between 5.75% and 7.90% p.a.,
+with the exact rate varying by loan amount.
+
+Purpose:
+Financing installation of solar rooftop panels for residential use,
+under the central government's PM Surya Ghar scheme.
+
+Exact eligibility, subsidy interaction, loan amount slabs, and tenure
+should be confirmed on SBI's dedicated Surya Ghar loan page or with a
+branch, since pricing is amount-tiered.

@@ -1,0 +1,37 @@
+SOURCE: https://www.kotak.bank.in/en/personal-banking/deposits/fixed-deposit.html and general Kotak811 product references (cross-referenced)
+DOCUMENT_ID: kotak_deposits_schemes_all
+BANK: KOTAK_MAHINDRA
+CATEGORY: DEPOSIT
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-15
+===
+Kotak Mahindra Bank — Deposit Scheme Variants
+
+ActivMoney (2-Way Sweep Deposit):
+A sweep-in/sweep-out facility linking a savings/current account to a
+fixed deposit — balances above a set threshold automatically move into
+an FD to earn a higher rate, while remaining accessible for
+withdrawal. Note: ActivMoney FDs are priced at the Regular (non-senior)
+FD rate for ALL customers, including senior citizens — the usual senior
+citizen premium does not apply to this specific product.
+
+Non-Withdrawable Fixed Deposit:
+A premature-withdrawal-not-allowed FD variant offering a rate premium
+over the standard callable table, available from Rs. 3 crore and
+above. No sweep-in facility, no auto-renewal, and no monthly interest
+payout option on this variant.
+
+Kotak811 Zero Balance Savings Account:
+A fully digital, instantly-opened zero-balance savings account
+(opened via the Kotak811 app), positioned as the bank's flagship
+digital-first account for new customers.
+
+Kotak Gold Loan Smart Choice Scheme:
+See the loan document for details — while primarily a loan product,
+it's a notable no-income-documentation offering worth knowing alongside
+deposit products for a customer comparing Kotak's overall product
+range.
+
+This is a summary of publicly listed Kotak Mahindra Bank scheme names —
+exact current rates, minimum amounts, and eligibility should be
+confirmed with the bank before advising a customer.

@@ -1,0 +1,23 @@
+SOURCE: https://www.creditmantri.com/union-bank-of-india-car-loan-interest-rates/ and https://www.unionbankofindia.bank.in/en/details/union-vehicle, https://www.unionbankofindia.bank.in/en/details/commercial-vehicle-loan-interest-rates (cross-referenced secondary sources; verify current rate with the bank)
+DOCUMENT_ID: union_bank_loan_vehicle
+BANK: UNION_BANK
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-07
+===
+Union Bank of India car loan / vehicle loan interest rate (Union Miles
+scheme): new 4-wheelers 8.85% to 10.50% p.a. depending on CIC score.
+Electric cars (Union Green Miles): 8.80% to 10.40% p.a. Used
+4-wheelers: 12.9% to 13% p.a.
+
+Loan Amount:
+Up to 85% of the vehicle's value for new cars; up to 60% of the
+vehicle's value for used cars.
+
+Commercial Vehicles:
+A separate Commercial Vehicle Loan product exists with its own rate
+card, distinct from the personal-use Union Miles/Union Green Miles
+products above.
+
+This is a headline reference — confirm the current CIC-score-linked
+rate and processing terms with the bank before quoting.

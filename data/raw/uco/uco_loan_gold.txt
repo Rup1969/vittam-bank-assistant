@@ -1,0 +1,32 @@
+SOURCE: https://uco.bank.in/en/web/guest/gold-loan and https://uco.bank.in/repo (rate card)
+DOCUMENT_ID: uco_loan_gold
+BANK: UCO
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-19
+===
+UCO Bank Gold Loan
+
+UCO Bank's gold loan interest rate is 8.70% p.a. (UCO Float benchmark
+8.30% + 0.40% spread, at 30% margin).
+
+Eligibility:
+All new/existing individual customers who own gold ornaments, jewelry,
+or coins.
+
+Loan-to-Value (LTV):
+Up to 70% of current gold market value for personal/consumption
+purposes; up to 85% for agriculture/allied activities.
+
+Processing Fees:
+- Priority-sector advances up to Rs. 50,000: nil.
+- Non-priority advances up to Rs. 25,000: nil.
+- Non-priority, Rs. 25,000-50,000: Rs. 250.
+- Rs. 50,000-1 lakh: Rs. 250.
+- Above Rs. 1 lakh to Rs. 2 lakh: Rs. 350.
+- Above Rs. 5 lakh: 0.25%, maximum Rs. 4,000.
+Additional appraisal fee Rs. 200-1,000 (varies by location) plus stamp
+duty at actuals.
+
+Loan Amount and Tenure:
+Not stated as specific figures on this product page.

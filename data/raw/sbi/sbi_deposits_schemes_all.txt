@@ -1,0 +1,140 @@
+SOURCE: https://sbi.bank.in/web/personal-banking/accounts/saving-account, https://sbi.bank.in/web/personal-banking/investments-deposits/deposits, https://sbi.bank.in/web/personal-banking/accounts/saving-account/savings-account-for-minors, and https://sbi.bank.in/web/interest-rates/interest-rates/deposit-rates
+DOCUMENT_ID: sbi_deposits_schemes_all
+BANK: SBI
+CATEGORY: DEPOSIT
+SOURCE_TYPE: PRODUCT_PAGE
+===
+SBI — COMPLETE DEPOSIT SCHEMES
+
+========================================
+SECTION A: SAVINGS BANK ACCOUNTS
+========================================
+
+Current SB Interest Rate: 2.50% p.a., effective 15 June 2025. Interest
+credited at calendar-quarter intervals. No minimum balance required on
+the standard account or the BSBD variants (see below).
+
+1. SAVINGS BANK ACCOUNT (REGULAR)
+Standard retail savings account. Can be opened via Video KYC (remote,
+digital) or at a branch.
+
+2. BASIC SAVINGS BANK DEPOSIT ACCOUNT (BSBDA)
+Minimum balance: NIL. For customers with minimal banking/documentation
+needs. Available both via branch and as a simplified digital variant.
+
+3. BASIC SAVINGS BANK DEPOSIT SMALL ACCOUNT (BSBDA-SMALL)
+Minimum balance: NIL, but balance at any point must not exceed
+Rs. 50,000. For customers unable to provide full KYC documents
+(financial inclusion).
+
+4. SAVINGS ACCOUNT FOR MINORS — PEHLAKADAM
+Target: Minors of any age.
+Operation: Jointly with parent/guardian, or singly by parent/guardian
+on the minor's behalf.
+
+5. SAVINGS ACCOUNT FOR MINORS — PEHLIUDAAN
+Target: Minors aged 10 years and above who can sign uniformly.
+Operation: Singly operated by the minor.
+Both PehlaKadam and PehliUdaan: no monthly average balance
+requirement, maximum balance cap Rs. 10 lakh, Photo ATM-cum-Debit Card
+with Rs. 5,000 withdrawal/POS limit, mobile banking capped at Rs. 2,000
+per day, personalised chequebook (10 leaves), auto-sweep facility with
+a Rs. 20,000 threshold, interest calculated on daily balance.
+
+6. SAVINGS PLUS ACCOUNT
+A Savings Bank account linked to the Multi Option Deposit (MOD)
+scheme — surplus balance above a threshold auto-sweeps into a term
+deposit and earns FD-linked interest, while remaining accessible.
+
+7. MOTOR ACCIDENT CLAIM ACCOUNT (MACT)
+For holding court-directed motor accident compensation amounts;
+court-monitored withdrawals.
+
+8. RESIDENT FOREIGN CURRENCY (DOMESTIC) ACCOUNT — RFC(D)
+For residents to hold foreign currency earned abroad (e.g. from
+overseas employment) domestically.
+
+Other salary/premium account packages exist (e.g. Corporate Salary
+Package) — check the relevant scheme page for exact eligibility and
+benefits.
+
+========================================
+SECTION B: TERM / FIXED DEPOSIT SCHEMES
+========================================
+
+Retail Domestic Term Deposit rates effective 15 December 2025 — see
+sbi_fd_rates / sbi_rates_deposit_structured for the full tenor table.
+
+1. FIXED DEPOSIT (REGULAR)
+Standard term deposit; rate depends on tenor (7 days to 10 years) —
+see sbi_fd_rates.
+
+2. RECURRING DEPOSIT (RD)
+Tenure 12-120 months, minimum monthly instalment Rs. 100 (multiples of
+Rs. 10 thereafter). Rate tracks the equivalent-tenor FD rate.
+
+3. HAR GHAR LAKHPATI
+A newer variant of the Recurring Deposit scheme, structured to help a
+depositor reach a target lump-sum ("lakhpati") through disciplined
+monthly saving — exact target/tenure combinations and rate should be
+confirmed on SBI's current scheme page.
+
+4. MULTI OPTION DEPOSIT (MOD)
+A term deposit linked to a Savings/Current account: functions as a
+combination of a transactional account and a deposit. Funds can be
+withdrawn in units of Rs. 1,000 from the deposit by issuing a cheque
+against the linked SB account, without breaking the whole deposit.
+
+5. ANNUITY DEPOSIT SCHEME
+A one-time lump-sum deposit that pays back a fixed monthly amount
+(principal + interest) to the depositor, with payouts starting on the
+anniversary date of the month of deposit.
+
+6. SBI TAX SAVINGS SCHEME, 2006
+5-year mandatory lock-in term deposit; qualifies for a tax deduction
+under Section 80C of the Income Tax Act (up to Rs. 1.5 lakh/year, same
+limit as the general 80C cap). Rate is the same as the regular FD rate
+for that tenor.
+
+7. SBI PATRONS
+A term deposit offering tailored specifically for super senior
+citizens, with enhanced benefits/rate over the standard senior-citizen
+premium — confirm the exact extra premium on the current rates page.
+
+8. SBI GREEN RUPEE TERM DEPOSIT (SGRTD)
+An environmentally-themed term deposit; funds are earmarked toward
+green/eco-friendly initiatives.
+
+9. SPECIAL TERM DEPOSIT
+A premium deposit product offering an enhanced rate for specific
+tenure bands — check current terms before quoting.
+
+10. NON-CALLABLE TERM DEPOSIT — RETAIL (NCD-R) / BULK (NCD-B)
+Premature withdrawal is not permitted (or heavily restricted); in
+exchange, the deposit typically earns a higher rate than a regular,
+callable FD of the same tenor. NCD-B applies to bulk-value deposits
+(Rs. 3 crore and above), NCD-R to retail-value deposits.
+
+11. AMRIT VRISHTI (444 DAYS)
+A limited-tenor special FD at 444 days. Per SBI's NRI-services rate
+page (15 March 2026), this tenor is priced at 6.45% p.a. for domestic
+retail deposits below Rs. 3 crore — always check the current live rate,
+since special-tenor schemes like this are periodically revised or
+retired and replaced with a new special tenor.
+
+12. MACAD (MOTOR ACCIDENT CLAIMS ANNUITY/TERM DEPOSIT ACCOUNT)
+For managing motor accident claim settlement funds under court order,
+similar in purpose to MACT but structured as a term/annuity deposit.
+
+========================================
+SECTION C: NRI DEPOSITS
+========================================
+See sbi_nri_deposits.txt for the full NRE Fixed Deposit rate table.
+SBI also offers NRO and FCNR(B) term deposits, and NRE/NRO savings
+accounts — each carries its own separate rate table, distinct from
+domestic retail rates. Do not quote a domestic rate to an NRI customer
+or vice versa.
+
+Verify all rates and scheme availability against SBI's live
+interest-rates and deposits pages before quoting, since special-tenor
+schemes (like Amrit Vrishti) and rates change periodically.

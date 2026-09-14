@@ -1,0 +1,68 @@
+SOURCE: https://pnb.bank.in/Interest-Rates-Deposit.html and https://www.policybazaar.com/fd-interest-rates/punjab-national-bank-fd-rates/uttam-non-callable-deposit-scheme/, https://www.policybazaar.com/fd-interest-rates/punjab-national-bank-fd-rates/pranam-fixed-deposit-scheme/ (special-scheme rates; secondary sources cross-referenced, verify with the bank)
+DOCUMENT_ID: pnb_fd_rates
+BANK: PNB
+CATEGORY: DEPOSIT
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-06-01
+===
+Punjab National Bank Fixed (Term) Deposit Interest Rates (below Rs. 3 crore)
+
+Punjab National Bank's current fixed deposit (FD) interest rate for the
+general public ranges from 3.00% to 6.60% per annum across tenures from
+7 days to 10 years, with senior citizens earning 0.50% to 0.80% more.
+The 1-year FD interest rate is 6.25% for the general public and 6.75%
+for senior citizens.
+
+Effective 1 June 2026, domestic retail term deposit rates by tenure
+(general public / senior citizens):
+- 7-14 days: 3.00% / 3.50%
+- 15-45 days: 3.00% / 3.50%
+- 46-90 days: 4.50% / 5.00%
+- 91-154 days: 4.90% / 5.40%
+- 155 days: 5.55% / 6.05%
+- 156-179 days: 4.90% / 5.40%
+- 180-270 days: 5.60% / 6.10%
+- 271-302 days: 5.60% / 6.10%
+- 303 days: 5.55% / 6.05%
+- 304 days to less than 1 year: 5.60% / 6.10%
+- 1 year: 6.25% / 6.75%
+- Above 1 year to 389 days: 6.30% / 6.80%
+- 390 days: 6.30% / 6.80%
+- 391-443 days: 6.30% / 6.80%
+- 444 days: 6.60% / 7.10%
+- 445-665 days: 6.30% / 6.80%
+- 666 days: 6.50% / 7.00%
+- 667 days to 2 years: 6.30% / 6.80%
+- Above 2 years to 3 years: 6.30% / 6.80%
+- Above 3 years to 1203 days: 6.35% / 6.85%
+- 1204 days: 6.30% / 6.80%
+- 1205 days to 5 years: 6.35% / 6.85%
+- Above 5 years to 10 years: 6.00% / 6.80%
+
+Senior Citizen Premium: an additional 0.50% for senior citizens aged 60-80
+years, and an additional 0.80% for super senior citizens aged above 80
+years, over the general public card rate, across tenures.
+
+444 Days Special Scheme: the bank's highest-yielding retail tenure —
+6.60% general public, 7.10% senior citizens, and up to 7.40% for eligible
+super senior citizens.
+
+PNB Uttam Non-Callable Deposit Scheme: a non-callable variant (the bank
+cannot prematurely close it once placed) offered as a rate premium over
+the callable table above in exchange for giving up premature-withdrawal
+flexibility. Reported rates range 4.95%-6.45% general public / 5.45%-
+6.95% senior citizens depending on tenure. Minimum single deposit is
+above Rs. 1 crore, in multiples of Re. 1 thereafter; can typically be
+used as loan/overdraft collateral.
+
+PNB Pranam Fixed Deposit Scheme (Senior Citizens aged 55-60): a
+preferential scheme for depositors not yet old enough for the standard
+60+ senior-citizen premium. Minimum deposit Rs. 100, in multiples of
+Re. 1, up to Rs. 1,99,99,999. Rate is the applicable card rate plus an
+additional 0.50% once the depositor turns 60. Premature withdrawal is
+allowed at the lower of the contractual or applicable rate, with no
+penalty once past age 60.
+
+This is the general/callable retail deposit table plus the two
+principal special FD schemes; rates are revised periodically — verify
+the current card rate with the bank before quoting for a large deposit.

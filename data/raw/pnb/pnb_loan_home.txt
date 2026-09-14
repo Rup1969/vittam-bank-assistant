@@ -1,0 +1,11 @@
+SOURCE: https://x.com/pnbindia/status/1931006107377365105 (official PNB announcement) and https://www.bankbazaar.com/punjab-national-bank-home-loan.html, https://www.mymoneymantra.com/punjab-national-bank-home-loan-interest-rates (cross-referenced secondary sources; verify current rate with the bank)
+DOCUMENT_ID: pnb_loan_home
+BANK: PNB
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2025-06-09
+===
+Punjab National Bank home loan interest rate starts from around 7.45%
+p.a., linked to the Repo Linked Lending Rate (RLLR). The broader
+reported range is 7.50% to 9.75% p.a. for salaried applicants and
+7.75% to 10.05% p.a. for non-salaried applicants.

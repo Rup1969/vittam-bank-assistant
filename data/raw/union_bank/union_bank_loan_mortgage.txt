@@ -1,0 +1,30 @@
+SOURCE: https://www.unionbankofindia.bank.in/en/details/union-mortgage and https://www.unionbankofindia.bank.in/en/details/union-mortgage-plus, https://www.paisabazaar.com/union-bank-of-india/loan-against-property/ (cross-referenced secondary sources; rates vary noticeably across sources, verify with the bank)
+DOCUMENT_ID: union_bank_loan_mortgage
+BANK: UNION_BANK
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-15
+===
+Union Bank of India — Union Mortgage (Loan Against Property)
+
+Products:
+- Union Mortgage — the standard loan-against-property product.
+- Union Mortgage Plus — a variant reported to carry an interest rate
+  0.75% higher than the equivalent home loan rate, presumably for a
+  differently-structured eligibility or higher loan-to-value than the
+  base Union Mortgage product.
+
+Interest Rate:
+Reported figures vary widely across sources — from as low as 9.45% p.a.
+onwards to a 12.05%-12.90% p.a. range depending on property type and
+CIBIL score. Given this spread, always confirm the applicant's actual
+quoted rate with the bank rather than relying on a single headline
+figure.
+
+Loan Amount & Tenure:
+Up to Rs. 10 crore, with tenure up to 15 years. A CIBIL score of 750+
+is generally expected for the most preferential pricing; lower scores
+may lead to a higher rate or rejection.
+
+This is a headline reference with unusually wide source disagreement on
+the exact rate — confirm directly with the bank before quoting.

@@ -1,0 +1,42 @@
+SOURCE: https://www.icici.bank.in/content/dam/icicibank-revamp/deposits/fixed-deposits/json/fd-interest-rate.json (verified directly — official JSON data feed behind https://www.icici.bank.in/personal-banking/deposits/fixed-deposit/fd-interest-rates)
+DOCUMENT_ID: icici_fd_rates
+BANK: ICICI
+CATEGORY: DEPOSIT
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-14
+===
+ICICI Bank Fixed Deposit Interest Rates (below Rs. 3 crore)
+
+ICICI Bank's current fixed deposit (FD) interest rate for the general
+public ranges from 2.75% to 6.50% per annum across tenures from 7 days
+to 10 years, with senior citizens earning 0.50% to 0.60% more
+depending on tenure. The 3-year-1-day to 5-year FD interest rate is
+6.50% for the general public and 7.10% for senior citizens — ICICI's
+highest published slab, thanks to an extra promotional premium beyond
+the standard 0.50% on this specific tenure band.
+
+Effective 14 August 2026, domestic retail term deposit rates by tenure
+(general public / senior citizen):
+- 7 to 45 days: 2.75% / 3.25%
+- 46 to 90 days: 4.00% / 4.50%
+- 91 to 184 days: 4.50% / 5.00%
+- 185 days to less than 1 year: 5.50% / 6.00%
+- 1 year to less than 18 months: 6.25% / 6.75%
+- 18 months to 2 years: 6.30% / 6.80%
+- 2 years 1 day to 3 years: 6.45% / 6.95%
+- 3 years 1 day to 5 years: 6.50% / 7.10%
+- 5 years 1 day to 10 years: 6.50% / 7.00%
+- 5-year Tax Saver FD: 6.50% / 7.10%
+
+Senior Citizen Premium: an additional 0.50% for most tenures; the
+3-year-1-day-to-5-year and Tax Saver bands carry a larger 0.60%
+premium instead of the standard 0.50%.
+
+Minimum Deposit: Rs. 10,000.
+
+Note: ICICI's rate page also separately lists rates for the Rs. 3
+crore to Rs. 5 crore band and further bulk-deposit tiers up to Rs. 500
+crore — this document covers only the retail (below Rs. 3 crore) tier.
+
+Rates are revised periodically; verify the current card rate with the
+bank before quoting for a large deposit.

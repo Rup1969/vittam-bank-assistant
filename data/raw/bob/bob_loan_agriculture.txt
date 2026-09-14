@@ -1,0 +1,40 @@
+SOURCE: https://bankofbaroda.bank.in/business-banking/rural-and-agri/loans-and-advances, https://bankofbaroda.bank.in/business-banking/rural-and-agri/loans-and-advances/baroda-kisan-credit-card, and https://bankofbaroda.bank.in/business-banking/rural-and-agri/loans-and-advances/baroda-animal-husbandry-and-fisheries-kisan-credit-card-scheme
+DOCUMENT_ID: bob_loan_agriculture
+BANK: BOB
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+===
+Bank of Baroda Agriculture Loans
+
+Baroda Kisan Credit Card (BKCC):
+Provides adequate and timely credit to farmers under a single window,
+for cultivation and other farming needs, including short-term credit
+for crops (including fodder crops).
+
+Eligibility (tenant farmers/share croppers specifically):
+Individual tenant farmers/share-croppers cultivating on an oral-lease
+basis, resident in the village for at least 3 continuous years, and
+cultivating the land for a reasonably long period (not less than 3
+years), can be issued a KCC with a farm credit limit up to Rs. 10,000
+under this specific route. (Landowning farmers have their own,
+separate eligibility route not detailed here — check the BKCC product
+page.)
+
+Processing Charges:
+- Nil for aggregate loans up to Rs. 3 lakh.
+- Above Rs. 3 lakh to Rs. 10 lakh: Rs. 250 per lakh (or part thereof)
+  plus GST.
+
+Related Schemes:
+- Baroda Animal Husbandry and Fisheries Kisan Credit Card — a KCC
+  variant specifically for livestock/fisheries-based income, not crop
+  cultivation.
+- Agricultural Land Development Loan.
+- Horticulture Loan Scheme (Scheme for Development of Horticulture).
+- Lending to Agriculture — Other Priority Sectors (demand loan against
+  specified security).
+
+This is a summary-level entry only — for a specific agriculture loan
+(standard KCC for landowning farmers, allied-activity loans, etc.),
+check that scheme's own page or a branch, since eligibility and terms
+vary significantly by scheme.

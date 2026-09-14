@@ -1,0 +1,23 @@
+SOURCE: https://www.canarabank.bank.in/canara-vehicle, https://www.canarabank.bank.in/canara-green-wheels, and https://www.canarabank.bank.in/pages/interest-rate-range-on-loans
+DOCUMENT_ID: canara_loan_vehicle
+BANK: CANARA
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2025-12-12
+===
+Canara Bank Vehicle Loan (Canara Vehicle)
+
+Interest Rate:
+Ranges from 7.45% to 15.00% p.a. (mean rate approximately 9.09%),
+effective 12 December 2025.
+
+Products:
+- Canara Vehicle — the standard car/vehicle loan product.
+- Canara Green Wheels — a dedicated electric-vehicle financing scheme,
+  matching the "green auto loan" pattern seen at other banks (e.g.
+  SBI's Green Car Loan, Bank of Baroda's not having a direct
+  equivalent named product).
+
+For eligibility, exact loan amount, tenure, margin/down-payment, and
+documents required, check the specific product's own page (Canara
+Vehicle vs. Canara Green Wheels have separate terms) or a branch.

@@ -1,0 +1,10 @@
+SOURCE: https://centralbank.bank.in/en/node/418 and https://centralbank.bank.in/retail-scheme-interest (rate card)
+DOCUMENT_ID: centralbank_loan_vehicle
+BANK: CENTRAL_BANK
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-19
+===
+Central Bank of India car loan / vehicle loan interest rate ranges from
+7.65% to 9.30% p.a. for 4-wheelers, and 10.25% to 11.35% p.a. for
+2-wheelers, linked to RBLR.

@@ -1,0 +1,33 @@
+SOURCE: https://centralbank.bank.in/en/interest-rates-on-deposit
+DOCUMENT_ID: centralbank_fd_rates
+BANK: CENTRAL_BANK
+CATEGORY: DEPOSIT
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-19
+===
+Central Bank of India Fixed Deposit (FD) Interest Rates
+
+Central Bank of India's current fixed deposit (FD) interest rate for the
+general public ranges from 3.00% to 6.25% p.a. depending on tenure. The
+1-year FD interest rate is 6.10% for the general public and 6.60% for
+senior citizens.
+
+Domestic Term Deposit Rates (below Rs. 3 crore), w.e.f. 10.08.2026:
+
+Tenure                              General    Senior Citizen
+7-14 days                           3.00%      3.50%
+15-30 days                          3.50%      4.00%
+31-45 days                          3.50%      4.00%
+46-59 days                          4.25%      4.75%
+60-90 days                          4.00%      4.50%
+91-179 days                         4.25%      4.75%
+180-270 days                        5.50%      6.00%
+271-364 days                        6.00%      6.50%
+1 year to less than 2 years         6.10%      6.60%
+2 years to less than 3 years        6.25%      6.75%
+3 years to less than 5 years        6.00%      6.50%
+5 years and above up to 10 years    6.00%      6.50%
+
+Note: senior citizens receive a flat additional premium built into the
+rates above (0.50% across most tenures). Bulk deposits (Rs. 3 crore and
+above) are priced separately and not covered here.

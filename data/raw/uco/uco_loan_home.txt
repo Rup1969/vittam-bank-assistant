@@ -1,0 +1,39 @@
+SOURCE: https://uco.bank.in/en/web/guest/home-loan and https://uco.bank.in/repo (rate card)
+DOCUMENT_ID: uco_loan_home
+BANK: UCO
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-19
+===
+UCO Bank Home Loan (UCO Home)
+
+UCO Bank's home loan interest rate ranges from 7.40% to 9.50% p.a.
+(UCO Float benchmark 5.50% + 2.80% base = 8.30%, with the final rate
+depending on CIBIL score). Borrowers with a CIBIL score of 850+ get the
+best rate: a 0.05% spread with a -0.95% strategic discount, landing at
+7.40%.
+
+Eligibility:
+Indian residents with a regular source of income; NRIs and PIOs also
+eligible. Minimum age 21 years; maximum age for full repayment is 75
+years for all borrower classes.
+
+Loan Amount:
+No upper cap for construction, purchase, extension, or takeover loans.
+Repair and renovation loans are capped at Rs. 50 lakh.
+
+Margin:
+- Up to Rs. 30 lakh: 10%.
+- Rs. 30 lakh to Rs. 75 lakh: 20%.
+- Above Rs. 75 lakh: 25%.
+
+Tenure:
+Maximum 30 years.
+
+Processing/Documentation Charges:
+50% waiver for offline sanctions, 100% waiver for STP (straight-through
+processing) sanctions — both valid until 31 March 2026.
+
+Other:
+Women borrowers get an additional 0.05% rate concession. An interest
+concession is also available for takeover (balance-transfer) loans.

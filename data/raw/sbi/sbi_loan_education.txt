@@ -1,0 +1,45 @@
+SOURCE: https://sbi.bank.in/web/personal-banking/loans/education-loans and https://sbi.bank.in/web/yono/blog/guide-to-education-loans-in-india-types-eligibility-and-benefits
+DOCUMENT_ID: sbi_loan_education
+BANK: SBI
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+===
+SBI Education Loan
+
+Interest Rate:
+Starting from 6.90% p.a. (terms and conditions apply). The page does
+not display a single last-updated date for this headline rate —
+verify against the current rates page before quoting to a customer.
+
+Eligibility:
+- Resident Indian, or OCI (Overseas Citizen of India) resident in
+  India.
+- A co-applicant (typically a parent or guardian) may be required in
+  certain cases.
+- Admission must be secured at a recognised institution (in India or
+  overseas, depending on the scheme).
+
+Purpose:
+Financing higher education, including studies at Quality Higher
+Educational Institutions (QHEIs) in India, overseas studies, and skill
+development courses.
+
+Scheme Variants (indicative loan-amount bands):
+- Skill Loan: up to Rs. 7.5 lakh.
+- Studies Abroad / Global Ed-Vantage scheme: above Rs. 20 lakh (for
+  overseas study financing).
+- Scholar Loan Scheme: for premier institutions (IITs, IIMs, NITs,
+  etc.) — offers up to 100% financing with no processing fee.
+- Student Loan Scheme: for Indian nationals pursuing higher education
+  with secured admission, in India or abroad.
+
+Government-Backed Route:
+Applicants can also apply through the PM Vidyalaxmi Scheme
+(pmvidyalaxmi.co.in / sbi.bank.in/web/personal-banking/sbi-pm-vidyalaxmi),
+which offers collateral-free, guarantor-free education loans to
+students admitted at QHEIs, aggregating multiple lenders including
+SBI.
+
+Documents and exact tenure/moratorium terms vary by scheme — check the
+specific scheme page (Student Loan, Scholar Loan, Global Ed-Vantage)
+or a branch for a firm quote before advising a customer.

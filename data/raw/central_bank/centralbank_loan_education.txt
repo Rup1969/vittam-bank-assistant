@@ -1,0 +1,30 @@
+SOURCE: https://centralbank.bank.in/en/loan-index and https://centralbank.bank.in/retail-scheme-interest (rate card)
+DOCUMENT_ID: centralbank_loan_education
+BANK: CENTRAL_BANK
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-19
+===
+Central Bank of India Education Loan
+
+Central Bank of India's education loan interest rate is tiered by
+institute category:
+- AAA-category institutes: Repo + 1.50% (6.75% p.a.).
+- A-category (MBA/Medical/Engineering courses): RBLR - 0.35% (7.90% p.a.).
+- C-category institutes: RBLR + 1.25% (9.50% p.a.).
+
+Schemes Offered:
+- Cent Vidyarthi: main education loan scheme, up to Rs. 200 lakh for
+  studies in India and abroad, covering fees payable to the
+  college/school/hostel.
+- Cent Skill Loan: for Indian nationals admitted to government-run or
+  NSDC-supported skill-development courses; no age restriction.
+- Cent PM Vidyalaxmi Scheme: for meritorious students admitted to India's
+  top-ranked Quality Higher Educational Institutions (covers a curated
+  list of institutes).
+- MBA/E-MBA Education Loan: no margin required, no collateral security
+  except assignment of future income.
+
+The actual rate applicable depends on which institute/course category
+the student's admission falls under — verify the specific category with
+the bank before assuming a rate.

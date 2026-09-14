@@ -1,0 +1,23 @@
+SOURCE: https://www.mymoneymantra.com/pnb-personal-loan-interest-rates and https://www.paisabazaar.com/punjab-national-bank/personal-loan/, https://www.codeforbanks.com/banking/personal-loan/punjab-national-bank/personal-loan-interest-rates/ (cross-referenced secondary sources; same source as pnb_loan_personal — split into a separate doc 2026-08-25 so the headline rate chunk stays short and competitive in retrieval; see PROJECT_STATUS.md §27-28; verify current rate with the bank)
+DOCUMENT_ID: pnb_loan_personal_eligibility
+BANK: PNB
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-06-01
+===
+Punjab National Bank Personal Loan — Eligibility, Tenure, and Fees
+
+Eligibility:
+- Minimum CIBIL score of around 650 typically expected.
+- Age: minimum 21 years, maximum 60 years at loan maturity.
+- Salaried applicants are generally expected to either hold their salary
+  account with PNB or have their employer agree to deduct the EMI
+  directly from salary.
+
+Tenure & Fees:
+Tenure up to 72 months. Processing fee up to 1% of the loan amount,
+waived (nil) for defence personnel in most reported schemes.
+
+This is a headline reference summarizing third-party-reported terms —
+personal loan pricing is highly profile-dependent; always confirm the
+applicant's actual quoted rate and eligibility with the bank.

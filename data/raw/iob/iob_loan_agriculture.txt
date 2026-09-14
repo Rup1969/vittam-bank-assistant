@@ -1,0 +1,33 @@
+SOURCE: https://www.iob.bank.in/en/faqs-on-kisan-credit-card and https://www.iob.bank.in/en/new-kisan-credit-card, https://www.paisabazaar.com/indian-overseas-bank/kisan-credit-card/ (cross-referenced; verify current rate with the bank)
+DOCUMENT_ID: iob_loan_agriculture
+BANK: IOB
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-15
+===
+Indian Overseas Bank — Kisan Credit Card
+
+Purpose:
+A revolving credit facility for farmers' short-term production credit
+and allied agricultural needs, per the standard nationwide KCC scheme
+that IOB, like other public sector banks, implements.
+
+Security Requirements:
+- Existing borrowers with a satisfactory 2-year repayment track record
+  at IOB: no collateral required for aggregate short-term production
+  loans up to Rs. 3 lakh.
+- New borrowers, loans up to Rs. 1 lakh: security via crop
+  hypothecation or assets created from the loan.
+- New borrowers, loans between Rs. 1 lakh and Rs. 3 lakh: suitable
+  collateral may additionally be required (a stricter stance than
+  existing-borrower terms above).
+
+Interest Rate:
+Not confirmed from public secondary sources for the current period —
+IOB participates in the government's Interest Subvention Scheme for
+short-term crop loans (like other public sector banks, typically around
+7% p.a. effective rate for qualifying loans up to Rs. 3 lakh); confirm
+the current effective rate with the bank.
+
+This is a headline reference — confirm the current effective rate and
+exact collateral thresholds with the bank or nearest branch.

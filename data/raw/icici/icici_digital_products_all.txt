@@ -1,0 +1,32 @@
+SOURCE: https://www.icici.bank.in/blogs/mobile-banking/imobile-features and https://www.icici.bank.in/personal-banking/payments/money-transfer/upi (cross-referenced)
+DOCUMENT_ID: icici_digital_products_all
+BANK: ICICI
+CATEGORY: DIGITAL
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-15
+===
+ICICI Bank — Digital Banking Products
+
+iMobile Pay:
+ICICI Bank's unified mobile banking + payments app (Android/iOS) —
+described as India's first app offering both UPI payments and full
+banking services for ANY bank's customers, not just ICICI account
+holders. Covers savings accounts, investments, loans, and credit cards
+alongside payments.
+
+UPI Features:
+Pay to any UPI ID or merchant via QR code, peer-to-peer transfers, and
+bill payments/recharges, all secured by UPI PIN. A "Pay to Contacts"
+feature shows UPI IDs of contacts across different payment apps/wallets
+for easier transfers. UPI transactions are instant and available 24x7,
+including bank holidays. Multiple bank accounts (ICICI or otherwise)
+can be linked within the app, with the user choosing which account to
+use per transaction.
+
+Other Services via iMobile Pay:
+Utility bill payments, mobile recharges, movie ticket booking, travel
+ticket booking, gift cards, and investments in mutual funds, FDs, and
+RDs — all from within the single app.
+
+Confirm current app features and UPI limits with the bank, since these
+are periodically revised by NPCI/RBI guidance as well as bank policy.

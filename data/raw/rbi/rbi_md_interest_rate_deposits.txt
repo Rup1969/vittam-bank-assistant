@@ -1,0 +1,42 @@
+SOURCE: RBI Master Direction (Reserve Bank of India - Interest Rate on Deposits) Directions, 2025 (RBI/2025-26/134), effective 1 April 2025; catalog PDF: rbidocs.rbi.org.in/rdocs/notification/PDFs/153MD.PDF (CAPTCHA-gated for direct fetch — content below is cross-checked from multiple regulatory-tracking sources reporting the official text; verify against the primary Direction before treating as legally binding)
+DOCUMENT_ID: rbi_md_interest_rate_deposits
+BANK: RBI
+CATEGORY: RATES
+SOURCE_TYPE: RBI_MASTER_DIRECTION
+DATE: 2025-04-01
+===
+RBI Master Direction — Interest Rate on Deposits (Commercial Banks)
+
+Consolidates and replaces the previous 2016-era Master Directions on
+deposit interest rates, effective 1 April 2025, applicable to all
+banks in India (not commercial banks alone).
+
+Premature Withdrawal:
+- Banks may choose to offer term deposits WITHOUT a premature
+  withdrawal option, EXCEPT that all term deposits from individuals
+  (singly or jointly held) of Rs. 1 crore and below MUST carry a
+  premature withdrawal facility — this is a floor protection for
+  retail depositors, not optional for the bank.
+- A prematurely withdrawn deposit earns interest at the rate
+  applicable to the amount/period actually held, NOT the originally
+  contracted rate for the full tenor.
+- No interest at all is payable if premature withdrawal happens before
+  completing the minimum period of 7 days.
+
+Senior Citizens / Retired Staff:
+Banks may offer additional interest to specified categories including
+senior citizens and retired staff — this is permitted, not a fixed
+mandated premium (compare to the specific rate a given bank actually
+publishes, e.g. sbi_rates_deposit_structured, indianbank rates).
+
+General Rules Banks Must Follow:
+- Must adopt a Board-approved policy covering the interest-rate
+  schedule, premature-withdrawal penalties, and specific rules for
+  NRE/NRO/FCNR(B) deposits.
+- Interest rates must be UNIFORM across all branches and customers for
+  comparable deposits accepted on the same date — negotiating an
+  individual customer's rate is prohibited.
+
+This is the regulatory floor/framework — an individual bank's actual
+published rates (e.g. SBI's or Indian Bank's FD tables) must comply
+with this Direction but are set by the bank itself within it.

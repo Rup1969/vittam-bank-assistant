@@ -1,0 +1,28 @@
+SOURCE: https://www.paisabazaar.com/punjab-national-bank/business-loan/ (PNB Sampatti scheme reference; secondary source cross-referenced, official pnb.bank.in product page returned an error during direct fetch — verify current terms with the bank)
+DOCUMENT_ID: pnb_loan_mortgage
+BANK: PNB
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-01
+===
+Punjab National Bank — Loan Against Property (PNB Sampatti Scheme)
+
+Purpose:
+A mortgage-backed loan against an owned residential or commercial
+property, primarily positioned for business-related requirements — e.g.
+raising working capital, or purchasing/constructing/renovating/expanding
+business premises — though loan-against-property products at other
+public sector banks are typically also usable for other large personal
+expenses subject to the bank's policy.
+
+Structure:
+Loan amount and interest rate are determined against the appraised
+value of the mortgaged property (loan-to-value ratio) and the
+applicant's income/business profile — this document does not have a
+verified current rate figure; confirm directly with the bank.
+
+This is a placeholder-level summary due to limited verified public
+information on this specific scheme's current rate card — treat this as
+a starting point only and always confirm the current interest rate,
+loan-to-value ratio, and eligibility with the bank before advising a
+customer.

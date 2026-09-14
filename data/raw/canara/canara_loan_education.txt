@@ -1,0 +1,35 @@
+SOURCE: https://www.canarabank.bank.in/vidya-turant and https://www.canarabank.bank.in/iba-model-education-loan-scheme
+DOCUMENT_ID: canara_loan_education
+BANK: CANARA
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+===
+Canara Bank Education Loan
+
+Vidya Turant Scheme:
+Interest rate starts from 6.85%, ranging 8.60%-11.35% depending on the
+institution's category. Collateral-free and guarantor-free regardless
+of loan amount.
+
+Eligibility:
+Any Indian student who has cleared the previous qualifying exam and
+secured admission via entrance test/merit at an eligible institution
+under the scheme, including premier institutions: IITs, IIMs, NITs,
+IISc, ISB (Hyderabad & Mohali), and other recognised institutes.
+
+Loan Amount (by institution tier):
+- ISB (Hyderabad & Mohali): up to Rs. 50 lakh.
+- Select premier institutes: up to Rs. 40 lakh.
+- Other approved institutions: up to Rs. 30 lakh.
+
+Repayment Tenure:
+Up to 15 years, not counting the moratorium period.
+
+Processing Fee:
+None (no processing fee under this scheme).
+
+IBA Model Education Loan Scheme:
+A separate, standardised education loan scheme following the Indian
+Banks' Association (IBA) model template — check this scheme's own
+page for terms, since it differs from Vidya Turant (which is
+specifically restricted to premier-institution admissions).

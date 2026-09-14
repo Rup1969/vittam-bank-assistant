@@ -1,0 +1,30 @@
+SOURCE: https://bankofbaroda.bank.in/loans/personal-loan and https://bankofbaroda.bank.in/interest-rate-and-service-charges/retail-loans-interest-rates
+DOCUMENT_ID: bob_loan_personal
+BANK: BOB
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2025-12-06
+===
+Bank of Baroda Personal Loan
+
+Interest Rate (linked to BRLLR, 7.90% as of 6 December 2025, plus a
+Strategic Premium (S.P.) that varies by applicant):
+- Baroda Personal Loan: BRLLR + S.P. + 2.00% to BRLLR + S.P. + 7.35%
+  (approximately 10.15%-15.50% overall), linked to the applicant's
+  CIBIL score — a better score gets a lower spread.
+- Baroda Digital Personal Loan: BRLLR + S.P. + 3.50% to BRLLR + S.P. +
+  8.85% (approximately 11.65%-17.00%) — the fully-digital, faster
+  variant carries a somewhat higher rate band than the standard
+  branch-assisted product.
+- Baroda Loan to Pensioners: 8.75%-11.40% depending on pensioner
+  category.
+
+Key Point: the exact rate depends heavily on the applicant's CIBIL
+score — quote the range, not a single figure, unless the applicant's
+score is known.
+
+For eligibility, loan amount, tenure, and documentation specifics,
+check the relevant product page (Baroda Personal Loan vs. Baroda
+Digital Personal Loan vs. Loan to Pensioners each has its own detail
+page) or a branch, since terms differ meaningfully between these
+variants.

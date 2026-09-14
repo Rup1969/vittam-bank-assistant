@@ -1,0 +1,44 @@
+SOURCE: https://www.axis.bank.in/accounts/savings-account and https://www.axis.bank.in/accounts/savings-account/basic-savings-account (official pages, fetched directly)
+DOCUMENT_ID: axis_savings_account
+BANK: AXIS
+CATEGORY: DEPOSIT
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-16
+===
+Axis Bank Savings Account — Minimum Balance Requirements
+
+Axis Bank's savings account minimum balance requirement depends on the
+account variant, ranging from zero (Basic Savings Bank Deposit Account)
+up to Rs. 10 lakh (Burgundy premium banking), with the most commonly
+opened variants requiring Rs. 12,000 to Rs. 25,000 as monthly average
+balance.
+
+Minimum balance by account variant (as listed on Axis Bank's official
+account-finder page):
+- Easy Access Digital Savings Account: Min. Avg. Balance Rs. 12,000;
+  initial funding Rs. 16,000.
+- Liberty Digital Savings Account: Min. Avg. Balance Rs. 25,000; initial
+  funding Rs. 25,000.
+- Burgundy Digital Savings Account (premium): Min. Avg. Balance Rs. 10
+  lakh; initial funding Rs. 5 lakh.
+- Basic Savings Bank Deposit Account (BSBDA) / PMJDY account: NO minimum
+  balance requirement at all — "top-tier banking facilities without the
+  necessity of maintaining a minimum balance." Available to resident
+  individuals, including minors, who don't already hold a BSBD/PMJDY
+  account elsewhere. Comes with a free RuPay debit card and zero balance
+  facility.
+
+Axis Bank's official account-finder tool also lists Regular, Premium,
+Women's, Senior Citizen, Kids, and Small & Basic account categories with
+minimum-balance filter bands from "Zero Balance" up to "Rs. 5 Lakh+" —
+the exact variant and its balance requirement should be confirmed
+against the specific product page before quoting, since Axis offers
+around 20 distinct savings account variants in total.
+
+Interest is credited quarterly. Fees and charges vary by account variant
+— check the specific product's fees page before quoting non-maintenance
+charges.
+
+Rates and minimum-balance requirements are revised periodically; verify
+against Axis Bank's official website before quoting to a customer as
+final.

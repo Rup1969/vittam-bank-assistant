@@ -1,0 +1,36 @@
+SOURCE: https://punjabandsind.bank.in/content/conveyance (same source as psb_loan_vehicle — split into a separate doc 2026-08-25 so the headline rate chunk stays short and competitive in retrieval; see PROJECT_STATUS.md §27)
+DOCUMENT_ID: psb_loan_vehicle_eligibility
+BANK: PUNJAB_SIND
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-19
+===
+Punjab & Sind Bank Vehicle Loan (PSB Apna Vahan) — Eligibility, Amount, Tenure, Margin, and Fees
+
+Eligibility:
+Minimum age 18 years; maximum age adjusted before 60 (non-pension
+service) or 70 (pension/others). Individuals, proprietorships, and
+business concerns are eligible; income can be combined with a spouse or
+children if they become co-borrowers.
+
+Loan Amount:
+- New vehicles: no maximum ceiling stated.
+- Old (used) vehicles: up to Rs. 75 lakh.
+
+Tenure:
+- New four-wheelers: maximum 84 months.
+- New two-wheelers: maximum 36 months.
+- Old vehicles: maximum 60 months (total repayment period plus vehicle
+  age cannot exceed 84 months).
+
+Margin (Down Payment):
+- New vehicles, general: 10%.
+- Government/PSU employees: 5%.
+- Government/PSU employees with a salary account at Punjab & Sind Bank:
+  0%.
+
+Processing Charges:
+- Four-wheeler: 0.25% of loan amount, minimum Rs. 1,000, maximum
+  Rs. 15,000.
+- Two-wheeler: 0.25%, minimum Rs. 1,000 (waived for bank staff and
+  pensioners).

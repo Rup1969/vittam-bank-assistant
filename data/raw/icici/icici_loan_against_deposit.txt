@@ -1,0 +1,41 @@
+SOURCE: https://www.icici.bank.in/personal-banking/deposits/fixed-deposit/overdraft-against-fd (official page, fetched directly)
+DOCUMENT_ID: icici_loan_against_deposit
+BANK: ICICI
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-16
+===
+ICICI Bank Overdraft Against Fixed Deposit (Loan Against Deposit)
+
+ICICI Bank's Overdraft Against FD is priced at the FD's own interest
+rate plus 2% for general customers, or FD rate plus 1% for senior
+citizens, with up to 90% of the FD value available instantly as an
+overdraft via the iMobile app or Net Banking, without breaking the FD.
+
+Key Terms:
+- Standard rate: FD rate + 2% (General customers) / FD rate + 1%
+  (Senior citizens).
+- Overdraft limit: up to 90% of the FD value, available instantly and
+  digitally.
+- No processing fee.
+- Interest charged only on the amount actually utilised, for the
+  period utilised.
+- The underlying FD continues to earn interest at its contracted rate
+  throughout.
+- Penalty: 5% p.a. on overdue or overdrawn amounts (default charge).
+- Fund transfer restriction: transfers from the OD account allowed only
+  to the linked Savings Account — no UPI, IMPS, NEFT, RTGS, or cash
+  deposits into the OD account itself.
+
+Eligibility: must be an existing ICICI Bank FD holder (Regular FD, Tax
+Saver FD, or Money Multiplier FD), with a linked Savings Account and
+valid Customer ID.
+
+Documents Required: KYC documents, FD receipt, signed application form.
+
+How to Apply: via ICICI Bank's iMobile app or Net Banking — fully
+digital, no branch visit required.
+
+Verify the current FD rate and applicable spread with the bank before
+quoting the exact overdraft rate to a customer, since it's derived
+from the specific FD's own rate.

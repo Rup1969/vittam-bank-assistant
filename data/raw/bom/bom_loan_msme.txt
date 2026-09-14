@@ -1,0 +1,25 @@
+SOURCE: https://bankofmaharashtra.bank.in/msme-large-credit
+DOCUMENT_ID: bom_loan_msme
+BANK: BOM
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-19
+===
+Bank of Maharashtra MSME / Business Loan Schemes
+
+Bank of Maharashtra offers a broad range of MSME schemes:
+- Own schemes: GST Credit Scheme, hospitality-sector loans, contractor
+  financing, transport-operator vehicle loans, machinery/equipment
+  schemes, professional/doctor loans, startup financing.
+- Government-backed programs: Pradhan Mantri Mudra Yojana, Stand-Up
+  India, PM SVANidhi, Emergency Credit Line Guarantee Scheme (ECLGS
+  5.0).
+- General facilities: collateral-free term loans, collateral-free cash
+  credit, regular cash credit arrangements.
+
+This is a summary-level entry only — the bank's MSME landing page names
+these schemes but does not publish inline interest rates, exact loan-
+amount ranges, collateral specifications, or CGTMSE guarantee coverage
+percentages; those live on each individual scheme's own sub-page, not
+separately fetched in this pass. Confirm exact terms with the bank
+before relying on any figure for these specific schemes.

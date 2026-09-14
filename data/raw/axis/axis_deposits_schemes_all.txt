@@ -1,0 +1,43 @@
+SOURCE: https://www.axis.bank.in/deposits/recurring-deposits and https://www.axis.bank.in/deposits/tax-saver-fixed-deposit (official pages, fetched directly)
+DOCUMENT_ID: axis_deposits_schemes_all
+BANK: AXIS
+CATEGORY: DEPOSIT
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-16
+===
+Axis Bank — Deposit Scheme Variants (Recurring Deposit & Tax Saver FD)
+
+Axis Bank offers a Recurring Deposit (RD) starting from a minimum
+monthly instalment of Rs. 500, with tenure from 6 months up to 10 years,
+and a 5-year Tax Saver Fixed Deposit for tax-saving investors — both
+distinct from the standard callable FD covered in axis_fd_rates.txt.
+
+Recurring Deposit (RD):
+- Minimum monthly instalment: Rs. 500.
+- Tenure: flexible, 6 months up to 10 years.
+- Interest compounded quarterly; the rate remains fixed for the chosen
+  tenure once the RD is opened.
+- TDS (Tax Deducted at Source) applies as per prevailing Income Tax
+  regulations.
+- Designed for disciplined monthly savings toward a specific goal
+  (e.g. home, education, emergency fund).
+
+Tax Saver Fixed Deposit:
+- Minimum investment: Rs. 100 (in multiples of Rs. 100).
+- Maximum investment: Rs. 1,50,000 per financial year.
+- Lock-in period: 5 years (no premature withdrawal permitted).
+- Tax benefit: deduction of up to Rs. 1.5 lakh under Section 123 read
+  with Schedule XV of the Income-tax Act, 2025 (the current tax-saving
+  FD provision — supersedes the earlier Section 80C reference used for
+  older tax-saver deposits).
+- Interest payout options: Reinvestment/Cumulative (quarterly
+  compounding), Quarterly Payout, or Monthly Payout — depositor's
+  choice at account opening.
+- Interest rates automatically shown are for Resident Deposits below
+  Rs. 3 crore.
+- TDS applies to accumulated interest per prevailing tax rates.
+
+Both schemes are separate products from Axis Bank's standard FD (see
+axis_fd_rates.txt) — verify current RD and Tax Saver FD rates on the
+bank's live rate card before quoting to a customer, since these are
+revised periodically.

@@ -1,0 +1,30 @@
+SOURCE: https://uco.bank.in/en/web/guest/personal-loan and https://uco.bank.in/repo (rate card)
+DOCUMENT_ID: uco_loan_personal
+BANK: UCO
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-19
+===
+UCO Bank Personal Loan (UCO Cash)
+
+UCO Bank's personal loan interest rate ranges from 10.20% to 13.45%
+p.a. (UCO Float benchmark 8.30%, final rate depending on employment
+type and CIBIL score). Government employees with a CIBIL score of 800+
+get the best rate: a 1.90% spread, landing at 10.20%.
+
+Eligibility and Loan Amount:
+- Central/State Government employees WITH a salary account at UCO
+  Bank: up to 20 times gross monthly income, capped at Rs. 20 lakh.
+- Government employees WITHOUT a salary account at UCO Bank: up to 5
+  times gross monthly income, capped at Rs. 5 lakh.
+- Other salaried employees: up to 10 times gross monthly income, capped
+  at Rs. 10 lakh.
+- Non-salaried individuals: up to 5 times gross monthly income, capped
+  at Rs. 5 lakh.
+
+Processing Fee:
+Nil for UCO Cash personal loans.
+
+Tenure:
+Not specified for the standard scheme on this page; the related
+"Shopper Loan" variant caps at 60 months.

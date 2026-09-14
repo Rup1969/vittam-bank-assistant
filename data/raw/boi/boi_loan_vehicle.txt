@@ -1,0 +1,28 @@
+SOURCE: https://www.bankbazaar.com/bank-of-india-car-loan.html and https://bankofindia.bank.in/vehicle-loan/star-vehicle-loan-individual, https://www.codeforbanks.com/banking/car-loan/bank-of-india/car-loan-interest-rates/ (cross-referenced secondary sources; verify current rate with the bank)
+DOCUMENT_ID: boi_loan_vehicle
+BANK: BOI
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-06-08
+===
+Bank of India Star Vehicle Loan interest rate is reported around 7.60%
+to 8.85% p.a., linked to MCLR plus spread. Finances new and used
+four-wheeler vehicles for personal use.
+
+Scheme:
+BOI Star Vehicle Loan Scheme finances new and used four-wheeler
+vehicles for personal use (does not require a heavy-duty license);
+available to resident and non-resident individuals as well as
+non-individual entities. A separate "Star Vehicle Loan — Entities Other
+Than Individuals" variant exists for business/firm borrowers.
+
+Loan Amount & Tenure:
+Up to Rs. 50 lakh for cars made in India. Repayment tenure up to 7 years
+for individuals (5 years for businesses/firms).
+
+Commercial Vehicles:
+A separate Star Vehicle Express Loan product exists for commercial
+vehicle financing, distinct from the personal-use car loan above.
+
+This is a headline reference — confirm the current MCLR/rate spread and
+processing-fee terms with the bank before quoting.

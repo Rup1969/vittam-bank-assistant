@@ -1,0 +1,43 @@
+SOURCE: RBI Master Direction (Commercial Banks - Branch Authorisation) Directions, 2025, issued 28 November 2025; catalog PDF: rbidocs.rbi.org.in/rdocs/notification/PDFs/147MD.PDF (CAPTCHA-gated for direct fetch — content below is cross-checked from multiple regulatory-tracking sources reporting the official text; verify against the primary Direction before treating as legally binding)
+DOCUMENT_ID: rbi_md_branch_authorisation
+BANK: RBI
+CATEGORY: GENERAL
+SOURCE_TYPE: RBI_MASTER_DIRECTION
+DATE: 2025-11-28
+===
+RBI Master Direction — Branch Authorisation (Commercial Banks)
+
+Consolidates rules on opening, shifting, merging, and closing banking
+outlets and related off-site units (ATMs, Business Correspondent
+points, Doorstep Banking arrangements). Applies to all commercial
+banks except Small Finance Banks, Payments Banks, and Local Area
+Banks. In force with immediate effect from 28 November 2025.
+
+Board Responsibility:
+Banks' Boards must adopt a board-approved policy for branch-network
+decisions, and for Digital Banking Units (DBUs), Business
+Correspondents (BCs), Mobile/Off-site ATMs, and Doorstep Banking —
+with clearly assigned oversight duties, not left to branch-level
+discretion.
+
+Opening Outlets WITHOUT Prior RBI Permission:
+Scheduled commercial banks may open new banking outlets without RBI's
+prior permission, PROVIDED at least 25% of the outlets opened in a
+period are in Unbanked Rural Centres (URCs) — including rural,
+Left-Wing-Extremism (LWE) affected districts, or North-Eastern states.
+Opening MORE than the required 25% in a given period earns a carried-
+forward credit usable for up to 2 subsequent years.
+
+When Prior RBI Approval IS Required:
+- Opening at sensitive locations (as defined by RBI/security
+  considerations).
+- Branches conducting government business.
+- Any bank whose general branch-opening permission has been withdrawn
+  by RBI.
+Such requests go through the PRAVAAH portal and, once granted, remain
+valid for one year.
+
+Minimum Service Standards:
+The Direction also prescribes minimum service standards for fixed-
+point service delivery at a banking outlet (not detailed further here
+— check the primary Direction for the specific standards).

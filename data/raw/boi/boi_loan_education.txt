@@ -1,0 +1,32 @@
+SOURCE: https://gradright.com/bank-of-india-education-loan-for-studying-abroad-interest-rates-documents-application-process/ and https://bankofindia.bank.in/education-loan/star-education-loan-studies-abroad, https://bankofindia.bank.in/education-loan/star-pm-vidyalaxmi-education-loan (cross-referenced secondary sources; verify current rate with the bank)
+DOCUMENT_ID: boi_loan_education
+BANK: BOI
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-05-01
+===
+Bank of India Star Education Loan
+
+Products:
+- Star Education Loan (Studies in India)
+- Star Education Loan (Studies Abroad) — up to Rs. 150 lakh, interest
+  rate reported starting around 8.40% p.a. (as of May 2026)
+- Star Education Loan for Working Professionals
+- Star PM-Vidyalaxmi Education Loan — linked to the government's
+  PM-Vidyalaxmi portal/scheme
+
+Moratorium:
+Course duration plus one year, for both the India and Abroad variants.
+Only simple interest is charged during the moratorium period; the full
+applicable rate applies once regular repayment begins.
+
+Government Interest Subsidy:
+Families with annual income up to Rs. 8 lakh may be eligible for an
+interest subsidy under CSIS (now integrated into the PM-Vidyalaxmi
+portal), plus a reported 3% interest subvention under PM-Vidyalaxmi
+during the moratorium period for eligible applicants.
+
+This is a headline reference — exact eligibility (course/institution
+list, income thresholds, collateral requirement above a certain loan
+size) and the current applicable rate should be confirmed with the bank
+for a specific applicant.

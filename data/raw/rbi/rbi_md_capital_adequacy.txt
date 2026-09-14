@@ -1,0 +1,37 @@
+SOURCE: RBI Master Direction (Commercial Banks - Prudential Norms on Capital Adequacy) Directions, 2025, issued 28 November 2025 (updated as on 18 May 2026); catalog PDF: rbidocs.rbi.org.in/rdocs/notification/PDFs/151MD.PDF (CAPTCHA-gated for direct fetch — content below is cross-checked from multiple regulatory-tracking sources covering this and closely related AIFI/RRB Directions issued the same framework; verify the commercial-bank-specific figures against the primary Direction before treating as legally binding)
+DOCUMENT_ID: rbi_md_capital_adequacy
+BANK: RBI
+CATEGORY: PRUDENTIAL
+SOURCE_TYPE: RBI_MASTER_DIRECTION
+DATE: 2025-11-28
+===
+RBI Master Direction — Prudential Norms on Capital Adequacy (Commercial Banks)
+
+Minimum CRAR (Capital to Risk-weighted Assets Ratio):
+9% of risk-weighted assets at all times — the baseline requirement
+before adding the capital conservation buffer below.
+
+Capital Conservation Buffer (CCB):
+An additional 2.5% is required on top of the base 9% CRAR, making the
+effective minimum CRAR requirement 11.5% in practice.
+
+Tier 1 / Tier 2 Composition (per RBI's parallel Direction for All
+India Financial Institutions, which follows the same broad framework —
+confirm the exact commercial-bank split against the primary Direction):
+- Common Equity Tier 1 (CET1): minimum around 5.5% of risk-weighted
+  assets.
+- Total Tier 1 capital: minimum around 7%.
+- Tier 2 capital: capped at a maximum of 100% of total Tier 1 capital
+  for capital-adequacy compliance purposes.
+
+Why This Matters Operationally:
+CRAR is the headline solvency metric RBI and the public use to judge a
+bank's financial strength — falling below the effective 11.5%
+threshold (base + buffer) can trigger supervisory action (see RBI's
+Prompt Corrective Action framework, a separate mechanism not detailed
+here).
+
+Given related Directions exist for RRBs, AIFIs, and NBFCs with
+different specific percentages, always confirm which entity-type
+Direction applies before quoting a CRAR figure for a non-commercial-bank
+entity.

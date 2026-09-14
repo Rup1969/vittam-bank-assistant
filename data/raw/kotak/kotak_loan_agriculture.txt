@@ -1,0 +1,49 @@
+SOURCE: Kotak Mahindra Bank's own official Crop Loan/KCC pages — https://www.kotak.bank.in/en/business/loans/crop-loan.html, .../crop-loan/eligibility.html, .../crop-loan/fees-and-charges.html, .../crop-loan/features.html (read directly, 2026-08-24). Margin and a specific collateral/security threshold are NOT stated anywhere on Kotak's own pages — flagged honestly below as a genuine gap, not inferred from another bank's rules.
+DOCUMENT_ID: kotak_loan_agriculture
+BANK: KOTAK_MAHINDRA
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-24
+===
+Kotak Mahindra Bank Kisan Credit Card
+
+Purpose:
+A revolving credit facility for farmers' cultivation and allied
+agricultural credit needs, under the nationwide Kisan Credit Card
+scheme — aimed at providing hassle-free, timely credit support through
+a single-window facility for cultivation and other farming-related
+needs. Kotak calls this product "Crop Loan," with the Kisan Credit
+Card as its working-capital component and a separate Agri Term Loan
+for medium-term needs (land development, irrigation, farm assets).
+
+Eligibility (from Kotak's own eligibility page):
+All Farmers — Individuals or Joint borrowers who are owner
+cultivators. Minimum age 21, maximum age 65 at loan tenure end; if the
+primary borrower is over 65, a co-borrower within the normal age
+range must be included.
+
+Credit Limit:
+The working-capital (KCC) limit is fixed based on the Scale of
+Finance (SOF) for the crops grown on the borrower's land, with an
+annual review; the limit is renewed after 5 years. The separate Agri
+Term Loan component runs for a maximum fixed term of 5 years.
+
+Interest Rate: Prevailing MCLR/reference rate at the low end, up to a
+stated maximum of 24% p.a. depending on the borrower's profile.
+
+Charges (from Kotak's own fees-and-charges page): processing fee up
+to 2% of the sanctioned limit; documentation charge Rs. 5,000; credit
+administration charge 1% of the sanctioned limit; supervision/crop
+verification Rs. 750-3,000 every 6 months depending on limit size;
+penal charge 8% p.a. on overdue amounts.
+
+Validity: Kisan Credit Card working-capital limit is renewed after 5
+years, with an annual review in between.
+
+Honest gap: Kotak's own pages state processing fees and other charges
+in detail but do not publish a specific Margin percentage or a
+rupee-threshold collateral/security requirement for the Crop
+Loan/KCC — unlike PNB, BOI, Indian Bank, or Bank of Maharashtra, whose
+own pages do state these. Not inferred or borrowed from another
+bank's rules; confirm the current margin and security requirement
+directly with Kotak or a nearest branch.

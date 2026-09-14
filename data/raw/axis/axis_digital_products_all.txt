@@ -1,0 +1,36 @@
+SOURCE: https://www.axis.bank.in/bank-smart/open-by-axis-bank (official page) cross-referenced with app store listings and secondary sources
+DOCUMENT_ID: axis_digital_products_all
+BANK: AXIS
+CATEGORY: DIGITAL
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-15
+===
+Axis Bank — Digital Banking Products
+
+open by Axis Bank (formerly "Axis Mobile"):
+Axis Bank's mobile banking app — rebranded from "Axis Mobile" to "open
+by Axis Bank." Covers UPI payments, adding payees, scan-and-pay, and
+creating a personal UPI QR code. Supports mobile/DTH recharges and
+standard account management. Both names ("Axis Mobile" and "open by
+Axis Bank") may still appear across app stores/search results during
+the rebrand transition.
+
+UPI Features:
+Real-time instant transfers, available even on weekends/holidays. Users
+can create and share a unique UPI ID, and set up to 10 frequent
+transactions as favorites for one-click repeat payments. UPI LITE is
+also supported for faster, smaller transactions. Even non-Axis Bank
+customers can use the app's UPI service.
+
+BHIM Axis Pay:
+A separate, dedicated UPI-only app alongside the main mobile banking
+app.
+
+Security:
+A 6-digit MPIN validates fund transfers and app transactions. An
+"enhanced Safety Center" feature helps customers monitor and control
+their fund transfers and UPI activity.
+
+Confirm current app names (the Axis-Mobile-to-open rebrand may still be
+rolling out) and UPI limits with the bank, since these are periodically
+revised by NPCI/RBI guidance as well as bank policy.

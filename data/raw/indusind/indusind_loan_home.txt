@@ -1,0 +1,50 @@
+SOURCE: https://www.indusind.bank.in/in/en/personal/loans/home-loan.html (official page — rate table not statically visible on page) cross-referenced with secondary aggregators (CreditMantri, Paisabazaar, Wishfin, UrbanMoney) for the headline range
+DOCUMENT_ID: indusind_loan_home
+BANK: INDUSIND
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-16
+===
+IndusInd Bank Home Loan
+
+IndusInd Bank's home loan interest rate is linked to its external
+Benchmark Rate (currently 5.25% per the official page), with the
+customer's final rate depending on profile, collateral, and credit
+score. Secondary sources report a fairly wide range for the actual
+starting/applicable rate — figures seen include starting rates from
+7.50% up to 8.25%-8.35%, with the broader applicable range commonly
+cited as roughly 8.25%-10.00% p.a. (some sources cite a wider 8%-15%
+band depending on the applicant's profile and prevailing base rate).
+A credit score of 750 or above is generally needed to secure the
+lower end of the range.
+
+Rate Type:
+Floating rate, linked to the external Benchmark Rate — reset in
+response to RBI repo rate changes.
+
+Tenure:
+Up to 30 years.
+
+Key Features:
+- Wide range of home loan products (purchase, balance transfer, top-up,
+  plot + construction, NRI home loans, renovation/extension)
+- Doorstep service, simplified documentation
+- No prepayment charges on floating-rate loans
+- Access to a pre-approved project inventory
+
+Eligibility (age / experience):
+- Salaried (govt./reputed companies): 24-60 years, 3 years experience
+- Self-employed professionals (Doctor/Engineer/CA/CS): 24-70 years, 3 years
+- Self-employed non-professionals (ITR filers): 24-65 years, 3 years
+
+Rate Reset Protection (per RBI Aug 2023 notification):
+If the benchmark rate rises, tenure is extended first (EMI held
+constant) up to a maximum of 60 months beyond the original sanctioned
+tenure, with EMI increased only after that cap is reached; borrower age
+at maturity may not exceed 80 years as a result of such elongation.
+
+This is a headline reference only — the bank's own page does not
+display a fixed numeric starting rate, and secondary sources disagree
+on the exact figure (7.50% to 8.35% starting, depending on source and
+date). Confirm the current rate and the applicant's specific quoted
+spread with the bank before quoting.

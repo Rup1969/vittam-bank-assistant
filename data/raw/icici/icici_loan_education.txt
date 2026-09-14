@@ -1,0 +1,26 @@
+SOURCE: https://www.icici.bank.in/personal-banking/loans/education-loan/interest-rates (real published rate card, added 2026-08-20 via the automation pipeline's manual-load path; this RAG doc updated 2026-08-24 to match)
+DOCUMENT_ID: icici_loan_education
+BANK: ICICI
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-24
+===
+ICICI Bank Education Loan
+
+Interest Rate:
+ICICI Bank's education loan rates range approximately 8.50%-10.95% p.a.
+depending on the course/institute category and whether the loan is
+secured (collateral-backed) or unsecured — per ICICI's own published
+rate card. Representative rates: Engineering/Management at select
+domestic institutes (secured) 8.50%; Medical courses (secured) 8.75%;
+Abroad studies (secured) 9.00%; PM Vidyalaxmi government scheme 9.45%;
+CGFSEL government subsidy scheme 10.95%. Unsecured variants of the same
+course category run roughly 0.75-1.25 percentage points above the
+secured rate.
+
+ICICI Bank does offer education loan products for domestic and
+international study, typically with a moratorium of the course
+duration plus a grace period and a multi-year repayment tenure —
+confirm the exact rate for a specific course/institute category,
+moratorium terms, and collateral thresholds with the bank before
+advising a customer.

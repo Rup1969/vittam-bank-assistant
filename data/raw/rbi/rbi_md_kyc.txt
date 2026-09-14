@@ -1,0 +1,32 @@
+SOURCE: RBI Master Direction (Commercial Banks - Know Your Customer) Directions, 2025, issued 28 November 2025, amended 12 June 2025 (Amendment Directions, 2025); catalog PDF: rbidocs.rbi.org.in/rdocs/notification/PDFs/169MD.PDF (CAPTCHA-gated for direct fetch — content below is cross-checked from multiple regulatory-tracking sources reporting the official text, not scraped from the PDF itself; verify wording against the primary Direction before treating as legally binding)
+DOCUMENT_ID: rbi_md_kyc
+BANK: RBI
+CATEGORY: KYC
+SOURCE_TYPE: RBI_MASTER_DIRECTION
+DATE: 2025-11-28
+===
+RBI Master Direction — Know Your Customer (KYC), Commercial Banks
+
+Issued 28 November 2025 as one of RBI's sector-specific KYC Directions
+(10 institution types covered, including commercial banks, NBFCs,
+payments banks, and cooperative banks, each under its own Direction).
+
+Risk Categorisation:
+Customers must be categorised as Low, Medium, or High risk based on
+identity, business/occupation, geography, and transaction-type factors.
+
+Periodic KYC Update Frequency (by risk category):
+- High-risk customers: full KYC updation at least once every 2 years.
+- Medium-risk customers: once every 8 years.
+- Low-risk customers: once every 10 years.
+
+June 2025 Amendment:
+The Reserve Bank of India (KYC) (Amendment) Directions, 2025 (effective
+immediately from 12 June 2025) gave low-risk individual customers extra
+time to complete a due periodic KYC update — up to one year after the
+due date, or up to 30 June 2026, whichever is later.
+
+This is a binding regulatory rule, not guidance — banks are required to
+enforce these periodicities, not merely recommend them to customers.
+Given the amendment history, always check whether a further amendment
+has superseded these specific timelines before treating them as final.

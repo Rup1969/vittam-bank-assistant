@@ -1,0 +1,52 @@
+DOCUMENT_ID: loan_vehicle
+CATEGORY: LOAN
+PRODUCT: IB Vehicle Loan
+SOURCE: indianbank.bank.in/category/vehicle-loan/ (base product) and Indian Bank Vehicle Loan rate card, official docx, user-supplied (interest rate figures below, added via the automation pipeline's manual-load path; this RAG doc updated 2026-08-26 to match)
+============================================================
+
+IB VEHICLE LOAN
+
+Interest Rate:
+- IB Vehicle Loan (new car): 7.55%-8.85% p.a.
+- IB Vehicle Loan (Eco Vahan, electric vehicles): 7.50%-8.75% p.a. —
+  the lowest published rate among Indian Bank's vehicle loan schemes.
+- IB Vehicle Loan (Used Car): 9.55%-11.65% p.a.
+- 2-Wheeler: 8.90%-10.40% p.a.
+- Van/Minibus/Bus/Ambulance (institutional): 8.75%-9.40% p.a.
+- Rates are linked to RLLR (Repo-Linked Lending Rate) — floating, so the
+  above ranges move with RBI's repo rate over the loan's life. A fixed
+  ROI option is also available.
+
+Purpose:
+Purchase of new or used vehicles — two-wheelers, four-wheelers (cars/SUVs), and commercial vehicles.
+
+Target Group:
+- Salaried individuals
+- Professionals and self-employed
+- Businessmen with regular income
+
+Eligibility:
+- Resident individuals with stable income
+- Minimum age: 21 years
+- Both new and used vehicles covered
+
+Loan Amount:
+- New vehicles: up to 85%–90% of on-road price
+- Used vehicles: based on valuation report and age of vehicle
+
+Repayment:
+- New cars: up to 84 months (7 years)
+- Two-wheelers: up to 60 months (5 years)
+- Used vehicles: shorter tenure based on vehicle age
+
+Security:
+- Hypothecation of the vehicle purchased
+
+Documents Required:
+- Income proof (salary slips / ITR)
+- KYC documents
+- Vehicle quotation / proforma invoice
+- Bank statements (last 6 months)
+
+Online Apply: apps.indianbank.bank.in/ibapps/index.html
+Helpline: 1800 1700

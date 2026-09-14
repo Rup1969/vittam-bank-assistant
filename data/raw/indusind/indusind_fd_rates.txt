@@ -1,0 +1,54 @@
+SOURCE: https://www.indusind.bank.in/in/en/personal/fixed-deposit-interest-rate.html (official page, verified via automated extraction and cross-checked against automation/fd_rates DuckDB table)
+DOCUMENT_ID: indusind_fd_rates
+BANK: INDUSIND
+CATEGORY: DEPOSIT
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-07-24
+===
+IndusInd Bank Fixed Deposit Interest Rates (below Rs. 3 crore)
+
+IndusInd Bank's current fixed deposit (FD) interest rate for the general
+public ranges from 3.25% to 7.00% per annum across tenures from 7 days
+to 5+ years, with senior citizens earning an additional 0.50% (0.75%
+for the 2-to-3-year band specifically). The 1-year band ("1 Year to
+below 1 Year 6 Month") carries a 6.75% rate for the general public and
+7.25% for senior citizens; IndusInd's highest published slab is 7.00%
+general / 7.75% senior citizen, for the 2-to-3-year tenure band.
+
+Effective 24 July 2026, domestic retail term deposit rates by tenure
+(general public / senior citizen):
+- 7-30 days: 3.25% / 3.75%
+- 31-45 days: 3.50% / 4.00%
+- 46-60 days: 4.50% / 5.00%
+- 61-90 days: 4.75% / 5.25%
+- 91-120 days: 5.00% / 5.50%
+- 121-179 days: 5.00% / 5.50%
+- 180 days: 6.00% / 6.50%
+- 181-210 days: 5.75% / 6.25%
+- 211-269 days: 6.00% / 6.50%
+- 270-364 days: 6.25% / 6.75%
+- 1 year to below 1 year 6 months: 6.75% / 7.25%
+- 1 year 6 months to below 1 year 7 months: 6.90% / 7.40%
+- 1 year 7 months to below 2 years: 6.90% / 7.40%
+- 2 years to 3 years: 7.00% / 7.75%
+- above 3 years to below 61 months: 6.65% / 7.15%
+- 61 months and above: 6.50% / 7.00%
+- Tax Saver (5 years): 6.65% / 7.15%
+
+Senior Citizen Premium: an additional 0.50% for most tenures, rising to
+0.75% specifically for the 2-to-3-year band. The premium does not apply
+to NRO/NRE deposits.
+
+Note: rates above are for domestic (resident) deposits below Rs. 3
+crore, with premature withdrawal allowed. IndusInd separately publishes
+higher-value tables for Rs. 3 crore to Rs. 5 crore, and non-callable
+(premature-withdrawal-not-allowed) tiers for Rs. 1 crore and above —
+this document covers only the standard retail tier.
+
+Interest is compounded quarterly; simple interest is paid on maturity
+for deposits with tenure up to 180 days. A 1% penal interest charge
+applies on premature withdrawal, waived for resident senior citizen
+FDs (below Rs. 5 crore) held 1 year or longer.
+
+Rates are revised periodically; verify the current card rate with the
+bank before quoting for a large deposit.

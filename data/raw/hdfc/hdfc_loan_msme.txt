@@ -1,0 +1,24 @@
+SOURCE: https://www.hdfc.bank.in/msme-banking/msme-government-schemes/credit-guarantee-fund-trust-for-micro-and-small-enterprises-cgtmse and https://www.hdfc.bank.in/msme-banking/msme-government-schemes/credit-guarantee-scheme-for-startups-cgss (official pages)
+DOCUMENT_ID: hdfc_loan_msme
+BANK: HDFC
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-15
+===
+HDFC Bank MSME / Collateral-Free Business Loans
+
+CGTMSE Scheme:
+HDFC Bank offers loans under the government's Credit Guarantee Fund
+Trust for Micro and Small Enterprises (CGTMSE) scheme — collateral-free
+working capital and term loan solutions for MSMEs, without requiring
+collateral or a third-party guarantee.
+
+Credit Guarantee Scheme for Startups (CGSS):
+A separate scheme offering collateral-free debt funding up to Rs. 10
+crore specifically for startups, distinct from the general CGTMSE
+scheme aimed at established MSMEs.
+
+This is a headline reference — confirm current interest rates,
+processing fees, and eligibility criteria (including which scheme
+applies to a specific business) with the bank before advising a
+customer.

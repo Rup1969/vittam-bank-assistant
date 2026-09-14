@@ -1,0 +1,38 @@
+SOURCE: RBI Master Direction (Reserve Bank of India - Interest Rate on Advances) Directions, 2016, updated 1 October 2025; catalog PDF: rbidocs.rbi.org.in/rdocs/notification/PDFs/161MD.PDF (CAPTCHA-gated for direct fetch — content below is cross-checked from multiple regulatory-tracking sources reporting the official text; verify against the primary Direction before treating as legally binding)
+DOCUMENT_ID: rbi_md_interest_rate_advances
+BANK: RBI
+CATEGORY: RATES
+SOURCE_TYPE: RBI_MASTER_DIRECTION
+DATE: 2025-10-01
+===
+RBI Master Direction — Interest Rates on Advances (Commercial Banks)
+
+Originally issued in 2016, most recently updated 1 October 2025.
+
+Benchmark Framework:
+Banks must price rupee advances (subject to specified exemptions) by
+reference to an internal benchmark (Marginal Cost of Funds based
+Lending Rate, MCLR) or an External Benchmark Lending Rate (EBLR,
+typically tied to the repo rate), plus a Board-approved, bank-defined
+spread — negotiating outside this framework is not permitted.
+
+MCLR Composition:
+Marginal cost of funds + negative carry on CRR + operating costs + a
+tenor premium. MCLR is tenor-linked (published at specified
+maturities) and reviewed monthly, or quarterly where permitted.
+
+Reset Periodicity:
+For floating-rate loans, the periodicity of interest-rate reset must
+be one year or less, and the exact periodicity must be stated in the
+loan contract itself — a bank cannot leave this open-ended or apply an
+undisclosed reset schedule.
+
+EBLR Adoption Trend (market context, not a rule):
+As of December 2024, roughly 61% of total floating-rate loans were
+linked to an external benchmark (EBLR), versus about 36% still on
+MCLR — RBI has been steering the system toward external benchmarking
+for better monetary-policy transmission.
+
+This governs how ANY commercial bank must structure its lending rates
+— it's the regulatory basis behind why a bank's home/personal/vehicle
+loan rate resets when RBI changes the repo rate.

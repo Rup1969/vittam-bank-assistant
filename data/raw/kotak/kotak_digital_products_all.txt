@@ -1,0 +1,25 @@
+SOURCE: Kotak811 app store listings (Google Play / App Store) cross-referenced
+DOCUMENT_ID: kotak_digital_products_all
+BANK: KOTAK_MAHINDRA
+CATEGORY: DIGITAL
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-15
+===
+Kotak Mahindra Bank — Digital Banking Products
+
+Kotak811 App:
+Kotak Mahindra's flagship mobile banking app — enables instant,
+end-to-end digital account opening (zero-balance savings account,
+minutes to open, no branch visit needed). Offers 250+ features
+including balance checks, transaction history, statement downloads,
+bill payments, shopping, investments, credit card management, personal
+loan applications, and fixed deposit account opening, all from within
+one app. A "Pay Your Contact" feature lets users send money using just
+a mobile number.
+
+UPI (via Kotak811):
+Registration for Kotak811 UPI enables instant money transfers and bill
+payments. Secured via advanced encryption and biometric authentication.
+
+Confirm current app features and UPI limits with the bank, since these
+are periodically revised by NPCI/RBI guidance as well as bank policy.

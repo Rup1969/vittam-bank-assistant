@@ -1,0 +1,35 @@
+SOURCE: https://www.hdfc.bank.in/ps/payzapp and https://www.paisabazaar.com/banking/hdfc-bank-mobile-banking/, https://www.paisabazaar.com/upi/hdfc-upi/ (cross-referenced)
+DOCUMENT_ID: hdfc_digital_products_all
+BANK: HDFC
+CATEGORY: DIGITAL
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-15
+===
+HDFC Bank — Digital Banking Products
+
+PayZapp:
+HDFC Bank's all-in-one payment app — combines UPI, a digital wallet,
+bill payments, and rewards, usable by both HDFC and non-HDFC customers.
+Supports mobile/DTH/data-card recharges, utility bill payments, flight/
+bus/hotel booking and comparison, online shopping, and movie ticket
+booking, all from within the single app. A "swipe to pay" feature lets
+users pay with their Zapp Account or HDFC debit/credit card without an
+OTP for supported transactions.
+
+HDFC Bank Mobile Banking App:
+The bank's core mobile banking app (separate from PayZapp) covering
+account management, fund transfers, and standard banking services.
+
+UPI:
+Real-time money transfers 24x7, including holidays, with funds
+credited instantly. UPI limit reported at Rs. 1 lakh per day, with no
+charges for UPI payments. A "Request Money" feature lets a user request
+funds from another UPI ID directly within the Mobile Banking app or
+PayZapp.
+
+Security:
+OTP, MPIN, and standard secure banking protocols protect transactions.
+
+Confirm current app names, features, and UPI limits with the bank,
+since these are periodically revised by NPCI/RBI guidance as well as
+bank policy.

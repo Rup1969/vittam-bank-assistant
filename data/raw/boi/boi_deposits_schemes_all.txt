@@ -1,0 +1,49 @@
+SOURCE: https://bankofindia.bank.in/salary-account, https://bankofindia.bank.in/term-deposits/boi-star-sunidhi-deposit-scheme, and https://www.bankbazaar.com/savings-account/boi-saral-salary-account.html (cross-referenced secondary sources; official pages returned HTTP 403 on direct automated fetch — verify current terms with the bank)
+DOCUMENT_ID: boi_deposits_schemes_all
+BANK: BOI
+CATEGORY: DEPOSIT
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-01
+===
+Bank of India — Savings Account Variants
+
+BOI Saral Salary Account:
+A zero-minimum-balance salary account with free internet banking, mobile
+banking, monthly e-statements, and unlimited transactions at BOI ATMs.
+
+BOI Private Salary Account:
+A premium salary account bundling up to Rs. 2 crore air accident cover,
+zero balance requirement, and loan-processing concessions.
+
+Star Salary Plus Account (Public Sector):
+A salary account variant for public sector employees, nil minimum
+balance.
+
+Star Salary Account (Private Sector):
+The private-sector-employee equivalent of the above, also nil minimum
+balance.
+
+Star Salary Plus Rakshak Salary:
+A salary account specifically for police personnel.
+
+BOI Elite Salary Account:
+A higher-tier salary account variant with additional privileges over the
+standard salary accounts.
+
+Star General Current Account:
+A current account variant requiring a minimum cash balance, for
+non-salaried/business customers.
+
+Star Sunidhi Tax-Saving Deposit Scheme:
+A 5-to-10-year fixed deposit qualifying for an income tax deduction on
+the principal (up to Rs. 1,50,000 annually) under Section 80C. Interest
+rate reported up to 6.00% p.a. general public / 6.75% p.a. senior
+citizens. Carries a mandatory 5-year lock-in — premature withdrawal and
+loan/overdraft-against-FD facilities are not permitted during this
+period, a real trade-off customers should understand before choosing it
+over a regular tax-saver FD.
+
+This is a summary of publicly reported BOI account variants — exact
+eligibility, minimum balance, and current features should be confirmed
+with the bank before advising a customer, since account names/features
+are periodically revised.

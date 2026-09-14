@@ -1,0 +1,32 @@
+SOURCE: https://punjabandsind.bank.in/content/psb-mortgage (same source as psb_loan_mortgage — split into a separate doc 2026-08-25 so the headline rate chunk stays short and competitive in retrieval; see PROJECT_STATUS.md §27)
+DOCUMENT_ID: psb_loan_mortgage_eligibility
+BANK: PUNJAB_SIND
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-19
+===
+Punjab & Sind Bank Mortgage Loan (Loan Against Property) — Eligibility, LTV, Tenure, and Purpose
+
+Loan Amount:
+Minimum Rs. 0.50 lakh, maximum Rs. 10 crore.
+
+Eligibility:
+Minimum gross monthly income Rs. 30,000; age 18-60 (salaried) or up to
+65 (others with pension income); must be an income-tax assessee. Open
+to salaried employees, self-employed professionals, business owners,
+NRIs, and entities (HUFs, partnerships).
+
+Loan-to-Value (LTV):
+Finance available up to 65% of the realizable value of the mortgaged
+property (effective from 10/02/2022). Alternative securities accepted:
+bank deposits (10% of balance), LIC policies (70% of surrender value),
+National Savings Certificates (25% of face value).
+
+Tenure:
+Maximum 15 years, based on repayment capacity, with the loan end date
+not exceeding the borrower's retirement age. Loans with a tenor above 10
+years carry an interest rate 1% above the applicable rate.
+
+Purpose:
+General-purpose credit — marriage, medical, education, property
+repairs/renovation, consumer durables, or other unforeseen expenses.

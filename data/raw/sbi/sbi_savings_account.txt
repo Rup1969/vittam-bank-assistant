@@ -1,0 +1,17 @@
+SOURCE: https://sbi.bank.in/web/personal-banking/accounts/saving-account/savings-bank-account
+DOCUMENT_ID: sbi_savings_account_rate
+BANK: SBI
+CATEGORY: DEPOSIT
+SOURCE_TYPE: PRODUCT_PAGE
+===
+SBI Savings Bank Account Interest Rate
+
+As displayed on SBI's official interest rates page, the Savings Bank
+Account interest rate is 2.50% p.a., effective 15 June 2025.
+
+This rate applies to the standard Savings Bank Account. Certain other
+savings account variants (such as those for minors, or premium savings
+products) may carry different terms; check the specific account type.
+
+Rates are subject to change without prior notice and should be confirmed
+on SBI's official website before quoting to a customer as final.

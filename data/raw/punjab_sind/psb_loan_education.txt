@@ -1,0 +1,18 @@
+SOURCE: https://punjabandsind.bank.in/content/prlr (real published rate card, added 2026-08-20 via the automation pipeline's manual-load path; this RAG doc updated 2026-08-24 to match)
+DOCUMENT_ID: psb_loan_education
+BANK: PUNJAB_SIND
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-24
+===
+Punjab & Sind Bank education loan interest rate ranges approximately
+9.40% to 10.15% p.a. depending on the loan amount slab, across its
+PSB Vidyalaxmi Scheme, PSB Education Loan, and PSB Skill Education
+Loan products.
+
+Rate slabs (PSB Model Education Loan Scheme), per the bank's own
+published rate card: up to Rs. 4 lakh at 10.15%; above Rs. 4 lakh up to
+Rs. 7.50 lakh at 9.45%; above Rs. 7.50 lakh at 9.40% (the lowest
+published rate, for larger loans). Confirm eligibility, maximum loan
+amount, margin, and collateral requirements for a specific scheme with
+the bank before relying on any figure.

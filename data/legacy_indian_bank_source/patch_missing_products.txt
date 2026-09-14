@@ -1,0 +1,178 @@
+DOCUMENT_ID: patch_missing_products
+CATEGORY: DEPOSIT
+SOURCE: indianbank.bank.in
+============================================================
+
+IND SHAKTI — SMART WOMEN BANKING
+Target: Women customers including students, working professionals,
+        homemakers, and other professionals
+Minimum Age: 18 years
+Eligibility: Any woman resident individual aged 18 years and above
+Variants: Multiple variants available — Basic, Silver, Gold, Platinum
+Features:
+- Zero or low minimum balance requirement
+- Free personal accident insurance cover
+- Preferential interest rates on loans
+- Free demand drafts and NEFT transfers
+- Exclusive offers on shopping, health, and lifestyle
+- Higher daily transaction limits on debit card
+- Special rates on fixed deposits
+Purpose: Designed to empower women with comprehensive banking benefits
+
+IND PRO — EXCLUSIVE FOR PROFESSIONALS
+Target: Doctors, Engineers, Architects, Chartered Accountants,
+        Company Secretaries, Lawyers, and all licensed professionals
+Variants: IND Pro Silver, IND Pro Gold, IND Pro Platinum
+Features:
+- Higher withdrawal and transaction limits
+- Preferential loan rates for professional needs
+- Overdraft facility against professional income
+- Free cheque book and demand drafts
+
+IND FAMILY — FAMILY BANKING
+Target: All resident individuals
+Family Members Covered: Spouse, Parents, Grand Parents,
+                        Father-in-Law, Mother-in-Law, Children
+Features:
+- Link all family accounts under one relationship
+- Combined average balance benefit
+- Consolidated account statement
+
+SB PLATINUM — WITH SWEEP FACILITY
+Target: High Net Worth Individuals, high income Gen-X,
+        Corporate executives
+Key Feature: Automatic sweep of surplus funds to Term Deposit
+             when balance crosses threshold limit
+Benefit: Idle money in savings account earns Fixed Deposit interest
+         Swept back to savings account automatically when needed
+
+IND GURUDEV — FOR EDUCATORS
+Target: Teachers, Professors, Lecturers working in Schools,
+        Colleges, Universities — both Government and Private
+Features:
+- Special benefits for the teaching community
+- Preferential loan rates for education and personal needs
+- Zero minimum balance option
+- Free accident insurance cover
+
+IB SALAAM — FOR DEFENCE PERSONNEL
+Target: Serving and retired Indian Army, Navy, Air Force,
+        Coast Guard, Paramilitary forces personnel
+Minimum Age: 18 years
+Features:
+- Zero minimum balance
+- Free unlimited transactions
+- Special loan schemes for defence personnel
+- Group insurance coverage
+
+IND CORP SB ELITE — SALARIED WITH INSURANCE
+Target: Salaried class employees of corporates and institutions
+Key Feature: Bundled Group Personal Accidental Insurance PAI
+Benefits: Higher cover amounts, accidental death and disability coverage
+
+IND SAMPOORNA PLUS — PREMIUM SALARY ACCOUNT
+Target: Permanent and Contractual employees of Central Government,
+        State Government, PSUs, Navratna companies
+Features:
+- Zero minimum balance
+- Premium debit card with high limits
+- Free unlimited NEFT/RTGS online
+- Special home and personal loan rates
+- Dedicated relationship manager
+
+BSBDA — BASIC SAVINGS BANK DEPOSIT ACCOUNT
+Also called: Small Account or Zero Balance Account
+Target: Individuals who cannot provide full KYC documents
+Purpose: Financial inclusion for unbanked population
+Features:
+- Zero minimum balance, no charges ever
+- Limited 4 withdrawals per month
+- Maximum balance Rs.50,000
+- Annual credit limit Rs.1 lakh
+
+CAPITAL GAINS SB ACCOUNT
+Target: Income Tax assessees eligible under Sections
+        54, 54B, 54D, 54F of the Income Tax Act
+Purpose: Parking capital gains before reinvestment
+         to claim income tax exemption
+Interest: Same as regular savings bank interest rate
+
+MACT SB — MOTOR ACCIDENT CLAIM TRIBUNAL
+Eligibility: Individuals and minors through guardian
+             who received court compensation awards
+Purpose: Holding motor accident claim compensation
+         as directed by court or tribunal
+
+IB SMART KID
+Target: Children aged 1 day to less than 18 years
+Operation: Through guardian for minors
+Purpose: Build savings habit from childhood
+Converts to regular SB account on attaining 18 years
+
+IB KISHORE — FOR MINORS
+Target: Minors who can operate account independently
+Converts to regular SB account on attaining majority
+
+IB GEN X — FOR VIBRANT YOUTH
+Target: Resident individuals aged 18 to 35 years
+Focus: Digital first banking with youth oriented features
+
+IB SAMMAAN — FOR SENIOR CITIZENS
+Target: Resident individuals aged 60 years and above
+Minimum Balance: NIL
+Charges for Non-Maintenance: NIL
+
+SB ACCOUNT FOR PENSIONERS
+Target: State, Central, EPF Pensioners and Armed Forces pensioners
+Minimum Balance: NIL
+Charges: NIL
+Cheque Book: 20 free personalised cheque leaves per calendar year
+NEFT/RTGS: Free when done online
+Account Closure: No charges
+
+IND PENSION PRIME PLUS
+Target: All pensioners — Central, State, EPF, Armed Forces,
+        Navy, Paramilitary forces
+Type: Premium pensioner account with enhanced benefits
+
+NCMC — NATIONAL COMMON MOBILITY CARD
+Also called: One Nation One Card
+Purpose: Single card for metro rail, city buses, suburban rail,
+         toll, parking, and retail shopping across India
+How it Works: Tap card on NCMC reader, fare deducted automatically
+Recharge: Via IndSMART app, internet banking, UPI
+Works across: Delhi Metro, Chennai Metro, Mumbai, Kochi,
+              Bengaluru, Pune and all NCMC enabled transit systems
+
+UPI THROUGH USSD
+Dial: *99# on any mobile phone
+Purpose: UPI payments from basic feature phones without internet
+Languages: English and Hindi
+Services: Send money, check balance, mini statement, change UPI PIN
+Works On: Any mobile phone including basic keypad phones
+
+IB TAX SAVER FIXED DEPOSIT
+Purpose: Tax saving fixed deposit under Section 80C Income Tax Act
+Tax Benefit: Deduction up to Rs.1.5 lakh per year under Section 80C
+Lock-in Period: 5 years mandatory, premature withdrawal not allowed
+Interest Rate: Same as regular FD rate for respective tenor
+Who Can Open: Individual resident, HUF
+
+NRE ACCOUNT — NON RESIDENT EXTERNAL
+Who Can Open: Non Resident Indians NRIs and Persons of Indian Origin
+Currency: Indian Rupees
+Repatriability: Fully repatriable, both principal and interest
+Tax in India: Interest completely tax free in India
+Minimum FD Tenure: 1 year
+
+NRO ACCOUNT — NON RESIDENT ORDINARY
+Who Can Open: Non Resident Indians for India sourced income
+Currency: Indian Rupees
+Repatriability: Limited up to USD 1 million per financial year
+Tax: Interest taxable in India, TDS applicable
+
+FCNR B ACCOUNT — FOREIGN CURRENCY NON RESIDENT
+Currency: Held in foreign currency USD, GBP, EUR, JPY, CAD, AUD
+Repatriability: Fully repatriable including interest
+Tax: Interest completely tax free in India
+Tenure: 1 year to 5 years

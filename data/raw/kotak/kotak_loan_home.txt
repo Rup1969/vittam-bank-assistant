@@ -1,0 +1,25 @@
+SOURCE: https://www.kotak.bank.in/en/personal-banking/loans/home-loan/interest-rates.html (official page) cross-referenced with secondary aggregators for the broader profile-based range
+DOCUMENT_ID: kotak_loan_home
+BANK: KOTAK_MAHINDRA
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-15
+===
+Kotak Mahindra Bank Home Loan
+
+Kotak Mahindra Bank's home loan interest rate currently starts from
+around 7.60% to 7.70% per annum for well-qualified applicants, with a
+broader reported range of 7.99%-9.45% p.a. depending on applicant
+profile.
+
+Rate by Profile:
+- Salaried employees: reported range 8.65%-9.00% p.a.
+- Self-employed: reported range 8.75%-9.45% p.a.
+
+Rate depends on CIBIL score, employment type, and the down payment
+amount provided — self-employed applicants are consistently priced
+somewhat higher than salaried applicants, reflecting typically less
+predictable income verification.
+
+This is a headline reference — confirm the current rate and the
+applicant's specific quoted spread with the bank before quoting.

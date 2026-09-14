@@ -1,0 +1,44 @@
+SOURCE: https://punjabandsind.bank.in/content/interestdom
+DOCUMENT_ID: psb_fd_rates
+BANK: PUNJAB_SIND
+CATEGORY: DEPOSIT
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-19
+===
+Punjab & Sind Bank Fixed Deposit (FD) Interest Rates
+
+Punjab & Sind Bank's current fixed deposit (FD) interest rate for the
+general public ranges from 2.85% to 6.90% p.a. depending on tenure. The
+1-year FD interest rate is 5.85% for the general public and 6.35% for
+senior citizens.
+
+Retail FD Rates (below Rs. 3 crore), revised w.e.f. 16/06/2026:
+
+Tenure                          General    Senior Citizen
+7-14 Days                       2.85%      (no premium below 180 days)
+15-30 Days                      2.85%      (no premium below 180 days)
+31-45 Days                      2.85%      (no premium below 180 days)
+46-90 Days                      3.35%      (no premium below 180 days)
+91-120 Days                     3.35%      (no premium below 180 days)
+121-150 Days                    3.35%      (no premium below 180 days)
+151-179 Days                    4.85%      (no premium below 180 days)
+180-364 Days                    4.85%      5.35%
+1 Year                          5.85%      6.35%
+375 Days (Callable)             6.40%      6.90%
+375 Days (Non-Callable)         6.50%      7.00%
+444 Days (Callable)             6.80%      7.30%
+444 Days (Non-Callable)         6.90%      7.40%
+666 Days (Callable)             6.85%      7.35%
+666 Days (Non-Callable)         6.95%      7.45%
+999 Days (Callable)             6.00%      6.50%
+999 Days (Non-Callable)         6.05%      6.55%
+5 Years                         5.95%      6.45%
+
+Senior citizens receive an additional 0.50% on term deposits below Rs. 3
+crore, but only for tenures of 180 days and above.
+
+Note: for the 375/444/666/999-day tenures, the bank publishes BOTH a
+Callable and a Non-Callable rate for the same tenure — the Non-Callable
+variant pays a higher rate (typically +0.10%) in exchange for the
+depositor giving up the right to premature withdrawal. Both are real,
+currently published rates.

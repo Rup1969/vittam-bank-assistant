@@ -1,0 +1,37 @@
+SOURCE: https://www.unionbankofindia.bank.in/en/listing/term-deposits and https://www.unionbankofindia.bank.in/en/details/monthlyincomeschememis, https://www.unionbankofindia.bank.in/en/details/savings-flexi-deposit-scheme-sbnfd (cross-referenced; verify current terms with the bank)
+DOCUMENT_ID: union_bank_deposits_schemes_all
+BANK: UNION_BANK
+CATEGORY: DEPOSIT
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-15
+===
+Union Bank of India — Deposit Scheme Variants
+
+Monthly Income Scheme (MIS):
+A term deposit designed to pay out guaranteed monthly income rather
+than compounding/maturity payout — reported interest rates roughly
+3.00% to 5.60% p.a. depending on tenure. Useful for customers who need
+a regular income stream (e.g. retirees) rather than a lump sum at
+maturity.
+
+Savings Flexi Deposit Scheme (SBNFD):
+A sweep-in facility linked to a savings account — balances above a
+threshold automatically move into a linked term deposit to earn a
+higher FD rate, while remaining accessible (swept back) for withdrawal
+needs. Positioned as "higher returns" without fully locking away the
+funds like a standalone FD.
+
+Union Non-Callable Term Deposit Scheme:
+For deposits of Rs. 3 crore and above — offers a rate premium in
+exchange for giving up premature-withdrawal rights (see
+union_bank_fd_rates for the retail below-Rs.-3-crore rate table this
+scheme sits alongside).
+
+FCNR(B) / RFC / Unique FCNR(B) Deposit Scheme:
+NRI-focused foreign-currency term deposit products — rates and terms
+differ from the domestic-rupee table and are published separately by
+the bank.
+
+This is a summary of publicly listed Union Bank deposit scheme names —
+exact current rates, minimum amounts, and eligibility should be
+confirmed with the bank before advising a customer.

@@ -1,0 +1,11 @@
+SOURCE: https://www.nobroker.in/home-loan/iob-bank/ and https://www.iob.bank.in/en/lending-rates-mclr, https://www.wishfin.com/home-loans/indian-overseas-bank-home-loan-interest-rate-9341/ (cross-referenced secondary sources; verify current rate with the bank)
+DOCUMENT_ID: iob_loan_home
+BANK: IOB
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2025-12-15
+===
+Indian Overseas Bank home loan interest rate is linked to RLLR (Repo
+Linked Lending Rate), 8.10% as of 15 December 2025. Best-graded
+borrowers (CIC-1) get RLLR minus 1.00%, around 7.10%. Reported rates
+range 8.00% to 10.50% p.a. depending on CIBIL score and loan amount.

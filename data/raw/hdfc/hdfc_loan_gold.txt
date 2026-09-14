@@ -1,0 +1,24 @@
+SOURCE: https://www.hdfc.bank.in/gold-loan/interest-rates-and-charges (official page) cross-referenced with secondary aggregators; verify current rate with the bank
+DOCUMENT_ID: hdfc_loan_gold
+BANK: HDFC
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-15
+===
+HDFC Bank Gold Loan
+
+Interest Rate:
+Reported range roughly 9.30%-17.86% p.a., with a separately reported
+overall Bank IRR range of 9.00%-19.00% (average around 10.86%) for the
+Jan-Mar 2026 quarter — rates vary by loan tenure, gold purity, and the
+specific repayment scheme chosen.
+
+Structure:
+Loan secured against pledged gold ornaments/jewellery; exact rate and
+eligible amount depend on gold purity, weight, and prevailing gold
+valuation at the time of the loan.
+
+This is a headline reference — always confirm the current rate,
+loan-to-value ratio, and valuation method with the bank, since gold
+loan terms are sensitive to gold price movements and are reviewed
+frequently.

@@ -1,0 +1,38 @@
+SOURCE: https://www.indusind.bank.in/in/en/personal/deposits/recurring-deposit.html (official page, fetched directly)
+DOCUMENT_ID: indusind_deposits_schemes_all
+BANK: INDUSIND
+CATEGORY: DEPOSIT
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-16
+===
+IndusInd Bank — Deposit Scheme Variants (Recurring Deposit)
+
+IndusInd Bank's Recurring Deposit (RD) lets customers build savings
+through regular monthly instalments starting from a minimum of Rs.
+1,000, with a tenure of 12 to 120 months and a rate that tracks the
+bank's term deposit rate (including the senior citizen premium).
+
+Recurring Deposit — Key Terms:
+- Minimum investment: Rs. 1,000 (may vary by booking channel).
+- Maximum deposit: Rs. 3 crore.
+- Tenure: 12 to 120 months.
+- Booking increments: multiples of Rs. 100 only.
+- Interest rate: same as the equivalent-tenure term deposit rate
+  (including senior citizen benefit) — see indusind_fd_rates.txt for
+  the current tenure-wise rate table.
+- TDS on interest: per current income tax regulations.
+- Nomination facility: available.
+- Premature closure: allowed.
+- Funding method: fixed monthly instalment via standing order, ECS
+  mandate, or regular direct remittance.
+- Opening: at a branch, via the deposit account form.
+
+Tax Saver Fixed Deposit: IndusInd Bank's 5-year Tax Saver FD is one of
+the standard retail FD tenure bands (not a separate product page) —
+see the "Tax Saver (5 years)" row in indusind_fd_rates.txt for its
+current rate, which qualifies for a Section 80C tax deduction up to
+Rs. 1.5 lakh, with a mandatory 5-year lock-in (no premature
+withdrawal).
+
+Verify current RD and Tax Saver FD rates on the bank's live rate page
+before quoting to a customer, since these are revised periodically.

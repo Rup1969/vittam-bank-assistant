@@ -1,0 +1,30 @@
+SOURCE: https://bankofmaharashtra.bank.in/zen-lyfe
+DOCUMENT_ID: bom_digital_products_all
+BANK: BOM
+CATEGORY: DIGITAL
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-19
+===
+Bank of Maharashtra Digital Banking — Zen Lyfe App
+
+Bank of Maharashtra's mobile banking app is called Zen Lyfe, described
+as a "next-generation" platform combining banking with lifestyle
+services.
+
+Key Features:
+- Payments/transfers: UPI, NEFT, RTGS, IMPS, and unified recurring
+  payments, all in one place.
+- Unified account overview across all accounts and transactions.
+- Instant savings-account opening via remote onboarding and e-KYC.
+- Apply for home, personal, auto, and business loans directly in-app.
+- Book, manage, and close fixed and recurring deposits instantly.
+- Card controls: lock/unlock cards, set PINs, customize limits, manage
+  virtual debit cards.
+- Lifestyle marketplace: book hotels, flights, buses; buy gift coupons;
+  make donations; consult doctors.
+- Security: 100+ app security features, continuous risk analytics, and
+  multi-factor authentication.
+
+Available on both iOS and Android; registration requires device binding
+and identity verification via debit card, internet banking, or a branch
+token. The bank's internet banking portal is at mahaconnect.bank.in.

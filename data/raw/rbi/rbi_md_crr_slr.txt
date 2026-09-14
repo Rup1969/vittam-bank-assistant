@@ -1,0 +1,39 @@
+SOURCE: RBI Master Direction (Commercial Banks - Cash Reserve Ratio and Statutory Liquidity Ratio) Directions, 2025, issued 28 November 2025; catalog PDF: rbidocs.rbi.org.in/rdocs/notification/PDFs/150MD.PDF (CAPTCHA-gated for direct fetch — content below is cross-checked from multiple regulatory-tracking sources reporting the official text; verify against the primary Direction before treating as legally binding)
+DOCUMENT_ID: rbi_md_crr_slr
+BANK: RBI
+CATEGORY: PRUDENTIAL
+SOURCE_TYPE: RBI_MASTER_DIRECTION
+DATE: 2025-11-28
+===
+RBI Master Direction — Cash Reserve Ratio (CRR) and Statutory Liquidity
+Ratio (SLR), Commercial Banks
+
+Consolidates all commercial-bank reserve-requirement rules into a
+single Direction, issued 28 November 2025.
+
+CRR Phased Schedule (as of the 2025 Directions):
+A phased reduction was scheduled: 3.75% -> 3.5% -> 3.25% -> 3.00% of
+Net Demand and Time Liabilities (NDTL), effective from the reporting
+fortnights beginning 6 September, 4 October, 1 November, and 29
+November 2025 respectively. Current CRR: 3.00% (consistent with the
+rate confirmed in rbi_current_policy_rates for December 2025).
+
+SLR Requirement:
+Minimum 18.00% of NDTL, held in specified liquid assets (cash,
+approved government securities, gold).
+
+Minimum Daily CRR Maintenance:
+Banks must maintain at least 90% of the prescribed average CRR on any
+given day within the reporting fortnight (not just meet the average
+over the full period).
+
+NDTL Computation Notes:
+The Direction clarifies treatment of inter-bank items, foreign
+currency deposits, and Upper Tier II instruments, and lists specific
+exclusions from NDTL (paid-up capital, certain refinance amounts, tax
+provisions, specified government/agency receipts).
+
+Since CRR/SLR are reviewed at RBI's bi-monthly Monetary Policy
+Committee meetings (same cadence as the repo rate — see
+rbi_current_policy_rates), always confirm the currently-effective
+percentage before quoting it as final.

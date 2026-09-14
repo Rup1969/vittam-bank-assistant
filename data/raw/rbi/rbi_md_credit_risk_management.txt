@@ -1,0 +1,42 @@
+SOURCE: RBI Master Direction (Commercial Banks - Credit Risk Management) Directions, 2025 (and Amendment/Second Amendment Directions, 2025-2026); catalog PDF: rbidocs.rbi.org.in/rdocs/notification/PDFs/157MD.PDF (CAPTCHA-gated for direct fetch — content below is cross-checked from multiple regulatory-tracking sources reporting the official text; verify against the primary Direction before treating as legally binding. Note: this is a DIFFERENT Direction from "Concentration Risk Management" — the two are easily confused since both concern credit exposure risk, but Concentration Risk Management specifically governs large/connected-counterparty exposure limits, while this Direction covers the broader credit risk framework)
+DOCUMENT_ID: rbi_md_credit_risk_management
+BANK: RBI
+CATEGORY: PRUDENTIAL
+SOURCE_TYPE: RBI_MASTER_DIRECTION
+DATE: 2025-11-28
+===
+RBI Master Direction — Credit Risk Management (Commercial Banks)
+
+Applies to commercial banking companies (excluding Small Finance
+Banks, Payments Banks, Local Area Banks), corresponding new banks, and
+SBI.
+
+Related-Party Lending Restrictions:
+Restricts loans to a bank's own directors, their relatives, and
+reciprocal lending arrangements (bank A lending to bank B's director
+in exchange for bank B lending to bank A's director) — such loans
+require specific Board approval and are not routine credit decisions.
+
+Legal Entity Identifier (LEI) Requirement:
+Non-individual borrowers with aggregate exposure of Rs. 5 crore or
+more must obtain and keep renewing an LEI code — intended to improve
+transparency and data accuracy on who a bank is actually exposed to
+across the financial system.
+
+CEO / Whole-Time Director Loans:
+Loans and advances to a bank's own CEO or Whole-Time Directors require
+approval by the Board of Directors, a Board committee with delegated
+powers, or the Appointments Committee — not ordinary credit-approval
+channels.
+
+Unhedged Foreign Currency Exposure (UFCE):
+Banks must assess UFCE risk in borrowers (i.e. borrowers with foreign-
+currency-denominated debt or income exposure without hedging), since
+exchange-rate volatility can impair a borrower's repayment capacity.
+Where UFCE risk is material, banks must apply incremental provisioning
+and capital charges reflecting potential losses, and should encourage
+borrowers to hedge.
+
+This Direction sets the credit-risk-management framework banks must
+have in place — it's a governance/process requirement more than a
+single numeric threshold, unlike Capital Adequacy or CRR/SLR.

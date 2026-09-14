@@ -1,0 +1,9 @@
+SOURCE: https://punjabandsind.bank.in/content/conveyance (Eligibility/Loan Amount/Tenure/Margin/Fees — official page, no numeric rate stated there); Interest Rate below is secondary-sourced from https://www.bankbazaar.com/punjab-and-sind-bank-car-loan-interest-rates.html, read 2026-08-25, page itself dated "Updated On - 25 Aug 2026" — its stated tenure figures (84 months new, 60 months used) match this doc's own official-page tenure exactly, a real cross-check; confirm current rate with the bank.
+DOCUMENT_ID: psb_loan_vehicle
+BANK: PUNJAB_SIND
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-25
+===
+Punjab & Sind Bank car loan / vehicle loan interest rate: 9.05% p.a.
+onwards for new cars, linked to EBLR. Maximum tenure 84 months.

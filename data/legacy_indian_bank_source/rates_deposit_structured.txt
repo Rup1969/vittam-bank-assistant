@@ -1,0 +1,58 @@
+SOURCE: https://indianbank.bank.in/departments/deposit-rates/
+DOCUMENT_ID: rates_deposit_structured
+CATEGORY: RATES
+============================================================
+
+INDIAN BANK SAVINGS BANK INTEREST RATES (w.e.f. 07.07.2025)
+- Balance up to Rs.10 lakh: 2.50% per annum
+- Balance Rs.10 lakh to less than Rs.200 Crore: 2.60% per annum
+- Balance Rs.200 Crore and above: 2.65% per annum
+- Interest calculated on daily basis, credited quarterly
+
+INDIAN BANK TERM DEPOSIT INTEREST RATES (w.e.f. 04.02.2026)
+Applicable for deposits less than Rs.3 Crore:
+
+Tenor                              General    Senior     Super Senior
+7 days to 14 days                  2.80%      3.30%      3.55%
+15 days to 29 days                 2.80%      3.30%      3.55%
+30 days to 45 days                 3.00%      3.50%      3.75%
+46 days to 90 days                 3.25%      3.75%      4.00%
+91 days to 120 days                3.50%      4.00%      4.25%
+121 days to 180 days               3.85%      4.35%      4.60%
+181 days to less than 9 months     4.50%      5.00%      5.25%
+9 months to less than 1 year       4.75%      5.25%      5.50%
+IND Supreme 2.0 - 300 days         6.30%      6.80%      7.05%
+1 year                             6.10%      6.60%      6.85%
+Above 1 year to less than 2 years  6.20%      6.70%      6.95%
+IND Secure - 444 days              6.45%      6.95%      7.20%
+IND Green - 555 days               6.40%      6.90%      7.15%
+2 years to less than 3 years       6.15%      6.65%      6.90%
+3 years to less than 5 years       6.05%      6.55%      6.80%
+5 years                            6.00%      6.50%      6.75%
+Above 5 years                      6.00%      6.50%      6.75%
+
+SPECIAL TERM DEPOSIT PRODUCTS:
+- IND Secure (444 days): Min Rs.1000, max less than Rs.3 Crore, callable FD/MMD
+- IND Supreme 2.0 (300 days): introduced 04.02.2026, callable FD/MMD
+- IND Green (555 days): Green deposit for eco-friendly projects, introduced 26.03.2025
+- IND Golden Ager: For Super Senior Citizens (80+ years), extra 0.25% over senior rate
+
+SENIOR CITIZEN RULES:
+- Additional 0.50% p.a. over card rate for all retail deposits
+- Super Senior Citizens (80+ years): additional 0.75% over card rate
+- Maximum TD balance eligible: Rs.100 Crore at CIF level
+- Bulk deposits (Rs.3 Crore and above per day) NOT eligible for senior citizen benefit
+
+FORECLOSURE / PREMATURE WITHDRAWAL CHARGES:
+- Closed before 7 days: No interest paid at all
+- Deposits up to Rs.5 lakh, held 181+ days: No penalty; card rate for actual period applies
+- Deposits up to Rs.5 lakh, closed before 181 days: Card rate minus 1% p.a.
+- Deposits above Rs.5 lakh: Card rate minus 1% p.a. (regardless of period)
+- No penalty for: staff, ex-staff, ex-staff cum senior citizens
+- Bank may disallow premature withdrawal of deposits Rs.5 Crore and above
+
+NRE TERM DEPOSIT RULES:
+- Minimum term: 1 year
+- No interest if closed before 1 year
+- Same rates as domestic retail term deposits
+- No additional 1% staff benefit on NRE/NRO deposits

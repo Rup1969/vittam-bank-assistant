@@ -1,0 +1,11 @@
+SOURCE: https://punjabandsind.bank.in/content/housing (Purpose/Eligibility/Margin/Tenure/Fees — official page, no numeric rate stated there); same source as psb_loan_home — split into a separate doc 2026-08-25 so the headline rate chunk stays short and competitive in retrieval; see PROJECT_STATUS.md §27-28
+DOCUMENT_ID: psb_loan_home_eligibility
+BANK: PUNJAB_SIND
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-25
+===
+Punjab & Sind Bank Home Loan — Loan Amount and Tenure
+
+Loan amount is need-based; renovation/repair capped at Rs. 20 lakh.
+Maximum tenure 30 years for purchase/construction.

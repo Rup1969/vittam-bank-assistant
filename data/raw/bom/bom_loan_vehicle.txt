@@ -1,0 +1,30 @@
+SOURCE: https://bankofmaharashtra.bank.in/personal-banking/loans/car-loan
+DOCUMENT_ID: bom_loan_vehicle
+BANK: BOM
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-19
+===
+Bank of Maharashtra Car Loan
+
+Bank of Maharashtra's car loan interest rate starts from 7.45% p.a.,
+ranging up to 12.00% p.a. depending on credit score. A 0.25% rate
+concession applies for corporate salary account holders and existing
+home loan borrowers.
+
+Eligibility:
+Salaried employees with at least 1 year of continuous service,
+self-employed professionals and business owners, agriculturists with
+verifiable income, and companies/corporate entities.
+
+Loan Amount:
+Up to 90% of the car's value, typically capped at 36 times net monthly
+salary, subject to total deductions not exceeding 65% of gross income.
+
+Tenure:
+Maximum 84 months (7 years), with flexible repayment periods.
+
+Other Features:
+No pre-payment, pre-closure, or part-payment charges. Interest charged
+on a daily reducing balance. The bank advertises "most competitive"
+processing fees without stating an exact figure on this page.

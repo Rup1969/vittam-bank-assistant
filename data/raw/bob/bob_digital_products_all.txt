@@ -1,0 +1,51 @@
+SOURCE: https://bankofbaroda.bank.in/digital-products/instant-banking, https://bankofbaroda.bank.in/personal-banking/digital-products/instant-banking/bob-e-pay, and https://bankofbaroda.bank.in/banking-mantra/digital/articles/a-complete-guide-to-bob-world-mobile-banking-app
+DOCUMENT_ID: bob_digital_products_all
+BANK: BOB
+CATEGORY: DIGITAL
+SOURCE_TYPE: PRODUCT_PAGE
+===
+Bank of Baroda — Digital Products Overview
+
+bob World (Mobile Banking App)
+Bank of Baroda's primary mobile banking app — offers 190+ to 240+
+banking services from one place, from simple balance enquiry to
+cardless cash withdrawal. Supports opening a fully digital savings
+account end-to-end, including Video KYC — no branch visit required.
+Also used for FD/RD opening, bill payments, FASTag recharge, and debit
+card management.
+
+bob World Benefits (Rewards Program)
+A loyalty points program layered on top of bob World — earns points
+for activities like fresh bob World activation/login, UPI activation
+and transactions, third-party transfers, bill payments, recharges,
+travel bookings (flight/bus/hotel), locker applications, and credit
+report generation. Points are redeemable within the program.
+
+bob इ Pay / bob e-Pay (Dedicated UPI App)
+A UPI-focused app separate from bob World — supports payments via
+VPA, Account+IFSC, UPI Number, and Tap & Pay; mobile/DTH recharge;
+bill payments; IPO bid acceptance (ASBA); Mandate functions; QR-code
+ATM cash withdrawal; and person-to-person/retail-store payments.
+
+bob World Tab
+Tablet-based digital account-opening tool, used for instant Savings
+Account opening for Self-Help Groups (SHGs) and similar
+doorstep/assisted onboarding scenarios.
+
+bob World Business
+A dedicated current-account/business-banking variant of the bob World
+app, for business customers rather than retail savings customers.
+
+FASTag
+RFID-based electronic toll payment, integrated into bob World —
+rechargeable via net banking, debit/credit card, or UPI; FASTag
+purchase and recharge can also earn bob World Benefits reward points.
+
+Internet Banking (bob World Internet Banking)
+Standard net-banking portal, separate from the mobile app, for
+customers who prefer browser-based access to the same core banking
+services.
+
+For product-specific transaction limits and eligibility, check Bank of
+Baroda's current digital-banking help pages, since these limits are
+revised periodically.

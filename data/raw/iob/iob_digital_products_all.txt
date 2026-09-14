@@ -1,0 +1,26 @@
+SOURCE: https://www.iob.bank.in/en/bhim-iob-upi, https://www.iob.bank.in/en/User-Manual-Mobile-Banking, and app store listings for "IOB Connect"/"IOBMobile" (cross-referenced)
+DOCUMENT_ID: iob_digital_products_all
+BANK: IOB
+CATEGORY: DIGITAL
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-15
+===
+Indian Overseas Bank — Digital Banking Products
+
+IOB Connect (also listed as "IOBMobile" in some app stores):
+IOB's mobile banking app (Android/iOS) — fund transfers via UPI, NEFT,
+RTGS, and IMPS, balance enquiries, card management, and bill payments
+covering electricity, telecom, DTH, gas, water, insurance premiums,
+mutual funds, and school/institution fees. "IOB Connect" is described
+as a redesigned, enhanced successor to the bank's earlier mobile app.
+
+BHIM IOB UPI:
+A dedicated UPI app — lets customers create a Virtual Payment Address
+(VPA) to link their bank account and make/receive payments without
+sharing full account details. UPI transfers are capped at Rs. 1,00,000
+per 24 hours per the bank's stated limit.
+
+Confirm current app names (the IOBMobile-to-IOB-Connect naming may
+still be in transition across app stores) and UPI limits with the bank,
+since transaction limits are periodically revised by NPCI/RBI guidance
+as well as bank policy.

@@ -1,0 +1,60 @@
+SOURCE: BOI's own site (bankofindia.bank.in) is Cloudflare-blocked — re-confirmed 2026-08-24, same "Just a moment..." challenge as every other check this project has made against it. Sanction-rule detail below is secondary-sourced and cross-verified across https://www.bankbazaar.com/bank-of-india-kisan-credit-card.html and https://www.fincash.com/l/loan/bank-of-india-kisan-credit-card (both agree on every overlapping figure — 5-year validity, tiered security at Rs. 50,000, nil margin); verify current terms with the bank.
+DOCUMENT_ID: boi_loan_agriculture
+BANK: BOI
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-24
+===
+Bank of India — Kisan Credit Card (Agriculture Loan): Sanction Rules
+
+Bank of India's Kisan Credit Card (KCC) sanction rules cover
+eligibility, credit limit, margin, security, and validity, as
+detailed below.
+
+Purpose:
+A revolving credit facility for farmers covering both cultivation
+(crop-production) needs and non-farming allied activities, offered
+cost-effectively for timely credit support.
+
+Interest Rate:
+Short-term crop loans / KCC up to Rs. 3 lakh carry a government-mandated
+rate of 7% p.a. under the Interest Subvention Scheme, with an
+additional 3% p.a. Prompt Repayment Incentive (PRI) available to
+farmers who repay on time — meaning the effective rate for a
+prompt-repaying farmer can be significantly below the headline 7%.
+
+Coverage:
+Short-term credit for consumption/domestic needs is available up to 25%
+of the farmer's gross estimated income, in addition to the core
+crop-production credit component.
+
+Eligibility:
+All farmers — individual or joint borrowers — who are owner
+cultivators, plus tenant farmers, oral lessees, and share croppers,
+within the sanctioning branch's service area.
+
+Credit Limit: short-term production-loan quantum is based on cultivated
+area, crop type, and the applicable scale of finance; domestic/
+consumption needs are covered up to 25% of gross estimated income or
+Rs. 50,000, whichever applies; marketing/storage needs up to 50% of
+produce cost. Maximum limit reported at Rs. 10 lakh per farmer for a
+12-month tenure.
+
+Margin: Nil — built into the scale of finance.
+
+Security:
+Up to Rs. 50,000 — hypothecation of the crops grown. Above Rs. 50,000
+— hypothecation of standing crops plus mortgage of land (may be
+waived for government warehouse-receipt financing or in specific
+cases per RBI norms); banks may additionally seek collateral security
+for limits above Rs. 1.60 lakh (without a tie-up arrangement) or
+above Rs. 3 lakh (with a tie-up arrangement).
+
+Validity: Card validity is up to 5 years. Each individual withdrawal's
+repayment tenure is normally 12 months from the sanction date (18
+months for banana and sugarcane crops specifically).
+
+This is a real, sourced sanction-rule summary from secondary sources
+(the bank's own site remains unreachable) — confirm the current
+effective rate and any updated terms for a specific farmer/loan size
+with the bank or nearest branch.

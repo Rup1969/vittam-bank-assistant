@@ -1,0 +1,37 @@
+SOURCE: https://www.axis.bank.in/loans/education-loan (official page, fetched directly)
+DOCUMENT_ID: axis_loan_education
+BANK: AXIS
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-16
+===
+Axis Bank Education Loan
+
+Axis Bank's education loan interest rate is Repo Rate linked, starting
+from Repo + 3.5% p.a., for an unsecured loan of up to Rs. 1.5 crore for
+higher studies in India or abroad.
+
+Loan Amount:
+- Maximum without collateral: Rs. 1.5 crore.
+- Maximum with collateral: as per the security/collateral value offered.
+
+Key Features:
+- Tax benefit under Section 80(E) (old tax regime).
+- Loan tenure up to 15 years.
+- Pre-admission sanction available (sanction letter issued before
+  admission, based on applicant profile).
+- Existing education loan balance transfer at zero fees.
+
+Types of Education Loan:
+- Loan for Higher Study: for higher education in India or abroad; no
+  collateral security required up to Rs. 7.5 lakh; no pre-closure
+  charges; door-step service.
+- Loan for Working Professionals: unsecured loan up to Rs. 40 lakh for
+  working professionals; no co-applicant required; repayment tenure up
+  to 10 years.
+- Balance Transfer: switch an existing high-cost education loan to
+  Axis Bank to reduce the monthly EMI; no pre-closure charges;
+  door-step service.
+
+Rates are Repo-Rate-linked and revised periodically; verify the current
+applicable rate and spread with the bank before quoting to a customer.

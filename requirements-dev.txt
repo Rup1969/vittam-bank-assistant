@@ -1,0 +1,6 @@
+# Dev/evaluation-only dependencies — NOT needed to run the app itself
+# (see requirements.txt for that). Needed only for:
+#   python automation/plot_eval_chart.py   (the README's evaluation chart)
+#   python automation/evaluate_rag.py      (the RAGAS baseline)
+matplotlib==3.11.1
+ragas==0.4.3

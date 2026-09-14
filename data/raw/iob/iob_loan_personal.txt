@@ -1,0 +1,20 @@
+SOURCE: https://www.bankbazaar.com/iob-personal-loan.html and https://www.paisabazaar.com/indian-overseas-bank/personal-loan/ (cross-referenced secondary sources; sources disagree on the exact starting rate, verify with the bank)
+DOCUMENT_ID: iob_loan_personal
+BANK: IOB
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-01-27
+===
+Indian Overseas Bank Personal Loan
+
+Interest Rate:
+Reported starting rate varies by source — 10.25% p.a. (as of 27 January
+2026) from one aggregator, 10.50% p.a. from another, with a broader
+reported range up to 13.65% p.a. depending on employment profile and
+credit score. Given the source disagreement even on the starting rate,
+confirm the applicant's actual quoted rate directly with the bank
+rather than relying on a single headline figure.
+
+This is a headline reference — personal loan pricing is highly
+profile-dependent; always confirm the applicant's actual quoted rate
+and eligibility with the bank.

@@ -1,0 +1,36 @@
+SOURCE: https://www.icici.bank.in/personal-banking/deposits/iwish/interest-rates and https://www.icici.bank.in/personal-banking/deposits/recurring-deposits, https://www.icici.bank.in/personal-banking/deposits/fixed-deposit/fd-interest-rates (cross-referenced)
+DOCUMENT_ID: icici_deposits_schemes_all
+BANK: ICICI
+CATEGORY: DEPOSIT
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-15
+===
+ICICI Bank — Deposit Scheme Variants
+
+iWish Flexible Recurring Deposit:
+A goal-based recurring deposit product allowing flexible, variable
+instalment amounts (unlike a fixed-instalment RD) — positioned for
+customers saving toward a specific goal (e.g. a vacation, a purchase)
+rather than a rigid monthly commitment. Rate reported up to 7.10% p.a.
+
+Recurring Deposit:
+Standard fixed-instalment recurring deposit, rate reported up to
+7.10% p.a.
+
+FD Special Features:
+- Flexible payout options: monthly, quarterly, annual, or cumulative
+  (compounded, paid at maturity).
+- Overdraft Against FD (ODFD): instant liquidity against an existing
+  FD without breaking it.
+- Instant FD creation via net banking/iMobile app.
+- Premature withdrawal penalty: 0.50% for deposits held less than 1
+  year, 1.00% for deposits held 1-5 years (both tiers, regardless of
+  deposit size below/above Rs. 25 crore), and 1.00%-1.50% for 5+ year
+  deposits (1.00% below Rs. 25 crore, 1.50% at or above Rs. 25 crore).
+- A non-withdrawable (no premature closure) FD variant is also offered
+  for domestic, NRO, and NRE deposits, typically at a different rate
+  than the standard withdrawable FD.
+
+This is a summary of publicly listed ICICI Bank deposit scheme names —
+exact current rates, minimum amounts, and eligibility should be
+confirmed with the bank before advising a customer.

@@ -1,0 +1,33 @@
+SOURCE: https://www.urbanmoney.com/personal-loan/bank-of-india/interest-rate and https://www.codeforbanks.com/banking/personal-loan/bank-of-india/personal-loan-interest-rates/, https://bankofindia.bank.in/personal-loan/star-personal-loan (cross-referenced secondary sources; verify current rate with the bank)
+DOCUMENT_ID: boi_loan_personal
+BANK: BOI
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-05-01
+===
+Bank of India Star Personal Loan
+
+Interest Rate:
+Reported starting from around 10.85% p.a. for general applicants, with a
+broader reported range up to 13.85% p.a. depending on income, credit
+score, and employer category. The bank's own Star Personal Loan page is
+separately reported starting around 15.20% p.a. for its standard
+salaried/self-employed/business-owner segment — the discrepancy between
+aggregator-reported and bank-reported starting rates likely reflects
+different eligible-applicant segments (e.g. preferential schemes for
+government/defence/pensioners vs. the general public rate); confirm
+which applies to a specific applicant with the bank.
+
+Loan Amount & Tenure:
+Up to Rs. 25 lakh, depending on income and repayment capacity. Repayment
+tenure up to 84 months.
+
+Eligibility & Concessions:
+Available to salaried individuals, self-employed professionals, and
+business owners. Special schemes exist for pensioners, doctors, and
+persons with disabilities. Women applicants receive a reported 0.50%
+interest rate concession.
+
+This is a headline reference — personal loan pricing is highly
+profile-dependent; always confirm the applicant's actual quoted rate
+and eligibility with the bank.

@@ -1,0 +1,33 @@
+SOURCE: https://www.kotak.bank.in/en/personal-banking/loans/car-loan.html (official page, fetched directly; same source as kotak_loan_vehicle — split into a separate doc 2026-08-25 so the headline chunk stays short and competitive in retrieval; see PROJECT_STATUS.md §27-28)
+DOCUMENT_ID: kotak_loan_vehicle_eligibility
+BANK: KOTAK_MAHINDRA
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-16
+===
+Kotak Mahindra Bank Car Loan / Vehicle Loan / Auto Loan — Features and Underwriting
+
+Kotak Mahindra Bank's car loan (also called vehicle loan or auto loan)
+finances a wide range of car models — passenger cars, sedans,
+hatchbacks, SUVs, and multi-utility vehicles.
+
+New Car Loan Features:
+- Up to 100% funding of the car's on-road price.
+- Tailor-made car financing schemes based on individual requirement.
+- Speedy car loan processing, easy documentation.
+- Flexible car loan repayment tenure.
+
+Used Car Loan: also available, for financing a pre-owned vehicle
+purchase, with its own eligibility and rate structure.
+
+Car loan availability: only at select locations.
+
+Underwriting: Kotak Mahindra Bank's car loan / vehicle loan is
+underwritten through Kotak Mahindra Prime Limited (KMPL), a subsidiary
+of Kotak Mahindra Bank — applying for a car loan on the bank's website
+redirects to the KMPL platform. Car loan disbursement is subject to
+complete documentation and credit approval at KMPL's sole discretion,
+and subject to RBI guidelines in force at the time.
+
+This is a headline reference only — confirm the current car loan
+interest rate and terms with KMPL before quoting to a customer.

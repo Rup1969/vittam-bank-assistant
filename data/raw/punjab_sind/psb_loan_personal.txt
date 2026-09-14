@@ -1,0 +1,11 @@
+SOURCE: https://punjabandsind.bank.in/content/psbpersonal-loan (Loan Amount/Eligibility/Fees — official page, no numeric rate stated there); Interest Rate below is secondary-sourced from https://www.bankbazaar.com/punjab-and-sind-bank-personal-loan.html, read 2026-08-25 — its two-tier structure (Government/PSU/pensioners vs. private/MNC) matches this doc's own existing fee-tier split exactly, a real cross-check the figures are genuine, but no formal "as of" date was stated on that page; confirm current rate with the bank.
+DOCUMENT_ID: psb_loan_personal
+BANK: PUNJAB_SIND
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-25
+===
+The Punjab & Sind Bank personal loan interest rate is 11.25% to
+14.00% p.a., depending on employment category (11.25%-13.05% for
+government/PSU/pensioners, 12.15%-14.00% for private/MNC employees).
+Loan amount: Rs. 5 lakh to Rs. 20 lakh. Maximum tenure 84 months.

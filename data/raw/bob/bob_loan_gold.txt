@@ -1,0 +1,23 @@
+SOURCE: https://bankofbaroda.bank.in/interest-rate-and-service-charges/retail-loans-interest-rates
+DOCUMENT_ID: bob_loan_gold
+BANK: BOB
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2025-12-06
+===
+Bank of Baroda Retail Gold Loan
+
+Interest Rate (linked to BRLLR, 7.90% as of 6 December 2025, plus a
+Strategic Premium (S.P.)):
+- Demand/EMI-based Gold Loan: BRLLR + S.P. + 1.00% (approximately
+  9.15%).
+- Overdraft Gold Loan: BRLLR + S.P. + 1.10% (approximately 9.25%).
+
+Purpose: loan against pledged gold ornaments/jewellery, available as
+either a standard EMI-repayment loan or an overdraft facility against
+the pledged gold.
+
+Details on eligibility, maximum loan amount, loan-to-value ratio
+against the gold pledged, and documentation are not detailed on the
+general rates page — check with a branch or Bank of Baroda's dedicated
+gold loan product page for a firm quote.

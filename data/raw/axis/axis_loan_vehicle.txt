@@ -1,0 +1,39 @@
+SOURCE: https://www.axis.bank.in/loans/car-loan (official page, fetched directly)
+DOCUMENT_ID: axis_loan_vehicle
+BANK: AXIS
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-16
+===
+Axis Bank Car / Vehicle Loan
+
+Axis Bank's new car loan interest rate ranges from 8.85% to 11.70% per
+annum (effective rate of interest), for loans up to 7 years tenure,
+starting from Rs. 1 lakh with up to 100% on-road funding.
+
+Rate Table — New Car Loans (per official rate card):
+- 1-year MCLR: 8.85%
+- Spread over MCLR: 0.0% - 2.90%
+- Effective ROI Range (per annum), tenure up to 36 months: 8.85% - 11.70%
+- Effective ROI Range (per annum), tenure over 36 months: 8.85% - 11.70%
+- Reset: No reset (up to 36 months)
+- Processing Fee: between Rs. 3,500 and Rs. 12,000
+- Documentation Charges: Rs. 700
+
+(A separate, lower rate table applies for Used Car Loans — see the
+bank's "For a Used Car" tab on the same page for those figures.)
+
+Key Features:
+- Loan starting from Rs. 1 lakh.
+- Up to 100% on-road funding.
+- Maximum tenure of up to 7 years.
+- Sanction in less than 5 minutes (per the bank's own marketing claim).
+- Quick disbursal — as little as 30 minutes.
+- Flexible repayment: pre-payment/part-payment options available.
+- Special benefits for priority banking and other premium segments.
+
+Loan Variants: New Car Loan, and Used Car Loan (Sale Purchase), both
+starting from Rs. 1 lakh.
+
+Rates are revised periodically; verify the current applicable rate,
+spread, and processing fee with the bank before quoting to a customer.

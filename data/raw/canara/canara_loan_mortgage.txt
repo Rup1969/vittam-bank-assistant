@@ -1,0 +1,28 @@
+SOURCE: https://www.canarabank.bank.in/pages/interest-rate-range-on-loans
+DOCUMENT_ID: canara_loan_mortgage
+BANK: CANARA
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2025-12-12
+===
+Canara Bank Mortgage Loan (Loan Against Property)
+
+Interest Rate:
+Ranges from 9.05% to 11.55% p.a. (mean rate approximately 9.98%),
+effective 12 December 2025.
+
+Related Product — Rental Loan:
+A separate specialised product for borrowers with rental income to
+pledge/service the loan against, ranging 9.25%-9.80% p.a. (mean
+~9.43%) — distinct from the general Mortgage Loan product, similar in
+concept to Bank of Baroda's "Loan Against Future Rent Receivables".
+
+Purpose: loan against a residential/commercial property already
+owned, for purposes other than purchasing that specific property
+(compare to Housing Loan, which finances the property purchase
+itself).
+
+For eligibility, loan amount, tenure, and documentation, check the
+specific product's own page or a branch, since Mortgage Loan and
+Rental Loan have different eligibility bases (property value vs.
+rental income).

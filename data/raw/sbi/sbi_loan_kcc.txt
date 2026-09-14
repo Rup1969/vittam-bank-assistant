@@ -1,0 +1,55 @@
+SOURCE: https://sbi.bank.in/web/agri-rural/agriculture-banking/crop-loan/kisan-credit-card
+DOCUMENT_ID: sbi_loan_kcc
+BANK: SBI
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-19
+===
+SBI Kisan Credit Card (KCC)
+
+SBI's Kisan Credit Card interest rate, eligibility, and loan limit — the
+scheme provides timely and adequate credit to farmers to meet
+cultivation (production credit) needs plus contingency expenses.
+
+Eligibility:
+- Individual owner cultivators.
+- Tenant farmers, oral lessees, and share croppers.
+- Self-Help Groups (SHGs) or Joint Liability Groups (JLGs) of farmers.
+
+Loan Amount:
+Need-based, determined by the cropping pattern, acreage, and the
+District Level Technical Committee's Scale of Finance (SOF) for the
+crop — no fixed minimum or maximum ceiling is stated.
+
+Interest Rate:
+- Up to Rs. 3 lakh: 7% p.a., subject to Government of India interest
+  subvention.
+- Above Rs. 3 lakh to below Rs. 50 lakh: 3.25% above the 1-Year MCLR.
+- Rs. 50 lakh and above: priced per the borrower's Credit Risk
+  Assessment (CRA) rating.
+- An additional 3% interest subvention applies as a Prompt Repayment
+  Incentive (PRI) on loans up to Rs. 3 lakh repaid on time, effectively
+  lowering the cost further for prompt-paying farmers.
+
+Margin: Nil.
+
+Security / Collateral:
+- Primary security: hypothecation of crops grown / assets created out
+  of the loan.
+- Collateral is waived for limits up to Rs. 2 lakh (or up to Rs. 3 lakh
+  under a tie-up arrangement).
+- Above these thresholds: equitable or registered mortgage of land,
+  valued at 100% of the loan amount, is required.
+
+Repayment:
+Aligned to the crop's cultivation and marketing cycle (short-duration
+or long-duration crop, as applicable) — not a fixed EMI schedule.
+
+Tenure:
+5 years, with the sanctioned limit eligible for a 10% annual increase,
+subject to periodic review.
+
+Additional Benefits:
+- RuPay Kisan Credit Card (debit card) issued against the account.
+- Optional Pradhan Mantri Fasal Bima Yojana (PMFBY) crop insurance.
+- Optional personal accident and health insurance cover.

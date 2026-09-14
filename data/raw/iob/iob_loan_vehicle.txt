@@ -1,0 +1,10 @@
+SOURCE: https://www.creditmantri.com/indian-overseas-bank-car-loan-interest-rates/ and https://www.codeforbanks.com/banking/car-loan/Indian-overseas-bank/car-loan-interest-rates/ (cross-referenced secondary sources; verify current rate with the bank)
+DOCUMENT_ID: iob_loan_vehicle
+BANK: IOB
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-07-21
+===
+Indian Overseas Bank Vehicle Loans-Pushpaka car/vehicle loan interest
+rate is reported around 7.80% to 10.05% p.a. for new/used cars and
+electric vehicles.

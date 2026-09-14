@@ -1,0 +1,36 @@
+SOURCE: https://centralbank.bank.in/en/node/420 and https://centralbank.bank.in/retail-scheme-interest (rate card)
+DOCUMENT_ID: centralbank_loan_personal
+BANK: CENTRAL_BANK
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-19
+===
+Central Bank of India Personal Loan (Cent Personal)
+
+Central Bank of India's personal loan interest rate is 11.25% or 11.75%
+p.a. (RBLR + 3.00% or RBLR + 3.50%, depending on the applicant's internal
+risk rating), floating. A pre-approved variant is priced at RBLR + 3.50%
+(11.75%).
+
+Eligibility:
+- Permanent government/institutional employees with at least 1 year of
+  service.
+- Confirmed employees of Indian/multinational companies with at least 3
+  years of service.
+- Minimum gross annual salary of Rs. 1.80 lakh.
+- Must maintain a salary account with the bank.
+- Minimum CIBIL score of 700 across all major bureaus (TransUnion CIBIL,
+  Experian, Equifax, CRIF).
+
+Loan Amount:
+Maximum Rs. 20 lakh, calculated as 24 times gross monthly salary, subject
+to the take-home pay remaining at least 50% of gross salary after all
+deductions.
+
+Tenure:
+Up to 84 EMIs (in multiples of 12 months).
+
+Fees:
+- Processing fee: 1.00% of loan amount + GST (nil for defence personnel).
+- Documentation charge: Rs. 270 + GST up to Rs. 2 lakh, Rs. 450 + GST
+  above Rs. 2 lakh (nil for defence personnel).

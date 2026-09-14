@@ -1,0 +1,10 @@
+SOURCE: https://www.canarabank.bank.in/pages/housing-loan, https://www.canarabank.bank.in/canara-apna-ghar, and https://www.canarabank.bank.in/pages/interest-rate-range-on-loans
+DOCUMENT_ID: canara_loan_home
+BANK: CANARA
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2025-12-12
+===
+Canara Bank home loan interest rate ranges from 7.15% to 10.00% p.a.
+(mean approximately 8.06%), linked to the Repo Linked Lending Rate
+(RLLR) at 8.00%. Maximum tenure 30 years, loan-to-value up to 90%.

@@ -1,0 +1,12 @@
+SOURCE: https://punjabandsind.bank.in/content/pss1
+DOCUMENT_ID: psb_loan_udyan
+BANK: PUNJAB_SIND
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-19
+===
+Punjab & Sind Bank PSB Udyan Scheme interest rate: 1-Year MCLR + 1.10%
+for loans up to Rs. 2 lakh, and 1-Year MCLR + 2.10% above Rs. 2 lakh.
+This is Punjab & Sind Bank's agricultural loan scheme for orchard and
+plantation development. Margin: nil up to Rs. 2 lakh; 15% above
+Rs. 2 lakh. Tenure: 15 years for establishment.

@@ -1,0 +1,53 @@
+SOURCE: https://www.iob.bank.in/en/retail-deposit-interest-rates-domestic-nro-and-nre
+DOCUMENT_ID: iob_fd_rates
+BANK: IOB
+CATEGORY: DEPOSIT
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2025-12-15
+===
+Indian Overseas Bank Fixed (Term) Deposit Interest Rates (below Rs. 3 crore)
+
+Indian Overseas Bank's current fixed deposit (FD) interest rate for the
+general public ranges from 2.90% to 6.50% per annum across tenures from
+7 days to 3+ years, with senior citizens earning an additional 0.50%
+and super senior citizens an additional 0.75% over the general rate.
+The 1-year FD interest rate is 6.50% for the general public and 7.00%
+for senior citizens — IOB's highest published slab on the standard
+retail table.
+
+Effective 15 December 2025, domestic retail term deposit rates by tenure
+(general public / senior citizen / super senior citizen):
+- 7-14 days: 3.50% / 4.00% / 4.25%
+- 15-29 days: 3.50% / 4.00% / 4.25%
+- 30-45 days: 3.50% / 4.00% / 4.25%
+- 46-60 days: 4.00% / 4.50% / 4.75%
+- 61-90 days: 3.00% / 3.50% / 3.75%
+- 91-120 days: 3.50% / 4.00% / 4.25%
+- 121-179 days: 2.90% / 3.40% / 3.65%
+- 180-269 days: 4.75% / 5.25% / 5.50%
+- 270 days to less than 1 year: 5.50% / 6.00% / 6.25%
+- 1 year: 6.50% / 7.00% / 7.25%
+- Above 1 year to less than 2 years: 6.40% / 6.90% / 7.15%
+- 2 years to less than 3 years: 6.40% / 6.90% / 7.15%
+- 3 years and above: 6.10% / 6.60% / 6.85%
+
+Note: the 61-90 day and 121-179 day bands are genuinely priced LOWER
+than the shorter bands immediately before them on the bank's own
+published table (not a transcription error) — always quote the exact
+published rate for the requested tenure rather than assuming rates
+increase steadily with tenure.
+
+Senior Citizen Premium: an additional 0.50% for ages 60+, and a further
+0.75% for ages 80+ (super senior citizens), over the general public
+rate.
+
+Minimum Deposit: Rs. 1 lakh stated for the 7-14 day tenure on the
+bank's published table; other tenures may have different minimums —
+confirm with the bank.
+
+444-Day Special FD: reported by third-party aggregators at around
+6.60% p.a. general public — a special-tenure scheme distinct from the
+standard table above; confirm the current rate with the bank.
+
+Rates are revised periodically; verify the current card rate with the
+bank before quoting for a large deposit.

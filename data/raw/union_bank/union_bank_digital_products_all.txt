@@ -1,0 +1,36 @@
+SOURCE: https://www.unionbankofindia.bank.in/en/details/vyom-union-bank-of-india and https://www.unionbankofindia.bank.in/en/listing/app-banking (cross-referenced with app store listings)
+DOCUMENT_ID: union_bank_digital_products_all
+BANK: UNION_BANK
+CATEGORY: DIGITAL
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-15
+===
+Union Bank of India — Digital Banking Products
+
+Vyom (rebranded "Union ease"):
+Union Bank's flagship mobile banking app (Android/iOS) — supports
+NEFT/IMPS/RTGS/UPI fund transfers, links savings, current, overdraft,
+and NRE/NRO accounts to a single UPI ID, bill payments with autopay and
+reminders, mutual fund investments, loan applications, and lifestyle
+bookings (flights, hotels, cabs) from within the app. The app was
+renamed from "Vyom" to "Union ease" as part of a redesign — both names
+may appear in search results/app stores during the transition.
+
+UPI:
+Supported within the app via BHIM UPI — instant transfers using a
+Virtual Payment Address (VPA), QR code, or account number+IFSC, without
+sharing bank account details directly. Requires UPI PIN authentication
+for every transaction.
+
+Security:
+Device binding is used — the app is not designed to run on multiple
+devices simultaneously, an anti-fraud measure alongside standard
+transaction encryption and UPI PIN authentication.
+
+Fees:
+The bank does not charge a fee for using the app itself, though mobile
+carrier data/SMS charges may apply separately.
+
+Confirm current app name and feature availability with the bank, since
+the Vyom-to-Union-ease rebrand may still be rolling out across app
+store listings and marketing material.

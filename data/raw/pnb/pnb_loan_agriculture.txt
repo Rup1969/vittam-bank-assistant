@@ -1,0 +1,72 @@
+SOURCE: https://www.pnbindia.in/document/agricultural-banking/Scheme_PNB_Krishi_Card.pdf (PNB's own official scheme document — Purpose/Eligibility/Extent of Loan/Credit Limit formula read directly from this PDF, 2026-08-24) and https://www.bankbazaar.com/pnb-kisan-credit-card.html, https://www.codeforbanks.com/banks-kcc/punjab-national-bank/ (cross-referenced secondary sources for Margin/Security/Validity, not stated in the official PDF; verify current terms with the bank)
+DOCUMENT_ID: pnb_loan_agriculture
+BANK: PNB
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-24
+===
+Punjab National Bank — Kisan Credit Card / PNB Krishi Card (Agriculture Loan)
+
+Purpose:
+A revolving credit facility for farmers to meet short-term crop
+production and allied agricultural needs, under the Kisan Credit Card
+(KCC) scheme that PNB implements as PNB Krishi Card.
+
+Interest Rate:
+Regular crop loans up to Rs. 3 lakh (including KCC) are reported at
+around 7% p.a. — this reflects the government's Interest Subvention
+Scheme for short-term crop loans, under which the effective rate to a
+prompt-repaying farmer can be lower still via an additional Prompt
+Repayment Incentive. For loans up to Rs. 20 lakh (covering KCC/crop
+loans above Rs. 3 lakh), reported pricing is Base Rate + 2%, with PNB's
+reported Base Rate at approximately 9.6%.
+
+Government Interest Subvention:
+Farmers availing KCC-based short-term crop loans are eligible for
+interest subvention under the government scheme, which reduces the
+effective borrowing cost below the bank's card rate — the exact
+subvention percentage and prompt-repayment incentive should be
+confirmed as they are set by government policy, not the bank alone.
+
+Eligibility (per PNB's own official Krishi Card scheme document):
+Progressive literate and illiterate farmers who are owner cultivators,
+tenants, lessee or allottee farmers with recorded occupancy rights, or
+farmers with ancestral/perpetual cultivation rights, plus Joint
+Liability Groups (JLGs). Oral tenants are eligible only if the
+landowner agrees to become a co-borrower — except where the account is
+secured by liquid securities (FDR/NSC/KVP), in which case no
+co-borrower is required. Landless labourers, share croppers, tenant
+farmers, and oral lessees can be issued a PNB Krishi Card up to
+Rs. 50,000 on the basis of an affidavit alone.
+
+Extent of Loan: Maximum Rs. 50 lakh.
+
+Credit Limit (how PNB calculates the sanctioned amount):
+First-year short-term limit = Scale of Finance for the crop (as
+decided by the District Level Technical Committee) x extent of area
+cultivated, plus 10% of that limit toward post-harvest/household/
+consumption needs (health insurance premium coverable up to Rs. 3
+lakh), plus 20% toward repairs and maintenance of farm assets, plus
+crop/PAIS/asset insurance. Each subsequent year (2nd-5th) adds a
+further 10% for cost escalation, plus an estimated term-loan component
+for investments (land development, minor irrigation, farm equipment).
+The 5th-year short-term limit plus the estimated long-term requirement
+becomes the Maximum Permissible Limit (MPL) — this MPL is the actual
+Kisan Credit Card limit.
+
+Margin: Nil for crop loans under the Krishi Card Scheme.
+
+Security:
+Up to Rs. 1 lakh — crops/assets created from the loan serve as
+security. Above Rs. 1 lakh — crops/assets plus one of: land
+charge/mortgage under the state's Agricultural Credit Operations Act
+(valued at 100% of the loan amount, 75% for marginal/small farmers),
+a lien on liquid securities (NSC/FDR/KVP), or a third-party guarantee.
+
+Validity: The PNB Krishi Card is valid for 5 years from the sanction
+date.
+
+This is a real, sourced sanction-rule summary, not a complete
+substitute for the bank's own current scheme document — confirm the
+current effective rate and any updated terms for a specific
+farmer/loan size with the bank or nearest branch.

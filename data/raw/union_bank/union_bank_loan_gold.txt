@@ -1,0 +1,27 @@
+SOURCE: https://ratestoday.in/gold-loan-interest-rate/union-bank-of-india/ (cross-referenced secondary source; verify current rate with the bank)
+DOCUMENT_ID: union_bank_loan_gold
+BANK: UNION_BANK
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-15
+===
+Union Bank of India Gold Loan
+
+Interest Rate:
+Reported starting from 8.80% p.a., with a broader reported range up to
+11.00% p.a. depending on loan amount, tenure, and the pledged gold's
+valuation.
+
+Loan-to-Value (LTV):
+Up to 75% of the appraised gold value — a slightly more conservative
+LTV cap than some peer banks' 80-90% gold-loan offerings.
+
+Structure:
+Loan secured against pledged gold ornaments/jewellery; exact rate and
+eligible amount depend on gold purity, weight, and prevailing gold
+valuation at the time of the loan.
+
+This is a headline reference — always confirm the current rate,
+loan-to-value ratio, and valuation method with the bank, since gold
+loan terms are sensitive to gold price movements and are reviewed
+frequently.

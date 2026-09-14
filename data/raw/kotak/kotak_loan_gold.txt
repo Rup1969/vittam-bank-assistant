@@ -1,0 +1,29 @@
+SOURCE: https://www.kotak.bank.in/en/personal-banking/loans/gold-loan.html (official page) cross-referenced with secondary sources
+DOCUMENT_ID: kotak_loan_gold
+BANK: KOTAK_MAHINDRA
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-15
+===
+Kotak Mahindra Bank Gold Loan
+
+Interest Rate:
+Standard gold loan: starting from 9% p.a. onwards, for loan amounts up
+to Rs. 1.5 crore and tenure up to 4 years.
+
+Kotak Gold Loan Smart Choice Scheme:
+A special no-income-documentation gold loan scheme at a fixed rate of
+0.88% per month (approximately 10.56% p.a. equivalent), for loan
+amounts up to Rs. 6 lakh and a 12-month tenure — a distinct, higher-
+rate product from the standard gold loan, trading a higher rate for
+reduced documentation requirements.
+
+Structure:
+Loan secured against pledged gold ornaments/jewellery; exact rate and
+eligible amount depend on gold purity, weight, and prevailing gold
+valuation at the time of the loan.
+
+This is a headline reference — always confirm the current rate,
+loan-to-value ratio, and which specific scheme applies with the bank
+before quoting, since gold loan terms are sensitive to gold price
+movements and are reviewed frequently.

@@ -1,0 +1,33 @@
+SOURCE: https://www.unionbankofindia.bank.in/en/details/home-loan-interest-rate and https://www.unionbankofindia.bank.in/pdf/retail_roi.pdf, https://www.urbanmoney.com/home-loan/union-bank-of-india/interest-rate (cross-referenced secondary sources; verify current rate with the bank)
+DOCUMENT_ID: union_bank_loan_home
+BANK: UNION_BANK
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-07-24
+===
+Union Bank of India Home Loan
+
+Union Bank of India's home loan interest rate currently ranges from
+approximately 7.15% to 9.35% per annum for well-qualified applicants,
+linked to the bank's External Benchmark Lending Rate (EBLR). This is
+the standard housing loan for purchasing or constructing a home — not
+to be confused with Union Mortgage, the bank's separate loan-against-
+property product for borrowing against an already-owned property.
+
+Interest Rate:
+Linked to the bank's External Benchmark Lending Rate (EBLR) — EBLR was
+8.00% as of 24 July 2026 (RBI Repo Rate 5.25% + a spread of 2.75%).
+Reported home loan rates range roughly 7.15%-9.35% p.a. for well-
+qualified salaried/non-salaried applicants, with a broader reported
+range up to 12.65% p.a. depending on credit score, loan amount, and
+property location — third-party aggregator figures vary noticeably, so
+confirm the applicant's actual quoted rate with the bank.
+
+Structure:
+Floating-rate loan — moves with EBLR/repo-rate changes over the loan
+tenure. Rate depends on CIBIL score, employment category (salaried vs.
+self-employed), loan amount, and tenure.
+
+This is a headline, EBLR-linked reference — confirm the current EBLR
+value and the applicant's specific quoted spread with the bank before
+quoting.

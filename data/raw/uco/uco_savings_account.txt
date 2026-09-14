@@ -1,0 +1,29 @@
+SOURCE: https://uco.bank.in/en/web/guest/saving-account
+DOCUMENT_ID: uco_savings_account
+BANK: UCO
+CATEGORY: DEPOSIT
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-19
+===
+UCO Bank Savings Account
+
+UCO Bank's savings account interest rate is 2.50% p.a., flat across all
+balance tiers (effective 26.08.2025).
+
+Minimum Average Quarterly Balance (AQB), by location — with a cheque
+book:
+- Metro/Urban/Semi-Urban: Rs. 2,000.
+- Rural: Rs. 500.
+
+Without a cheque book:
+- Metro/Urban/Semi-Urban: Rs. 1,000.
+- Rural: Rs. 250.
+
+Penalty for shortfall: Rs. 50 + GST per quarter (shortfall up to
+Rs. 500) up to Rs. 150 + GST per quarter (shortfall of Rs. 1,001-2,000).
+
+UCO Bank also offers specialized zero-balance and product-specific
+variants (referenced elsewhere on the site, not detailed here): UCO GIG
+(for gig workers, zero AQB), UCO Tierised, UCO Asha Pension, UCO Suvidha
+Salary Account, UCO Rising Star (for minors), UCO Aparajita (for women),
+and Basic Savings Bank Deposit Account (BSBDA).

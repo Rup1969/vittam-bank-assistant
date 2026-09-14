@@ -1,0 +1,23 @@
+SOURCE: https://www.mymoneymantra.com/bank-of-india-gold-loan-interest-rates and https://www.atticagoldcompany.com/bank-of-india-gold-loan-interest-rate/, https://www.paisabazaar.com/bank-of-india/gold-loan/ (cross-referenced secondary sources; verify current rate with the bank)
+DOCUMENT_ID: boi_loan_gold
+BANK: BOI
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-01
+===
+Bank of India Gold Loan
+
+Interest Rate:
+Reported range roughly 8.35%-9.05% p.a., with minimal processing fees
+and flexible repayment options reported across aggregator sources.
+
+Structure:
+Loan secured against pledged gold ornaments/jewellery; the exact rate
+and eligible amount depend on loan amount, tenure selected, and the
+purity/weight of gold pledged, in line with standard gold-loan practice
+across public sector banks.
+
+This is a headline reference — always confirm the current rate,
+loan-to-value ratio, and valuation method with the bank, since gold
+loan terms are sensitive to gold price movements and are reviewed
+frequently.

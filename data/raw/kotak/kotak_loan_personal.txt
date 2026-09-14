@@ -1,0 +1,21 @@
+SOURCE: https://www.kotak.bank.in/en/personal-banking/loans/personal-loan/interest-rates.html (official page)
+DOCUMENT_ID: kotak_loan_personal
+BANK: KOTAK_MAHINDRA
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-15
+===
+Kotak Mahindra Bank Personal Loan
+
+Interest Rate:
+Officially advertised starting rate: 10.99% p.a. Broader reported
+range: 10.99%-24% p.a., depending on credit score, income, and
+applicant profile.
+
+Loan Amount & Tenure:
+Rs. 50,000 to Rs. 15,00,000, with flexible repayment over 12-60
+months.
+
+This is a headline reference — personal loan pricing is highly
+profile-dependent; always confirm the applicant's actual quoted rate
+and eligibility with the bank.

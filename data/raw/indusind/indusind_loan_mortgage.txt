@@ -1,0 +1,41 @@
+SOURCE: https://www.indusind.bank.in/in/en/personal/loans/loan-against-property.html (official page, fetched directly)
+DOCUMENT_ID: indusind_loan_mortgage
+BANK: INDUSIND
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-16
+===
+IndusInd Bank Loan Against Property (LAP) / Mortgage Loan
+
+IndusInd Bank's Loan Against Property interest rate for Q1 FY27 ranges
+from 8.00% to 12.50% Rate of Interest (average 9.65%), with APR ranging
+from 8.00% to 16.71% (APR figures are calculated for a 10-year tenure;
+actual APR varies by the specific rate and tenure taken).
+
+Rate Table — Q1 FY27 (per official page):
+- Bank ROI: Min 8.00%, Max 12.50%, Average 9.65%
+- APR: Min 8.00%, Max 16.71%
+
+Rates are linked to the External Benchmark Rate, currently 5.25%. The
+bank offers attractive rates based on customer profile and the type of
+collateral offered.
+
+Rate Reset Protection (per RBI Aug 2023 circular, applicable to
+individual borrowers taking LAP for personal purposes — non-individual
+or business-purpose borrowers are NOT covered by this circular):
+If the benchmark rate rises, the loan tenure is extended first (EMI
+held constant) rather than immediately raising the EMI.
+
+Credit Decision Turnaround Time (TAT):
+- Loans up to Rs. 25 lakh (to MSME borrower units): not more than 14
+  working days.
+- Loans above Rs. 25 lakh (to MSME borrower units): 45 working days.
+(Subject to complete documentation being submitted by the customer.)
+
+Documentation includes: latest 6 months' bank statement of the main
+CA/SA/CC/OD account, copies of all property documents for the property
+to be mortgaged, and a processing fee cheque.
+
+Rates and the benchmark are revised periodically; verify the current
+Q1 FY27 (or latest quarter's) rate table with the bank before quoting
+to a customer.

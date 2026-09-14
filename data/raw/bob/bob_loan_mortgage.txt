@@ -1,0 +1,27 @@
+SOURCE: https://bankofbaroda.bank.in/loans/mortgage-loan, https://bankofbaroda.bank.in/interest-rate-and-service-charges/retail-loans-interest-rates, and https://bankofbaroda.bank.in/banking-mantra/loans-borrowings/articles/documents-required-for-loan-against-property-a-complete-checklist
+DOCUMENT_ID: bob_loan_mortgage
+BANK: BOB
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2025-12-06
+===
+Bank of Baroda Mortgage Loan (Loan Against Property)
+
+Interest Rate (linked to BRLLR, 7.90% as of 6 December 2025, plus a
+Strategic Premium (S.P.)):
+- Baroda Mortgage Loan (Individuals): BRLLR + S.P. + 0.75% to BRLLR +
+  S.P. + 3.35% (approximately 8.90%-11.50%).
+- Baroda Loan Against Future Rent Receivables: BRLLR + S.P. + 2.00%
+  floating (approximately 10.15%), or a 4.00% fixed spread variant —
+  a specialised product for borrowers with rental income to pledge
+  against, not a general-purpose mortgage loan.
+
+Purpose: loan against a residential/commercial property already
+owned, for purposes other than purchasing that specific property
+(compare to Home Loan, which finances the property purchase itself).
+
+Documents commonly required (per Bank of Baroda's general Loan Against
+Property checklist): property title documents, identity and address
+proof, income proof (salary slips/ITR depending on employment type),
+and bank statements — exact requirements vary by applicant profile and
+should be confirmed with a branch.

@@ -1,0 +1,45 @@
+SOURCE: https://www.icici.bank.in/personal-banking/accounts/savings-account (official page, fetched directly; specific MAB figures cross-referenced against secondary aggregators since the page's own FAQ answer text is lazy-loaded client-side and did not render in a direct fetch — flagged below, not guessed)
+DOCUMENT_ID: icici_savings_account
+BANK: ICICI
+CATEGORY: DEPOSIT
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-16
+===
+ICICI Bank Savings Account — Minimum Balance and Interest Rate
+
+ICICI Bank's savings account interest rate is 2.5% p.a. across all
+balance tiers — confirmed directly from the bank's official savings
+account page ("ICICI Bank currently offers interest rate of 2.5% p.a.
+(per annum) across all savings account balances"), calculated daily on
+the End-of-Day balance and credited quarterly (end of March, June,
+September, December).
+
+Minimum balance: for accounts opened on or after 1 August 2025, ICICI
+Bank's Monthly Average Balance (MAB) requirement is Rs. 15,000 for
+metro/urban locations, Rs. 7,500 for semi-urban locations, and Rs. 2,500
+for rural locations. This exact figure was NOT directly readable from
+ICICI's page in this fetch — the page's own FAQ ("What is the ICICI Bank
+Savings Account minimum balance for new accounts opened after 01 August
+2025?") confirms this is the bank's own stated policy, but the answer
+text loads client-side on click and did not render during automated
+fetch. The rupee figures above are cross-referenced from secondary
+aggregators that cite ICICI's official MAB policy — verify the exact
+current figure on ICICI's live page before quoting as final.
+
+Account variants: ICICI Bank offers savings accounts tailored to
+different customer segments (Senior Citizen, Homemaker, Minor, Working
+Professional, Student, Doctor, Pension Account) — each may carry a
+different MAB requirement; check the specific variant's page.
+
+Accounts opened before 1 August 2025 may be governed by a different,
+earlier fee/MAB schedule — the bank's page explicitly separates "Schedule
+of charges: Accounts opened from August 01, 2025" from "Accounts opened
+till 31 July 2025."
+
+If the MAB requirement is not maintained, a penalty is charged based on
+the shortfall amount — use ICICI's MAB Calculator (linked from the
+savings account page) for the exact penalty computation.
+
+Verify current MAB figures and interest rate against ICICI Bank's
+official website before quoting to a customer as final, since these are
+periodically revised (confirmed changed as recently as August 2025).

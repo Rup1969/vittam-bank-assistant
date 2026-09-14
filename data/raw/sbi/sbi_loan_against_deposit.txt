@@ -1,0 +1,31 @@
+SOURCE: https://sbi.bank.in/web/interest-rates/interest-rates/loan-schemes-interest-rates/loan-against-securities-and-consumer-durable-loans
+DOCUMENT_ID: sbi_loan_against_deposit
+BANK: SBI
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2025-08-15
+===
+SBI Loan / Overdraft Against Fixed Deposit
+
+As shown on SBI's official loan-against-securities rates page, last
+updated 15 August 2025:
+
+- Loan against SBI Time Deposits (domestic): 1.00% over the interest
+  rate paid on the underlying time deposit.
+- Loan against NRO/NRE Fixed Deposits: 1.00% over the interest rate
+  paid on the underlying time deposit.
+- Loan against FCNR(B) Deposit: 2.90% over the 1-year MCLR (which was
+  8.70% as of that page, giving an effective ~11.60%).
+
+Key Features:
+- Up to 90% of the fixed deposit's value can be borrowed.
+- The FD does not need to be broken and keeps earning its own interest.
+- No prepayment penalty.
+
+Related — Loan Against Securities (same page):
+- Loan against mutual fund units: 9.95% p.a. (w.e.f. 15 December 2025).
+- Loan against NSC/KVP: 11.20% p.a.
+
+Given the underlying deposit rate changes periodically, the effective
+loan rate should be recalculated against the current FD rate rather
+than assumed fixed.

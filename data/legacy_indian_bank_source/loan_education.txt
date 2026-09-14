@@ -1,0 +1,51 @@
+DOCUMENT_ID: loan_education
+CATEGORY: LOAN
+PRODUCT: IB Education Loan
+SOURCE: indianbank.bank.in/category/education-loan/ (base product) and Indian Bank Education Loan rate card, official docx, user-supplied 2026-08-20 (interest rate figures below, added via the automation pipeline's manual-load path; this RAG doc updated 2026-08-24 to match)
+============================================================
+
+IB EDUCATION LOAN
+
+Interest Rate:
+- Education Loan (general): 7.05%-10.15% p.a., depending on loan amount
+  and applicant profile — the lowest published rate among Indian Bank's
+  education loan schemes.
+- PM Vidyalaxmi Scheme: 7.25%-8.45% p.a. (government scheme, linked to
+  institute category).
+- IB SKILL Loan (vocational/skill courses): 9.45% p.a. flat.
+- Rates are linked to RLLR (Repo-Linked Lending Rate) — floating, so the
+  above ranges move with RBI's repo rate over the loan's life.
+- Interest subsidy schemes available for eligible students.
+
+Purpose:
+Finance higher education in India and abroad — covers tuition fees, hostel charges, books, equipment, travel expenses for studies abroad.
+
+Target Group:
+- Indian nationals who have secured admission to recognised institutions
+- Courses covered: Graduate, Post-graduate, Professional (engineering, medical, MBA, law, CA, etc.)
+- Both Indian and overseas institutions covered
+
+Eligibility:
+- Student must be an Indian national
+- Admission to recognised institution through merit/entrance test
+- Co-borrower: Parent or guardian mandatory
+
+Loan Amount:
+- Studies in India: up to Rs.10 lakh (higher amounts based on merit)
+- Studies abroad: up to Rs.20 lakh (higher amounts available)
+- Premier institution list: higher quantum available
+
+Repayment:
+- Moratorium: Course period + 1 year (or 6 months after getting job, whichever is earlier)
+- Repayment: up to 15 years after moratorium
+
+Collateral:
+- Up to Rs.7.5 lakh: No collateral (parents as co-borrower)
+- Above Rs.7.5 lakh: Tangible collateral required
+
+Government Schemes Linked:
+- Dr. Ambedkar Central Sector Scheme (interest subsidy for OBC/EBC)
+- Padho Pardesh scheme (for minority students abroad)
+
+Online Apply: apps.indianbank.bank.in/ibapps/index.html
+Helpline: 1800 1700

@@ -1,0 +1,37 @@
+SOURCE: https://bankofbaroda.bank.in/interest-rate-and-service-charges/deposits-interest-rates/savings-bank-deposits and https://bankofbaroda.bank.in/interest-rate-and-service-charges/deposits-interest-rates/fixed-deposits-callable-and-non-callable-upto-ten-crores
+DOCUMENT_ID: bob_rates_deposit_structured
+BANK: BOB
+CATEGORY: RATES
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-06-12
+===
+Bank of Baroda — Structured Deposit Rate Table
+
+Savings Bank Account: 2.50% p.a. for retail balances up to Rs. 10
+crore (effective 22 August 2025).
+
+Fixed Deposits (callable, below Rs. 3 crore), rates effective 12 June
+2026, General Public | Senior Citizen:
+- 7-14 days:            3.50% | 4.00%
+- 46-90 days:           5.00% | 5.50%
+- 181-210 days:         5.50% | 6.00%
+- 271 days to <1 year:  6.00% | 6.50%
+- 1 year:               6.25% | 6.75%
+- 2-3 years:            6.25% | 6.75%
+- 3-5 years:            6.30% | 6.90%
+- 5-10 years:           6.00% | 7.00%
+- bob Square Drive (444 days): 6.45% | 6.95%
+- bob Golden Goal (555 days):  6.75% | 7.25%
+
+(This mirrors bob_fd_rates.txt — kept here too so the consolidated
+rates pool has a single structured reference table per bank, matching
+the convention used for SBI and Indian Bank.)
+
+Bulk deposits (Rs. 3 crore and above) and non-callable variants are
+priced separately — check Bank of Baroda's dedicated pages for those
+tables.
+
+Recurring Deposit: not separately rate-tabled on Bank of Baroda's
+public pages at the time of writing — generally tracks the equivalent-
+tenor FD rate, consistent with how other banks price RDs; confirm with
+a branch for an exact current RD rate.

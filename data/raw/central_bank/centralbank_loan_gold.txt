@@ -1,0 +1,35 @@
+SOURCE: https://centralbank.bank.in/en/node/439 and https://centralbank.bank.in/retail-scheme-interest (rate card)
+DOCUMENT_ID: centralbank_loan_gold
+BANK: CENTRAL_BANK
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-19
+===
+Central Bank of India Gold Loan (Cent Gold Loan)
+
+Central Bank of India's gold loan interest rate is RBLR + 0.25% (8.50%
+p.a., retail/MSME segment).
+
+Eligibility:
+Individuals aged 18 and above with KYC-compliant accounts. Gold/jewelry
+shop owners and goldsmiths are not eligible.
+
+Loan Amount:
+Minimum Rs. 10,000, maximum Rs. 60 lakh (subject to an overall RAM
+segment cap of Rs. 60 lakh).
+
+Loan-to-Value (LTV) and Margin:
+LTV ranges from 68% to 78% per borrower/CIF depending on profile and
+loan size; margin ranges from 22% to 32% correspondingly.
+
+Tenure:
+12 months, bullet repayment structure.
+
+Processing Fee:
+Nil up to Rs. 5 lakh; above Rs. 5 lakh, 0.30% of loan amount + GST,
+maximum Rs. 5,000 (offer valid through 31 March 2027).
+
+Other Charges:
+Appraisal fee 0.20%-0.22% of loan amount (+ GST) for first-time
+appraisal, minimum Rs. 100-110, maximum Rs. 3,000-3,300. No prepayment
+or foreclosure charges.

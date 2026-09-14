@@ -1,0 +1,22 @@
+SOURCE: https://punjabandsind.bank.in/content/saving-account and https://punjabandsind.bank.in/content/general-savings-account
+DOCUMENT_ID: psb_savings_account
+BANK: PUNJAB_SIND
+CATEGORY: DEPOSIT
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-19
+===
+Punjab & Sind Bank Savings Accounts
+
+Punjab & Sind Bank offers several savings account variants, including
+the General Savings Account, Basic Savings Bank Deposit Account (BSBDA),
+and PSB Privilege Savings Account, with eligibility covering single/
+joint accounts, accounts for persons with disabilities, and minor
+accounts with restricted transactions.
+
+This is a summary-level entry only — the bank's savings-account landing
+and General Savings Account pages list the product variants but do not
+publish an inline minimum-average-balance figure or interest rate; those
+are referenced as living on the bank's separate "Interest Rate" and
+"Service Charges" pages, which were not separately fetched in this pass.
+Confirm the exact minimum balance and current rate with the bank before
+relying on any figure.

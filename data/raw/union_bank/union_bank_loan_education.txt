@@ -1,0 +1,27 @@
+SOURCE: https://www.unionbankofindia.bank.in (Union Education / PM-Vidyalaxmi scheme references) cross-referenced via aggregator search results; verify current rate with the bank
+DOCUMENT_ID: union_bank_loan_education
+BANK: UNION_BANK
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-15
+===
+Union Bank of India — Union Education Loan (PM-Vidyalaxmi)
+
+Interest Rate:
+Union Education loans under the government's PM-Vidyalaxmi scheme are
+reported with effective interest rates ranging from 7.10% to 8.50% p.a.,
+depending on the category/ranking of the institute the student is
+admitted to (higher-ranked/NIRF-listed institutions typically qualify
+for the lower end of this range).
+
+Scheme Context:
+PM-Vidyalaxmi is a central government education-loan scheme integrating
+interest subvention for eligible lower-income families — Union Bank
+participates in this scheme alongside its own standard education loan
+product line, so the applicable rate and subsidy depend on both the
+institute category and the applicant's eligibility for government
+interest subvention.
+
+This is a headline reference — confirm the current rate for a specific
+institute/course category and the applicant's PM-Vidyalaxmi eligibility
+with the bank before quoting.

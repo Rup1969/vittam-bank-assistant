@@ -1,0 +1,32 @@
+SOURCE: https://www.canarabank.bank.in/pages/deposit-interest-rates
+DOCUMENT_ID: canara_rates_deposit_structured
+BANK: CANARA
+CATEGORY: RATES
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2024-12-01
+===
+Canara Bank — Structured Deposit Rate Table
+
+Savings Bank Account: 2.90% to 4.00% p.a. depending on balance slab;
+all savings accounts are zero-minimum-balance effective June 2026.
+
+Fixed Deposits (below Rs. 3 crore), effective 1 December 2024:
+- General Public range: 4.00% to 7.40% p.a. (7 days to 10 years)
+- Senior Citizen range: 4.00% to 7.90% p.a. (7 days to 10 years)
+- 7-45 days: 4.00% (general public)
+- 46-90 days: 5.25% (general public)
+- 1 year: 6.85% (general public)
+- 444 Days / 555 Days special-tenor schemes: 555-day senior citizen
+  rate 7.10%, with an additional 0.60% for super senior citizens on
+  select special-tenor schemes.
+
+(This mirrors canara_fd_rates.txt — kept here too so the consolidated
+rates pool has a single structured reference table per bank, matching
+the convention used for SBI, Bank of Baroda, and Indian Bank.)
+
+Senior Citizen Premium: additional 0.50% on deposits below Rs. 2 crore
+with tenor 180 days or more.
+
+Verify the exact current rate against Canara Bank's live deposit-rates
+page before quoting, since this data point is dated December 2024 for
+the standard FD table.

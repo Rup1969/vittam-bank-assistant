@@ -1,0 +1,37 @@
+SOURCE: https://rbi.org.in/Scripts/HolidayMatrixDisplay.aspx
+DOCUMENT_ID: rbi_bank_holidays
+BANK: RBI
+CATEGORY: GENERAL
+SOURCE_TYPE: RBI_CITIZENS_CORNER
+===
+RBI Bank Holidays — How Bank Holidays Are Determined
+
+RBI publishes a Bank Holiday matrix, filterable by RBI regional office
+(covering all major cities from Agartala to Vijayawada), month, and
+year, showing when banks in that region will be closed.
+
+Two Categories of Closure:
+1. Negotiable Instruments Act (NI Act) Holidays — statutory closures
+   declared under the Negotiable Instruments Act, 1881. These are
+   public holidays on which cheques/negotiable instruments cannot be
+   presented, and banks are closed.
+2. Banks' Closing of Accounts — additional closure periods relating to
+   half-yearly/annual account-closing activity, distinct from NI Act
+   holidays.
+
+General Rule: All scheduled and non-scheduled banks observe a public
+holiday on the second and fourth Saturday of every month, in addition
+to the region-specific NI Act holidays (which vary by state/region —
+e.g. a regional festival observed as a bank holiday in one RBI regional
+office's jurisdiction may not be a holiday elsewhere in the country).
+
+How To Use This For A Specific Date:
+The actual list of holiday dates is region- and year-specific and
+changes annually — this document intentionally does NOT reproduce a
+dated list, since it would go stale immediately. For a specific date,
+region, and year, check RBI's live Holiday Matrix directly, filtering
+by the relevant RBI regional office.
+
+This matters for banking staff/customers when planning cheque clearing,
+RTGS/NEFT cut-offs, or any date-sensitive transaction around a
+potential regional holiday.

@@ -1,0 +1,33 @@
+SOURCE: https://www.kotak.bank.in/en/stories-in-focus/loans/business-loan/msme-loan-without-collateral.html and https://www.kotak.bank.in/en/business/loans/business-loan.html (official pages)
+DOCUMENT_ID: kotak_loan_msme
+BANK: KOTAK_MAHINDRA
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-15
+===
+Kotak Mahindra Bank MSME / Business Loans
+
+Collateral-Free Business Loan:
+Kotak Mahindra Bank offers business loans up to Rs. 1 crore without
+collateral, for general business/working-capital needs.
+
+CGTMSE Collateral-Free MSME Loans:
+Under the government's CGTMSE scheme, Kotak offers collateral-free
+MSME loans up to Rs. 2 crore (and potentially higher in some cases),
+with final approval based on the bank's assessment of financials,
+repayment ability, and documentation — a notably higher collateral-
+free ceiling than several public sector banks' typical Rs. 10 lakh
+threshold.
+
+Agri-SME Business Loans:
+A specific collateral-free scheme for commodity traders, integrated
+with the government's PMMY (Pradhan Mantri MUDRA Yojana) scheme.
+
+Overdraft (OD) / Cash Credit (CC):
+Working-capital facilities allowing MSMEs to draw funds up to a
+sanctioned limit, paying interest only on the amount actually used.
+
+This is a headline reference — confirm current interest rates,
+processing fees, and eligibility criteria (including which scheme
+applies to a specific business) with the bank before advising a
+customer.

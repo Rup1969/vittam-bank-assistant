@@ -1,0 +1,31 @@
+SOURCE: https://www.canarabank.bank.in/pages/interest-rate-range-on-loans and https://www.canarabank.bank.in/pages/rates-of-interest-for-retail-lending-schemes-linked-to-rllr
+DOCUMENT_ID: canara_rates_lending_structured
+BANK: CANARA
+CATEGORY: RATES
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2025-12-12
+===
+Canara Bank — Structured Lending Rate Table
+
+Benchmark: RLLR (Repo Linked Lending Rate) = 8.00% effective 12 March
+2026. Most retail loan rates below are quoted as a range effective 12
+December 2025 (mean rate in parentheses) and are ultimately anchored
+to RLLR.
+
+Housing Loan: 7.15% - 10.00% (mean 8.06%)
+Vehicle Loan: 7.45% - 15.00% (mean 9.09%)
+Mortgage Loan (Loan Against Property): 9.05% - 11.55% (mean 9.98%)
+Rental Loan: 9.25% - 9.80% (mean 9.43%)
+Budget Loan (personal loan category): 9.70% - 14.70% (mean 11.86%)
+Vidya Turant Education Loan: 6.85% starting, 8.60% - 11.35% range by
+  institution tier
+Swarna Gold Loan: ~8.75% - 9.60% (Swarna-branded: RLLR + 0.95% as of
+  12 March 2026)
+Kisan Credit Card (Agriculture): mean 9.20%, base 7%, subvented to as
+  low as 4% for eligible prompt-repaying farmers
+Loan Against Fixed Deposit: 1%-2% over the underlying FD rate
+
+All rates above are headline ranges — the rate actually offered to an
+individual applicant depends on credit profile, loan amount, tenure,
+and scheme chosen. Reverify RLLR and any spread before quoting, since
+it moves with RBI's repo rate.

@@ -1,0 +1,44 @@
+SOURCE: https://bankofbaroda.bank.in/loans/home-loan, https://bankofbaroda.bank.in/interest-rate-and-service-charges/retail-loans-interest-rates, and https://bankofbaroda.bank.in/banking-mantra/loans-borrowings/articles/documents-required-for-home-loan
+DOCUMENT_ID: bob_loan_home
+BANK: BOB
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2025-12-06
+===
+Bank of Baroda Home Loan
+
+Interest Rate (linked to BRLLR — Baroda Repo Linked Lending Rate,
+7.90% as of 6 December 2025):
+- Baroda Home Loan: BRLLR - 0.70% to BRLLR + 1.05% (floating); BRLLR +
+  1.00% to BRLLR + 2.05% (fixed).
+- Baroda Home Improvement Loan: same rate band as the standard Home
+  Loan.
+- Baroda Max Savings Home Loan: tiered rate depending on loan amount.
+- Baroda CRE (Commercial Real Estate) Home Loan: 0.25%-0.50% premium
+  over the standard Home Loan rate.
+
+Eligibility:
+- Minimum age 21 years for the primary applicant; a co-applicant may
+  be added from age 18.
+- Minimum CIBIL/credit score of 701 required.
+- Eligibility also weighs financial position (salaried/self-employed),
+  credit history, and existing liabilities (EMIs, credit card debt).
+
+Loan Amount:
+No fixed cap stated on the general product page — the eligible amount
+is determined via Bank of Baroda's Home Loan Eligibility Calculator,
+based on income, repayment capacity, and credit history. Use the
+calculator or a branch for a specific applicant's eligible amount.
+
+Documents Required:
+- Completed application form.
+- Identity proof and address proof.
+- Last 3 months' salary slips (salaried applicants).
+- Last 3 years' Form 16 (salaried applicants).
+- Last 6 months' bank statement showing salary credit and any existing
+  loan repayments.
+- Property ownership papers.
+
+This is a headline/summary reference — confirm the exact rate slab and
+eligible amount for a specific applicant via Bank of Baroda's
+calculator or a branch before quoting.

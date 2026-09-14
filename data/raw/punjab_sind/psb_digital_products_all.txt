@@ -1,0 +1,25 @@
+SOURCE: https://punjabandsind.bank.in/content/upi
+DOCUMENT_ID: psb_digital_products_all
+BANK: PUNJAB_SIND
+CATEGORY: DIGITAL
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-19
+===
+Punjab & Sind Bank Digital Banking Products
+
+Punjab & Sind Bank's UPI/mobile banking app is called PSB UNIC BHIM.
+Users can create a unique Virtual Payment Address (VPA) using their
+name, numbers, or characters (e.g. choice@psb or choice@psbpay).
+
+Key Features:
+- Peer-to-peer money transfers via VPA or QR code scanning.
+- Collect-and-pay through Virtual Payment Address.
+- Merchant payments without revealing account details.
+- Balance checking across linked accounts.
+- UPI Lite for transactions under Rs. 1,000, no PIN required.
+- Recurring payments via UPI Autopay.
+- Two-factor authentication and device binding for security.
+- Supports both UPI and Bharat QR codes.
+
+All transfers are instant, available 24x7 365 days a year, and free of
+cost. The bank's broader digital banking platform is called PSB UnIC.

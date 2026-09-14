@@ -1,0 +1,19 @@
+SOURCE: https://centralbank.bank.in/en/loan-against-property-loan and https://centralbank.bank.in/retail-scheme-interest (rate card)
+DOCUMENT_ID: centralbank_loan_mortgage
+BANK: CENTRAL_BANK
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-19
+===
+Central Bank of India Loan Against Property (Mortgage)
+
+Central Bank of India's loan against property interest rate ranges from
+8.65% to 12.25% p.a. (RBLR + 0.40% to RBLR + 4.00%, floating,
+RBLR = 8.25% as of this rate card).
+
+This is a real, listed retail loan product offered by the bank; the
+product's own landing page is a navigation hub without inline detail
+(eligibility, exact LTV, tenure, fees are not separately published on
+the site beyond the rate card figure above) — confirm the specific
+terms with the bank or a branch before relying on anything beyond the
+interest-rate range stated here.

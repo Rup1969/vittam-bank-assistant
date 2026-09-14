@@ -1,0 +1,27 @@
+SOURCE: https://www.atticagoldcompany.com/indian-overseas-bank-gold-loan-interest-rate/ (cross-referenced secondary source; verify current rate with the bank)
+DOCUMENT_ID: iob_loan_gold
+BANK: IOB
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-15
+===
+Indian Overseas Bank Gold Loan
+
+Interest Rate:
+General retail jewel loans reported starting around 8.25% p.a. Certain
+agricultural gold loan schemes (for farming-related purposes) are
+reported as low as 7% p.a., reflecting government interest-subvention
+benefits similar to Kisan Credit Card pricing — these are a distinct,
+purpose-restricted product from the general jewel loan, not a rate
+available for any gold loan purpose.
+
+Structure:
+Loan secured against pledged gold ornaments/jewellery; exact rate and
+eligible amount depend on gold purity, weight, and prevailing gold
+valuation, and on which specific scheme (general retail vs.
+agricultural) the loan is booked under.
+
+This is a headline reference — always confirm the current rate, which
+scheme applies, and the loan-to-value ratio with the bank, since gold
+loan terms are sensitive to gold price movements and are reviewed
+frequently.

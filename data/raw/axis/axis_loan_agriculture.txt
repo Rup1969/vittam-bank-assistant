@@ -1,0 +1,32 @@
+SOURCE: https://www.axisbank.com/agri-and-rural/loans/kisan-credit-card/eligibility and https://www.axis.bank.in/agri-and-rural/loans/farmer-funding/kisan-power, https://www.axis.bank.in/about-us/press-releases/axis-bank-partners-with-rbi-innovation-hub-to-launch-kisan-credit-cards-and-msme-loans-powered-by-the-new-public-tech-platform-for-frictionless-credit (cross-referenced)
+DOCUMENT_ID: axis_loan_agriculture
+BANK: AXIS
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-15
+===
+Axis Bank Kisan Credit Card / Kisan Power
+
+Purpose:
+A revolving credit facility for farmers' cultivation and personal needs
+under the nationwide Kisan Credit Card scheme, positioned as an
+alternative to unorganized-sector high-interest borrowing. Also
+branded "Kisan Power" for a related farmer-funding product line.
+
+Loan Amount:
+Eligible for loans up to Rs. 250 lakh (Rs. 2.5 crore) — a notably high
+ceiling compared to most other banks' KCC schemes, which typically cap
+around Rs. 3 lakh for the subsidized-rate tier specifically (larger
+KCC loans above that threshold move to standard, non-subsidized
+pricing).
+
+Digital KCC (RBI Innovation Hub Pilot):
+Axis Bank, via a partnership with the RBI Innovation Hub's Public Tech
+Platform for Frictionless Credit, piloted a fully digital, no-
+paperwork Kisan Credit Card in Madhya Pradesh, available up to Rs.
+1,60,000 — the collateral-free KCC threshold under standard RBI rules.
+
+This is a headline reference — confirm the current effective rate
+(including any government interest subvention applicable for the
+subsidized tier) and exact collateral thresholds with the bank or
+nearest branch.

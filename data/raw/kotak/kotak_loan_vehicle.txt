@@ -1,0 +1,11 @@
+SOURCE: https://www.kotak.bank.in/en/personal-banking/loans/car-loan.html (official page, fetched directly)
+DOCUMENT_ID: kotak_loan_vehicle
+BANK: KOTAK_MAHINDRA
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-16
+===
+Kotak Mahindra Bank Car Loan Interest Rate: not published as a fixed
+figure — depends on applicant profile, product segment, and tenure.
+Up to 100% funding on new car loans, both new and used car loan
+options available.

@@ -1,0 +1,54 @@
+SOURCE: https://www.indusind.bank.in/in/en/personal/accounts/saving-account.html (official page, fetched directly)
+DOCUMENT_ID: indusind_savings_account
+BANK: INDUSIND
+CATEGORY: DEPOSIT
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-16
+===
+IndusInd Bank Savings Account — Minimum Balance and Interest Rate
+
+IndusInd Bank offers a Zero Balance savings account variant (Indus
+Delite) with no minimum balance requirement, alongside multiple premium
+variants (Indus Select, Indus Exclusive, Indus Grandé, PIONEER) that
+require maintaining a minimum balance — exact rupee figures for the
+premium tiers should be confirmed on each variant's own product page,
+since IndusInd's main savings account page describes their features and
+benefits but does not list every variant's specific balance requirement
+in one place.
+
+Confirmed account variants (from the official page):
+- Indus Delite (Zero Balance Savings Account): "Zero balance requirement
+  subject to IP funding" — the bank's own wording for this zero-balance
+  variant.
+- Indus Select Savings Account: premium variant with lifetime-free
+  World/Signature Select debit card and lifestyle privileges (exact MAB
+  not stated on the main page).
+- Indus Exclusive, Indus Grandé, Indus Grandé Care, Indus Care, PIONEER:
+  premium/relationship-manager-backed tiers with escalating privileges
+  (airport lounge access, dedicated RM, family banking) — exact MAB not
+  stated on the main page for these either.
+- Indus Multiplier Max: standard savings account with an auto-sweep
+  feature that converts balance above Rs. 20,000 into a fixed deposit.
+
+Savings Account Interest Rates (effective 1 March 2026, domestic/
+NRO/NRE, daily balance basis):
+- Up to Rs. 1 lakh: 2.50% p.a.
+- Above Rs. 1 lakh up to Rs. 25 lakh: 3.00% p.a.
+- Above Rs. 25 lakh up to Rs. 5 crore: 4.00% p.a.
+- Above Rs. 5 crore up to Rs. 100 crore: 5.00% p.a. (flat rate on entire balance)
+- Above Rs. 100 crore up to Rs. 150 crore: 7.05% p.a. (flat rate)
+- Above Rs. 150 crore up to Rs. 1,400 crore: 7.00% p.a. (flat rate)
+- Above Rs. 1,400 crore: MIBOR-linked floating rate (effective 27 March
+  2026), calculated daily and paid monthly.
+
+Interest is calculated daily on End-of-Day balance and credited
+quarterly. A general AMB formula is published: AMB = Total of Everyday
+Closing Balance / Total Number of Days in the Month.
+
+For the exact minimum-balance figure of a specific non-zero-balance
+variant (Select, Exclusive, Grandé, etc.), consult that account's
+dedicated product page — not listed uniformly on the main savings page.
+
+Rates and minimum-balance requirements are revised periodically; verify
+against IndusInd Bank's official website before quoting to a customer as
+final.

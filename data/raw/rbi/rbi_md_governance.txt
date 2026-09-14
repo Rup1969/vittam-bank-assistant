@@ -1,0 +1,41 @@
+SOURCE: RBI Master Direction (Commercial Banks - Governance) Directions, 2025, issued 28 November 2025; catalog PDF: rbidocs.rbi.org.in/rdocs/notification/PDFs/149MD.PDF (CAPTCHA-gated for direct fetch — content below is cross-checked from multiple regulatory-tracking sources reporting the official text; verify against the primary Direction before treating as legally binding)
+DOCUMENT_ID: rbi_md_governance
+BANK: RBI
+CATEGORY: GENERAL
+SOURCE_TYPE: RBI_MASTER_DIRECTION
+DATE: 2025-11-28
+===
+RBI Master Direction — Governance (Commercial Banks)
+
+Board Committee Structure:
+- Audit Committee of the Board (ACB): must comprise only Non-Executive
+  Directors, with financial expertise required among members.
+- Risk Management Committee of the Board (RMCB): must have a majority
+  of Non-Executive Directors.
+- Nomination and Remuneration Committee (NRC): handles director
+  appointments and compensation policy.
+
+Fit-and-Proper Director Criteria:
+- Age: 35-67 years for Public Sector Banks (PSBs); up to 75 years for
+  Private Banks (PVBs) — a materially different upper limit between
+  the two.
+- Minimum qualification: a graduate degree, plus expertise in banking,
+  finance, law, IT, risk management, or agriculture.
+- Disqualifications include holding a political position, involvement
+  in para-banking activities, or a conflict of interest.
+
+Board's Strategic Focus Areas (7 themes RBI expects boards to
+prioritise):
+1. Business Strategy — product innovation, competitiveness.
+2. Risk Management — credit, market, liquidity risk policy oversight.
+3. Financial Integrity — scrutiny of NPAs and provisioning adequacy.
+4. Compliance — adherence to RBI and SEBI norms.
+5. Customer Protection — preventing mis-selling, grievance resolution.
+6. Financial Inclusion — priority sector lending, microfinance.
+7. Human Resources — training, incentive structures, internal
+   governance of staff.
+
+This Direction governs how a bank's own Board must be structured and
+what it must actively oversee — relevant context for understanding why
+a bank's decision-making process looks the way it does, not a
+customer-facing rule.

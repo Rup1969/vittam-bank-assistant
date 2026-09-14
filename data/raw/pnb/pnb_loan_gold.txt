@@ -1,0 +1,28 @@
+SOURCE: https://www.paisabazaar.com/punjab-national-bank/gold-loan/ and https://www.atticagoldcompany.com/punjab-national-bank-gold-loan-interest-rate/, https://cleartax.in/s/pnb-gold-loan-interest-rate (cross-referenced secondary sources; verify current rate with the bank)
+DOCUMENT_ID: pnb_loan_gold
+BANK: PNB
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-01
+===
+Punjab National Bank Gold Loan
+
+Interest Rate:
+Reported range roughly 8.35%-10.25% p.a. for retail gold loans. A
+separate PNB agricultural gold loan scheme (for farming-related purposes,
+secured against gold ornaments) is reported at approximately 8.75% p.a.
+
+Loan Amount:
+Reported range roughly Rs. 25,000 to Rs. 25 lakh, subject to the gold's
+appraised value and the bank's applicable loan-to-value cap.
+
+Structure:
+Loan is secured against pledged gold ornaments/jewellery; rate and
+eligible amount depend on gold purity, weight, and prevailing gold
+valuation at the time of the loan, in line with standard gold-loan
+practice across public sector banks.
+
+This is a headline reference — always confirm the current rate,
+loan-to-value ratio, and valuation method with the bank, since gold
+loan terms are sensitive to gold price movements and are reviewed
+frequently.

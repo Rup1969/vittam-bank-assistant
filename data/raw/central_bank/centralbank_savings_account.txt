@@ -1,0 +1,32 @@
+SOURCE: https://centralbank.bank.in/sb-account-vkyc/view/
+DOCUMENT_ID: centralbank_savings_account
+BANK: CENTRAL_BANK
+CATEGORY: DEPOSIT
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-19
+===
+Central Bank of India Savings Accounts
+
+Central Bank of India offers several savings account variants, each with
+its own minimum average monthly balance (AMB) requirement. Interest is
+paid at up to 2.9% p.a. across all variants.
+
+- Cent Bachat Khata (basic/budget account): AMB Rs. 50, no-frills, low
+  maintenance charges.
+- Cent Balbhavishya (for minors): AMB Rs. 100, additional interest rate
+  benefit.
+- HSS Account: AMB Rs. 500 - Rs. 2,000, online banking access.
+- Cent Yuva (for young adults, age 18-30): Zero AMB, special loan rates.
+- Cent Param (for armed forces personnel): Zero AMB, special fee waivers.
+- Cent Samarth: Zero AMB, comes with a pre-approved overdraft facility
+  and free accident insurance.
+- Cent Samvridhi: minimum average QUARTERLY balance Rs. 25,000, auto
+  sweep-in feature, free ATM-cum-debit card.
+- Cent Premium: AMB Rs. 50,000 - Rs. 1,00,000, higher transaction
+  limits, free insurance coverage, personalized debit card, dedicated
+  relationship manager.
+
+The exact minimum balance requirement depends on which variant a
+customer opens; the basic Cent Bachat Khata (Rs. 50) and the zero-balance
+variants (Cent Yuva, Cent Param, Cent Samarth) are the lowest-barrier
+options.

@@ -1,0 +1,34 @@
+SOURCE: https://www.canarabank.bank.in/pages/deposit-interest-rates and https://www.canarabank.bank.in/term-deposits-rate-of-interest-p.a.
+DOCUMENT_ID: canara_fd_rates
+BANK: CANARA
+CATEGORY: DEPOSIT
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2024-12-01
+===
+Canara Bank Fixed Deposit Interest Rates (below Rs. 3 crore)
+
+Effective 1 December 2024 (callable deposits), General Public range:
+4.00% to 7.40% p.a. across tenors from 7 days to 10 years. Senior
+citizens: 4.00% to 7.90% p.a. across the same tenor range (roughly a
+0.50% premium on most tenors, as per the bank's general senior-citizen
+policy).
+
+Selected specific tenors reported:
+- 7-45 days: 4.00% (general public)
+- 46-90 days: 5.25% (general public)
+- 1 year: 6.85% (general public)
+
+Special-Tenor Deposits:
+- 444 Days Deposit and 555 Days Deposit — special-tenor schemes with
+  their own rates; the 555-day scheme offers 7.10% p.a. for senior
+  citizens, with an additional 0.60% for super senior citizens.
+
+Senior Citizen Premium: an additional 0.50% on deposits below Rs. 2
+crore with a tenor of 180 days or more; super senior citizens receive
+a further 0.60% on select special-tenor (444/555 day) schemes.
+
+This is a headline range, not a complete tenor-by-tenor table — the
+bank's detailed rate page and downloadable rate document should be
+checked for the exact rate at a specific tenor before quoting, since
+rates are revised periodically and this data point is dated December
+2024.

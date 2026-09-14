@@ -1,0 +1,29 @@
+SOURCE: https://bankofmaharashtra.bank.in/savings-account
+DOCUMENT_ID: bom_savings_account
+BANK: BOM
+CATEGORY: DEPOSIT
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-19
+===
+Bank of Maharashtra Savings Account
+
+Bank of Maharashtra pays interest on the DAILY closing balance in a
+savings account, credited quarterly. An illustrative example on the
+bank's own page: a 2.75% p.a. rate on a Rs. 5 lakh balance generates
+approximately Rs. 1,130 in interest per month.
+
+Key Features:
+- Free RuPay/Visa debit card.
+- Digital banking access (mobile app, internet banking, UPI).
+- Deposit insurance coverage up to Rs. 5 lakh (standard DICGC cover).
+- Cheque book availability.
+- Bill payment and fund transfer capabilities.
+
+Minimum Balance:
+The bank states that a minimum balance must be maintained on a Monthly
+Average Balance (MAB) basis, and that service charges apply if it is
+not maintained — but does NOT publish the exact rupee figure (by branch
+location — metro/urban/semi-urban/rural) on this page. The precise MAB
+requirement lives on the bank's separate Service Charges schedule, not
+fetched in this pass; confirm the exact amount with the bank before
+relying on any figure.

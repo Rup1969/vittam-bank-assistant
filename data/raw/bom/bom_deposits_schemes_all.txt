@@ -1,0 +1,30 @@
+SOURCE: https://bankofmaharashtra.bank.in/domestic-term-deposits
+DOCUMENT_ID: bom_deposits_schemes_all
+BANK: BOM
+CATEGORY: DEPOSIT
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-19
+===
+Bank of Maharashtra — Special Deposit Schemes and Recurring Deposit
+
+Special Term Deposit Schemes (Non-Callable only — a customer forgoes
+premature withdrawal in exchange for a fixed higher rate):
+- 400 Days Special Scheme: 6.65% p.a. for deposits below Rs. 3 crore —
+  higher than both the neighbouring 271-364 day slab (5.25%) and the
+  standard 1-year slab (6.40%) on the regular callable table.
+- Green Deposit (1777 days): 6.05% p.a. below Rs. 3 crore; 5.45% p.a.
+  for Rs. 3 crore to Rs. 10 crore.
+
+Recurring Deposit:
+Bank of Maharashtra states that recurring deposit interest rates are
+"the same as the interest rates applicable to Term Deposits" (see
+bom_fd_rates.txt for the full tenure table) — no separate RD-specific
+rate table or minimum-installment figure is published on this page.
+
+Tax-Saving Scheme:
+Bank Term Deposit Scheme 2006 (5-year tax-saving FD), applicable up to
+Rs. 1.5 lakh.
+
+Senior Citizen Premium:
+An additional 0.50% p.a. applies for senior citizens on all maturity
+slabs of 91 days and above, for deposits up to Rs. 5 crore.

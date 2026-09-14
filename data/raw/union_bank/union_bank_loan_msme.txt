@@ -1,0 +1,27 @@
+SOURCE: https://www.unionbankofindia.co.in/en/details/msme-credit and https://www.unionbankofindia.co.in/en/details/msme-policy (cross-referenced; verify current rate with the bank)
+DOCUMENT_ID: union_bank_loan_msme
+BANK: UNION_BANK
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-15
+===
+Union Bank of India MSME Loans
+
+Collateral-Free Lending:
+Union Bank offers collateral-free credit assistance up to Rs. 10 lakh
+for MSME borrowers, making initial working-capital/business credit
+quicker to access without pledging security — in line with the
+CGTMSE-backed collateral-free lending norms most public sector banks,
+including Union Bank, follow for smaller MSME loan amounts.
+
+Policy Context:
+The bank maintains a dedicated MSME Credit policy (periodically
+revised, e.g. "MSME Policy 2022-23") covering eligibility, sector
+focus, and pricing norms for micro, small, and medium enterprise
+lending — specific product-level interest rates were not found in
+public secondary sources during this research pass and should be
+confirmed directly with the bank.
+
+This is a partial reference — confirm current MSME product names,
+interest rates, and collateral-free thresholds above Rs. 10 lakh with
+the bank before advising a customer.

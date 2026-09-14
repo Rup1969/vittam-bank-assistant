@@ -1,0 +1,28 @@
+SOURCE: https://punjabandsind.bank.in/content/psbpersonal-loan (same source as psb_loan_personal — split into a separate doc 2026-08-25 so the headline rate chunk stays short and competitive in retrieval; see PROJECT_STATUS.md §27)
+DOCUMENT_ID: psb_loan_personal_eligibility
+BANK: PUNJAB_SIND
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-19
+===
+Punjab & Sind Bank Personal Loan — Eligibility, Fees, and Other Requirements
+
+Eligibility:
+- Salaried employees with at least 2 years of service and gross monthly
+  salary above Rs. 30,000.
+- Government/PSU employees, and private-sector employees of reputed
+  companies.
+- Pensioners, up to maximum age 70.
+- Must hold a salary account with Punjab & Sind Bank or another bank.
+- Minimum entry age 21 years; maximum age at loan end is the retirement
+  date for salaried employees, or 70 years for pensioners.
+
+Fees:
+- Processing fee: 0.50% + GST (government/PSU employees and pensioners);
+  1.00% + GST (private/MNC employees).
+- Documentation charges: actual stamp/revenue expenses only.
+- Inspection and prepayment charges: nil.
+
+Other Requirements:
+Guarantee required from spouse, major children, or a third party. ECS
+mandate is mandatory if the salary account is held at another bank.

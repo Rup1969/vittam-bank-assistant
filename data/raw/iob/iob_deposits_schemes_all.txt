@@ -1,0 +1,38 @@
+SOURCE: https://www.iob.bank.in/en/small-savings-schemes, https://www.iob.bank.in/en/floating-rate-deposits, https://www.iob.bank.in/en/iob-non-callable-retail-term-deposit, https://www.iob.bank.in/en/flexi-recurring-deposits-flexi-rd (cross-referenced; verify current terms with the bank)
+DOCUMENT_ID: iob_deposits_schemes_all
+BANK: IOB
+CATEGORY: DEPOSIT
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-15
+===
+Indian Overseas Bank — Deposit Scheme Variants
+
+IOB Tax Saver Deposit:
+A 5-year lock-in tax-saving fixed deposit qualifying for a Section 80C
+deduction — reported interest rate around 6.10% p.a. for the general
+public, plus the standard senior-citizen (+0.50%) and super-senior
+(+0.75%) premiums.
+
+Floating Rate Deposits:
+A term deposit whose interest rate is market-linked (floats with a
+reference benchmark) rather than fixed for the full tenure — positioned
+for customers who want to capture rate increases during the deposit
+term rather than lock in today's rate.
+
+IOB Non-Callable Retail Term Deposit:
+A non-callable variant (no premature withdrawal) offered as a rate
+premium over the standard callable retail table.
+
+Flexi Recurring Deposit (Flexi RD):
+A recurring deposit allowing variable monthly instalment amounts within
+a set range, rather than a fixed instalment every month — minimum
+tenure 12 months, maximum 120 months.
+
+Bulk Deposit:
+A separate rate card applies for deposits above the retail (below
+Rs. 3 crore) threshold covered in `iob_fd_rates` — confirm the bulk
+deposit rate card with the bank for large-value deposits.
+
+This is a summary of publicly listed IOB deposit scheme names — exact
+current rates, minimum amounts, and eligibility should be confirmed
+with the bank before advising a customer.

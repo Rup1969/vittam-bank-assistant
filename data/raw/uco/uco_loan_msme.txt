@@ -1,0 +1,25 @@
+SOURCE: https://uco.bank.in/en/web/guest/sme/business-loan and https://uco.bank.in/repo (rate card)
+DOCUMENT_ID: uco_loan_msme
+BANK: UCO
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-19
+===
+UCO Bank MSME / Business Loan
+
+UCO Bank's MSME loan interest rate ranges from 9.05% to 12.45% p.a.
+(UCO Float benchmark 8.30%, or RLLR 8.05% as of 11.12.2025, depending on
+exposure size and credit rating). The best rate — advances up to
+Rs. 50,000 — carries a 1.00% spread, landing at 9.05%.
+
+The bank's MSME business-loan page itself is a classification/
+eligibility explainer rather than a product-terms page: it covers the
+revised Ministry of MSME classification (Micro: investment up to Rs. 1
+crore; Small: up to Rs. 10 crore; Medium: up to Rs. 50 crore, with
+matching turnover limits) and Udyam Registration requirements for
+manufacturing and services enterprises.
+
+This is a summary-level entry only — specific loan-amount ranges,
+collateral requirements, and CGTMSE guarantee coverage details are not
+published inline on this page; confirm with the bank (toll-free
+1800 8910) before relying on any figure beyond the rate range above.

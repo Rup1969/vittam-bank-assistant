@@ -1,0 +1,29 @@
+SOURCE: https://www.axis.bank.in/loans/home-loan/interest-rates-charges (official page) cross-referenced with secondary aggregators for the broader profile-based range
+DOCUMENT_ID: axis_loan_home
+BANK: AXIS
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-15
+===
+Axis Bank Home Loan
+
+Axis Bank's home loan interest rate currently starts from around
+7.95%-8.35% per annum for well-qualified applicants, with a broader
+reported range of 8.35%-11.90% p.a. depending on CIBIL score, customer
+profile, loan variant, and job profile.
+
+Rate Type:
+Both fixed and floating interest rate options are offered.
+
+Special Offer:
+A concessional interest rate is available for female applicants —
+women applying alone, or jointly with their spouse, can receive a
+slightly lower rate than the standard applicant rate.
+
+Tenure:
+Up to 30 years.
+
+This is a headline reference — sources show a fairly wide range for
+the "starting" rate specifically (7.95% to 8.35% across different
+snapshots); confirm the current rate and the applicant's specific
+quoted spread with the bank before quoting.

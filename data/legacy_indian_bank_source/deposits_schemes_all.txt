@@ -1,0 +1,410 @@
+DOCUMENT_ID: deposit_schemes_all
+CATEGORY: DEPOSIT
+SOURCE: indianbank.bank.in/category/savings-bank-a-c/ and /category/term-deposits/
+============================================================
+
+INDIAN BANK — COMPLETE DEPOSIT SCHEMES
+
+========================================
+SECTION A: SAVINGS BANK ACCOUNTS
+========================================
+
+Current SB Interest Rates (w.e.f. 07.07.2025):
+- Balance up to Rs.10 lakh: 2.50% p.a.
+- Balance Rs.10 lakh to Rs.200 Cr: 2.60% p.a.
+- Balance Rs.200 Cr and above: 2.65% p.a.
+- Interest credited quarterly (last day of Jun/Sep/Dec/Mar)
+
+--------------------------------------------
+1. SAVINGS BANK ACCOUNT (REGULAR)
+--------------------------------------------
+Eligibility: Individuals (single/joint), illiterates, blind persons,
+             minors through guardians
+Min Balance: As per bank norms (varies by location)
+Cheque Book: 2 books of 20 leaves free per year; Rs.3/leaf thereafter
+Withdrawals: Max 50 per half-year
+Features: Net banking, mobile banking, debit card, SMS alerts
+Interest: Paid half-yearly
+
+--------------------------------------------
+2. IB SMART KID
+--------------------------------------------
+Target: Children aged 1 day to less than 18 years
+Operation: Through guardian for minors
+Purpose: Build savings habit from childhood
+Converts to: Regular SB account on attaining 18 years
+
+--------------------------------------------
+3. IB KISHORE
+--------------------------------------------
+Target: Minors who can operate account independently
+Operation: Self-operated by minor
+Converts to: Regular SB on attaining majority (18 years)
+
+--------------------------------------------
+4. IB GEN X — FOR VIBRANT YOUTH
+--------------------------------------------
+Target: Resident individuals aged 18–35 years
+Focus: Digital-first banking with youth-oriented features
+Features: Enhanced digital banking, lifestyle benefits
+
+--------------------------------------------
+5. IB SAMMAAN — FOR SENIOR CITIZENS
+--------------------------------------------
+Target: Resident individuals aged 60 years and above
+Min Balance: NIL
+Charges for Non-Maintenance: NIL
+Special Benefits: Priority service at branches
+
+--------------------------------------------
+6. SB ACCOUNT FOR PENSIONERS
+--------------------------------------------
+Target: State/Central/EPF Pensioners and Armed Forces pensioners
+Min Balance: NIL
+Charges: NIL (no non-maintenance charges)
+Cheque Book: 20 free personalised cheque leaves per calendar year
+NEFT/RTGS: Free when done online
+SMS Alerts: No charge for mandatory SMS
+Account Closure: No charges
+Net/Mobile Banking: Available free
+
+--------------------------------------------
+7. IND PENSION-PRIME PLUS
+--------------------------------------------
+Target: All pensioners — Central/State/EPF/Armed Forces/
+        Navy/Paramilitary forces
+Type: Premium pensioner account with enhanced benefits
+
+--------------------------------------------
+8. IB SALAAM — FOR DEFENCE PERSONNEL
+--------------------------------------------
+Target: Serving or retired defence personnel, minimum age 18 years
+Special: Designed for Indian Army, Navy, Air Force, Paramilitary
+
+--------------------------------------------
+9. IB CORP SB — PAYROLL PACKAGE
+--------------------------------------------
+Target: Regular employees of corporate firms, IT/ITES,
+        State/Central Government, PSU
+Type: Salary/payroll-linked savings account
+Benefits: Bundled banking services for salaried class
+
+--------------------------------------------
+10. IND CORP SB — ELITE
+--------------------------------------------
+Target: Salaried class employees
+Key Feature: Bundled Group Personal Accidental Insurance (PAI)
+Special: Insurance coverage bundled with salary account
+
+--------------------------------------------
+11. IND SALARY SURAKSHA
+--------------------------------------------
+Target: Regular working employees of Govt/PSU/Private sector
+Special: Enhanced security features with salary account
+
+--------------------------------------------
+12. IND SAMPOORNA PLUS
+--------------------------------------------
+Target: Permanent/Contractual salaried employees of
+        Government/PSU/Navratna companies (premium segment)
+Type: Premium salary package with highest tier benefits
+Apply: Online account opening available
+
+--------------------------------------------
+13. CENTRAL GOVT EMPLOYEES SALARY ACCOUNT
+--------------------------------------------
+Target: Central Government employees specifically
+Apply: Online account opening available
+
+--------------------------------------------
+14. IND GURUDEV — FOR EDUCATORS
+--------------------------------------------
+Target: Teachers, Professors, Lecturers in Schools, Colleges,
+        Universities (Government and Private)
+Special: Tailored banking for the education community
+
+--------------------------------------------
+15. IND SHAKTI — SMART WOMEN BANKING
+--------------------------------------------
+Target: Women customers — student/working/homemaker/professional
+        Minimum age: 18 years
+Variants: Multiple variants available for different needs
+Special: Designed to empower women with banking benefits
+
+--------------------------------------------
+16. IND PRO — FOR PROFESSIONALS
+--------------------------------------------
+Target: Doctors, Engineers, Architects, Chartered Accountants,
+        Lawyers and all professionals
+Variants:
+  - IND Pro Silver
+  - IND Pro Gold
+  - IND Pro Platinum
+Benefits: Higher limits, preferential rates, professional features
+
+--------------------------------------------
+17. IND FAMILY
+--------------------------------------------
+Target: All resident individuals
+Family Definition: Spouse, Parents, Grand Parents, Father-in-Law,
+                   Mother-in-Law, Children
+Special: Links multiple family members under one banking relationship
+
+--------------------------------------------
+18. SB PLATINUM — WITH SWEEP FACILITY
+--------------------------------------------
+Target: High Net Worth Individuals (HNIs), high-income Gen-X,
+        Corporate executives
+Key Feature: Auto-sweep of surplus funds to Term Deposit
+Benefit: Earns FD interest on idle SB balance automatically
+         Swept back to SB when needed
+
+--------------------------------------------
+19. BSBDA / SMALL ACCOUNT
+--------------------------------------------
+Target: Individuals unable to provide full KYC documents
+Purpose: Financial inclusion
+Min Balance: NIL
+Restrictions: Limited withdrawal amounts per month
+
+--------------------------------------------
+20. SB FOR STUDENTS / DBT BENEFICIARIES
+--------------------------------------------
+Products:
+  (a) SB for students receiving government scholarships
+  (b) SB for Direct Benefit Transfer (DBT) recipients
+Purpose: Government benefit disbursement
+
+--------------------------------------------
+21. SB FOR GOVT / CONSULAR OFFICES / IND PFMS
+--------------------------------------------
+Target: Government departments, consular offices
+Special: PFMS (Public Financial Management System) linked
+
+--------------------------------------------
+22. MACT SB — MOTOR ACCIDENT CLAIM
+--------------------------------------------
+Eligibility: Individuals including minors (through guardian)
+             in Motor Accident Claim cases
+Purpose: Holding court-directed compensation amounts safely
+Special: Court-monitored withdrawals
+
+--------------------------------------------
+23. CAPITAL GAINS SB ACCOUNT
+--------------------------------------------
+Target: IT assessees eligible under Sections 54, 54B, 54D, 54F
+        of Income Tax Act
+Purpose: Park capital gains amounts before reinvestment
+         to claim tax exemption
+Interest: Same as regular SB rates
+
+--------------------------------------------
+24. TAB BANKING (DOORSTEP ACCOUNT OPENING)
+--------------------------------------------
+Feature: Instant digital on-boarding at customer's doorstep
+         using tablet — fully assisted mode
+Who: New customers opening SB accounts
+
+========================================
+SECTION B: CURRENT ACCOUNTS
+========================================
+Target: Business entities, firms, companies, trusts,
+        associations — any entity ineligible for SB account
+Key Features:
+- No restriction on number of transactions
+- Overdraft facility available
+- Cheque book facility
+- Internet banking and mobile banking available
+- No interest paid on current account balance
+Products: Regular Current A/c, IB i-Freedom Current Account
+
+========================================
+SECTION C: TERM DEPOSIT SCHEMES
+========================================
+
+FD Interest Rates (w.e.f. 04.02.2026, less than Rs.3 Crore):
+- 7-14 days: 2.80%
+- 30-45 days: 3.00%
+- 46-90 days: 3.25%
+- 91-120 days: 3.50%
+- 121-180 days: 3.85%
+- 181 days to <9 months: 4.50%
+- 9 months to <1 year: 4.75%
+- 1 year: 6.10%
+- Above 1 year to <2 years: 6.20%
+- 2 years to <3 years: 6.15%
+- 3 years to <5 years: 6.05%
+- 5 years and above: 6.00%
+Senior Citizens: Additional 0.50% on all above tenures
+Super Senior Citizens (80+ yrs): Additional 0.75% on all above
+
+--------------------------------------------
+1. FIXED DEPOSIT (FD)
+--------------------------------------------
+Min Amount: Rs.1,000 (no maximum)
+Tenure: 7 days to 10 years
+Interest: Quarterly or monthly (monthly paid at discounted rate)
+Premature Withdrawal: Allowed with penalty (1% below card rate)
+No penalty: If held 181+ days for deposits up to Rs.5 lakh
+Auto-Renewal: Available on maturity
+
+--------------------------------------------
+2. RECURRING DEPOSIT (RD)
+--------------------------------------------
+Purpose: Fixed monthly savings building into large corpus
+Interest: Quarterly compounding
+Ideal For: Salaried/regular income earners
+Tenure: 6 months to 120 months (in multiples of 3 months)
+Senior Citizen Benefit: Available
+
+--------------------------------------------
+3. VARIABLE RECURRING DEPOSIT (VRD)
+--------------------------------------------
+Special Feature: Monthly deposit amount can vary — flexible
+Min Amount: Rs.500 or multiples of Rs.100
+Max Amount: Rs.1 lakh per month
+Interest: Quarterly compounding; paid at maturity or pre-closure
+Benefit: No need to open new RD each time amount changes
+
+--------------------------------------------
+4. MONEY MULTIPLIER DEPOSIT (MMD) — REINVESTMENT PLAN
+--------------------------------------------
+Special Feature: Interest compounded and reinvested — earns
+                 interest on interest (cumulative)
+Min Amount: Rs.1,000 and multiples of Rs.100
+Interest: Quarterly compounding, paid at maturity
+Best For: Long-term wealth building without periodic payouts
+
+--------------------------------------------
+5. SHORT TERM DEPOSITS
+--------------------------------------------
+Purpose: Park funds for very short durations (weeks to months)
+Interest: As per card rate for actual period
+
+--------------------------------------------
+6. IB TAX SAVER SCHEME
+--------------------------------------------
+Tax Benefit: Deduction under Section 80C of Income Tax Act
+Lock-in Period: 5 years (mandatory — cannot withdraw early)
+Max Deduction: Rs.1.5 lakh per year under 80C
+Interest: Quarterly or monthly or on maturity
+Note: Rate same as regular FD for respective tenure
+
+--------------------------------------------
+7. IB GOLDEN AGER — SUPER SENIOR CITIZEN FD
+--------------------------------------------
+Target: Super Senior Citizens aged 80 years and above
+Special Rate: Additional 0.25% over and above the normal
+              senior citizen additional rate
+Example: Regular FD 6.10% + Senior 0.50% + Golden Ager 0.25% = 6.85%
+
+--------------------------------------------
+8. IND NON-CALLABLE DEPOSIT
+--------------------------------------------
+Special Feature: Premature withdrawal NOT permitted
+Reward: Higher interest rate than regular callable FD
+Amount: Rs.1,000 to less than Rs.3 crore
+Best For: Investors who can commit funds for full tenure
+
+--------------------------------------------
+9. CAPITAL GAINS TERM DEPOSIT (TYPE B)
+--------------------------------------------
+Purpose: Park capital gains for tax exemption under
+         Sections 54, 54B, 54D, 54F of IT Act
+Interest: Same as regular term deposit rates
+Note: Withdrawal requires Income Tax authority approval
+
+--------------------------------------------
+10. MACAD — MOTOR ACCIDENT CLAIM TRIBUNAL DEPOSIT
+--------------------------------------------
+Purpose: Court-ordered structured deposits in motor
+         accident claim settlement cases
+Special: Multiple sub-deposits with different tenures possible
+
+--------------------------------------------
+11. IND COURT
+--------------------------------------------
+Purpose: Opening multiple term deposits of different
+         amounts as per Court or Tribunal orders
+Operates: Under court supervision
+
+--------------------------------------------
+12. IND GREEN — 555 DAYS
+--------------------------------------------
+Tenor: 555 days (fixed)
+Launched: 26.03.2025
+Type: Green deposit — funds deployed for eco-friendly projects
+Interest Rates:
+  General Public:    6.40% p.a.
+  Senior Citizens:   6.90% p.a.
+  Super Senior:      7.15% p.a.
+Min Amount: Rs.1,000 to less than Rs.3 crore
+Type: FD/MMD with callable option
+
+--------------------------------------------
+13. IND SECURE — 444 DAYS
+--------------------------------------------
+Tenor: 444 days (fixed)
+Launched: 08.05.2025; Valid till: 04.04.2026
+Interest Rates:
+  General Public:    6.45% p.a.
+  Senior Citizens:   6.95% p.a.
+  Super Senior:      7.20% p.a.
+Min Amount: Rs.1,000 to less than Rs.3 crore
+Type: FD/MMD with callable option
+
+--------------------------------------------
+14. IND SUPREME 2.0 — 300 DAYS
+--------------------------------------------
+Tenor: 300 days (fixed)
+Launched: 04.02.2026
+Interest Rates:
+  General Public:    6.30% p.a.
+  Senior Citizens:   6.80% p.a.
+  Super Senior:      7.05% p.a.
+Min Amount: Rs.1,000 to less than Rs.3 crore
+Type: FD/MMD with callable option
+
+--------------------------------------------
+15. IND ANNUITY
+--------------------------------------------
+Target: Resident individuals (singly or jointly), including minors
+Special: Annuity-style periodic payouts from term deposit
+Interest: As per retail term deposit card rates
+
+========================================
+SECTION D: NRI ACCOUNTS
+========================================
+
+--------------------------------------------
+NRE ACCOUNT (Non-Resident External)
+--------------------------------------------
+Currency: Indian Rupees
+Repatriability: Fully repatriable (principal + interest)
+Tax: Interest tax-free in India
+Use: For foreign income/savings brought to India
+Deposits: Savings, Current, FD, RD available
+FD Rates: Same as domestic retail term deposit rates
+Min FD Tenure: 1 year; No interest if closed before 1 year
+
+--------------------------------------------
+NRO ACCOUNT (Non-Resident Ordinary)
+--------------------------------------------
+Currency: Indian Rupees
+Repatriability: Limited — up to USD 1 million per year
+Tax: Interest taxable in India (TDS applicable)
+Use: For income earned in India (rent, pension, dividends)
+Deposits: Savings, Current, FD, RD available
+
+--------------------------------------------
+FCNR(B) ACCOUNT (Foreign Currency Non-Resident Bank)
+--------------------------------------------
+Currency: Held in foreign currency (USD, GBP, EUR, etc.)
+Repatriability: Fully repatriable
+Tax: Interest tax-free in India
+Exchange Risk: None on principal (stays in foreign currency)
+Tenure: 1 year to 5 years
+Rates: Separate FCNR rates in respective currencies
+
+Helpline for NRI: 1800 1700
+NRI Portal: indianbank.bank.in/category/nri-a-cs/

@@ -1,0 +1,37 @@
+SOURCE: https://pnb.bank.in/Mobile-Banking-Apps.html and https://www.paisabazaar.com/banking/punjab-national-bank-pnb-upi-app/ (cross-referenced with app store listings)
+DOCUMENT_ID: pnb_digital_products_all
+BANK: PNB
+CATEGORY: DIGITAL
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-01
+===
+Punjab National Bank — Digital Banking Products
+
+PNB ONE:
+PNB's all-in-one mobile banking app (Android/iOS) — fund transfers
+(NEFT/IMPS/UPI), account statements and mini-statements, term deposit
+booking, debit/credit card management, bill payments, mobile recharge,
+and QR-code UPI payments. Supports SIM binding and device binding as
+additional security layers on top of standard transaction encryption.
+
+BHIM PNB (UPI App):
+A dedicated UPI app alongside PNB ONE, letting customers transfer funds
+using a payment identifier — account number + IFSC, a virtual payment
+address (VPA), or a QR code.
+
+UPI Transaction Limits:
+- First-time users: Rs. 5,000 limit for the first 24 hours after
+  registration (a standard anti-fraud cooling-off measure).
+- Thereafter: Rs. 25,000 per transaction, Rs. 50,000 per day.
+
+mPassbook:
+A digital passbook app for viewing transaction history without visiting
+a branch or ATM.
+
+Internet Banking:
+Standard net-banking portal covering fund transfers, term/recurring
+deposit management, and bill payments, alongside the mobile apps above.
+
+Confirm current transaction limits and app feature lists with the bank,
+since UPI limits in particular are periodically revised by NPCI/RBI
+guidance as well as bank policy.

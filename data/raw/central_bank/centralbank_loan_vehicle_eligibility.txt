@@ -1,0 +1,35 @@
+SOURCE: https://centralbank.bank.in/en/node/418 and https://centralbank.bank.in/retail-scheme-interest (rate card) — same source as centralbank_loan_vehicle, split into a separate doc 2026-08-26 so the headline rate chunk stays short and competitive in retrieval; see PROJECT_STATUS.md
+DOCUMENT_ID: centralbank_loan_vehicle_eligibility
+BANK: CENTRAL_BANK
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-19
+===
+Central Bank of India Vehicle Loan (Cent Vehicle) — Eligibility, Amount, Fees
+
+Purpose:
+Purchase of a new two- or four-wheeler for personal use (not for hiring
+or ferrying passengers).
+
+Eligibility:
+Age 18-65. Salaried employees (government, PSU, corporate, banks, MNCs),
+self-employed professionals, business entrepreneurs, farmers with
+regular income, and NRIs (jointly with a resident Indian relative).
+Minimum gross annual income: Rs. 3,00,000 for a 4-wheeler, Rs. 1,80,000
+for a 2-wheeler. Minimum credit score of 700 across all major bureaus.
+
+Loan Amount:
+- 2-wheeler: up to Rs. 10 lakh.
+- 4-wheeler: up to Rs. 200 lakh (Indian or foreign vehicles).
+- Calculated as 24x monthly salary (salaried) or 2x average annual income
+  (others).
+
+Margin:
+Minimum 10% up to Rs. 25 lakh loan amount; minimum 20% above Rs. 25 lakh.
+
+Tenure:
+60 months (2-wheeler); 84 months (4-wheeler).
+
+Fees:
+Processing charge 0.50% of loan amount (+ GST for 4-wheelers) — fully
+waived until 31 December 2026. Documentation charges: nil.

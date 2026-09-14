@@ -1,0 +1,40 @@
+SOURCE: https://sbi.bank.in/web/interest-rates/deposit-rates/retail-domestic-term-deposits
+DOCUMENT_ID: sbi_fd_rates
+BANK: SBI
+CATEGORY: DEPOSIT
+SOURCE_TYPE: PRODUCT_PAGE
+===
+SBI Fixed Deposit Interest Rates (Retail Domestic Term Deposits, below Rs. 3 crore)
+
+As per SBI's official interest rates page, last updated 16 June 2026, rates
+effective 15 December 2025 for the general public and senior citizens are:
+
+Tenor: 7 days to 45 days       -> General: 3.05% p.a. | Senior Citizen: 3.55% p.a.
+Tenor: 46 days to 179 days     -> General: 4.90% p.a. | Senior Citizen: 5.40% p.a.
+Tenor: 180 days to 210 days    -> General: 5.65% p.a. | Senior Citizen: 6.15% p.a.
+Tenor: 211 days to <1 year     -> General: 5.90% p.a. | Senior Citizen: 6.40% p.a.
+Tenor: 1 year to <2 years      -> General: 6.25% p.a. | Senior Citizen: 6.75% p.a.
+Tenor: 2 years to <3 years     -> General: 6.40% p.a. | Senior Citizen: 6.90% p.a.
+Tenor: 3 years to <5 years     -> General: 6.30% p.a. | Senior Citizen: 6.80% p.a.
+Tenor: 5 years to 10 years     -> General: 6.05% p.a. | Senior Citizen: 7.05% p.a.*
+
+*The 5-10 year senior citizen rate includes an additional 0.50% premium under
+the "SBI We-Care" deposit scheme.
+
+SBI Amrit Vrishti (a special 444-day tenor) currently offers 6.45% p.a. for
+general customers, with senior citizens eligible for the usual additional
+senior citizen benefit on top.
+
+SBI Patrons scheme: Super senior citizens (age 80 and above) get a further
+0.10% (10 basis points) above the applicable senior citizen rate. This
+additional benefit does not apply to the Recurring Deposit Scheme, Green
+Rupee Term Deposit, Tax Savings Scheme 2006, MODS, Capgain Scheme, or
+Non-Callable Term Deposits.
+
+Non-Callable Term Deposit (Retail), for deposits from Rs. 1,00,01,000 to
+just under Rs. 3 crore:
+1 year tenor  -> General: 6.55% p.a. | Senior Citizen: 7.05% p.a.
+2 year tenor  -> General: 6.80% p.a. | Senior Citizen: 7.30% p.a.
+
+Rates are subject to change without prior notice and should be confirmed
+on SBI's official website before quoting to a customer as final.

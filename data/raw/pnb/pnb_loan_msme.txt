@@ -1,0 +1,33 @@
+SOURCE: https://www.creditmantri.com/punjab-national-bank-msme-loan/ and pnbindia.in MSME scheme document titles (PNB Seva, MSME Prime Plus, Professional Scheme) cross-referenced (secondary sources; verify current rate with the bank)
+DOCUMENT_ID: pnb_loan_msme
+BANK: PNB
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-01
+===
+Punjab National Bank MSME Loans
+
+Interest Rate:
+For loans with at least 25% collateral coverage, reported pricing is
+RLLR + Business Strategy Premium (BSP) + 0.85%. For loans with no
+collateral coverage, reported pricing is RLLR + BSP + 1.30%. Some
+specific MSME schemes are separately reported at a flat rate around
+10.25% p.a. Under CGTMSE-covered lending generally, market-reported
+effective rates across public sector banks (PNB included) run roughly
+10.5%-14% p.a.
+
+Collateral-Free Lending (CGTMSE):
+Per RBI guidance that PNB follows, loans up to Rs. 10 lakh to Micro and
+Small Enterprises eligible for CGTMSE coverage are considered without
+collateral security or a third-party guarantee. Loans above Rs. 10 lakh
+and up to Rs. 100 lakh can also be extended without collateral or
+third-party guarantee under CGTMSE coverage.
+
+Named Schemes:
+- PNB Seva — financing for MSME service-sector units.
+- MSME Prime Plus Scheme — a specific eligibility-based MSME scheme.
+- PNB Professional Scheme — targeted at self-employed professionals.
+
+This is a headline reference — MSME pricing is benchmark-linked (RLLR)
+and scheme-specific; confirm the current RLLR value, BSP, and applicable
+scheme terms with the bank before quoting.

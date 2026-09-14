@@ -1,0 +1,28 @@
+SOURCE: General CGTMSE scheme terms (government/SIDBI-backed, applies across participating public sector banks including BOI) cross-referenced via https://www.dmifinance.in/business-loan/cgtmse-loan-scheme/ and https://www.bajajfinserv.in/cgtmse-scheme — Bank-of-India-specific "Star MSME" product-level rate not found in public secondary sources; verify with the bank
+DOCUMENT_ID: boi_loan_msme
+BANK: BOI
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-01
+===
+Bank of India MSME Loans
+
+Collateral-Free Lending (CGTMSE):
+Bank of India participates in the Credit Guarantee Fund Trust for Micro
+and Small Enterprises (CGTMSE) scheme, run jointly by the Ministry of
+MSME and SIDBI, which lets participating banks extend collateral-free
+credit up to Rs. 10 crore to eligible Micro and Small Enterprises. The
+scheme provides 75%-85% guarantee coverage to the lending bank (i.e. the
+government-backed trust absorbs most of the default risk), with an
+Annual Guarantee Fee starting at approximately 0.37% p.a. — this fee is
+typically factored into the borrower's overall cost even though the
+loan itself carries no collateral requirement. Special benefit
+provisions exist for women, transgender entrepreneurs, and informal
+micro enterprises.
+
+Honest gap: a Bank-of-India-specific "Star MSME" branded product and its
+own interest rate could not be confirmed from available public sources
+during this research pass — CGTMSE is a scheme-level (not bank-specific)
+mechanism that BOI, like most public sector banks, offers loans under.
+Confirm BOI's own specific MSME product names and current pricing
+directly with the bank before advising a customer.

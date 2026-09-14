@@ -1,0 +1,24 @@
+SOURCE: https://x.com/pnbindia/status/1931006107377365105 (official PNB announcement) and https://www.bankbazaar.com/punjab-national-bank-home-loan.html, https://www.mymoneymantra.com/punjab-national-bank-home-loan-interest-rates (cross-referenced secondary sources; same source as pnb_loan_home — split into a separate doc 2026-08-25 so the headline rate chunk stays short and competitive in retrieval; see PROJECT_STATUS.md §27-28; verify current rate with the bank)
+DOCUMENT_ID: pnb_loan_home_eligibility
+BANK: PNB
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2025-06-09
+===
+Punjab National Bank Home Loan — Products, Eligibility, and Structure
+
+Products:
+- Housing Loan for Public — the standard home loan.
+- Digi Housing Loan — a digital, faster-processing variant.
+- Housing Loan for PNB Pride Customers — a preferential scheme for
+  specific existing-customer segments.
+
+Eligibility & Structure:
+Floating-rate loan, so the rate moves with RLLR/repo-rate changes over
+the loan tenure. Exact eligibility (income multiple, CIBIL threshold,
+maximum tenure) should be confirmed with the bank, as third-party
+aggregators report inconsistent tenure figures.
+
+This is a headline reference — RLLR-linked rates change with every RBI
+repo-rate revision, so always confirm the current effective rate and
+RLLR value with the bank before quoting.

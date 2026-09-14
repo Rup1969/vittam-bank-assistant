@@ -1,0 +1,48 @@
+SOURCE: https://www.indusind.bank.in/in/en/personal/our-apps.html and https://www.indusind.bank.in/in/en/microsites/indie-app.html (official pages) cross-referenced with app store listings
+DOCUMENT_ID: indusind_digital_products_all
+BANK: INDUSIND
+CATEGORY: DIGITAL
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-16
+===
+IndusInd Bank — Digital Banking Products
+
+INDIE:
+IndusInd Bank's flagship digital-first mobile banking app, aimed at
+digitally-savvy customers seeking a fully online experience. Supports
+100% digital savings account opening (zero-balance account, no
+non-maintenance charges), fixed deposit booking (rates up to 7.85%
+p.a. quoted on the app's own microsite — note this differs slightly
+from the standard branch/web FD card rate, confirm which applies),
+instant loan and credit card applications, and mutual fund investing —
+all from one app.
+
+Savings Account via INDIE:
+Advertised as offering up to 6.75% p.a. return (a high-interest
+savings variant), with zero non-maintenance charges.
+
+IndusPay:
+A UPI (Unified Payments Interface) application usable by both
+IndusInd Bank customers and non-IndusInd Bank customers alike.
+
+Rewards:
+"INDIE Gems" — a rewards program earning points on fund transfers,
+bill payments, debit card transactions, UPI transactions via the app,
+and recurring payments.
+
+Security Features:
+- Numberless debit card (card number not printed on the physical card)
+- Single-use virtual card for online transactions
+- Dynamic ATM PIN
+- "Super OTP" additional authentication layer
+
+Other Digital Channels (per the bank's own navigation/product list):
+IndusInd Bank Net Banking, WhatsApp Banking, Video Branch, BHIM
+IndusPay, Bharat QR, FASTag, and e-Mandate setup for recurring
+payments.
+
+Note: the exact FD/savings rates advertised on INDIE's own microsite
+may lag or differ slightly from the bank's main rate-card page
+(see indusind_fd_rates.txt for the verified, extraction-cross-checked
+FD table) — treat the app-specific figures as promotional headline
+numbers and confirm against the main rate card before quoting.

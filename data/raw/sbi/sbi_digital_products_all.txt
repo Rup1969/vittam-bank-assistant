@@ -1,0 +1,110 @@
+SOURCE: https://sbi.bank.in/web/yono, https://sbi.bank.in/web/personal-banking/digital/sbi-fastag, https://sbi.bank.in/web/personal-banking/digital/whatsapp-banking, https://sbi.bank.in/web/personal-banking/information-services/kyc-guidelines/sbi-quick-missed-call-banking, https://sbi.bank.in/dsb, and https://sbi.bank.in/web/personal-banking/cards/debit-card
+DOCUMENT_ID: sbi_digital_products_all
+BANK: SBI
+CATEGORY: DIGITAL
+SOURCE_TYPE: PRODUCT_PAGE
+===
+SBI — COMPLETE DIGITAL PRODUCTS & SERVICES
+
+========================================
+SECTION A: YONO — UNIFIED APP
+========================================
+
+1. YONO SBI ("You Only Need One")
+SBI's unified app for banking, UPI payments, shopping, and rewards —
+account opening, payments, loans, and insurance access from one app.
+Also lets a customer link and manage accounts held at OTHER banks from
+within the same app.
+
+2. UPI VIA YONO (BHIM UPI)
+Instant UPI payments — send/receive by searching a contact or entering
+a UPI ID/VPA. No charge for UPI payments made through YONO; no hidden
+transaction fees.
+
+3. YONO CASH
+Card-less cash withdrawal (launched 16 March 2019) — withdraw at any
+SBI ATM or most SBI merchant PoS terminals/Customer Service Points
+(CSPs) in India using an in-app generated reference number/OTP,
+without a physical debit card.
+
+4. YONO LITE
+A lighter-weight mobile banking variant of YONO, focused on core
+banking/transaction functions.
+
+========================================
+SECTION B: MISSED CALL / SMS / WHATSAPP BANKING
+========================================
+
+5. SBI QUICK — MISSED CALL BANKING
+Free service: get account balance, mini statement, and more via a
+missed call or a keyword SMS from the mobile number registered with
+the account — no data connection needed.
+
+6. SMS BANKING
+Send 'BAL' to 9223766666 for account balance, or 'MSTMT' to the same
+number for the last 5 transactions.
+
+7. WHATSAPP BANKING
+Send "Hi" to SBI's WhatsApp Banking number (+91 90226 90226) to access
+banking services conversationally — supports multiple regional
+languages and voice commands. Covers balance enquiry, mini statement,
+account details, loan account details, and FD details.
+
+========================================
+SECTION C: CARDS
+========================================
+
+8. DEBIT CARDS
+Multiple variants: SBI Virtual Debit Card (card-not-physical, instantly
+generated in the YONO app), SBI Platinum International Debit Card, SBI
+Global International Debit Card, SBI Mastercard World Debit Card, plus
+standard classic/gold-tier cards. Supports ATM withdrawal, POS,
+contactless tap-and-pay, and online shopping; international usage on
+the Platinum/Global/World variants.
+
+9. CREDIT CARDS (SBI Card)
+Issued via SBI's credit-card arm (SBI Card) — reward points, cashback
+on select categories, EMI conversion, and premium-tier benefits
+(lounge access etc. on higher variants). Apply via the SBI Card portal
+or YONO.
+
+10. PREPAID CARDS
+Reloadable cards not linked to a bank account in the same way as a
+debit card — used for gifting, travel, or general prepaid spending.
+
+========================================
+SECTION D: PAYMENTS & TOLL
+========================================
+
+11. SBI FASTAG (NETC FASTAG)
+RFID-based electronic toll payment — sticker tag on the windscreen,
+toll deducted automatically while the vehicle is in motion, funded
+from a prepaid wallet or linked savings account. Minimum balance at
+first issuance: Rs. 100 for cars/jeeps (Class 4), Rs. 300 for
+commercial vehicles (Classes 5-7, 12, 15, 16). Recharge via the FASTag
+portal, net banking, debit/credit card, UPI, or authorised agents; cash
+recharge capped at Rs. 50,000/month for eligible accounts. Apply
+online or at an authorised SBI Point-of-Service location — needs the
+vehicle's Registration Certificate and KYC documents.
+
+12. BHARAT BILL PAY / BILL PAYMENTS
+Pay mobile recharge, DTH, electricity, gas, or FASTag recharge through
+Bharat Bill Pay, earning reward points on eligible payments.
+
+========================================
+SECTION E: OTHER SERVICES
+========================================
+
+13. DOORSTEP BANKING (DSB)
+Available via the mobile app or by calling the toll-free number
+1800-1111-03 (9 AM-4 PM on working days). Covers services like cash/
+cheque pickup and document collection at the customer's registered
+address.
+
+14. SBI SECURITIES
+SBI's own platform for demat, trading (NSE/BSE), and investment
+services — a separate arm from core retail banking.
+
+For product-specific limits (UPI transaction caps, YONO Cash
+withdrawal limits, FASTag recharge limits) and eligibility, check
+SBI's current help pages, since these limits are revised periodically.

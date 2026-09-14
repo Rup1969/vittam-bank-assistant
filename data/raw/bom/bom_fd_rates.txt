@@ -1,0 +1,35 @@
+SOURCE: https://bankofmaharashtra.bank.in/domestic-term-deposits
+DOCUMENT_ID: bom_fd_rates
+BANK: BOM
+CATEGORY: DEPOSIT
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-19
+===
+Bank of Maharashtra Fixed Deposit (FD) Interest Rates
+
+Bank of Maharashtra's current fixed deposit (FD) interest rate for the
+general public ranges from 2.60% to 6.40% p.a. depending on tenure. The
+1-year FD interest rate is 6.40% for the general public and 6.90% for
+senior citizens — the single highest-rate slab on the entire retail
+table.
+
+Retail FD Rates (below Rs. 3 crore), w.e.f. 10.08.2026:
+
+Tenure                  General    Senior Citizen
+7-30 days                2.60%      3.10%
+31-45 days                2.75%      3.25%
+46-90 days                3.75%      4.25%
+91-119 days               4.00%      4.50%
+120-180 days              4.75%      5.25%
+181-270 days              5.00%      5.50%
+271-364 days              5.25%      5.75%
+1 Year                    6.40%      6.90%
+Above 1 year to 2 years   6.15%      6.65%
+Above 2 years to 3 years  5.25%      5.75%
+Above 3 years to 5 years  5.00%      5.50%
+Above 5 years             5.00%      5.50%
+
+Senior citizens receive a flat +0.50% premium across every tenure shown
+above. Non-callable retail rates are not published separately from the
+callable rate for deposits below Rs. 3 crore (unlike some other banks)
+— only bulk/crore-tier deposits carry a distinct non-callable rate.

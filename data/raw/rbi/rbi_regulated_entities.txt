@@ -1,0 +1,39 @@
+SOURCE: https://rbi.org.in/scripts/FinancialAgents.aspx
+DOCUMENT_ID: rbi_regulated_entities
+BANK: RBI
+CATEGORY: GENERAL
+SOURCE_TYPE: RBI_CITIZENS_CORNER
+===
+RBI Regulated Entities — How To Verify a Financial Institution is Genuine
+
+RBI maintains a public directory/search tool letting anyone verify
+whether a financial institution is genuinely regulated by RBI, before
+depositing money or doing business with it — an important fraud-
+prevention check.
+
+Categories Searchable in RBI's Directory:
+- Scheduled Commercial Banks (SCBs) and their branches.
+- Non-Banking Finance Companies (NBFCs).
+- Foreign bank branches and representative offices operating in India.
+- Full-Fledged Money Changers and Authorised Dealers (forex).
+- Credit Information Companies.
+- Primary Dealers (government securities market).
+- Payment System Operators (payment gateways, wallets, etc.).
+- Mobile banking and prepaid payment instrument (PPI) issuers.
+- Banks authorised to import gold/silver.
+- Agency banks handling government business (tax collection, pension
+  disbursement, etc.).
+
+Why This Matters:
+A common fraud pattern is an entity claiming RBI approval/registration
+it does not actually have (e.g. a fake NBFC or unauthorised digital
+lending app). Checking the entity's name against RBI's official list
+in the relevant category is the direct way to confirm genuine
+regulatory status before a customer commits funds — this is also
+relevant to RBI's Digital Lending Apps (DLA) list published separately
+by regulated entities, which serves the same verification purpose for
+lending apps specifically.
+
+This is a lookup tool, not a static list — the current, authoritative
+answer for any specific entity's status should always be checked live
+on RBI's site rather than assumed from memory.

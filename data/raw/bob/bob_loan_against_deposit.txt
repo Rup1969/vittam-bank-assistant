@@ -1,0 +1,31 @@
+SOURCE: https://bankofbaroda.bank.in/banking-mantra/loans-borrowings/articles/loan-against-fixed-deposit, https://bankofbaroda.bank.in/nri-banking/products-services/loans/loan-against-fcnr-b-deposits-in-foreign-currency-in-india, and https://bankofbaroda.bank.in/nri-banking/products-services/loans/loans-against-fcnr-b-deposits-in-rupees
+DOCUMENT_ID: bob_loan_against_deposit
+BANK: BOB
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+===
+Bank of Baroda Loan / Overdraft Against Fixed Deposit
+
+Domestic Fixed Deposit:
+Customers can borrow up to 90% of their fixed deposit's value via an
+overdraft facility against it. The specific overdraft interest rate
+for domestic rupee FDs is not published on the general product page —
+confirm the current rate with a branch (typically priced as a small
+spread over the underlying FD's own rate, similar to other banks'
+loan-against-FD products).
+
+Loan Against FCNR(B) Deposits (foreign currency, for NRI customers):
+- In foreign currency: 1.5% p.a. over the 6-month LIBOR rate as on the
+  date of the loan, OR 1.50% over the FCNR(B) deposit's own rate,
+  whichever is higher.
+- In Indian Rupees: MCLR + 100 basis points (1.00%).
+
+Related Products:
+- Loans/Overdrafts against Non-Resident (Rupee) Fixed Deposits — a
+  separate NRI-specific product line from the domestic FD overdraft.
+- Loan/Overdraft Against Bank's Own Deposit (LABOD/ODBOD) — an
+  agriculture/rural-banking-linked variant of the same concept.
+
+Given the domestic rate isn't published, confirm the exact effective
+rate with a branch before quoting to a customer, rather than assuming
+parity with another bank's loan-against-FD pricing.

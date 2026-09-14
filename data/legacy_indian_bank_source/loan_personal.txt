@@ -1,0 +1,47 @@
+DOCUMENT_ID: loan_personal
+CATEGORY: LOAN
+PRODUCT: IB Personal Loan
+SOURCE: indianbank.bank.in/category/personal-loan/
+============================================================
+
+IB PERSONAL LOAN
+
+Purpose:
+Any legitimate personal financial need — medical emergencies, travel, marriage, home furnishing, consumer durables, education expenses not covered by education loan, etc.
+
+Target Group:
+- Permanent salaried employees of Central/State Govt, PSUs, reputed companies
+- Professionals with established practice
+- Pensioners drawing pension through Indian Bank
+
+Eligibility:
+- Minimum net monthly salary / income as per bank norms
+- Satisfactory credit score (CIBIL)
+- Existing relationship with bank preferred
+
+Loan Amount:
+- Based on income and repayment capacity
+- Typically up to 20–24 times net monthly salary
+- Maximum amount as per bank's current guidelines
+
+Repayment:
+- Up to 60 months (5 years) — EMI based
+- Pensioners: repayment linked to pension credit
+
+Interest Rate:
+- Linked to RLLR — floating
+- Fixed ROI option also available
+
+Security:
+- Clean (unsecured) loan — no collateral for most variants
+- Guarantee of spouse or third party may be required
+
+Documents Required:
+- Latest salary slips (3 months)
+- Form 16 / ITR
+- Bank statements (6 months)
+- KYC documents
+- Employee ID / service certificate
+
+Online Apply: apps.indianbank.bank.in/ibapps/index.html
+Helpline: 1800 1700

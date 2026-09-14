@@ -1,0 +1,39 @@
+SOURCE: https://www.canarabank.bank.in/pages/msme-products-and-schemes, https://www.canarabank.bank.in/cgtmse, and https://canarabank.bank.in/pages/area-specific-scheme-for-financing-msme
+DOCUMENT_ID: canara_loan_msme
+BANK: CANARA
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+===
+Canara Bank MSME / Business Loans
+
+Pricing Basis:
+MSME loans are typically priced on a floating rate linked to RLLR
+(Repo Linked Lending Rate), with the exact spread depending on loan
+amount, repayment tenure, nature of business, the enterprise's
+financial history and credit score, and the value of
+security/collateral pledged plus the borrower's internal/external risk
+rating. Loan amounts available up to Rs. 10 crore across MSME products
+(working capital finance, term loans, export finance, infrastructure
+financing, and other schemes).
+
+Special Interest Concessions:
+- 0.50% reduction in applicable interest rate on new loans to Women
+  Entrepreneurs under Micro & Small Enterprises (manufacturing and
+  services).
+- 0.25% concession in applicable interest rate on CGTMSE-covered
+  accounts.
+
+CGTMSE (Collateral-Free Loan Coverage):
+Canara Bank participates in the CGTMSE scheme (Credit Guarantee Fund
+Scheme for Micro and Small Enterprises), the same government-backed
+collateral-free credit mechanism SBI and Bank of Baroda also
+participate in — offers quick approval, flexible repayment, and
+collateral-free funding for small businesses.
+
+Area-Specific MSME Financing Schemes:
+Canara Bank also offers financing schemes tailored to specific
+geographic/industry clusters — check the area-specific scheme page for
+whether one applies to a given business's location/sector.
+
+For a specific MSME product's exact rate, eligibility, and
+documentation, check that product's own page or a branch.

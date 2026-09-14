@@ -1,0 +1,22 @@
+SOURCE: https://centralbank.bank.in/en/recurring-deposit-scheme
+DOCUMENT_ID: centralbank_deposits_schemes_all
+BANK: CENTRAL_BANK
+CATEGORY: DEPOSIT
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-19
+===
+Central Bank of India — Other Deposit Schemes (Recurring Deposit and More)
+
+Central Bank of India offers recurring deposit (RD) products, including:
+- Cent Surakshit Samriddhi RD.
+- Cent Swashakti (Flexi RDS) — a flexible recurring deposit variant.
+
+The bank also lists, without inline figures on this page: a Fixed
+Deposit Receipt (FDR) scheme, a Senior Citizens Savings Scheme, tax-
+saving deposits, and several callable/non-callable term-deposit variants.
+
+This is a summary-level entry only — the recurring-deposit landing page
+names these schemes but does not publish minimum amount, tenure, or rate
+figures inline; those live on each individual scheme's own sub-page,
+which was not separately fetched in this pass. Confirm exact terms with
+the bank before relying on any figure for these specific schemes.

@@ -1,0 +1,43 @@
+SOURCE: RBI Master Direction (Commercial Banks - Treatment of Wilful Defaulters and Large Defaulters) Directions, 2025, issued 28 November 2025; catalog PDF: rbidocs.rbi.org.in/rdocs/notification/PDFs/166MD.PDF (CAPTCHA-gated for direct fetch — content below is cross-checked from multiple regulatory-tracking sources reporting the official text; verify against the primary Direction before treating as legally binding)
+DOCUMENT_ID: rbi_md_wilful_defaulters
+BANK: RBI
+CATEGORY: PRUDENTIAL
+SOURCE_TYPE: RBI_MASTER_DIRECTION
+DATE: 2025-11-28
+===
+RBI Master Direction — Treatment of Wilful Defaulters and Large Defaulters
+
+Purpose: a transparent, non-discriminatory framework for identifying
+wilful/large defaulters and sharing that information across the
+financial system, so other lenders don't unknowingly extend further
+credit to them.
+
+Wilful Defaulter — Definition:
+A borrower or guarantor who has committed "wilful default" AND whose
+outstanding amount is Rs. 25 lakh or above. Wilful default itself
+means: intentional/deliberate misuse, diversion, or siphoning of loan
+funds; failing to honour repayment despite having the capacity to pay;
+or breaching agreed loan covenants without justification.
+
+Consequences of Being Classified a Wilful Defaulter:
+- Barred from further credit from the banking system.
+- Restrictions on restructuring existing facilities or starting new
+  ventures.
+- Reported to Credit Information Companies (monthly).
+- Details published (name disclosure).
+- Possible criminal proceedings, separate from the credit
+  consequences.
+
+Preventive/Ongoing Obligations on Banks:
+- Proper credit appraisal before sanctioning.
+- End-use monitoring of disbursed funds (checking money is used for
+  its stated purpose).
+- Involvement of statutory auditors or forensic auditors where
+  diversion is suspected.
+- Monthly reporting of large and wilful defaulters to Credit
+  Information Companies, with accurate reporting of any associated/
+  connected parties.
+
+Due Process: classification follows principles of natural justice
+(the borrower gets an opportunity to respond) before being formally
+declared a wilful defaulter — it is not an automatic/unilateral label.

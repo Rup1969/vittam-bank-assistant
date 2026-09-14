@@ -1,0 +1,34 @@
+SOURCE: RBI Master Direction (Commercial Banks - Digital Banking Channels Authorisation) Directions, 2025, issued 28 November 2025, effective 1 January 2026; catalog PDF: rbidocs.rbi.org.in/rdocs/notification/PDFs/380MD.PDF (CAPTCHA-gated for direct fetch — content below is cross-checked from multiple regulatory-tracking sources reporting the official text; verify against the primary Direction before treating as legally binding)
+DOCUMENT_ID: rbi_md_digital_banking_channels
+BANK: RBI
+CATEGORY: DIGITAL
+SOURCE_TYPE: RBI_MASTER_DIRECTION
+DATE: 2025-11-28
+===
+RBI Master Direction — Digital Banking Channels Authorisation (Commercial Banks)
+
+Issued 28 November 2025, effective from 1 January 2026 — a
+consolidated regulatory framework for how commercial banks are allowed
+to launch and operate digital banking services.
+
+Scope: applies to commercial banking companies (excluding Small
+Finance Banks, Payments Banks, Local Area Banks), corresponding new
+banks, and SBI, as defined under the Banking Regulation Act, 1949.
+
+Channels Covered:
+Internet banking, mobile banking apps, USSD (Unstructured Supplementary
+Service Data — e.g. the *99# banking service), SMS-based banking, and
+other electronic platforms. The Direction distinguishes View-Only
+facilities (balance/statement checking only) from Transactional
+facilities (actual fund transfers/payments).
+
+Approval Requirement:
+Prior RBI approval is required specifically before launching a
+TRANSACTIONAL digital banking facility (not for view-only facilities).
+Banks apply to their Regional Office of RBI through the PRAVAAH portal,
+subject to meeting prudential eligibility criteria, and must submit a
+Board resolution plus supporting documents alongside the application.
+
+This is the regulatory basis for why launching a new transactional
+mobile/internet banking feature requires RBI sign-off, while a
+read-only balance-check feature generally does not.

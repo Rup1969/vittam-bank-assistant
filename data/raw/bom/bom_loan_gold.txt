@@ -1,0 +1,35 @@
+SOURCE: https://bankofmaharashtra.bank.in/gold-loan
+DOCUMENT_ID: bom_loan_gold
+BANK: BOM
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-19
+===
+Bank of Maharashtra Gold Loan
+
+Bank of Maharashtra's gold loan interest rate is 8.50% p.a. (RLLR +
+0.45%).
+
+Eligibility:
+All individuals, including bank staff, aged 18 and above, who own the
+gold ornaments being pledged. Basic KYC (identity and address proof)
+required.
+
+Loan Amount:
+Minimum Rs. 20,000, maximum Rs. 100 lakh (subject to terms).
+
+Loan-to-Value (LTV):
+For EMI/interest-only repayment (up to 12 months): 75% LTV up to Rs. 100
+lakh, 80% up to Rs. 5 lakh, 85% up to Rs. 2.5 lakh.
+For bullet repayment (up to 12 months): 65% LTV up to Rs. 100 lakh, 70%
+up to Rs. 5 lakh, 75% up to Rs. 2.5 lakh.
+
+Tenure:
+Standard loans up to 24 months; bullet repayment up to 12 months.
+
+Processing Fee:
+Nil up to Rs. 3 lakh; Rs. 500-Rs. 2,000 above that.
+
+Other Features:
+No pre-payment/pre-closure/part-payment charges, no guarantor required,
+no CIBIL score check.

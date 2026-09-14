@@ -1,0 +1,40 @@
+SOURCE: https://sbi.bank.in/web/interest-rates/interest-rates/sme-segment (rate table stale, last shown updated 2020) and https://sbi.bank.in/web/business/sme/sme-government-schemes/cgtmse
+DOCUMENT_ID: sbi_loan_msme
+BANK: SBI
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+===
+SBI MSME / SME Business Loans
+
+Pricing Basis:
+SBI prices MSME loans off the External Benchmark Rate (EBR), currently
+Repo Rate + 2.65%, plus a product-specific spread set by the
+borrower's rating. Non-MSME business borrowers are typically priced
+off the 6-month MCLR instead. The detailed per-product spread table on
+SBI's SME segment page was last shown as updated in 2020 (referencing
+a 2018 MCLR quarter) — treat those specific spreads as stale and
+re-verify before quoting.
+
+Eligibility (CGTMSE-backed collateral-free route):
+- Obtaining an Udyam Registration Certificate (URC) is compulsory for
+  branches to process an MSME loan proposal — URC is the sole
+  criterion used to classify a unit as a Micro or Small Enterprise
+  (MSE).
+- Loans to MSEs can be covered under the Credit Guarantee Fund Scheme
+  for Micro and Small Enterprises (CGTMSE/CGS-I), in force since
+  1 August 2000.
+- Guarantee coverage under CGTMSE is 85% of the credit facility.
+- Creation of primary security is not a pre-requisite for the
+  guarantee cover, and initiating legal action is not required to
+  invoke the guarantee.
+
+Product Range:
+SBI's MSME/SME offerings include Asset Backed Loan, E-Dealer Finance
+Scheme, SME Smart Score (rating-based scoring model), Fleet Finance,
+Commercial Vehicle Loan, SME Credit Card, SME Loan to Women
+Entrepreneurs (SBI Asmita), Finance to Start-ups (MSME Udaan), and
+government-backed schemes such as PMEGP and PMFME, alongside CGTMSE.
+
+For a specific product's rate, eligibility, and documentation, check
+that product's own page or a branch — the umbrella SME segment page
+does not carry current figures for every product.

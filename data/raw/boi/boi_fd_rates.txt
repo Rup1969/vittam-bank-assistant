@@ -1,0 +1,46 @@
+SOURCE: Secondary-sourced (bankofindia.bank.in has real, working Cloudflare bot-defense confirmed to block automated access every time this has been checked — including a re-check on 2026-08-24; no automated pipeline can reach the bank's own page). Cross-verified across three independent aggregators as of 2026-08-24: BankBazaar (bankbazaar.com/fixed-deposit/bank-of-india-fixed-deposit-rate.html, fullest table, page refreshed 23 Aug 2026), Scripbox (rates as on 5 Feb 2026), and Paisabazaar (rates as of 2 Mar 2026) — all three agree on every overlapping figure (1-year: 6.25%/6.75% general/senior on all three). BankBazaar's table used as the primary source below since it is the most complete and most recently refreshed.
+DOCUMENT_ID: boi_fd_rates
+BANK: BOI
+CATEGORY: DEPOSIT
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-03-02
+===
+Bank of India Fixed Deposit Interest Rates (below Rs. 3 crore)
+
+Bank of India's current fixed deposit (FD) interest rate for the
+general public ranges from 3.00% to 6.60% per annum across tenures
+from 7 days to 10 years, with senior citizens earning an additional
+0.50%. The 1-year FD interest rate is 6.25% for the general public and
+6.75% for senior citizens.
+
+Effective 2 March 2026, domestic retail term deposit rates by tenure
+(general public / senior citizen):
+- 7 to 14 days: 3.00% / 3.50%
+- 15 to 30 days: 3.00% / 3.50%
+- 31 to 45 days: 3.00% / 3.50%
+- 46 to 90 days: 4.50% / 5.00%
+- 91 to 179 days: 4.25% / 4.75%
+- 180 to 210 days: 5.50% / 6.00%
+- 211 to 269 days: 5.50% / 6.00%
+- 270 days to below 1 year: 5.50% / 6.00%
+- 1 year: 6.25% / 6.75%
+- above 1 year to below 2 years: 6.30% / 6.80%
+- 450 days (special tenor): 6.60% / 7.10%
+- 2 years to below 3 years: 6.30% / 6.80%
+- 3 years to below 5 years: 6.25% / 6.75%
+- 5 years to below 8 years: 6.00% / 6.50%
+- 8 to 10 years: 6.00% / 6.50%
+
+Special Scheme — Star Sunidhi (tax-saving FD, 5 years): 6.00% general
+public, 6.50% senior citizens, same rate as the standard 5-8 year band.
+
+Note: rates above are for callable domestic/NRO term deposits below
+Rs. 3 crore. Bank of India separately publishes tables for Rs. 3-10
+crore deposits and NRE/FCNR deposits, not covered here.
+
+Since this data is secondary-sourced (the bank's own site could not be
+reached), it should be treated as indicative rather than final —
+verify the current card rate directly with the bank, especially for a
+large deposit, before quoting it as certain. Rates are revised
+periodically at RBI's bi-monthly Monetary Policy Committee reviews and
+occasionally between reviews.

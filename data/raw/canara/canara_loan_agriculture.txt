@@ -1,0 +1,34 @@
+SOURCE: https://www.canarabank.bank.in/pages/kisan-credit-card-scheme and https://www.canarabank.bank.in/pages/agriculture-and-rural-credit-schemes
+DOCUMENT_ID: canara_loan_agriculture
+BANK: CANARA
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2025-02-15
+===
+Canara Bank Agriculture Loans
+
+Kisan Credit Card (KCC) Scheme:
+Mean interest rate 9.20% (as updated to 15 February 2025). However,
+the base KCC interest rate is 7% p.a., and under the Government's
+Interest Subvention Scheme, the effective rate to the farmer can be as
+low as 4% p.a. for prompt repayers — a significant government-backed
+reduction from the headline rate.
+
+Purpose: easy access to credit for cultivation or household
+requirements of the agricultural community, under a single-window KCC
+facility (same broad mechanism as SBI's and Bank of Baroda's KCC
+products).
+
+Repayment: half-yearly or annual instalments, over a period of up to 5
+years.
+
+Related Schemes:
+Canara Bank's Agriculture and Rural Credit Schemes page lists
+additional agriculture/rural financing products beyond KCC — check
+that page for specific allied-activity loans (e.g. animal husbandry,
+horticulture) if KCC itself doesn't fit the customer's need.
+
+Given the Interest Subvention Scheme materially changes the effective
+rate for eligible, prompt-repaying farmers, always clarify which rate
+(headline mean 9.20%, base 7%, or subvented ~4%) applies to the
+specific customer's situation before quoting a single figure.

@@ -1,0 +1,48 @@
+SOURCE: https://sbi.bank.in/web/personal-banking/loans/gold-loan/personal-gold-loans
+DOCUMENT_ID: sbi_loan_gold
+BANK: SBI
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-06-16
+===
+SBI Personal Gold Loan (Jewel Loan)
+
+Interest Rate (as of 16 June 2026), by variant:
+- 12-Month Bullet Repayment: 9.15% p.a.
+- Personal Gold Loan (EMI-based): 10.10% p.a.
+- Liquid Gold Loan (Overdraft): 10.10% p.a.
+- Blended/mean rate across variants: approximately 9.25% p.a.
+
+Eligibility:
+- Age 18 years and above.
+- Any individual with a steady source of income, including bank
+  employees and pensioners.
+- Income documentation is required only for loans exceeding Rs. 2.5
+  lakh.
+
+Loan Amount:
+Minimum Rs. 20,000, maximum Rs. 1 crore per individual. An individual
+may hold up to 3 concurrent gold loans, subject to an overall Rs. 50
+lakh ceiling across them.
+
+Loan-to-Value / Margin (i.e. the portion of gold value NOT lent):
+- EMI-based variant: 28% margin.
+- 12-month bullet repayment variant: 35% margin.
+- Overdraft variant: 26% margin.
+
+Tenure:
+- EMI-based: up to 36 months.
+- 12-month bullet repayment: 12 months.
+- Overdraft: up to 36 months.
+
+Processing Fee (slab-based):
+- Rs. 50,000 to Rs. 2,00,000: 0.50% + GST (minimum Rs. 500).
+- Rs. 2,00,001 to Rs. 25,00,000: 0.30% + GST (minimum Rs. 1,000).
+- Above Rs. 25,00,000: 0.25% + GST (maximum Rs. 15,000).
+
+Documents Required:
+- Existing KYC-compliant SBI customers: application form plus 2
+  passport-size photographs.
+- New customers: a copy of any Officially Valid Document (OVD) as
+  proof of identity (passport, Aadhaar, voter ID, driving licence, or
+  MGNREGA job card) plus photographs.

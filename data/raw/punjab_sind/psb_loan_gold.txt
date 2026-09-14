@@ -1,0 +1,35 @@
+SOURCE: https://punjabandsind.bank.in/content/goldloan
+DOCUMENT_ID: psb_loan_gold
+BANK: PUNJAB_SIND
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-19
+===
+Punjab & Sind Bank Gold Loan (PSB Gold Loan)
+
+Loan Amount:
+Minimum Rs. 25,000, maximum Rs. 50 lakh per borrower (including any
+top-up loans).
+
+Eligibility:
+Fully KYC-compliant customers, including staff and ex-staff. NRI
+customers may borrow only jointly with an Indian resident.
+
+Collateral Limits:
+- Gold jewelry: maximum 1 kg per borrower.
+- Silver jewelry: maximum 10 kg per borrower.
+- Gold coins: maximum 50 grams.
+- Silver coins: maximum 500 grams.
+
+Valuation:
+The bank values gold/silver collateral at the LOWER of (a) the average
+closing price over the preceding 30 days, or (b) the closing price on
+the preceding day, both sourced via IBJA or a SEBI-regulated exchange.
+
+Loan Types Offered:
+Demand Loan (bullet repayment), Overdraft (regular interest intervals),
+and Term Loan (equal monthly installments).
+
+Interest Rate, LTV/Margin, Processing Fee:
+Not stated as specific figures on this product page — refer to the
+bank's service-charges and lending-rate pages for current terms.

@@ -1,0 +1,81 @@
+SOURCE: https://bankofbaroda.bank.in/interest-rate-and-service-charges/deposits-interest-rates/savings-bank-deposits, https://bankofbaroda.bank.in/accounts/saving-accounts, and https://bankofbaroda.bank.in/interest-rate-and-service-charges/deposits-interest-rates
+DOCUMENT_ID: bob_deposits_schemes_all
+BANK: BOB
+CATEGORY: DEPOSIT
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2025-08-22
+===
+Bank of Baroda — Deposit Schemes Overview
+
+SECTION A: SAVINGS BANK ACCOUNT
+Interest rate: 2.50% p.a. for retail balances (up to Rs. 10 crore),
+effective 22 August 2025. Higher tiers (2.75% up to 3.50%/4.50%/4.75%)
+apply only to very large institutional-scale balances (Rs. 50 crore
+and above), not relevant for retail customers. Interest is calculated
+at quarterly compounding intervals per Indian Banks' Association
+guidelines.
+
+SECTION B: SAVINGS ACCOUNT VARIANTS (bob-branded)
+- bob LITE Savings Account — lifetime free zero-balance account, free
+  RuPay Platinum debit card, no minimum balance charge.
+- bob Advantage Saving Account — general-purpose flexible savings.
+- bob Super Savings Account — for metro/urban high-value customers;
+  immediate credit of outstation cheques up to Rs. 25,000.
+- bob Masterstroke Saving Bank Account — high-income professionals;
+  MAB requirement Rs. 10-50 lakh; lifetime-free Visa Opulence debit
+  card; Rs. 5 lakh daily ATM limit.
+- bob Masterstroke LITE — accident insurance up to Rs. 50 lakh, free
+  banking services, aimed at customers wanting premium benefits more
+  affordably than the full Masterstroke account.
+- bob Platinum Saving Bank Account — for HNIs; free Visa Platinum
+  debit card, Rs. 1 lakh daily withdrawal limit, unlimited cheque
+  books.
+- bob Professional Saving Bank Account — for doctors, CAs, CS,
+  engineers, advocates; free RuPay Select debit card (year one),
+  waived SMS alerts, demat AMC waiver.
+- bob Senior Citizen Vishesh Samman SB — for 60+; free online doctor
+  consultations, up to 15% concession on online medicine purchase,
+  doorstep banking.
+- bob Senior Citizen Privilege Scheme — free BOB Prime Credit Card
+  with 1% cashback, 50% waiver on reverse mortgage processing fees.
+- bob Pensioners Savings Bank Account — opened at Rs. 5 only;
+  overdraft facility up to 2 months' pension amount.
+- bob Women Sapphire Savings Account — critical illness cover of
+  Rs. 10 lakh, healthcare concessions, RuPay-linked benefits.
+- bob Mahila Shakti Saving Account — loan processing fee discounts,
+  50% locker rental waiver, for women.
+- bob BRO Saving Account — students aged 16-25; zero balance,
+  lifestyle-focused benefits.
+- bob Champ Account — minors 0-18 years; no minimum balance, themed
+  debit card available from age 10+.
+- bob Family Savings Accounts — links multiple family members' SB
+  accounts so the zero-balance requirement is assessed collectively
+  across the group.
+- bob Jeevan Suraksha Saving Account — bundles life insurance with
+  the SB account (single or joint), auto-sweep facility to a term
+  deposit.
+- bob SB Self Help Group — for SHGs; SMS alerts, outstation cheque
+  collection.
+- bob Bank Mitra Bachat Khata — opened only at Business Correspondent
+  (BC) points, for rural/underbanked populations; Aadhaar seeding and
+  government-scheme enrollment support.
+- Govt. Bodies SB Account — for government departments/agencies;
+  account transferability, unlimited free cash deposit at the home
+  branch.
+
+SECTION C: FIXED DEPOSITS
+See bob_fd_rates / bob_rates_deposit_structured for the full tenor-wise
+table. Headline products: standard callable FD (7 days to 10 years),
+"bob Square Drive" (444-day special tenor), "bob Golden Goal" (555-day
+special tenor), plus a Tax-Saving FD variant and "bob earth" Green Term
+Deposits (callable/non-callable, up to Rs. 10 crore) for
+environmentally-themed deposits.
+
+SECTION D: NRI / FOREIGN CURRENCY DEPOSITS
+Foreign Currency Non-Resident (Bank) [FCNR(B)] deposits are offered
+separately from domestic retail FDs, with their own rate table — do
+not quote a domestic FD rate to an NRI customer or vice versa.
+
+Verify all rates against Bank of Baroda's live interest-rates page
+before quoting, since both standard and special-tenor deposit rates
+are revised periodically.

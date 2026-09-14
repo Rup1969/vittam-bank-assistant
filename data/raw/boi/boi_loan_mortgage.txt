@@ -1,0 +1,22 @@
+SOURCE: https://bankofindia.bank.in/star-loan-against-property and https://www.paisabazaar.com/bank-of-india/loan-against-property/ (cross-referenced secondary sources; verify current rate with the bank)
+DOCUMENT_ID: boi_loan_mortgage
+BANK: BOI
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-01
+===
+Yes, Bank of India offers a Star Loan Against Property (mortgage loan)
+against an owned residential or commercial property, with interest
+rate starting from 9.10% p.a., loan amount up to Rs. 7.5 crore, tenure
+up to 15 years.
+
+Structure:
+A mortgage-backed loan against an owned residential or commercial
+property. Also offered as a reducible overdraft facility, where the
+drawing limit reduces over time based on the repayment schedule — a
+useful alternative to a plain term loan for customers who want
+flexible, running access to the sanctioned limit rather than a single
+lump-sum disbursal.
+
+This is a headline reference — confirm the current rate, loan-to-value
+ratio, and eligibility with the bank before advising a customer.

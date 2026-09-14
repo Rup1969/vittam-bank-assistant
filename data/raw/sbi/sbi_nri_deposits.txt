@@ -1,0 +1,38 @@
+SOURCE: https://sbi.bank.in/web/interest-rates/interest-rates/sbi-nri-services-interest-rates/sbi-nri-services-nre-fixed-deposit-interest-rate
+DOCUMENT_ID: sbi_nri_deposits
+BANK: SBI
+CATEGORY: DEPOSIT
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-03-15
+===
+SBI NRE Fixed Deposit Interest Rates (for NRI customers)
+
+Effective 15 March 2026:
+
+Tenor                        | Below Rs. 3 crore | Rs. 3 crore & above
+1 year to <2 years            | 6.25%              | 6.25%
+444 days (AMRIT VRISHTI)      | 6.45%              | not offered at this slab
+2 years to <3 years           | 6.40%              | 6.15%
+3 years to <5 years           | 6.30%              | 6.00%
+5 years to 10 years           | 6.05%              | 6.00%
+
+Key Terms:
+- No interest is payable if the NRE deposit is withdrawn before
+  completing one year.
+- Premature withdrawal penalties apply once past the one-year mark.
+- Rates are subject to change without prior notice.
+
+Other NRI Deposit Products (rate not detailed in this note — check
+SBI's NRI Services interest-rate pages individually):
+- NRO Fixed Deposit — for NRIs' India-sourced (repatriable-limited)
+  income.
+- FCNR(B) Deposit — foreign-currency denominated term deposit.
+- NRE / NRO Savings Bank accounts — separate rates from resident
+  savings accounts.
+- RFC (Resident Foreign Currency) accounts.
+- Loans against NRI deposits — see sbi_loan_against_deposit, which
+  already covers the NRO/NRE loan-against-FD spread.
+
+This is an NRI-specific rate table, distinct from the domestic retail
+FD table in sbi_fd_rates — do not quote domestic rates to an NRI
+customer or vice versa.

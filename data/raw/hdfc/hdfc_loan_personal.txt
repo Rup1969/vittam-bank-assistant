@@ -1,0 +1,19 @@
+SOURCE: https://www.paisabazaar.com/hdfc-bank/personal-loan-interest-rate/ and https://www.urbanmoney.com/personal-loan/hdfc-bank/interest-rate (cross-referenced secondary sources; verify current rate with the bank)
+DOCUMENT_ID: hdfc_loan_personal
+BANK: HDFC
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-15
+===
+HDFC Bank Personal Loan
+
+Interest Rate:
+Reported starting rate: 9.99% p.a. Broader reported range across
+applicant profiles: 10.9%-24% p.a., depending on credit score, monthly
+income, job profile, and employer's profile — a notably wide upper end
+compared to several peer banks, suggesting HDFC prices lower-profile
+applicants more conservatively.
+
+This is a headline reference — personal loan pricing is highly
+profile-dependent; always confirm the applicant's actual quoted rate
+and eligibility with the bank.

@@ -1,0 +1,39 @@
+SOURCE: https://www.indusind.bank.in/in/en/personal/loans/personal-loan-interest-rate.html (official page)
+DOCUMENT_ID: indusind_loan_personal
+BANK: INDUSIND
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-16
+===
+IndusInd Bank Personal Loan
+
+IndusInd Bank's personal loan interest rate starts from 10.49% per
+annum, determined based on the applicant's creditworthiness, income
+stability, and repayment capacity. Customers with strong credit
+profiles and consistent repayment histories typically qualify for
+rates closer to the starting figure, while others receive relatively
+higher pricing based on risk assessment.
+
+Interest Calculation:
+Uses the reducing balance method — interest is charged only on the
+outstanding loan amount, not the original principal, throughout the
+tenure. Early EMIs carry a higher interest component; the principal
+component grows over time.
+
+Processing Fee:
+Typically 3.5% of the loan amount, reduced to 1.5%-2% during
+special/festive promotional offers.
+
+Key Factors Affecting the Rate:
+- CIBIL score (higher score, lower rate)
+- Income profile and employment stability
+- Loan amount and tenure (longer tenures may carry marginally higher rates)
+- Existing financial obligations/EMIs
+- Existing relationship with IndusInd Bank (may qualify for preferential pricing)
+
+Repayment Tenure:
+Flexible tenure of 12 to 48 months.
+
+Rates are risk-based and vary by applicant; confirm the current
+starting rate and the applicant's specific quoted rate with the bank
+before quoting.

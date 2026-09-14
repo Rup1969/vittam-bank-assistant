@@ -1,0 +1,21 @@
+SOURCE: https://uco.bank.in/en/web/guest/recurring-deposit
+DOCUMENT_ID: uco_deposits_schemes_all
+BANK: UCO
+CATEGORY: DEPOSIT
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-08-19
+===
+UCO Bank — Recurring Deposit and Special Schemes
+
+Standard Recurring Deposit:
+Minimum installment Rs. 100. Tenure from 1 year to 10 years. Interest
+rates match the bank's term-deposit rate table (effective 01.04.2026),
+ranging from 2.90% (7-14 days equivalent) to 6.94% (above 5 years).
+
+UCO Sowbhagya (Flexi Recurring Deposit):
+Minimum Rs. 100 per month, thereafter in multiples of Rs. 100. Tenure:
+minimum 12 months, maximum 60 months (5 years).
+
+UCO Sanchayika (women-focused recurring deposit):
+Minimum Rs. 2,000, thereafter in multiples of Rs. 500. Tenure: minimum
+12 months, maximum 60 months.

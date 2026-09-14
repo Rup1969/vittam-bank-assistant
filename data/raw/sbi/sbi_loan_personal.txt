@@ -1,0 +1,17 @@
+SOURCE: https://sbi.bank.in/web/personal-banking/loans/personal-loans/sbi-personal-loan and https://onlineapply.sbi.bank.in/personal-banking/personal-loan
+DOCUMENT_ID: sbi_loan_personal
+BANK: SBI
+CATEGORY: LOAN
+SOURCE_TYPE: PRODUCT_PAGE
+DATE: 2026-04-01
+===
+SBI Personal Loan (Xpress Credit) interest rate starts from 10.00%
+p.a. (terms and conditions apply), effective 1 April 2026, charged on
+a daily reducing balance.
+
+Loan Amount: Minimum Rs. 1 lakh, maximum Rs. 50 lakh, subject to an
+EMI/Net Monthly Income (NMI) ratio up to 65% and a cap of roughly 30
+times NMI.
+
+Tenure: Minimum 6 months, maximum 84 months, must close by the
+applicant's retirement or age 60, whichever is earlier.
