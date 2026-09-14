@@ -7,10 +7,17 @@ __pycache__/
 # automation/fetch_and_track.py, not needed to run or evaluate the app.
 data/scraped/
 
-# The structured-data database — regenerable from the automation
-# pipeline (see README Setup); not committed so a fresh clone doesn't
-# ship a stale/local snapshot as if it were current.
+# The structured-data database is regenerable from the automation
+# pipeline and normally NOT committed, so a local clone doesn't confuse
+# a stale snapshot for current data. ONE deliberate, narrow exception:
+# Streamlit Cloud only runs app.py, not the automation/ fetch pipeline,
+# so the LIVE DEPLOYED demo needs a real snapshot shipped with it or
+# Compare Rates/Calculator/the digest would have nothing to read. This
+# does NOT apply to any other .duckdb file (a local test/scratch DB
+# still gets ignored normally) — only this one exact path is allowed
+# through. See README Setup + the sidebar's own "snapshot" disclosure.
 *.duckdb
+!data/automation.duckdb
 
 # Local tool/IDE state, not project source.
 .claude/

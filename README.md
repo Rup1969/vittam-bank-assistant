@@ -117,13 +117,18 @@ cd "Indian Bank Rag Project"
 pip install -r requirements.txt
 ```
 
-Create a `.env` file in the project root:
+Copy `.streamlit/secrets.toml.example` to `.streamlit/secrets.toml` and fill in a real Groq API key plus at least one login account:
 
-```
-GROQ_API_KEY=your_key_here
+```toml
+GROQ_API_KEY = "your-groq-api-key-here"
+
+[allowed_users]
+demo = "changeme"
 ```
 
-Optional overrides (defaults shown):
+`.streamlit/secrets.toml` is gitignored — never commit it with real values. (A `.env` file with `GROQ_API_KEY=...` also works as a fallback, mainly for running automation scripts standalone outside Streamlit; `st.secrets` is checked first when the app itself runs.)
+
+Optional overrides (defaults shown, via `.env`):
 
 ```
 GROQ_MODEL=openai/gpt-oss-20b
@@ -147,7 +152,9 @@ Run the app:
 streamlit run app.py
 ```
 
-Login is currently a small hardcoded allow-list in `app.py` (`ALLOWED_USERS`) — change it before deploying anywhere beyond local/private use.
+Login accounts come from `.streamlit/secrets.toml`'s `[allowed_users]` table (see above) — add or change accounts there, never in source.
+
+**Deploying (e.g. Streamlit Cloud):** the platform only runs `app.py` — it never runs the `automation/` fetch pipeline, so the structured-rate database (`data/automation.duckdb`) has to be shipped as a snapshot rather than generated on the server. That file is committed as one deliberate, narrow exception to the normal "don't commit the database" rule (see `.gitignore`'s comment on it). The FAISS indexes (`indexes/`) are committed too and already current as of this repo's last commit (`automation/verify_index_freshness.py` confirms 0/3 stale), so a fresh deploy needs no build step for either — `streamlit run app.py` (or the platform's equivalent) works immediately from a clean clone. **The live demo's rate data is therefore a periodically-refreshed snapshot, not a live feed** — the app's own sidebar says so, and the automation pipeline that actually keeps it current is meant to be run locally (see [automation/](automation/)), not on the deployed instance.
 
 ---
 

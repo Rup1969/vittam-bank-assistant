@@ -2884,6 +2884,17 @@ with st.sidebar:
     </div>
     """, unsafe_allow_html=True)
 
+    # Streamlit Cloud (or any host that only runs app.py) never runs the
+    # automation/ fetch pipeline, so the deployed instance's structured
+    # rate data (Compare Rates/Calculator/the digest) is a shipped
+    # snapshot, not a live feed — honest disclosure so a viewer doesn't
+    # mistake it for real-time. See README Setup's "Deploying" note.
+    st.caption(
+        "📌 Live demo data is a periodically-refreshed snapshot — the "
+        "automation pipeline that keeps it current runs locally, see "
+        "the `automation/` folder for the live pipeline."
+    )
+
     # Cheap (filesystem timestamps only, no file reads/embeddings) —
     # runs on every rerun, not cached, so this can never itself go
     # stale. Reuses the exact same check verify_index_freshness.py runs

@@ -5849,3 +5849,46 @@ afterward, confirming zero regression from relocating the imports.
 Files: `app.py` (moved `from sentence_transformers import
 SentenceTransformer` / `import faiss` from module top-level to
 immediately after the login gate).
+
+## 54. Structured-data DB snapshot shipped for Streamlit Cloud deployment — one deliberate, narrow .gitignore exception (2026-09-14)
+
+Streamlit Cloud only runs `app.py`, never the `automation/` fetch
+pipeline — so a fresh deploy would have Compare Rates/Calculator/the
+digest reading from an empty, freshly-created `data/automation.duckdb`
+with zero rows, since nothing on that host ever populates it. Fixed by
+committing one real snapshot of the file rather than leaving deployment
+broken.
+
+`.gitignore`'s blanket `*.duckdb` rule is kept (a local test/scratch DB
+still gets ignored normally) with one explicit, narrow negation added
+right after it: `!data/automation.duckdb` — confirmed working via
+`git check-ignore`/`git status` before staging, not assumed. This is the
+ONLY `.duckdb` file in the repo; no other exception exists.
+
+Added an honest disclosure in two places, not just one: `README.md`'s
+Setup section gets a new "Deploying" paragraph explaining exactly why
+the DB is shipped this way and confirming (re-verified live via
+`automation/verify_index_freshness.py`, 3/3 PASS, right before writing
+this) that the committed `indexes/` folder is ALSO already current, so
+a fresh clone needs zero build steps for either FAISS or the DB. The
+app's own sidebar (right under the Knowledge Base card, visible on
+every page load regardless of mode) now shows: "Live demo data is a
+periodically-refreshed snapshot — the automation pipeline that keeps it
+current runs locally, see the automation/ folder for the live
+pipeline." — verified live in the browser, renders correctly, no
+regression to login or the rest of the sidebar.
+
+Also corrected two things in README's Setup section that were already
+stale from today's earlier credential fix (§50 area) and would have
+misled a new deployer if left as-is while editing this same section:
+the `.env`-only setup instructions were replaced with the real current
+`.streamlit/secrets.toml` path (matching what `settings.py` actually
+reads first), and the line saying login is "a small hardcoded allow-list
+in app.py" — no longer true since `ALLOWED_USERS` moved to
+`st.secrets` — was corrected to point at `secrets.toml`'s
+`[allowed_users]` table instead.
+
+Files: `.gitignore` (narrow `!data/automation.duckdb` exception),
+`data/automation.duckdb` (new — committed snapshot), `README.md`
+(Setup section: secrets.toml path corrected, new "Deploying"
+paragraph), `app.py` (new sidebar snapshot-disclosure caption).
