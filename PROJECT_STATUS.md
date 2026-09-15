@@ -5892,3 +5892,57 @@ Files: `.gitignore` (narrow `!data/automation.duckdb` exception),
 `data/automation.duckdb` (new — committed snapshot), `README.md`
 (Setup section: secrets.toml path corrected, new "Deploying"
 paragraph), `app.py` (new sidebar snapshot-disclosure caption).
+
+## 55. verify_index_freshness.py false-positive on fresh deploys — fixed with a grace-window threshold (2026-09-15)
+
+User reported the deployed app's sidebar showing "Index may be stale"
+for all 3 pools right after a fresh Streamlit Cloud deploy — no real
+edit had happened. Correctly self-diagnosed the likely cause before
+asking: `git checkout` doesn't preserve original edit-time mtimes, so a
+fresh clone/deploy gives every file a checkout-time timestamp instead,
+making the mtime ordering between source `.txt` files and index files
+essentially checkout-process noise, not a real signal.
+
+Confirmed directly rather than taken on faith: (1) read
+`check_index_freshness()` — it is purely `st_mtime`-based, zero
+reference to git metadata; (2) did a real fresh `git clone` of the
+just-pushed repo into scratchpad and checked real mtimes — all 261
+source+index files got the EXACT SAME identical timestamp on this
+machine (git checkout assigns checkout-moment time, not historical
+edit time, confirmed not assumed); (3) ran the freshness check against
+that fresh clone — passed cleanly here, which itself demonstrates the
+core problem: whether source files end up "newer" or "older" than the
+index after a checkout is an accident of the specific checkout/deploy
+mechanism's file-write ordering, not something meaningful — Streamlit
+Cloud's own deploy pipeline evidently staggers files by at least a few
+seconds where this local git client didn't, which is exactly why the
+same tool disagreed with itself across two environments for the exact
+same commit.
+
+**Fix**: added `_STALENESS_GRACE_SECONDS = 300` — a source file only
+counts as "newer" than its index if the gap exceeds 5 minutes, not any
+gap greater than zero. Chosen because every real staleness case this
+project has ever actually hit (e.g. §45's HDFC drift) was hours-to-weeks
+old, not seconds — nothing real is lost by requiring a 5-minute gap
+before flagging, and it comfortably absorbs checkout/deploy jitter on
+any platform without needing to detect "is this a fresh deploy" (which
+Option (a) would have required, fragile and environment-specific) or
+depend on git metadata being present at runtime at all (which Option
+(b), comparing against git commit info, would have required — more
+"correct" in the abstract but meaningfully more complex, and would
+break entirely if ever deployed from a tarball with no `.git`). Applies
+identically to both the standalone script and the app's own sidebar
+check, since both call the same `check_index_freshness()` — no
+app.py changes needed.
+
+**Verified with real mtime manipulation, both directions, on real
+files** (not reasoned about): temporarily set `kotak_fd_rates.txt`'s
+mtime to exactly 60s newer than `other_banks.index` (simulating
+realistic deploy jitter) — correctly PASSED (would have FAILed before
+this fix). Then set it to 600s (10 min) newer — correctly still FAILED,
+confirming genuine staleness detection isn't masked. Restored the
+file's real original mtime afterward and re-confirmed a clean 3/3 PASS
+baseline.
+
+Files: `automation/verify_index_freshness.py` (`_STALENESS_GRACE_SECONDS`
+constant; cutoff applied in `check_index_freshness()`'s comparison).

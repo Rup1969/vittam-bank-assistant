@@ -50,6 +50,22 @@ import settings  # noqa: E402
 
 LEGACY_SOURCE_DIR = PROJECT_ROOT / "data" / "legacy_indian_bank_source"
 
+# A fresh `git checkout`/clone/deploy does NOT preserve original edit-time
+# mtimes — every file gets a timestamp from the checkout moment itself,
+# not from git history. Confirmed directly, not assumed (2026-09-15): a
+# real fresh clone of this repo gave all 261 source+index files the exact
+# same identical mtime on one machine, while Streamlit Cloud's own deploy
+# pipeline apparently staggers files by at least a few seconds, enough to
+# flip a source file "newer" than its index purely from checkout-process
+# noise — a false positive with no real edit behind it. A genuine
+# "someone edited a doc and forgot to rebuild" gap is measured in hours to
+# weeks in every real case this project has hit (see PROJECT_STATUS.md
+# §45's multi-week HDFC drift) — nothing like that is lost by requiring
+# the gap to exceed this grace window before flagging it, and it fully
+# absorbs checkout-order jitter on any platform without needing to detect
+# "is this a fresh deploy" or depend on git metadata being present at all.
+_STALENESS_GRACE_SECONDS = 300
+
 
 def _extract_header(lines: list[str], key: str, default: str) -> str:
     return next(
@@ -111,8 +127,9 @@ def check_index_freshness() -> list[dict]:
             continue
 
         index_mtime = index_path.stat().st_mtime
+        cutoff = index_mtime + _STALENESS_GRACE_SECONDS
         newer = sorted(
-            (f for f in source_files if f.stat().st_mtime > index_mtime),
+            (f for f in source_files if f.stat().st_mtime > cutoff),
             key=lambda f: f.stat().st_mtime, reverse=True,
         )
         if newer:
