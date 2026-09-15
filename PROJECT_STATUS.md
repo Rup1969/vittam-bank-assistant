@@ -6254,3 +6254,71 @@ Files: `automation/db.py` (new `resolve_scraped_path()`),
 `data/automation.duckdb` (the real extraction run above updated it —
 same row counts, 5 previously-dormant queue entries now genuinely
 resolved).
+
+## 61. §60's crash recurred in CI — confirmed it ran a PRE-fix commit, not a missed site; one real remaining loose end found and closed (2026-09-16)
+
+User re-ran the workflow and hit the identical crash, same line
+(`extract_structured.py:1202`) and same file, after §60's push.
+Investigated with hard evidence before assuming the fix was
+incomplete: the crash traceback's own line number (1202 =
+`html = Path(file_path).read_text(...)`) and the interpreter's own
+reported line for `run()`'s call site (1301) match the PRE-fix commit
+(`51da615`) EXACTLY — that commit is exactly 1301 lines, with that
+exact code at 1202. The FIXED commit (`d3de093`) is 1311 lines, and
+line 1202 there is a comment, not that call. **Confirmed: this
+specific run executed before the fix landed** (most likely the
+`0 2 * * *` UTC cron firing against old `main`, not a re-trigger after
+the push) — not a second missed instance of the same bug.
+
+Completed the exhaustive, whole-repo sweep asked for anyway, not just
+re-asserting the diagnosis. `git grep` for `Path(file_path)`/
+`open(file_path)` across the ENTIRE repository (not scoped to
+`automation/`) turned up exactly what §60 already covered, confirming
+that sweep was genuinely complete — with one real exception found:
+`reextract_sbi.py` line 61 passed the RAW, unresolved `file_path`
+string downstream into `extract_rows_for_source(...)`, even though the
+`.read_text()` call two lines above it correctly used
+`resolve_scraped_path()`. Currently harmless in practice (SBI's own
+extraction path never opens that parameter — it only matters for the
+PDF-parser dispatch branch, which SBI doesn't use), but a real,
+fixable inconsistency: changed to pass `str(resolved_path)`, matching
+every other site.
+
+**Full current inventory, every site, including the ones that only
+look like matches** (per explicit request — not summarized away):
+
+| File | Line(s) | What it is | Status |
+|---|---|---|---|
+| `fetch_and_track.py` | 323-324 | writes the scraped file | n/a (write, not read) |
+| `fetch_and_track.py` | 338, 341 | stores `file_path` in `fetch_log` | Fixed §60 — now relative |
+| `fetch_and_track.py` | 344 | `str(file_path)` in console print only, never stored/reread | Harmless, no fix needed |
+| `extract_structured.py` | 1191 (`run()`) | reads `fetch_log.file_path` | Fixed §60 |
+| `extract_structured.py` | 1013 (`extract_axis_rows`) | `pdfplumber.open(file_path)` | Fine — parameter name only; its one real caller already passes a resolved path |
+| `extract_loan_rates.py` | 779 (home_loan `run()`) | reads `fetch_log.file_path` | Fixed §60 |
+| `extract_loan_rates.py` | 1573 (education_loan fallback) | reads `fetch_log.file_path` | Fixed §60 |
+| `extract_loan_rates.py` | 625, 1127 (`extract_union_bank_*_rows`) | `pdfplumber.open(file_path)` | Fine — same as Axis's, parameter only |
+| `digest.py` | 138 (`_parsed_fd_snapshots`) | reads `fetch_log.file_path` | Fixed §60 |
+| `digest.py` | 307 (`_loan_snapshot_rows`) | reads `fetch_log.file_path` | Fixed §60 |
+| `trend.py` | 100 | reads `fetch_log.file_path` | Fixed §60 |
+| `reextract_sbi.py` | 47 (`.read_text()`) | reads `fetch_log.file_path` | Fixed §60 |
+| `reextract_sbi.py` | 61 (`extract_rows_for_source(...)`) | passed the unresolved string downstream | **Fixed HERE** — was the one real gap |
+| `verify_coverage.py` | 213-214 | calls `digest._loan_snapshot_rows(..., file_path)` | Fine — resolution happens INSIDE that function, already fixed at the source |
+| `app.py` | — | zero matches anywhere | Confirmed clean, not assumed |
+| every other `.py` in the repo | — | zero matches | Confirmed clean via unscoped `git grep`, not assumed |
+
+**On the lost fetch data (your point #3) — stated plainly, not
+softened**: it's genuinely gone, and that's expected, not a bug.
+GitHub Actions runners are ephemeral — a fresh VM per job, destroyed
+when the job ends, with no persistence unless something is explicitly
+committed, cached, or uploaded as an artifact. This workflow does none
+of those for `data/scraped/` (deliberately gitignored, never meant to
+travel). The real HTML `fetch_and_track.py` fetched during that failed
+run, and the `fetch_log` rows it inserted, existed only on that one
+run's now-destroyed disk. Nothing to recover, and nothing lost that
+wasn't always meant to be re-fetchable on demand — that's the whole
+design of this pipeline. The next successful run starts clean and
+re-fetches everything itself; that's correct behavior, not a
+workaround.
+
+Files: `automation/reextract_sbi.py` (line 61: `file_path` ->
+`str(resolved_path)`).

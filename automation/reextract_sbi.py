@@ -58,7 +58,7 @@ def run() -> None:
     source_url = next(b["urls"]["fd_rates"] for b in config["banks"] if b["id"] == "sbi")
 
     client = Groq(api_key=settings.GROQ_API_KEY)
-    raw_rows = extract_rows_for_source("sbi", text, file_path, client)
+    raw_rows = extract_rows_for_source("sbi", text, str(resolved_path), client)
 
     if not raw_rows:
         print("Extraction returned zero rows — leaving existing SBI data untouched.")
