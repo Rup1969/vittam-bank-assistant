@@ -5946,3 +5946,46 @@ baseline.
 
 Files: `automation/verify_index_freshness.py` (`_STALENESS_GRACE_SECONDS`
 constant; cutoff applied in `check_index_freshness()`'s comparison).
+
+## 56. IBA News fetch failure on deployed host — same silent-except pattern found in all 3 live-feed fetchers, logging added (2026-09-15)
+
+User reported the deployed app's IBA News tab showing "Couldn't reach
+IBA's circulars index right now." Ran the real fetch locally first,
+before touching any code: `automation/iba_news.py` succeeded cleanly
+(6 real circulars, current as of 01 Sep 2026) — confirming the parsing
+logic and IBA's site are both fine, so whatever's failing is specific
+to the deployed host's environment (network egress restriction,
+IP-based blocking by iba.org.in of cloud-provider ranges, or a
+timeout), not a code bug in what gets parsed.
+
+But `_fetch_source()`'s `except Exception: return []` was completely
+silent — the exact same gap already fixed once this session in
+`generate_answer()` (chat's own error handler). With no console access
+on a deployed host, "the tab shows nothing" gives zero way to tell a
+timeout from a DNS failure from a 403 from the site itself. Checked
+whether the same pattern existed elsewhere before fixing just the one
+reported case — it did, identically, in `news.py` (the ET/Business
+Standard RSS fetcher) and `rbi_news.py` (the What's New scraper). All
+three are the same architectural gap, not three separate bugs, so all
+three got the same fix rather than leaving the other two to surface as
+their own confusing reports later.
+
+Fix: each fetcher's except block now logs the real exception type +
+message (and which source/URL failed) to console before returning the
+same safe empty-list fallback — behavior unchanged, only diagnosability
+added. Verified with a real induced failure, not reasoned about: called
+`iba_news._fetch_source()` directly against a genuinely unreachable
+hostname — real DNS failure (`URLError: <urlopen error [Errno 11001]
+getaddrinfo failed>`) printed correctly, empty list still returned
+correctly. Re-ran all three fetchers' normal successful path afterward
+to confirm zero regression (no spurious logging, real data still
+returned).
+
+This does not, by itself, fix whatever is actually blocking the
+deployed host from reaching IBA — that still needs checking Streamlit
+Cloud's own app logs after a redeploy, where the real cause will now
+actually be visible instead of silently swallowed.
+
+Files: `automation/iba_news.py`, `automation/news.py`,
+`automation/rbi_news.py` (each `_fetch_source()`/`fetch_rbi_whats_new()`
+except block now logs before returning the empty fallback).

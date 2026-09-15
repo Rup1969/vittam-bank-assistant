@@ -77,7 +77,15 @@ def _fetch_source(source: dict) -> list[dict]:
         req = urllib.request.Request(source["url"], headers={"User-Agent": _USER_AGENT})
         with urllib.request.urlopen(req, timeout=15) as resp:
             html = resp.read().decode("iso-8859-1", errors="replace")
-    except Exception:
+    except Exception as e:
+        # Previously silent (bare `except Exception: return []`) -- on a
+        # deployed host with no console access, "the tab shows nothing"
+        # gave zero clue whether this was a timeout, DNS failure, a 403
+        # from the site itself, or something else. Same fix as
+        # generate_answer()'s error handling (PROJECT_STATUS.md ~2026-09):
+        # log the real cause, keep the safe empty-list return unchanged.
+        print(f"[iba_news] fetch failed for {source['id']} ({source['url']}): "
+              f"{type(e).__name__}: {e}", flush=True)
         return []
 
     items = []

@@ -56,7 +56,11 @@ def fetch_rbi_whats_new(limit: int = 10) -> list[dict]:
         req = urllib.request.Request(RBI_HOME_URL, headers={"User-Agent": _USER_AGENT})
         with urllib.request.urlopen(req, timeout=15) as resp:
             html = resp.read().decode("utf-8", errors="replace")
-    except Exception:
+    except Exception as e:
+        # Same fix as iba_news.py's/news.py's fetchers -- log the real
+        # cause instead of a silent empty return.
+        print(f"[rbi_news] fetch failed for {RBI_HOME_URL}: "
+              f"{type(e).__name__}: {e}", flush=True)
         return []
 
     match = re.search(r'<div id="whats_new".*?</span>', html, re.S)

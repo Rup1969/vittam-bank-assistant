@@ -88,7 +88,12 @@ def _fetch_source(source: dict) -> list[dict]:
         with urllib.request.urlopen(req, timeout=10) as resp:
             raw = resp.read()
         root = ET.fromstring(raw)
-    except Exception:
+    except Exception as e:
+        # Same fix as iba_news.py's fetcher -- log the real cause instead
+        # of a silent empty return, so a deployed-host failure is
+        # diagnosable from the platform's own console/logs.
+        print(f"[news] fetch failed for {source['id']} ({source['rss_url']}): "
+              f"{type(e).__name__}: {e}", flush=True)
         return []
 
     items = []
