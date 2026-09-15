@@ -6099,3 +6099,48 @@ document honestly.
 
 Files: `app.py` (`render_iba_news()`'s fallback message corrected),
 `README.md` (new Known Limitations bullet).
+
+## 59. IBA snapshot fallback built — the future option from §58 is now real, verified live (2026-09-15)
+
+Built the snapshot fallback flagged as a future option in §58, same
+honest-disclosure discipline as `data/automation.duckdb`'s committed
+snapshot (§54).
+
+`automation/iba_news.py`: new `save_snapshot()` (fetches real, current
+circulars and writes `data/iba_snapshot.json` with a real
+`fetched_at` UTC timestamp) and `load_snapshot()` (reads it back, `None`
+if absent/unreadable — callers must handle that). New `--snapshot` CLI
+flag. Ran it for real right now: 10 real circulars saved, fetched
+2026-09-15T14:11:11Z (this machine isn't blocked by IBA, confirmed
+throughout §56-58).
+
+`app.py`'s `render_iba_news()` restructured into a 3-tier fallback,
+each tier only reached if the one before it is genuinely empty: (1)
+live fetch (unchanged, still tried first every time — if IBA ever
+un-blocks the deployment, or the app runs locally, this path is used
+automatically, no code change needed); (2) the committed snapshot,
+shown with an explicit `⚠️ ... Showing a snapshot fetched {date}, not
+live data.` caption — never silently presented as current; (3) the
+original honest "this source only works locally" message, for the
+edge case for where no snapshot exists at all.
+
+**Verified live in a real browser, not reasoned about**: temporarily
+pointed `IBA_SOURCES`' URLs at a deliberately broken host (real
+induced failure, same technique used for this session's other
+fallback tests), started a real server, logged in, navigated to
+Insights & Tools -> Banker's View -> IBA Circulars, and confirmed
+exactly the intended render: the warning caption reading *"Live fetch
+unavailable on this deployment — IBA blocks cloud server IPs
+(confirmed: HTTP 403). Showing a snapshot fetched 15 Sep 2026, not live
+data."*, followed by the real snapshot circulars (correct headlines,
+categories, dates, working "Read original ->" links to the real
+iba.org.in URLs). Restored the real URLs afterward, confirmed via
+`git diff` no leftover test text remained, and re-ran the live fetch
+standalone to confirm the normal (non-fallback) path still works
+unchanged.
+
+Files: `automation/iba_news.py` (`save_snapshot()`, `load_snapshot()`,
+`--snapshot` CLI flag), `data/iba_snapshot.json` (new — real committed
+snapshot, 10 circulars), `app.py` (`render_iba_news()` restructured
+into the 3-tier fallback, new `_render_iba_cards()` helper factored out
+to avoid duplicating the card-rendering loop across tiers).

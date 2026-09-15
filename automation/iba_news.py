@@ -24,9 +24,12 @@ Run standalone:
 
 from __future__ import annotations
 
+import json
 import re
+import sys
 import urllib.request
 from datetime import datetime, timezone
+from pathlib import Path
 
 IBA_SOURCES = [
     {
@@ -136,7 +139,54 @@ def fetch_circulars(limit: int = 6) -> list[dict]:
     return deduped[:limit]
 
 
+# Fallback snapshot for hosted deployments IBA's site blocks (confirmed
+# HTTP 403 against Streamlit Cloud's network range, PROJECT_STATUS.md
+# §56-58) — NOT a live feed. render_iba_news() in app.py only ever reads
+# this when the live fetch above genuinely fails; it's never preferred
+# over real live data, and every place it's shown discloses the fetch
+# date so it can't be mistaken for current. Same honest-disclosure
+# pattern as data/automation.duckdb's committed snapshot. Nothing
+# refreshes this automatically — re-run `python automation/iba_news.py
+# --snapshot` by hand periodically, same manual-update discipline this
+# project already uses for Indian Bank/BOI/SBI's other blocked sources.
+SNAPSHOT_PATH = Path(__file__).resolve().parents[1] / "data" / "iba_snapshot.json"
+
+
+def save_snapshot(path: Path = SNAPSHOT_PATH, limit: int = 10) -> int:
+    """Fetches real, current circulars right now and writes them (plus a
+    real fetched_at timestamp) to `path`. Returns the number saved."""
+    circulars = fetch_circulars(limit=limit)
+    serializable = [
+        {**c, "pub_date": c["pub_date"].isoformat() if c["pub_date"] else None}
+        for c in circulars
+    ]
+    payload = {
+        "fetched_at": datetime.now(timezone.utc).isoformat(),
+        "circulars": serializable,
+    }
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
+    return len(serializable)
+
+
+def load_snapshot(path: Path = SNAPSHOT_PATH) -> dict | None:
+    """The saved snapshot (`{"fetched_at": ..., "circulars": [...]}`), or
+    None if it doesn't exist or is unreadable — callers must handle that,
+    never assume it's present."""
+    if not path.exists():
+        return None
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except Exception:
+        return None
+
+
 if __name__ == "__main__":
+    if "--snapshot" in sys.argv:
+        n = save_snapshot()
+        print(f"Saved {n} real circulars to {SNAPSHOT_PATH}")
+        sys.exit(0)
+
     circulars = fetch_circulars(limit=6)
     print("=" * 70)
     print(f"IBA News — {len(circulars)} real circulars")

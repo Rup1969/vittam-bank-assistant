@@ -1199,28 +1199,52 @@ def _cached_iba_circulars(limit: int) -> list[dict]:
     return fetch_circulars(limit=limit)
 
 
-def render_iba_news(limit: int = 6) -> None:
-    circulars = _cached_iba_circulars(limit)
-    if not circulars:
-        # NOT "try again shortly" -- confirmed via real deployed-host logs
-        # (2026-09-15, see PROJECT_STATUS.md) that this is a consistent
-        # HTTP 403 from IBA's own site against the hosted deployment's
-        # network range, not a transient blip retrying would fix. Same
-        # honest treatment as every other blocked-source gap in this
-        # project (Indian Bank/BOI's bot-defended sites) rather than
-        # implying a wait-and-retry that won't actually help here.
-        st.info(
-            "IBA's circulars index isn't reachable from this hosted "
-            "deployment — IBA's site blocks requests from cloud server IP "
-            "ranges (confirmed: HTTP 403), so this source only works when "
-            "the app is run locally. See README Known Limitations."
-        )
-        return
-    for c in circulars:
+def _render_iba_cards(circulars: list[dict], limit: int) -> None:
+    for c in circulars[:limit]:
         st.markdown(
             _news_card_html(c["headline"], c["category"], c["outlet"], c["pub_date_label"], c["link"]),
             unsafe_allow_html=True,
         )
+
+
+def render_iba_news(limit: int = 6) -> None:
+    circulars = _cached_iba_circulars(limit)
+    if circulars:
+        _render_iba_cards(circulars, limit)
+        return
+
+    # Live fetch failed -- confirmed via real deployed-host logs
+    # (2026-09-15, see PROJECT_STATUS.md §56-58) that this is a consistent
+    # HTTP 403 from IBA's own site against the hosted deployment's network
+    # range, not a transient blip. Fall back to a real, committed snapshot
+    # (automation/iba_news.py's save_snapshot()) rather than showing
+    # nothing -- but disclosed honestly as a snapshot, with its real fetch
+    # date, never presented as live. Never preferred over live data above;
+    # only reached when the live fetch is genuinely empty.
+    from iba_news import load_snapshot
+    snapshot = load_snapshot()
+    if snapshot and snapshot.get("circulars"):
+        try:
+            from datetime import datetime as _dt
+            fetched_label = _dt.fromisoformat(snapshot["fetched_at"]).strftime("%d %b %Y")
+        except Exception:
+            fetched_label = snapshot["fetched_at"]
+        st.caption(
+            f"⚠️ Live fetch unavailable on this deployment — IBA blocks "
+            f"cloud server IPs (confirmed: HTTP 403). Showing a snapshot "
+            f"fetched **{fetched_label}**, not live data."
+        )
+        _render_iba_cards(snapshot["circulars"], limit)
+        return
+
+    # No live data AND no snapshot on disk (e.g. one hasn't been generated
+    # yet) -- the original honest "this only works locally" message.
+    st.info(
+        "IBA's circulars index isn't reachable from this hosted "
+        "deployment — IBA's site blocks requests from cloud server IP "
+        "ranges (confirmed: HTTP 403), so this source only works when "
+        "the app is run locally. See README Known Limitations."
+    )
 
 
 # ── Should I Switch? (Insights & Tools, Step 4) ────────────────────────
