@@ -8,3 +8,21 @@ duckdb==1.5.5
 beautifulsoup4==4.15.0
 playwright==1.61.0
 pdfplumber==0.11.10
+
+# Pinned explicitly, not left as sentence-transformers' unpinned
+# transitive deps: a deploy crashed with "ModuleNotFoundError: No module
+# named 'torchvision'" from deep inside transformers' lazy-loaded
+# zoedepth image processor -- triggered by SOME transformers-internal
+# path during a plain text-only SentenceTransformer('all-MiniLM-L6-v2')
+# load, never reproduced locally despite trying (exact version match,
+# and a genuinely fresh from-scratch model download both succeeded here).
+# torchvision is never actually used for anything in this app -- it only
+# needs to be importable to satisfy that lazy import wherever it's
+# triggered. 0.24.1 is the version paired with torch 2.9.1's ABI
+# (confirmed directly: 0.29.0, pip's default resolve, is NOT compatible
+# with 2.9.1 -- "RuntimeError: operator torchvision::nms does not
+# exist"). Pinning torch/transformers too so a future unpinned-resolver
+# drift can't silently reintroduce this same class of failure.
+torch==2.9.1
+transformers==4.57.3
+torchvision==0.24.1

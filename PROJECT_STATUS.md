@@ -5989,3 +5989,77 @@ actually be visible instead of silently swallowed.
 Files: `automation/iba_news.py`, `automation/news.py`,
 `automation/rbi_news.py` (each `_fetch_source()`/`fetch_rbi_whats_new()`
 except block now logs before returning the empty fallback).
+
+## 57. Deployed app crashed entirely — unpinned torch/transformers let a transitive dependency drift, torchvision lazy-import failure (2026-09-15)
+
+User redeployed to check the IBA logging fix (§56) and instead hit a
+full app crash, unrelated to IBA: `ModuleNotFoundError: No module named
+'torchvision'`, raised deep inside `transformers/models/zoedepth/
+image_processing_zoedepth.py` (`from torchvision.transforms.v2 import
+functional as tvF`), reached via `transformers`' own lazy `__getattr__`
+during — as far as the pasted traceback showed — ordinary startup
+(`load_embed_and_llm()`'s plain `SentenceTransformer('all-MiniLM-L6-v2')`
+call, a genuinely text-only model with no real connection to
+ZoeDepth, a depth-estimation vision model).
+
+**Real diagnostic attempts, both genuinely inconclusive — stated
+honestly rather than claiming a confirmed root cause**: (1) confirmed
+the exact same `transformers==4.57.3` version is installed locally and
+does NOT crash under normal use; (2) hid the local Hugging Face cache
+and forced a genuinely fresh from-scratch download+load of
+`all-MiniLM-L6-v2` (matching what a brand-new Streamlit Cloud container
+does every time, since it has no persistent cache) — also succeeded
+cleanly. Neither "same version" nor "fresh vs. cached load" reproduced
+the crash locally, so the EXACT trigger inside `transformers`'
+lazy-loading internals remains unconfirmed — could be a subtly
+different transitive resolution on Cloud specifically, since
+`requirements.txt` never pinned `torch`/`transformers` at all before
+this (only `sentence-transformers` itself was pinned, leaving its own
+dependencies to whatever pip resolved at install time — on Cloud, at a
+different time, potentially differently).
+
+**Fix applied is the well-established community workaround for this
+exact error signature** (a known, previously-reported class of issue:
+`transformers`' lazy vision-model registry occasionally gets touched
+even for text-only usage, and if `torchvision` isn't installed, that
+specific import fails outright rather than degrading gracefully):
+added `torchvision` explicitly to `requirements.txt`, plus pinned
+`torch`/`transformers` themselves (previously unpinned transitive
+deps) so a future silent resolver drift can't reintroduce this same
+class of failure with some other package. `torchvision` is never
+actually used for any real functionality in this app — it only needs
+to be *importable* to satisfy whatever lazy-import path gets
+triggered.
+
+**A real, non-obvious complication hit and solved along the way**:
+`pip install torchvision` (unpinned) resolved 0.29.0, which is NOT
+ABI-compatible with the already-installed `torch==2.9.1` —
+confirmed directly: `RuntimeError: operator torchvision::nms does not
+exist` on import. Found the correct pairing (`torchvision==0.24.1`) by
+testing directly rather than guessing from a version-offset rule of
+thumb alone — confirmed both that it installs cleanly against
+`torch==2.9.1` (matching `+cpu` build tags) AND that it satisfies the
+exact previously-failing import
+(`transformers.models.zoedepth.image_processing_zoedepth`) once
+present.
+
+**Verified with a full real regression pass**, not just the isolated
+import: with all three packages now pinned and installed together,
+ran the complete app through a real browser session — login, the
+one-time `load_embed_and_llm()` cold-start cost, full sidebar render
+(including §54's snapshot-disclosure caption and §51's freshness
+check), no errors. `pip install -r requirements.txt --dry-run` also
+confirmed the full pinned set resolves with zero conflicts.
+
+**Honest caveat for the user**: this fix addresses the well-documented
+*shape* of this exact error and is verified not to break anything
+locally, but since the precise trigger was never reproduced here, it
+cannot be stated with 100% certainty that this alone fully resolves
+whatever Streamlit Cloud's environment specifically does differently —
+if the same crash recurs after this deploy, the next real diagnostic
+step is the FULL traceback (including the top frames showing what
+actually called into `transformers`, which the first report didn't
+include), not another guess.
+
+Files: `requirements.txt` (`torch==2.9.1`, `transformers==4.57.3`,
+`torchvision==0.24.1` added/pinned).
