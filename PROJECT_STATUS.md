@@ -6063,3 +6063,39 @@ include), not another guess.
 
 Files: `requirements.txt` (`torch==2.9.1`, `transformers==4.57.3`,
 `torchvision==0.24.1` added/pinned).
+
+## 58. IBA News root cause confirmed via §56's own logging: real HTTP 403 from IBA against the hosted deployment, not transient — message and docs corrected (2026-09-15)
+
+§57's crash fix held (clean redeploy, no torchvision error). With that
+resolved, §56's diagnostic logging did exactly what it was built for:
+the deployed host's own logs showed `[iba_news] fetch failed for
+iba_all_circulars ...: HTTPError: HTTP Error 403: Forbidden`, and the
+same for the `iba_dearness` endpoint — both real, both consistent, not
+a timeout or DNS issue. IBA's site is deliberately blocking requests
+from the hosted deployment's network range. This is NOT the kind of
+failure "try again shortly" (the pre-existing user-facing message)
+would ever resolve — a deliberate IP-range block doesn't clear by
+waiting.
+
+Fixed in two places, same discipline as every other real gap in this
+project: `render_iba_news()`'s fallback message no longer implies
+retrying will help — it now says plainly that this source only works
+locally, names the confirmed HTTP 403, and points to the README.
+`README.md`'s Known Limitations gets a new bullet, same tone as the
+existing Indian Bank/BOI bot-defended-site bullet — this project's
+standing rule is not to try to defeat a site's own access controls, so
+this is documented rather than routed around (e.g. via a proxy). Noted
+a real, not-yet-built future option: a periodically-refreshed local
+snapshot, same manual-update pattern already used for Indian Bank/BOI/
+SBI's other blocked sources, if this source is worth keeping on the
+hosted deployment.
+
+This closes the loop that started at §56: the original report ("IBA
+tab shows nothing") turned out to have TWO separate real causes
+discovered in sequence — a silent-logging gap (§56, fixed) that was
+masking the actual reason, and once visible, a genuine platform-level
+block (this entry) that no code fix on our side can resolve, only
+document honestly.
+
+Files: `app.py` (`render_iba_news()`'s fallback message corrected),
+`README.md` (new Known Limitations bullet).

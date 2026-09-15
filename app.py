@@ -1202,9 +1202,18 @@ def _cached_iba_circulars(limit: int) -> list[dict]:
 def render_iba_news(limit: int = 6) -> None:
     circulars = _cached_iba_circulars(limit)
     if not circulars:
+        # NOT "try again shortly" -- confirmed via real deployed-host logs
+        # (2026-09-15, see PROJECT_STATUS.md) that this is a consistent
+        # HTTP 403 from IBA's own site against the hosted deployment's
+        # network range, not a transient blip retrying would fix. Same
+        # honest treatment as every other blocked-source gap in this
+        # project (Indian Bank/BOI's bot-defended sites) rather than
+        # implying a wait-and-retry that won't actually help here.
         st.info(
-            "Couldn't reach IBA's circulars index right now — this reflects a "
-            "real fetch issue, not a lack of circulars. Try again shortly."
+            "IBA's circulars index isn't reachable from this hosted "
+            "deployment — IBA's site blocks requests from cloud server IP "
+            "ranges (confirmed: HTTP 403), so this source only works when "
+            "the app is run locally. See README Known Limitations."
         )
         return
     for c in circulars:
