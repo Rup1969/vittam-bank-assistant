@@ -54,7 +54,7 @@ PROJECT_ROOT = AUTOMATION_DIR.parents[0]
 sys.path.insert(0, str(PROJECT_ROOT))
 sys.path.insert(0, str(AUTOMATION_DIR))
 
-from db import get_connection  # noqa: E402
+from db import get_connection, resolve_scraped_path  # noqa: E402
 from extract_structured import extract_rows_for_source  # noqa: E402
 from fetch_and_track import clean_text, extract_pdf_text  # noqa: E402
 from tenure_utils import is_special_band, tenure_covers  # noqa: E402
@@ -135,8 +135,8 @@ def _parsed_fd_snapshots(con, bank_id: str) -> list[tuple[datetime, list[dict]]]
     hash_cache: dict[str, list[dict] | None] = {}
     parsed: list[tuple[datetime, list[dict]]] = []
     for fetched_at, file_path, text_hash in snapshots:
-        path = Path(file_path)
-        if not path.exists():
+        path = resolve_scraped_path(file_path)
+        if path is None:
             continue
         if text_hash not in hash_cache:
             try:
@@ -304,8 +304,8 @@ def _loan_snapshot_rows(bank_id: str, loan_type: str, file_path: str) -> list[di
     parser = pdf_parsers.get(bank_id) or raw_html_parsers.get(bank_id) or parsers.get(bank_id)
     if parser is None:
         return None
-    path = Path(file_path)
-    if not path.exists():
+    path = resolve_scraped_path(file_path)
+    if path is None:
         return None
     try:
         if bank_id in pdf_parsers:

@@ -42,7 +42,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 import settings  # noqa: E402
 
-from db import get_connection  # noqa: E402
+from db import get_connection, resolve_scraped_path  # noqa: E402
 from extract_structured import extract_rows_for_source  # noqa: E402
 from fetch_and_track import clean_text, extract_pdf_text  # noqa: E402
 from tenure_utils import tenure_covers  # noqa: E402
@@ -97,8 +97,8 @@ def rate_history(bank_id: str, target_days: int, customer_type: str = "general")
     hash_cache: dict[str, list[dict]] = {}
     history = []
     for fetched_at, file_path, text_hash in snapshots:
-        path = Path(file_path)
-        if not path.exists():
+        path = resolve_scraped_path(file_path)
+        if path is None:
             history.append({
                 "fetched_at": str(fetched_at), "rate": None, "tenure_label": None,
                 "note": f"snapshot file missing on disk: {file_path}",

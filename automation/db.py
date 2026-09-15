@@ -137,3 +137,30 @@ def already_extracted(con: duckdb.DuckDBPyConnection, source_id: str, fetched_at
         [source_id, fetched_at],
     ).fetchone()
     return row is not None
+
+
+def resolve_scraped_path(file_path: str) -> Path | None:
+    """Turns a `fetch_log.file_path` value back into a real, current Path
+    on THIS machine, or None if the referenced snapshot genuinely isn't
+    here. Callers (extract_structured.py, extract_loan_rates.py) must
+    skip gracefully on None rather than assume the file exists.
+
+    Two real cases this has to handle, confirmed 2026-09-16 (a GitHub
+    Actions run crashed on this): fetch_and_track.py now stores file_path
+    RELATIVE to PROJECT_ROOT (POSIX separators) so it's portable — that
+    case just joins cleanly. But automation.duckdb is also committed and
+    shipped to other environments (PROJECT_STATUS.md §54), which means
+    OLDER rows already in that shipped snapshot still hold an ABSOLUTE
+    path from whatever machine originally fetched them (e.g. a Windows
+    path like `C:\\Users\\...`) — on the SAME machine that's often still
+    valid (`PROJECT_ROOT / <that absolute path>` resolves back to the
+    absolute path itself, standard pathlib behavior), but on a different
+    machine or OS it resolves to something that was never written there.
+    Rather than trying to detect which case a given string is, this just
+    tries the join and checks reality with `.exists()` — correct either
+    way, and the one thing that actually matters: a fetch_log row whose
+    snapshot isn't available HERE gets skipped with a clear reason
+    instead of crashing the whole run over one stale/foreign reference.
+    """
+    candidate = PROJECT_ROOT / file_path
+    return candidate if candidate.exists() else None

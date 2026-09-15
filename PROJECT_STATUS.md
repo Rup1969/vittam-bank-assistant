@@ -6144,3 +6144,113 @@ Files: `automation/iba_news.py` (`save_snapshot()`, `load_snapshot()`,
 snapshot, 10 circulars), `app.py` (`render_iba_news()` restructured
 into the 3-tier fallback, new `_render_iba_cards()` helper factored out
 to avoid duplicating the card-rendering loop across tiers).
+
+## 60. GitHub Actions crash: fetch_log stored absolute local paths, not portable — fixed everywhere the pattern occurred, not just the one reported site (2026-09-16)
+
+New `.github/workflows/daily-refresh.yml` (added outside this session,
+not something built here — runs `fetch_and_track.py` then
+`extract_structured.py` daily on `ubuntu-latest`, committing
+`automation.duckdb` if changed) crashed: `FileNotFoundError` on
+`C:\Users\hp\Indian Bank Rag Project\data\scraped\canara\
+2026-08-19_143012.html`.
+
+**Confirmed the exact mechanism, not just the symptom.** Not a literal
+hardcoded string in source — `fetch_and_track.py` computes
+`SCRAPED_DIR / source_id / f"{stamp}.html"` (real, portable Path
+construction) but then stores `str(file_path)` — the fully-resolved
+ABSOLUTE path — as a plain string into `fetch_log.file_path`.
+`extract_structured.py` later reads that string back and opens it
+directly, trusting it's still valid. It was, on the machine that
+fetched it. It stopped being valid the moment `automation.duckdb` got
+committed and shipped (§54) to environments that never had
+`data/scraped/` at all (gitignored, 112MB, deliberately never
+committed) — GitHub Actions' Linux runner among them now.
+
+**Confirmed via the actual shipped DB, not assumed**: queried
+`fetch_log` directly for the exact reported row —
+`('canara', 2026-08-19 14:30:12, 'C:\\Users\\hp\\...\\2026-08-19_143012.html')`,
+exactly matching the crash. Then confirmed via `extraction_log` that
+this specific row had genuinely NEVER been successfully extracted
+before (no prior 'ok' entry) — a real, long-dormant queue item, not a
+one-off. Answers the user's question #3 directly: `extract_structured.
+py`'s query (`WHERE changed=TRUE AND error IS NULL ORDER BY
+fetched_at`, no session/date filtering at all) picks up EVERY
+never-extracted historical row on every run, oldest first — so any
+dormant pre-existing entry in a shipped DB snapshot gets "caught up on"
+the first time anything runs against it, using whatever path was
+stored at original fetch time.
+
+**Checked whether the same pattern recurred elsewhere before declaring
+it fixed** (the Section-8 lesson, applied for real again): grepped the
+whole `automation/` directory for `file_path FROM fetch_log` /
+`Path(file_path)`. Found it in **7 places across 6 files**, not the 2
+originally suspected — `fetch_and_track.py` (the one write site),
+`extract_structured.py`, `extract_loan_rates.py` (×3: home_loan,
+education_loan's two fallback lookups), `digest.py` (×2, already had
+`.exists()` guards — safe, just inconsistent), `trend.py` (already
+guarded), `reextract_sbi.py` (genuinely UNGUARDED — same crash risk as
+the reported one, just never hit because nothing runs it
+automatically).
+
+**Fix, in `automation/db.py` once, reused everywhere**: new
+`resolve_scraped_path(file_path) -> Path | None` — joins the stored
+value onto the CURRENT run's real `PROJECT_ROOT` and returns the
+resolved path only if it actually exists on disk, `None` otherwise.
+Correct for all three real cases without needing to detect which one
+applies: a new-style relative path resolves cleanly anywhere; a legacy
+absolute path from the SAME machine still resolves (pathlib returns an
+absolute right-hand side as-is when joined — confirmed, not assumed,
+see below); a legacy absolute path on a DIFFERENT machine/OS resolves
+to something that was never written there, `.exists()` correctly
+returns `False`. `fetch_and_track.py` now stores `file_path.
+relative_to(PROJECT_ROOT).as_posix()` going forward — POSIX separators
+so the stored string is unambiguous cross-OS. All 6 read sites
+(`extract_structured.py`, `extract_loan_rates.py` ×3, `digest.py` ×2,
+`trend.py`, `reextract_sbi.py`) now call `resolve_scraped_path()` and
+skip that one row gracefully (with a clear printed reason) instead of
+crashing, when it returns `None`.
+
+**Verified locally, as far as locally reaches — real evidence, not
+reasoning alone**, per the user's own honest framing (point #4: this
+class of bug is platform-specific and can't be fully proven from
+Windows): confirmed the exact reported path genuinely exists on THIS
+machine (`.exists() == True`) — consistent with the bug only
+manifesting on Linux CI, never locally, matching the report. Directly
+simulated what a Linux runner's join would produce for that same
+stored string (`PurePosixPath` join, since Windows absolute paths
+aren't recognized as absolute on POSIX) — confirmed it resolves to a
+nonsense path with literal backslashes that could never exist, proving
+`resolve_scraped_path()`'s `None`-on-Linux behavior is real, not
+theoretical. Round-tripped the new relative-storage format
+write-then-read against a real file — correct. Ran the REAL
+`extract_structured.py` end to end: processed 5 banks' real dormant
+queue entries (canara included) with zero crash — and confirmed via
+`extraction_log` that the exact previously-stuck Aug-19 canara row is
+now genuinely marked `'ok'`, not just skipped — this specific entry
+is permanently resolved, not papered over. Ran `extract_loan_rates.py`
+for real too (clean, nothing pending). Full regression: `verify_all.py`
+186/186, `verify_coverage.py` 200/200 (both unchanged from baseline,
+confirming `digest.py`'s snapshot-parsing changes didn't affect real
+output) — including re-confirming the real HDFC 7.0%->7.10% change is
+still correctly caught.
+
+**What genuinely cannot be verified from here, stated plainly**: the
+actual GitHub Actions Linux runner behavior itself — no `gh` CLI
+available in this environment to trigger or inspect the workflow.
+Everything above is as rigorous a local proxy as is honestly possible
+(direct simulation of the Linux path-join, confirmed real vs.
+fabricated cases), but the user needs to push this, trigger
+`daily-refresh.yml` (`workflow_dispatch`, or wait for the 02:00 UTC
+cron), and share the real run's log for final confirmation — consistent
+with this project's own standing rule about what "verified" actually
+means.
+
+Files: `automation/db.py` (new `resolve_scraped_path()`),
+`automation/fetch_and_track.py` (stores relative path going forward),
+`automation/extract_structured.py`, `automation/extract_loan_rates.py`
+(×3 sites), `automation/digest.py` (×2 sites, upgraded from bare
+`Path()`+`.exists()` to the shared resolver), `automation/trend.py`,
+`automation/reextract_sbi.py` (previously unguarded — now guarded),
+`data/automation.duckdb` (the real extraction run above updated it —
+same row counts, 5 previously-dormant queue entries now genuinely
+resolved).

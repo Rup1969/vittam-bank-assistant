@@ -326,9 +326,19 @@ def run() -> None:
                 previous_hash = last_hash(con, source_id)
                 changed = previous_hash is None or previous_hash != text_hash
 
+                # Stored RELATIVE to PROJECT_ROOT (POSIX separators, so it
+                # reads back correctly regardless of OS) -- not the absolute
+                # path. An absolute path baked in here only ever resolves on
+                # the exact machine that ran this fetch; this same
+                # fetch_log/automation.duckdb also gets committed and shipped
+                # (see PROJECT_STATUS.md §54/§60) to environments (GitHub
+                # Actions' Linux runners, Streamlit Cloud) that never had
+                # data/scraped/ in the first place -- a stored absolute
+                # Windows path crashes there outright rather than degrading.
+                relative_file_path = file_path.relative_to(PROJECT_ROOT).as_posix()
                 con.execute(
                     "INSERT INTO fetch_log VALUES (?, ?, ?, ?, ?, ?)",
-                    [source_id, fetched_at, str(file_path), text_hash, changed, None],
+                    [source_id, fetched_at, relative_file_path, text_hash, changed, None],
                 )
                 status = "CHANGED" if changed else "unchanged"
                 results.append((source_id, status, str(file_path)))

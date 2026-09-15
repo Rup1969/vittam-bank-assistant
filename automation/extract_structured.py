@@ -50,7 +50,7 @@ sys.path.insert(0, str(PROJECT_ROOT))   # for settings.py
 sys.path.insert(0, str(AUTOMATION_DIR))  # for db.py, schema.py, fetch_and_track.py
 
 import settings  # noqa: E402
-from db import already_extracted, get_connection  # noqa: E402
+from db import already_extracted, get_connection, resolve_scraped_path  # noqa: E402
 from fetch_and_track import clean_text  # noqa: E402
 from schema import FDRateRecord  # noqa: E402
 
@@ -1188,7 +1188,17 @@ def run() -> None:
             already_done += 1
             continue
 
-        if Path(file_path).suffix == ".pdf":
+        resolved_path = resolve_scraped_path(file_path)
+        if resolved_path is None:
+            # A fetch_log row whose snapshot file isn't on THIS machine —
+            # either a stale absolute path from a different environment
+            # (see resolve_scraped_path's own docstring) or one that was
+            # otherwise cleaned up. Skip it, don't crash the whole run.
+            print(f"{source_id}: snapshot file not found here ({file_path}) "
+                  f"— skipping, not fetched on this machine")
+            continue
+
+        if resolved_path.suffix == ".pdf":
             # PDF sources (currently just Axis) don't go through
             # clean_text() — HTML-table-to-text flattening loses column
             # alignment, and pdfplumber's own text extraction has the
@@ -1197,9 +1207,9 @@ def run() -> None:
             # same file with pdfplumber's TABLE-aware mode instead (see
             # extract_axis_rows).
             from fetch_and_track import extract_pdf_text
-            text = extract_pdf_text(Path(file_path).read_bytes())
+            text = extract_pdf_text(resolved_path.read_bytes())
         else:
-            html = Path(file_path).read_text(encoding="utf-8")
+            html = resolved_path.read_text(encoding="utf-8")
             text = clean_text(html)
 
         # Need the source's URL for provenance on each record — read it
@@ -1223,7 +1233,7 @@ def run() -> None:
             continue
 
         try:
-            raw_rows = extract_rows_for_source(source_id, text, file_path, client)
+            raw_rows = extract_rows_for_source(source_id, text, str(resolved_path), client)
         except Exception as exc:
             print(f"{source_id}: extraction call failed — {type(exc).__name__}: {exc}")
             con.execute(

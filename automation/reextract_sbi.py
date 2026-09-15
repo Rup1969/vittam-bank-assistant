@@ -26,7 +26,7 @@ from pydantic import ValidationError  # noqa: E402
 
 import settings  # noqa: E402
 from fetch_and_track import clean_text  # noqa: E402
-from db import get_connection  # noqa: E402
+from db import get_connection, resolve_scraped_path  # noqa: E402
 from extract_structured import extract_rows_for_source  # noqa: E402
 from schema import FDRateRecord  # noqa: E402
 
@@ -44,7 +44,14 @@ def run() -> None:
         return
     fetched_at, file_path = row
 
-    html = Path(file_path).read_text(encoding="utf-8")
+    resolved_path = resolve_scraped_path(file_path)
+    if resolved_path is None:
+        print(f"SBI's snapshot file isn't on this machine ({file_path}) "
+              f"— run fetch_and_track.py here first.")
+        con.close()
+        return
+
+    html = resolved_path.read_text(encoding="utf-8")
     text = clean_text(html)
 
     config = json.loads((PROJECT_ROOT / "config" / "banks.json").read_text(encoding="utf-8"))

@@ -40,7 +40,7 @@ sys.path.insert(0, str(AUTOMATION_DIR))
 import json  # noqa: E402
 from pydantic import ValidationError  # noqa: E402
 
-from db import already_extracted, get_connection  # noqa: E402
+from db import already_extracted, get_connection, resolve_scraped_path  # noqa: E402
 from fetch_and_track import clean_text  # noqa: E402
 from schema import LoanRateRecord  # noqa: E402
 
@@ -776,6 +776,12 @@ def run() -> None:
             already_done += 1
             continue
 
+        resolved_path = resolve_scraped_path(file_path)
+        if resolved_path is None:
+            print(f"{source_id}: snapshot file not found here ({file_path}) "
+                  f"— skipping, not fetched on this machine")
+            continue
+
         bank_id = source_id.removesuffix("_home_loan")
         is_pdf_parser = bank_id in _PDF_PARSERS
         parser = _PDF_PARSERS.get(bank_id) or _PARSERS.get(bank_id)
@@ -784,9 +790,9 @@ def run() -> None:
             continue
 
         if is_pdf_parser:
-            parser_input = file_path
+            parser_input = str(resolved_path)
         else:
-            html = Path(file_path).read_text(encoding="utf-8")
+            html = resolved_path.read_text(encoding="utf-8")
             parser_input = clean_text(html)
 
         source_url = next(
@@ -1564,12 +1570,18 @@ def run_education(bank_ids: list[str] | None = None) -> None:
             continue
         fetched_at, file_path = row
 
+        resolved_path = resolve_scraped_path(file_path)
+        if resolved_path is None:
+            print(f"{bank_id}: snapshot file not found here ({file_path}) "
+                  f"— skipping, not fetched on this machine")
+            continue
+
         if is_pdf_parser:
-            parser_input = file_path
+            parser_input = str(resolved_path)
         elif is_raw_html_parser:
-            parser_input = Path(file_path).read_text(encoding="utf-8")
+            parser_input = resolved_path.read_text(encoding="utf-8")
         else:
-            html = Path(file_path).read_text(encoding="utf-8")
+            html = resolved_path.read_text(encoding="utf-8")
             parser_input = clean_text(html)
 
         url_type = "home_loan" if reused_home_loan else "education_loan"
