@@ -1,0 +1,14 @@
+.git
+.github
+.claude
+.env
+.streamlit/secrets.toml
+__pycache__
+*.pyc
+.ipynb_checkpoints
+data/scraped
+data/automation_logs
+docs
+Untitled*.ipynb
+app_vittam_backup.py
+psb_edu_snip.txt

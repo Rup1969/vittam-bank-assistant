@@ -333,3 +333,5 @@ def print_report(results: list[dict]) -> None:
 if __name__ == "__main__":
     results = run_all()
     print_report(results)
+    # Non-zero exit on any FAIL so a CI job running this goes red.
+    sys.exit(1 if any(r["status"] == "FAIL" for r in results) else 0)

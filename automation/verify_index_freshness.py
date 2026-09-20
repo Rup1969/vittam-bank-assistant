@@ -167,4 +167,8 @@ def print_report(results: list[dict]) -> None:
 
 
 if __name__ == "__main__":
-    print_report(check_index_freshness())
+    # Non-zero exit on any FAIL so a CI job running this script goes red --
+    # printing FAIL alone still exited 0, which a CI runner can't see.
+    results = check_index_freshness()
+    print_report(results)
+    sys.exit(1 if any(r["status"] == "FAIL" for r in results) else 0)

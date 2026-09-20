@@ -67,7 +67,7 @@ PROJECT_ROOT = AUTOMATION_DIR.parents[0]
 sys.path.insert(0, str(PROJECT_ROOT))
 sys.path.insert(0, str(AUTOMATION_DIR))
 
-from db import get_connection  # noqa: E402
+from db import get_connection, resolve_scraped_path  # noqa: E402
 from tenure_utils import (  # noqa: E402
     STANDARD_TENURE_MILESTONES,
     is_special_band,
@@ -242,6 +242,22 @@ def run_all() -> list[dict]:
     return check_tenure_coverage() + check_missed_changes()
 
 
+def _snapshot_availability() -> tuple[int, int]:
+    """(saved bank pages recorded in fetch_log, how many of those files
+    actually exist on THIS machine). check_missed_changes() re-reads those
+    saved pages, and data/scraped is gitignored and kept out of the Docker
+    image -- so anywhere but the machine that fetched them (a container, a
+    CI runner), that half of this script has little or nothing to look at.
+    Without this, the report said "nothing to check (this is common)",
+    which reads like "no changes happened" when it actually meant "couldn't
+    look" -- a pass that checked nothing."""
+    con = get_connection()
+    rows = con.execute("SELECT file_path FROM fetch_log WHERE error IS NULL").fetchall()
+    con.close()
+    present = sum(1 for (p,) in rows if resolve_scraped_path(p) is not None)
+    return len(rows), present
+
+
 def print_report(results: list[dict]) -> None:
     coverage = [r for r in results if r["check"] == "tenure_coverage"]
     short_gaps = [r for r in results if r["check"] == "tenure_coverage_short_gap"]
@@ -278,9 +294,17 @@ def print_report(results: list[dict]) -> None:
     print(f"Missed rate changes — real snapshot diffs vs. what rate_changes()/")
     print(f"special_band_changes()/loan_rate_changes() would have reported")
     print("=" * 100)
+    total_pages, present_pages = _snapshot_availability()
+    missing_pages = total_pages - present_pages
+    if missing_pages:
+        print(f"SKIPPED (in part): {missing_pages} of {total_pages} saved bank pages are not on "
+              f"this machine (data/scraped is kept out of Docker images and git), so this "
+              f"missed-rate-change check could not fully run here. It runs completely only "
+              f"where those pages exist, e.g. the machine that fetched them.")
     if not missed:
-        print("No real rate changes found in any historical snapshot pair — nothing to check "
-              "(this is common: most banks/products have <2 real fetches so far).")
+        if not missing_pages:
+            print("No real rate changes found in any historical snapshot pair — nothing to check "
+                  "(this is common: most banks/products have <2 real fetches so far).")
     else:
         for r in missed:
             marker = "FAIL" if r["status"] == "FAIL" else "pass"
@@ -302,3 +326,6 @@ def print_report(results: list[dict]) -> None:
 if __name__ == "__main__":
     results = run_all()
     print_report(results)
+    # Non-zero exit on any FAIL so a CI job running this goes red. The
+    # informational short-tenure rows have status "INFO", never "FAIL".
+    sys.exit(1 if any(r["status"] == "FAIL" for r in results) else 0)
