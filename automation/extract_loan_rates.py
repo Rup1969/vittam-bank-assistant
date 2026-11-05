@@ -799,39 +799,69 @@ _PDF_SOURCE_URLS = {
 
 
 def run() -> None:
+    """Processes every registered home_loan bank's single MOST RECENT
+    fetch_log row, every run — whether or not it was flagged changed=TRUE.
+
+    BUG FOUND 2026-11-05 (PROJECT_STATUS.md fix-1 follow-up): the
+    original query here filtered on `changed = TRUE`, which assumes a
+    changed snapshot's file stays reachable until some future run gets
+    around to processing it. On GitHub Actions it doesn't —
+    actions/checkout@v4 starts from a fresh clone every run, and
+    data/scraped/ (gitignored) is never persisted between days. A bank's
+    page could get correctly flagged changed=TRUE on, say, 2026-10-08,
+    but by the time this script was actually wired into the daily
+    workflow, that day's job — and its snapshot file — was long gone,
+    forever. Confirmed via fetch_log/extraction_log inspection: hdfc,
+    kotak, central_bank, indusind, iob, union_bank and axis's home_loan
+    rows were stuck exactly this way, each with a real changed=TRUE row
+    from September/October that never got extracted. run_education()
+    never had this bug — it already always takes each bank's single
+    most-recent successful row regardless of `changed` (see its own
+    query below); this makes run() match that same approach. The
+    zero-row guard (never deletes existing rows when a parse returns
+    nothing) and LoanRateRecord's 3-25% plausibility bound now do the
+    safety job `changed = TRUE` used to do, without its blind spot — a
+    bank whose page is genuinely unchanged just re-extracts the same
+    values with today's fetched_at, a harmless, correct no-op rather
+    than a skip.
+
+    Scope stays the same as before: only banks registered in `_PARSERS`/
+    `_PDF_PARSERS` are touched, which already excludes every
+    `manual_load_frozen` bank (Indian Bank, BOI, SBI home_loan) — they
+    were never registered here to begin with, not filtered out by this
+    query.
+    """
     con = get_connection()
-
-    changed_rows = con.execute(
-        "SELECT source_id, fetched_at, file_path FROM fetch_log "
-        "WHERE source_id LIKE '%\\_home_loan' ESCAPE '\\' "
-        "AND changed = TRUE AND error IS NULL ORDER BY fetched_at"
-    ).fetchall()
-
-    if not changed_rows:
-        print("No changed, unextracted home_loan sources found. Run fetch_and_track.py first.")
-        con.close()
-        return
-
     config = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
 
-    already_done = 0
-    for source_id, fetched_at, file_path in changed_rows:
+    bank_ids = list(_PARSERS) + list(_PDF_PARSERS)
+    processed, skipped = 0, 0
+    for bank_id in bank_ids:
+        source_id = f"{bank_id}_home_loan"
+        row = con.execute(
+            "SELECT fetched_at, file_path FROM fetch_log "
+            "WHERE source_id = ? AND error IS NULL ORDER BY fetched_at DESC LIMIT 1",
+            [source_id],
+        ).fetchone()
+        if row is None:
+            print(f"{source_id}: no successful fetch_log row found, skipping")
+            skipped += 1
+            continue
+        fetched_at, file_path = row
+
         if already_extracted(con, source_id, fetched_at):
-            already_done += 1
+            processed += 1
             continue
 
         resolved_path = resolve_scraped_path(file_path)
         if resolved_path is None:
             print(f"{source_id}: snapshot file not found here ({file_path}) "
                   f"— skipping, not fetched on this machine")
+            skipped += 1
             continue
 
-        bank_id = source_id.removesuffix("_home_loan")
         is_pdf_parser = bank_id in _PDF_PARSERS
         parser = _PDF_PARSERS.get(bank_id) or _PARSERS.get(bank_id)
-        if parser is None:
-            print(f"{source_id}: no parser registered, skipping")
-            continue
 
         if is_pdf_parser:
             parser_input = str(resolved_path)
@@ -897,9 +927,10 @@ def run() -> None:
             [source_id, fetched_at, f"{accepted} accepted, {rejected} rejected"],
         )
         print(f"{source_id}: {accepted} rows accepted, {rejected} rejected")
+        processed += 1
 
-    if already_done == len(changed_rows):
-        print(f"Nothing new to extract — all {already_done} already-processed source(s) up to date.")
+    print(f"Processed {processed}/{len(bank_ids)} registered home_loan source(s)"
+          + (f", {skipped} skipped (no fetch_log row or snapshot not on this machine)" if skipped else ""))
 
     con.close()
 
