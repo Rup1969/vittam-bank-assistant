@@ -87,9 +87,21 @@ def load_raw_files(raw_dir: Path) -> list[dict]:
         if date and not re.match(r"^\d{4}-\d{2}-\d{2}$", date):
             print(f"  ⚠ {fpath.name}: DATE '{date}' not in YYYY-MM-DD format — recency sorting may misbehave")
 
+        # <!--AUTO:START--> / <!--AUTO:END--> (automation/sync_rag_docs.py's
+        # regeneration markers) are stripped here too, same as the header
+        # fields above -- they're bookkeeping for that script, not content.
+        # Confirmed necessary, not just tidy: leaving them in used to cost
+        # ~185 characters of General Chat's 500-char chunk preview before
+        # any real content (the old marker line also carried its "do not
+        # hand-edit" explanation inline), pushing real figures like a
+        # bank's 1-year FD rate out of the preview entirely. Stripping them
+        # means they cost 0 characters in every retrieval path, not just a
+        # smaller number -- the fix holds regardless of how long a future
+        # marker line's own text might be.
         body_lines = [
             l for l in lines
             if not l.startswith(("SOURCE", "DOCUMENT_ID", "CATEGORY", "BANK", "SOURCE_TYPE", "DATE", "==="))
+            and l.strip() not in ("<!--AUTO:START-->", "<!--AUTO:END-->")
         ]
         body = "\n".join(body_lines).strip()
 

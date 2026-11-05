@@ -3,11 +3,11 @@ DOCUMENT_ID: hdfc_fd_rates
 BANK: HDFC
 CATEGORY: DEPOSIT
 SOURCE_TYPE: PRODUCT_PAGE
-DATE: 2026-11-04
+DATE: 2026-11-05
 ===
 HDFC Bank Fixed Deposit Interest Rates (below Rs. 3 crore)
 
-[AUTO-GENERATED:START — regenerated from automation.duckdb's fd_rates table by automation/sync_rag_docs.py; do not hand-edit the figures below, edit the hand-written sections instead]
+<!--AUTO:START-->
 HDFC Bank's current fixed deposit (FD) interest rate for the general
 public ranges from 2.75% to 6.6% per annum across its full set
 of published tenures, with senior citizens earning an additional 0.5% over the general rate on most tenures (one or more bands carry a wider premium -- the table below always shows each band's own real senior rate, never assume a flat 0.5%).
@@ -33,7 +33,7 @@ Effective 4 November 2026, domestic retail term deposit rates by tenure
 - 4 Year 7 Months (55 months): 6.6% / 7.2%
 - 4 Year 7 Months 1 day <=5 Years: 6.6% / 7.2%
 - 5 Years 1 day to 10 Years: 6.6% / 7.1%
-[AUTO-GENERATED:END]
+<!--AUTO:END-->
 
 Note: this is an unusually finely-segmented tenure table compared to
 most other banks — several bands are only a few weeks or months wide

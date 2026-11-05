@@ -6,7 +6,8 @@ SOURCE_TYPE: PRODUCT_PAGE
 ===
 SBI Fixed Deposit Interest Rates (Retail Domestic Term Deposits, below Rs. 3 crore)
 
-As per SBI's official interest rates page, last updated 16 June 2026, rates
+<!--AUTO:START-->
+As per SBI's official interest rates page, last updated 28 October 2026, rates
 effective 15 December 2025 for the general public and senior citizens are:
 
 Tenor: 7 days to 45 days       -> General: 3.05% p.a. | Senior Citizen: 3.55% p.a.
@@ -17,6 +18,7 @@ Tenor: 1 year to <2 years      -> General: 6.25% p.a. | Senior Citizen: 6.75% p.
 Tenor: 2 years to <3 years     -> General: 6.40% p.a. | Senior Citizen: 6.90% p.a.
 Tenor: 3 years to <5 years     -> General: 6.30% p.a. | Senior Citizen: 6.80% p.a.
 Tenor: 5 years to 10 years     -> General: 6.05% p.a. | Senior Citizen: 7.05% p.a.*
+<!--AUTO:END-->
 
 *The 5-10 year senior citizen rate includes an additional 0.50% premium under
 the "SBI We-Care" deposit scheme.

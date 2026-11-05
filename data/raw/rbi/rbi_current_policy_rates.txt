@@ -7,7 +7,7 @@ DATE: 2026-11-05
 ===
 RBI Current Policy Rates
 
-[AUTO-GENERATED:START — regenerated daily from a live fetch of rbi.org.in by automation/sync_rag_docs.py; do not hand-edit the figures below, edit the hand-written section instead]
+<!--AUTO:START-->
 As of 5 November 2026 (live-fetched from rbi.org.in), RBI's key policy rates are:
 
 Repo Rate: 5.50% p.a.
@@ -16,7 +16,7 @@ Marginal Standing Facility (MSF) Rate: 5.75% p.a.
 Bank Rate: 5.75% p.a.
 Cash Reserve Ratio (CRR): 3.00%
 Statutory Liquidity Ratio (SLR): 18.00%
-[AUTO-GENERATED:END]
+<!--AUTO:END-->
 
 This category (RBI_CURRENT_RATES) is explicitly flagged in the system
 prompt as volatile — these rates change at RBI's bi-monthly Monetary

@@ -3,48 +3,44 @@ DOCUMENT_ID: pnb_fd_rates
 BANK: PNB
 CATEGORY: DEPOSIT
 SOURCE_TYPE: PRODUCT_PAGE
-DATE: 2026-06-01
+DATE: 2026-11-05
 ===
 Punjab National Bank Fixed (Term) Deposit Interest Rates (below Rs. 3 crore)
 
-Punjab National Bank's current fixed deposit (FD) interest rate for the
-general public ranges from 3.00% to 6.60% per annum across tenures from
-7 days to 10 years, with senior citizens earning 0.50% to 0.80% more.
-The 1-year FD interest rate is 6.25% for the general public and 6.75%
-for senior citizens.
+<!--AUTO:START-->
+Punjab National Bank's current fixed deposit (FD) interest rate for the general
+public ranges from 3% to 6.8% per annum across its full set
+of published tenures, with senior citizens earning an additional 0.5% over the general rate on most tenures (one or more bands carry a wider premium -- the table below always shows each band's own real senior rate, never assume a flat 0.5%).
 
-Effective 1 June 2026, domestic retail term deposit rates by tenure
-(general public / senior citizens):
-- 7-14 days: 3.00% / 3.50%
-- 15-45 days: 3.00% / 3.50%
-- 46-90 days: 4.50% / 5.00%
-- 91-154 days: 4.90% / 5.40%
-- 155 days: 5.55% / 6.05%
-- 156-179 days: 4.90% / 5.40%
-- 180-270 days: 5.60% / 6.10%
-- 271-302 days: 5.60% / 6.10%
-- 303 days: 5.55% / 6.05%
-- 304 days to less than 1 year: 5.60% / 6.10%
-- 1 year: 6.25% / 6.75%
-- Above 1 year to 389 days: 6.30% / 6.80%
-- 390 days: 6.30% / 6.80%
-- 391-443 days: 6.30% / 6.80%
-- 444 days: 6.60% / 7.10%
-- 445-665 days: 6.30% / 6.80%
-- 666 days: 6.50% / 7.00%
-- 667 days to 2 years: 6.30% / 6.80%
-- Above 2 years to 3 years: 6.30% / 6.80%
-- Above 3 years to 1203 days: 6.35% / 6.85%
-- 1204 days: 6.30% / 6.80%
-- 1205 days to 5 years: 6.35% / 6.85%
-- Above 5 years to 10 years: 6.00% / 6.80%
+Effective 5 November 2026, domestic retail term deposit rates by tenure
+(general public / senior citizen):
+- 7 to 14 Days: 3% / 3.5%
+- 15 to 45 Days: 3% / 3.5%
+- 46 to 90 Days: 5.5% / 6%
+- 91 to 179 Days: 5.75% / 6.25%
+- 180 to 270 Days: 6% / 6.5%
+- 271 Days to 302 Days: 6% / 6.5%
+- 303 Days: 5.95% / 6.45%
+- 304 Days to <1 Year: 6% / 6.5%
+- 1 Year: 6.25% / 6.75%
+- >1 Year to 443 Days: 6.3% / 6.8%
+- 444 Days: 6.7% / 7.2%
+- 445 Days to 679 Days: 6.3% / 6.8%
+- 680 Days: 6.8% / 7.3%
+- 681 Days to 2 years: 6.3% / 6.8%
+- >2 to 3 Years: 6.3% / 6.8%
+- >3 Years to 1203 Days: 6.35% / 6.85%
+- 1204 Days: 6.3% / 6.8%
+- 1205 Days to 5 Years: 6.35% / 6.85%
+- >5 Years to 10 Years: 6% / 6.75%
+<!--AUTO:END-->
 
 Senior Citizen Premium: an additional 0.50% for senior citizens aged 60-80
 years, and an additional 0.80% for super senior citizens aged above 80
 years, over the general public card rate, across tenures.
 
 444 Days Special Scheme: the bank's highest-yielding retail tenure —
-6.60% general public, 7.10% senior citizens, and up to 7.40% for eligible
+6.70% general public, 7.20% senior citizens, and up to 7.40% for eligible
 super senior citizens.
 
 PNB Uttam Non-Callable Deposit Scheme: a non-callable variant (the bank
