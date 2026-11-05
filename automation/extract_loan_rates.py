@@ -403,9 +403,17 @@ def extract_axis_home_loan_rows(text: str) -> list[dict]:
 # disclosure. This page ALSO needed its own settle-wait retuning
 # (8000ms, not the 5000ms tuned for IndusInd's FD-rates page) — see
 # fetch_source()'s comment in fetch_and_track.py.
+#
+# BUG FOUND 2026-11-05 (verify_coverage.py's loan-freshness check): the
+# regex hardcoded the literal label "Q1 FY27" — the same class of bug as
+# Punjab & Sind's hardcoded "5.25" repo rate. The page moved to "Q2 FY27"
+# (confirmed live) and the regex silently stopped matching, returning
+# zero rows from an otherwise-successful fetch. Fixed by capturing the
+# quarter label instead of hardcoding it, so a future "Q3 FY27" etc.
+# keeps matching without another silent failure.
 # ---------------------------------------------------------------------
 _INDUSIND_ROW_RE = re.compile(
-    r"Home Loan Interest Rate\s*APR Data for Q1 FY27\s*"
+    r"Home Loan Interest Rate\s*APR Data for (Q\d FY\d+)\s*"
     r"Bank ROI\s*APR\s*Min\s*Max\s*Average\s*Min\s*Max\s*"
     r"([\d.]+)%\s*([\d.]+)%\s*([\d.]+)%\s*([\d.]+)%\s*([\d.]+)%"
 )
@@ -415,7 +423,7 @@ def extract_indusind_home_loan_rows(text: str) -> list[dict]:
     m = _INDUSIND_ROW_RE.search(text)
     if not m:
         return []
-    roi_min, roi_max, _roi_avg, _apr_min, _apr_max = m.groups()
+    _quarter, roi_min, roi_max, _roi_avg, _apr_min, _apr_max = m.groups()
     return [{
         "rate_type": "floating",
         "rate_min": float(roi_min),
@@ -788,11 +796,11 @@ _PARSERS = {
 # extract_axis_rows in extract_structured.py for the original precedent.
 _PDF_PARSERS = {"union_bank": extract_union_bank_home_loan_rows}
 
-# Union Bank's home_loan URL isn't in config/banks.json's normal per-bank
-# "urls" dict — see extract_union_bank_home_loan_rows's module comment
-# for why (fetch_and_track.py's PDF handling is currently bank-level,
-# scoped to fd_rates only). Source URL kept here instead so
-# LoanRateRecord.source_url still gets a real, correct value.
+# Union Bank's home_loan URL is now in config/banks.json's normal
+# per-bank "urls" dict (added 2026-11-05, once the PDF's HTTP 500 cleared
+# — see banks.json's note_home_loan), so fetch_and_track.py fetches it
+# daily like any other source. Kept here too as a fallback for
+# source_url lookups, in case a config entry is ever missing again.
 _PDF_SOURCE_URLS = {
     "union_bank": "https://www.unionbankofindia.bank.in/pdf/retail_roi.pdf",
 }

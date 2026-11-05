@@ -10,10 +10,12 @@ For each entry in config/banks.json:
   1. Fetch the page with a real (headless) browser — see note below on why
      plain HTTP isn't enough — no CAPTCHA/bot-detection bypass attempted;
      if a site blocks this, that's logged as an error for that source, not
-     worked around. Sources marked `"content_type": "pdf"` (currently just
-     Axis — its real rate table only exists as a downloadable PDF, not on
-     any HTML page) are fetched as a raw binary download instead of a
-     rendered page — see fetch_pdf_bytes below.
+     worked around. Sources marked `"content_type": "pdf"` (Axis's
+     fd_rates) or, per-url_type, `"content_types": {"<url_type>": "pdf"}`
+     (Union Bank's home_loan, whose fd_rates page is normal HTML so the
+     bank-level flag can't be reused) — real rate tables that only exist
+     as a downloadable PDF, not on any HTML page — are fetched as a raw
+     binary download instead of a rendered page — see fetch_pdf_bytes below.
   2. Strip HTML to cleaned text (or extract flattened text from the PDF's
      pages) and hash it (SHA-256) — hashing the extracted TEXT rather than
      raw bytes means a PDF/page that's re-published with the same visible
@@ -277,7 +279,16 @@ def run() -> None:
                 # failure/wrong-structure result, diagnosable the same way
                 # this one was, and can grow into a real per-url_type
                 # config shape then.
-                is_pdf = url_type == "fd_rates" and bank.get("content_type") == "pdf"
+                # `content_type` (singular, per-bank) stays scoped to
+                # fd_rates only — Axis's existing case, unchanged.
+                # `content_types` (plural, per-url_type dict) is for a
+                # bank whose PDF is NOT its fd_rates page — Union Bank's
+                # home_loan PDF, added 2026-11-05, while its fd_rates page
+                # is normal HTML.
+                is_pdf = (
+                    (url_type == "fd_rates" and bank.get("content_type") == "pdf")
+                    or bank.get("content_types", {}).get(url_type) == "pdf"
+                )
                 interactions = bank.get("interactions") if url_type == "fd_rates" else None
                 wait_until = bank.get("wait_until", "networkidle")
 

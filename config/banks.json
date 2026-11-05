@@ -70,10 +70,14 @@
       "name": "Union Bank of India",
       "read_only": false,
       "urls": {
-        "fd_rates": "https://www.unionbankofindia.bank.in/en/details/rate-of-interest"
+        "fd_rates": "https://www.unionbankofindia.bank.in/en/details/rate-of-interest",
+        "home_loan": "https://www.unionbankofindia.bank.in/pdf/retail_roi.pdf"
+      },
+      "content_types": {
+        "home_loan": "pdf"
       },
       "note": "unionbankofindia.bank.in's WAF is INTERMITTENT, not a hard block like Indian Bank/BOI: a standalone Playwright test got 'Web Page Blocked! ... Attack ID', but the very next run through fetch_and_track.py's actual browser session succeeded with real, precise content (2026-08-15) — confirmed 18 tenure rows matching the bank's own page exactly via extract_union_bank_rows(). If a future run logs an ERROR here, don't assume it's permanent — retry once before falling back to automation/load_union_bank_legacy.py, which reads the already-verified data/raw/union_bank/union_bank_fd_rates.txt as a manual backstop.",
-      "note_home_loan": "STAGE 3 BOUNDED SEARCH (2026-08-17): the home-loan-interest-rate page itself has NO inline table, only a 'Click Here' link to a PDF (unionbankofindia.bank.in/pdf/retail_roi.pdf) — a genuine, real URL found within the single-attempt budget. Fetching that PDF returns HTTP 500 and the response body is NOT a valid PDF (pdfplumber: 'No /Root object!'). This is a real, currently-broken link server-side, not a fetch-tooling problem — distinct from both a clean success and a not-found. No home_loan URL configured; revisit if the PDF link is ever confirmed working again."
+      "note_home_loan": "RE-CHECKED 2026-11-05: the PDF that returned HTTP 500 on 2026-08-17 now fetches cleanly (200, valid %PDF-1.7, 572KB) — confirmed with a direct urllib GET before wiring this in. home_loan URL added, with content_types.home_loan='pdf' since this bank's fd_rates page is normal HTML (the per-bank content_type flag used by Axis is scoped to fd_rates only, so it can't be reused here — see fetch_and_track.py's content_types handling). extract_loan_rates.py's extract_union_bank_home_loan_rows()/_PDF_PARSERS already expected this PDF; its education-loan extraction (run_education()) also reuses this same fetch_log row when no dedicated education_loan fetch exists, so both loan_type's staleness was downstream of this one missing URL."
     },
     {
       "id": "iob",
