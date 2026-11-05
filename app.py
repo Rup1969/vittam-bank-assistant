@@ -555,6 +555,38 @@ PSB_BANKS     = ["INDIAN_BANK", "SBI", "BOB", "CANARA", "PNB", "BOI", "UNION_BAN
                   "CENTRAL_BANK", "PUNJAB_SIND", "BOM", "UCO"]
 PRIVATE_BANKS = ["ICICI", "HDFC", "KOTAK_MAHINDRA", "AXIS", "INDUSIND"]
 
+# General Chat bank-mention tip: a one-line nudge toward the bank-scoped
+# sidebar, appended to the answer only in General Chat mode. Deliberately
+# a simple regex over the 17 banks' names/common short forms -- no LLM.
+_BANK_MENTION_PATTERNS: list[tuple[re.Pattern, str]] = [
+    (re.compile(r"\bindian\s+bank\b", re.I), "Indian Bank"),
+    (re.compile(r"\bsbi\b|\bstate\s+bank\s+of\s+india\b", re.I), "SBI"),
+    (re.compile(r"\bbob\b|\bbank\s+of\s+baroda\b", re.I), "BOB"),
+    (re.compile(r"\bcanara(\s+bank)?\b", re.I), "Canara Bank"),
+    (re.compile(r"\bpnb\b|\bpunjab\s+national\s+bank\b", re.I), "PNB"),
+    (re.compile(r"\bboi\b|\bbank\s+of\s+india\b", re.I), "BOI"),
+    (re.compile(r"\bunion\s+bank(\s+of\s+india)?\b", re.I), "Union Bank of India"),
+    (re.compile(r"\biob\b|\bindian\s+overseas\s+bank\b", re.I), "IOB"),
+    (re.compile(r"\bcentral\s+bank(\s+of\s+india)?\b", re.I), "Central Bank of India"),
+    (re.compile(r"\bpunjab\s*(&|and)\s*sind\b", re.I), "Punjab & Sind Bank"),
+    (re.compile(r"\bbank\s+of\s+maharashtra\b|\bbom\b", re.I), "Bank of Maharashtra"),
+    (re.compile(r"\buco(\s+bank)?\b", re.I), "UCO Bank"),
+    (re.compile(r"\bicici(\s+bank)?\b", re.I), "ICICI Bank"),
+    (re.compile(r"\bhdfc(\s+bank)?\b", re.I), "HDFC Bank"),
+    (re.compile(r"\bkotak(\s+mahindra)?(\s+bank)?\b", re.I), "Kotak Mahindra Bank"),
+    (re.compile(r"\baxis(\s+bank)?\b", re.I), "Axis Bank"),
+    (re.compile(r"\bindus\s*ind(\s+bank)?\b", re.I), "IndusInd Bank"),
+]
+
+
+def _detect_bank_mention(query: str) -> str | None:
+    """First of the 17 banks/short-forms named in the query, or None."""
+    for pattern, display_name in _BANK_MENTION_PATTERNS:
+        if pattern.search(query):
+            return display_name
+    return None
+
+
 # Neutral app-level theme shown for General Chat and RBI Guidelines, where
 # no single bank's color applies.
 GENERAL_THEME = {
@@ -3667,6 +3699,18 @@ if msgs and msgs[-1]["role"] == "user" and resources_ok:
                 query, retrieved, groq_client,
                 fallback_hint=" For RBI rules and guidelines, switch to RBI Guidelines above.",
             )
+            # Fix 3b: General-Chat-only tip, appended to the answer text
+            # (same pattern as fallback_hint above), not to generate_answer()
+            # itself, since that function is shared with bank-scoped and RBI
+            # Guidelines chat. Triggers whenever a bank is named in the query
+            # -- which also covers the "fallback with no bank named" case
+            # having nothing to append, since there'd be no bank to name.
+            mentioned_bank = _detect_bank_mention(query)
+            if mentioned_bank:
+                answer += (
+                    f"\n\nFor detailed {mentioned_bank} information, "
+                    f"select {mentioned_bank} in the sidebar."
+                )
         elapsed = time.time() - t0
 
     st.session_state.messages.append({
@@ -3680,6 +3724,14 @@ if msgs and msgs[-1]["role"] == "user" and resources_ok:
 
 
 st.markdown("<br>", unsafe_allow_html=True)
+# Fix 3a: General-Chat-only caption, shown just above the shared input
+# form below (the form itself is common to all three chat modes).
+if explore_mode == "General Chat — ask about any bank":
+    st.caption(
+        "General Chat answers questions across banks. For one bank's "
+        "detailed rates or schemes, select that bank in the sidebar. "
+        "To rank rates, use Compare Rates."
+    )
 # A form is required here, not a bare text_input + button — see login
 # form's comment above for why (clear_on_submit also resets the field).
 with st.form("chat_input_form", clear_on_submit=True):

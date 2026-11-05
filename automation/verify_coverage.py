@@ -58,6 +58,7 @@ Run standalone:
 
 from __future__ import annotations
 
+import re
 import sys
 from datetime import datetime
 from pathlib import Path
@@ -238,18 +239,87 @@ def check_missed_changes() -> list[dict]:
     return results
 
 
+# (bank_id, loan_type) pairs whose loan_rates.benchmark_rate is confirmed,
+# by reading that bank's own extractor, to hold the RAW RBI repo rate
+# itself (not a bank-computed figure that happens to share a column
+# name). An explicit allowlist, not a blanket benchmark_type match on
+# "repo"/"EBLR" — those two strings carry DIFFERENT meanings across
+# different banks' extractors, confirmed 2026-11-05 while building this
+# check: sbi/home_loan stores benchmark_type="EBLR" too, but its value
+# (7.90%) is the bank's own "Prevailing EBLR" (repo + spread already
+# applied, per load_sbi_home_loan_legacy.py's own sourced comment), not
+# the raw repo rate -- comparing it to RBI's repo rate would be a false
+# positive, and it's also one of the explicitly frozen/manual banks this
+# project already treats as out of scope for automated drift checks.
+# union_bank/EBLR, icici/axis/central_bank's "repo"-labeled rows, etc.
+# never populate a numeric benchmark_rate at all, so they're excluded by
+# the IS NOT NULL filter below regardless.
+_REPO_PEGGED_SOURCES = {
+    ("hdfc", "home_loan"),          # _HDFC_REPO_RE scrapes "Current applicable Repo Rate = X%" directly
+    ("kotak", "home_loan"),         # _KOTAK_REPO_RE scrapes "Floating Category (Repo Rate: X%" directly
+    ("punjab_sind", "home_loan"),   # PRLR table's own "Repo %" column (fix 1, 2026-11-05)
+    ("punjab_sind", "education_loan"),
+}
+
+
+def check_benchmark_rate_drift() -> list[dict]:
+    """For every (bank, loan_type) confirmed above to store the RAW RBI
+    repo rate as loan_rates.benchmark_rate, does it still match RBI's
+    real current repo rate? By definition it always should — these
+    benchmarks move in lockstep with RBI's own rate, unlike a bank-set
+    MCLR/BRLLR/RLLR (deliberately excluded, never compared here). Found
+    stale 2026-11-05: Punjab & Sind's PRLR regex had the repo figure
+    hardcoded as a literal match string, so it silently stopped
+    extracting ANY row the moment the bank's page updated to 5.50% —
+    see extract_loan_rates.py's Punjab & Sind comments for the fix.
+    Reads the real current repo rate from rbi_current_policy_rates.txt's
+    own AUTO-GENERATED block — the same figure sync_rag_docs.py
+    regenerates from a live rbi.org.in fetch — instead of a hardcoded
+    constant, so this check can't itself go stale."""
+    rbi_text = (PROJECT_ROOT / "data" / "raw" / "rbi" / "rbi_current_policy_rates.txt").read_text(encoding="utf-8")
+    match = re.search(r"Repo Rate:\s*([\d.]+)%", rbi_text)
+    if not match:
+        return [{
+            "bank_id": "?", "product": "loan_benchmark", "check": "benchmark_drift",
+            "status": "FAIL",
+            "detail": "could not read a current Repo Rate figure from rbi_current_policy_rates.txt",
+        }]
+    current_repo = float(match.group(1))
+
+    con = get_connection()
+    rows = con.execute(
+        "SELECT DISTINCT bank_id, loan_type, benchmark_rate FROM loan_rates "
+        "WHERE benchmark_rate IS NOT NULL ORDER BY bank_id, loan_type"
+    ).fetchall()
+    con.close()
+
+    results = []
+    for bank_id, loan_type, benchmark_rate in rows:
+        if (bank_id, loan_type) not in _REPO_PEGGED_SOURCES:
+            continue
+        status = "PASS" if benchmark_rate == current_repo else "FAIL"
+        results.append({
+            "bank_id": bank_id, "product": loan_type, "check": "benchmark_drift",
+            "status": status,
+            "detail": f"benchmark_rate={benchmark_rate:g}% vs current RBI repo rate={current_repo:g}%"
+                      + ("" if status == "PASS" else " -- STALE, loan_rates.benchmark_rate needs a re-fetch"),
+        })
+    return results
+
+
 def run_all() -> list[dict]:
-    return check_tenure_coverage() + check_missed_changes()
+    return check_tenure_coverage() + check_missed_changes() + check_benchmark_rate_drift()
 
 
 def print_report(results: list[dict]) -> None:
     coverage = [r for r in results if r["check"] == "tenure_coverage"]
     short_gaps = [r for r in results if r["check"] == "tenure_coverage_short_gap"]
     missed = [r for r in results if r["check"] == "missed_changes"]
+    drift = [r for r in results if r["check"] == "benchmark_drift"]
     # "checkable" = everything that counts toward PASS/FAIL — short-gap
     # INFO rows are reported but deliberately excluded, same as
     # verify_retrieval.py's own "general_chat_capacity" precedent.
-    checkable = coverage + missed
+    checkable = coverage + missed + drift
 
     print("=" * 100)
     print(f"Tenure coverage — every real fd_rates band vs. Compare's milestones/Special Bands")
@@ -286,12 +356,23 @@ def print_report(results: list[dict]) -> None:
             marker = "FAIL" if r["status"] == "FAIL" else "pass"
             print(f"  {marker}  {r['bank_id']:<16} {r['product']:<16} {r['detail']}")
 
+    print()
+    print("=" * 100)
+    print("Benchmark-rate drift — Punjab & Sind's EBLR benchmark_rate vs. the real current RBI repo rate")
+    print("=" * 100)
+    if not drift:
+        print("No EBLR-linked benchmark_rate rows found for Punjab & Sind -- nothing to check.")
+    else:
+        for r in drift:
+            print(f"  {r['status']:<4}  {r['product']:<16} {r['detail']}")
+
     total = len(checkable)
     failed = [r for r in checkable if r["status"] == "FAIL"]
     print()
     print("-" * 100)
     print(f"TOTAL: {total} checks, {len(failed)} FAIL, {total - len(failed)} PASS")
-    print(f"       {len(coverage)} tenure-coverage checks, {len(missed)} missed-change checks")
+    print(f"       {len(coverage)} tenure-coverage checks, {len(missed)} missed-change checks, "
+          f"{len(drift)} benchmark-drift checks")
     print(f"       {len(short_gaps)} short-tenure band(s) reported separately (not counted in FAIL)")
     if failed:
         print("\nFAILURES:")

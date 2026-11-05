@@ -46,6 +46,38 @@ from schema import LoanRateRecord  # noqa: E402
 
 CONFIG_PATH = PROJECT_ROOT / "config" / "banks.json"
 
+_RBI_REPO_DOC_PATH = PROJECT_ROOT / "data" / "raw" / "rbi" / "rbi_current_policy_rates.txt"
+
+
+def _current_rbi_repo_rate() -> float | None:
+    """Real current RBI repo rate, read from rbi_current_policy_rates.txt's
+    own AUTO-GENERATED block — the same figure sync_rag_docs.py regenerates
+    from a live rbi.org.in fetch. Returns None (never raises) if the file
+    or figure can't be read; callers should treat that as "nothing to
+    cross-check against", not a reason to reject otherwise-good data."""
+    try:
+        text = _RBI_REPO_DOC_PATH.read_text(encoding="utf-8")
+        match = re.search(r"Repo Rate:\s*([\d.]+)%", text)
+        return float(match.group(1)) if match else None
+    except OSError:
+        return None
+
+
+def _warn_if_repo_mismatch(source_id: str, rows: list[dict]) -> None:
+    """Punjab & Sind's EBLR Repo% column is, by definition, pegged to
+    RBI's current repo rate (the exact drift class PROJECT_STATUS.md
+    fix 1 found stale). Cross-checking here can't silently fix a bad
+    scrape, but it DOES mean a future regression gets printed instead of
+    disappearing the way the original "5.25" bug did for weeks."""
+    if not rows:
+        return
+    current_repo = _current_rbi_repo_rate()
+    extracted_repo = rows[0].get("benchmark_rate")
+    if current_repo is not None and extracted_repo is not None and abs(extracted_repo - current_repo) > 0.01:
+        print(f"[extract_loan_rates] {source_id}: page's own EBLR Repo% ({extracted_repo:g}%) "
+              f"does not match RBI's current repo rate ({current_repo:g}%) — storing the "
+              f"page's own figure as scraped, but this is worth a human look.")
+
 
 # ---------------------------------------------------------------------
 # BOB — bankofbaroda.bank.in/interest-rate-and-service-charges/retail-
@@ -479,10 +511,21 @@ def extract_central_bank_home_loan_rows(text: str) -> list[dict]:
 # flagship general-purpose product matching the RAG doc's own product
 # name ("PSB Apna Ghar") — same one-representative-table convention as
 # BOB/PNB's parsers.
+#
+# BUG FOUND AND FIXED 2026-11-05 (PROJECT_STATUS.md fix 1): the Repo%
+# column was originally matched as a hardcoded literal "5\.25" instead
+# of a capture group. The bank's own page genuinely updates this column
+# whenever RBI's repo rate moves (confirmed live: it now reads 5.50,
+# effective 08.10.2026) — so the hardcoded literal silently stopped
+# matching ANY row the moment that happened, and every daily fetch
+# since then "succeeded" (fetch_log shows changed=True, error=None) while
+# extraction quietly returned zero rows, leaving the Aug-19 data stale
+# with no error anywhere. Repo% is now captured like every other column
+# instead of assumed.
 # ---------------------------------------------------------------------
 _PUNJAB_SIND_HOME_LOAN_TIER_RE = re.compile(
     r"(825 & above|791-824|750-790|725-749|700-724|650-699\*|649 & Below#)\s+"
-    r"5\.25\s+2\.10\s+[\d.]+\s+[\d.]+\s+([\d.]+)"
+    r"([\d.]+)\s+[\d.]+\s+[\d.]+\s+[\d.]+\s+([\d.]+)"
 )
 
 
@@ -495,16 +538,17 @@ def extract_punjab_sind_home_loan_rows(text: str) -> list[dict]:
 
     rows = []
     for m in _PUNJAB_SIND_HOME_LOAN_TIER_RE.finditer(region):
-        tier, rate = m.groups()
+        tier, repo_rate, rate = m.groups()
         rows.append({
             "rate_type": "floating",
             "benchmark_type": "EBLR",
-            "benchmark_rate": 5.25,
+            "benchmark_rate": float(repo_rate),
             "rate_min": float(rate),
             "rate_max": float(rate),
             "tier_type": "credit_score",
             "tier_label": tier.replace("*", "").replace("#", "").strip(),
         })
+    _warn_if_repo_mismatch("punjab_sind_home_loan", rows)
     return rows
 
 
@@ -928,9 +972,11 @@ def extract_central_bank_education_rows(text: str) -> list[dict]:
 # variants, skipped for scope, same convention as skipping Central
 # Bank's "Cent Top Up" for its home_loan parser.
 # ---------------------------------------------------------------------
+# Same BUG FOUND AND FIXED 2026-11-05 as the home-loan regex above — see
+# that comment. Repo% captured as a group instead of a hardcoded "5.25".
 _PUNJAB_SIND_EDU_ROW_RE = re.compile(
     r"(Loan up to Rs\.4\.00 Lakh|Loan Above Rs\.4 lakh & up to Rs\.7\.50 Lakh|Above Rs\.7\.50 Lakh)\s+"
-    r"5\.25\s+2\.10\s+[\d.]+\s+[\d.]+\s+([\d.]+)"
+    r"([\d.]+)\s+[\d.]+\s+[\d.]+\s+[\d.]+\s+([\d.]+)"
 )
 
 
@@ -943,16 +989,17 @@ def extract_punjab_sind_education_rows(text: str) -> list[dict]:
 
     rows = []
     for m in _PUNJAB_SIND_EDU_ROW_RE.finditer(region):
-        tier, rate = m.groups()
+        tier, repo_rate, rate = m.groups()
         rows.append({
             "rate_type": "floating",
             "benchmark_type": "EBLR",
-            "benchmark_rate": 5.25,
+            "benchmark_rate": float(repo_rate),
             "rate_min": float(rate),
             "rate_max": float(rate),
             "tier_type": "loan_amount",
             "tier_label": f"PSB Model Education Loan Scheme ({tier})",
         })
+    _warn_if_repo_mismatch("punjab_sind_education_loan", rows)
     return rows
 
 
