@@ -1263,8 +1263,8 @@ def render_iba_news(limit: int = 6) -> None:
             fetched_label = snapshot["fetched_at"]
         st.caption(
             f"⚠️ Live fetch unavailable on this deployment — IBA blocks "
-            f"cloud server IPs (confirmed: HTTP 403). Showing a snapshot "
-            f"fetched **{fetched_label}**, not live data."
+            f"cloud server IPs (confirmed: HTTP 403). Snapshot as of "
+            f"**{fetched_label}**, not live data."
         )
         _render_iba_cards(snapshot["circulars"], limit)
         return

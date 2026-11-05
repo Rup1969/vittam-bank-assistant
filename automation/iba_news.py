@@ -154,8 +154,27 @@ SNAPSHOT_PATH = Path(__file__).resolve().parents[1] / "data" / "iba_snapshot.jso
 
 def save_snapshot(path: Path = SNAPSHOT_PATH, limit: int = 10) -> int:
     """Fetches real, current circulars right now and writes them (plus a
-    real fetched_at timestamp) to `path`. Returns the number saved."""
+    real fetched_at timestamp) to `path`. Refuses to overwrite an
+    existing snapshot when the fetch returns zero circulars (confirmed
+    2026-11-05: IBA returns HTTP 403 to both Streamlit Cloud's and GitHub
+    Actions' IP ranges, so a zero-result fetch means "blocked", not "IBA
+    genuinely has nothing" — overwriting the last good snapshot with an
+    empty one would make the tab strictly worse, not just stale). Returns
+    the number saved, or -1 if nothing was written."""
     circulars = fetch_circulars(limit=limit)
+    if not circulars:
+        print(f"[iba_news] zero circulars fetched — refusing to overwrite the existing "
+              f"snapshot at {path}. This almost always means the fetch itself failed "
+              f"(see the per-source error already logged above, e.g. a 403), not that IBA "
+              f"genuinely published nothing. Leaving the existing snapshot untouched.")
+        return -1
+
+    previous = load_snapshot(path)
+    previous_keys = {
+        (c.get("ref_id") or c.get("link")) for c in (previous or {}).get("circulars", [])
+    }
+    new_ones = [c for c in circulars if (c["ref_id"] or c["link"]) not in previous_keys]
+
     serializable = [
         {**c, "pub_date": c["pub_date"].isoformat() if c["pub_date"] else None}
         for c in circulars
@@ -166,6 +185,16 @@ def save_snapshot(path: Path = SNAPSHOT_PATH, limit: int = 10) -> int:
     }
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
+
+    newest = circulars[0]  # fetch_circulars() already sorts newest-first
+    print(f"[iba_news] saved {len(serializable)} circulars to {path}")
+    print(f"[iba_news] newest circular: {newest['pub_date_label']} — {newest['headline']}")
+    if new_ones:
+        print(f"[iba_news] {len(new_ones)} new since the previous snapshot:")
+        for c in new_ones:
+            print(f"  - {c['pub_date_label']} — {c['headline']}")
+    else:
+        print("[iba_news] no new circulars since the previous snapshot")
     return len(serializable)
 
 
@@ -184,8 +213,7 @@ def load_snapshot(path: Path = SNAPSHOT_PATH) -> dict | None:
 if __name__ == "__main__":
     if "--snapshot" in sys.argv:
         n = save_snapshot()
-        print(f"Saved {n} real circulars to {SNAPSHOT_PATH}")
-        sys.exit(0)
+        sys.exit(1 if n == -1 else 0)
 
     circulars = fetch_circulars(limit=6)
     print("=" * 70)

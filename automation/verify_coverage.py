@@ -355,9 +355,57 @@ def check_loan_freshness() -> list[dict]:
     return results
 
 
+_IBA_SNAPSHOT_MAX_AGE_DAYS = 30
+_IBA_SNAPSHOT_PATH = PROJECT_ROOT / "data" / "iba_snapshot.json"
+
+
+def check_iba_snapshot_age() -> list[dict]:
+    """IBA blocks both Streamlit Cloud and GitHub Actions (confirmed
+    2026-11-05 — a live-fetch test step returned zero circulars from
+    GitHub Actions' IP range too, same as the hosted deployment), so
+    data/iba_snapshot.json is refreshed by hand, not by the daily
+    workflow. This can only ever WARN, never FAIL — there's no automated
+    pipeline to blame for staleness here, just a reminder that the
+    manual refresh (README Known Limitations has the exact command) is
+    overdue."""
+    import json
+
+    if not _IBA_SNAPSHOT_PATH.exists():
+        return [{
+            "bank_id": "iba", "product": "iba_snapshot", "check": "iba_snapshot_age",
+            "status": "WARN",
+            "detail": f"{_IBA_SNAPSHOT_PATH.name} does not exist -- IBA News will show "
+                      f"nothing on a deployment where the live fetch is blocked",
+        }]
+
+    try:
+        payload = json.loads(_IBA_SNAPSHOT_PATH.read_text(encoding="utf-8"))
+        fetched_at = datetime.fromisoformat(payload["fetched_at"])
+    except Exception as exc:
+        return [{
+            "bank_id": "iba", "product": "iba_snapshot", "check": "iba_snapshot_age",
+            "status": "WARN",
+            "detail": f"could not read fetched_at from {_IBA_SNAPSHOT_PATH.name}: "
+                      f"{type(exc).__name__}: {exc}",
+        }]
+
+    if fetched_at.tzinfo is None:
+        fetched_at = fetched_at.replace(tzinfo=timezone.utc)
+    age_days = (datetime.now(timezone.utc) - fetched_at).total_seconds() / 86400
+    status = "WARN" if age_days > _IBA_SNAPSHOT_MAX_AGE_DAYS else "OK"
+    return [{
+        "bank_id": "iba", "product": "iba_snapshot", "check": "iba_snapshot_age",
+        "status": status,
+        "detail": f"snapshot is {age_days:.1f} days old ({fetched_at:%Y-%m-%d})"
+                  + ("" if status == "OK" else
+                     f" -- overdue for a manual refresh (>{_IBA_SNAPSHOT_MAX_AGE_DAYS} days, "
+                     f"see README Known Limitations for the command)"),
+    }]
+
+
 def run_all() -> list[dict]:
     return (check_tenure_coverage() + check_missed_changes() + check_benchmark_rate_drift()
-            + check_loan_freshness())
+            + check_loan_freshness() + check_iba_snapshot_age())
 
 
 def print_report(results: list[dict]) -> None:
@@ -366,9 +414,11 @@ def print_report(results: list[dict]) -> None:
     missed = [r for r in results if r["check"] == "missed_changes"]
     drift = [r for r in results if r["check"] == "benchmark_drift"]
     freshness = [r for r in results if r["check"] == "loan_freshness"]
+    iba_age = [r for r in results if r["check"] == "iba_snapshot_age"]
     # "checkable" = everything that counts toward PASS/FAIL — short-gap
-    # INFO rows are reported but deliberately excluded, same as
-    # verify_retrieval.py's own "general_chat_capacity" precedent.
+    # INFO rows and the IBA snapshot-age WARN are reported but
+    # deliberately excluded, same as verify_retrieval.py's own
+    # "general_chat_capacity" precedent.
     checkable = coverage + missed + drift + freshness
 
     print("=" * 100)
@@ -427,6 +477,13 @@ def print_report(results: list[dict]) -> None:
         for r in freshness:
             print(f"  {r['status']:<4}  {r['bank_id']:<14} {r['product']:<16} {r['detail']}")
 
+    print()
+    print("=" * 100)
+    print(f"IBA snapshot age — manually refreshed, so this can only WARN, never FAIL")
+    print("=" * 100)
+    for r in iba_age:
+        print(f"  {r['status']:<4}  {r['detail']}")
+
     total = len(checkable)
     failed = [r for r in checkable if r["status"] == "FAIL"]
     print()
@@ -435,6 +492,7 @@ def print_report(results: list[dict]) -> None:
     print(f"       {len(coverage)} tenure-coverage checks, {len(missed)} missed-change checks, "
           f"{len(drift)} benchmark-drift checks, {len(freshness)} loan-freshness checks")
     print(f"       {len(short_gaps)} short-tenure band(s) reported separately (not counted in FAIL)")
+    print(f"       {len(iba_age)} IBA snapshot-age check (WARN only, not counted in FAIL)")
     if failed:
         print("\nFAILURES:")
         for r in failed:
