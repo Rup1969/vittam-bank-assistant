@@ -31,6 +31,7 @@ jobs:
         run: |
           python automation/fetch_and_track.py
           python automation/extract_structured.py
+          python automation/extract_loan_rates.py
 
       - name: Commit and push if data changed
         run: |

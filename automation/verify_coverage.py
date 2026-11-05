@@ -60,7 +60,7 @@ from __future__ import annotations
 
 import re
 import sys
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 
 AUTOMATION_DIR = Path(__file__).resolve().parent
@@ -307,8 +307,57 @@ def check_benchmark_rate_drift() -> list[dict]:
     return results
 
 
+_FRESHNESS_MAX_AGE_DAYS = 3
+
+
+def check_loan_freshness() -> list[dict]:
+    """Every (bank, loan_type) whose loan_rates.data_source = 'live_fetch'
+    is supposed to be refreshed by the daily automated workflow — this
+    catches the exact class of bug fix 1 found (Punjab & Sind's regex
+    silently returning zero rows for weeks: fetch_log looked healthy the
+    whole time, so nothing EVER pointed at the problem until a user
+    noticed a wrong chat answer). A row whose own fetched_at is more than
+    _FRESHNESS_MAX_AGE_DAYS old means the pipeline isn't actually keeping
+    it current, whatever the reason. 'manual_load_frozen' rows (Indian
+    Bank, BOI, SBI home_loan, every bank's vehicle_loan) are deliberately
+    excluded — they're never expected to refresh automatically."""
+    con = get_connection()
+    rows = con.execute(
+        "SELECT bank_id, loan_type, MAX(fetched_at) FROM loan_rates "
+        "WHERE data_source = 'live_fetch' GROUP BY bank_id, loan_type "
+        "ORDER BY bank_id, loan_type"
+    ).fetchall()
+    con.close()
+
+    now = datetime.now(timezone.utc)
+    results = []
+    for bank_id, loan_type, fetched_at in rows:
+        # fetched_at is stored as a string in some rows (tz-aware ISO,
+        # from this session's Punjab & Sind fix) and a naive datetime in
+        # others (every pre-existing row) -- normalize both the same way
+        # fd_rates' own VARCHAR/TIMESTAMP split already taught this
+        # project to (PROJECT_STATUS.md §44-45): parse to a tz-aware
+        # datetime regardless of which shape it arrived in.
+        if isinstance(fetched_at, str):
+            dt = datetime.fromisoformat(fetched_at)
+        else:
+            dt = fetched_at
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        age_days = (now - dt).total_seconds() / 86400
+        status = "PASS" if age_days <= _FRESHNESS_MAX_AGE_DAYS else "FAIL"
+        results.append({
+            "bank_id": bank_id, "product": loan_type, "check": "loan_freshness",
+            "status": status,
+            "detail": f"last extracted {age_days:.1f} days ago ({dt:%Y-%m-%d})"
+                      + ("" if status == "PASS" else f" -- stale, exceeds {_FRESHNESS_MAX_AGE_DAYS}-day bound"),
+        })
+    return results
+
+
 def run_all() -> list[dict]:
-    return check_tenure_coverage() + check_missed_changes() + check_benchmark_rate_drift()
+    return (check_tenure_coverage() + check_missed_changes() + check_benchmark_rate_drift()
+            + check_loan_freshness())
 
 
 def print_report(results: list[dict]) -> None:
@@ -316,10 +365,11 @@ def print_report(results: list[dict]) -> None:
     short_gaps = [r for r in results if r["check"] == "tenure_coverage_short_gap"]
     missed = [r for r in results if r["check"] == "missed_changes"]
     drift = [r for r in results if r["check"] == "benchmark_drift"]
+    freshness = [r for r in results if r["check"] == "loan_freshness"]
     # "checkable" = everything that counts toward PASS/FAIL — short-gap
     # INFO rows are reported but deliberately excluded, same as
     # verify_retrieval.py's own "general_chat_capacity" precedent.
-    checkable = coverage + missed + drift
+    checkable = coverage + missed + drift + freshness
 
     print("=" * 100)
     print(f"Tenure coverage — every real fd_rates band vs. Compare's milestones/Special Bands")
@@ -361,10 +411,21 @@ def print_report(results: list[dict]) -> None:
     print("Benchmark-rate drift — Punjab & Sind's EBLR benchmark_rate vs. the real current RBI repo rate")
     print("=" * 100)
     if not drift:
-        print("No EBLR-linked benchmark_rate rows found for Punjab & Sind -- nothing to check.")
+        print("No repo-pegged benchmark_rate rows found -- nothing to check.")
     else:
         for r in drift:
-            print(f"  {r['status']:<4}  {r['product']:<16} {r['detail']}")
+            print(f"  {r['status']:<4}  {r['bank_id']:<14} {r['product']:<16} {r['detail']}")
+
+    print()
+    print("=" * 100)
+    print(f"Loan-rate freshness — every live_fetch (bank, loan_type) extracted within "
+          f"the last {_FRESHNESS_MAX_AGE_DAYS} days?")
+    print("=" * 100)
+    if not freshness:
+        print("No live_fetch loan_rates rows found -- nothing to check.")
+    else:
+        for r in freshness:
+            print(f"  {r['status']:<4}  {r['bank_id']:<14} {r['product']:<16} {r['detail']}")
 
     total = len(checkable)
     failed = [r for r in checkable if r["status"] == "FAIL"]
@@ -372,7 +433,7 @@ def print_report(results: list[dict]) -> None:
     print("-" * 100)
     print(f"TOTAL: {total} checks, {len(failed)} FAIL, {total - len(failed)} PASS")
     print(f"       {len(coverage)} tenure-coverage checks, {len(missed)} missed-change checks, "
-          f"{len(drift)} benchmark-drift checks")
+          f"{len(drift)} benchmark-drift checks, {len(freshness)} loan-freshness checks")
     print(f"       {len(short_gaps)} short-tenure band(s) reported separately (not counted in FAIL)")
     if failed:
         print("\nFAILURES:")

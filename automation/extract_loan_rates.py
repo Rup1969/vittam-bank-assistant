@@ -1901,7 +1901,13 @@ def run_vehicle(bank_ids: list[str] | None = None) -> None:
             continue
 
         log_source_id = f"{bank_id}_vehicle_loan"
-        con.execute("DELETE FROM loan_rates WHERE bank_id = ? AND loan_type = 'vehicle_loan'", [bank_id])
+        # Same defensive gate as run()/run_education() (PROJECT_STATUS.md
+        # fix 1): never delete existing rows for data this call didn't
+        # actually produce. entry["rows"] is a static hardcoded list here,
+        # so this is a no-op today, not a live scraper that could silently
+        # return zero -- added only for consistency/safety margin.
+        if entry["rows"]:
+            con.execute("DELETE FROM loan_rates WHERE bank_id = ? AND loan_type = 'vehicle_loan'", [bank_id])
 
         accepted, rejected = 0, 0
         for raw in entry["rows"]:
@@ -1947,4 +1953,16 @@ def run_vehicle(bank_ids: list[str] | None = None) -> None:
 
 
 if __name__ == "__main__":
+    # BUG FOUND 2026-11-05 (PROJECT_STATUS.md fix 1, loan-extraction-
+    # automation follow-up): this only ever called run() (home_loan).
+    # run_education() has never run from here, so even after wiring this
+    # script into the daily workflow, education_loan would have stayed
+    # frozen forever -- the same silent-staleness class of bug this
+    # whole fix is about, just one level up (a loan_type never invoked,
+    # not a parser never matching). run_vehicle() is deliberately NOT
+    # called here: its data is a static hardcoded table (_VEHICLE_ROWS,
+    # data_source="manual_load_frozen"), not live-fetched, so running it
+    # daily would only rewrite fetched_at on unchanged rows with nothing
+    # new to catch.
     run()
+    run_education()

@@ -128,6 +128,22 @@ class LoanRateRecord(BaseModel):
     fetched_at: str
     data_source: str = "live_fetch"
 
+    # Same reasoning as FDRateRecord's own bound above: every parser here
+    # is deterministic (regex/pdfplumber), not an LLM, but a regex can
+    # still grab the wrong number from a page (a fee percentage, a year,
+    # a glued-together digit run) just as easily as an LLM can hallucinate
+    # one — and the type check alone would accept it either way. No real
+    # bank loan rate in this project has ever published outside roughly
+    # 3-25% (added 2026-11-05, PROJECT_STATUS.md fix 1 follow-up, after
+    # finding Punjab & Sind's extraction had been silently returning zero
+    # rows for weeks with no validator to have caught a bad value either).
+    @field_validator("rate_min", "rate_max", "benchmark_rate")
+    @classmethod
+    def _rate_is_plausible(cls, v: float | None) -> float | None:
+        if v is not None and not (3 <= v <= 25):
+            raise ValueError(f"implausible loan rate: {v}% (expected 3-25%)")
+        return v
+
 
 # Deferred — see Bank_Assistant_Upgrade_Spec.md Phase B:
 #
