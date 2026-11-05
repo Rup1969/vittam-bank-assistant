@@ -33,6 +33,10 @@ jobs:
           python automation/extract_structured.py
           python automation/extract_loan_rates.py
 
+      - name: Fetch IBA circulars snapshot
+        continue-on-error: true
+        run: python automation/iba_news.py --snapshot
+
       - name: Commit and push if data changed
         run: |
           git config user.name "github-actions[bot]"
