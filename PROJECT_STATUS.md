@@ -6322,3 +6322,159 @@ workaround.
 
 Files: `automation/reextract_sbi.py` (line 61: `file_path` ->
 `str(resolved_path)`).
+
+## 62. RAG-document staleness confirmed real, 7+ weeks on — a 5-step plan, Step 1 (RBI + HDFC) built and verified (2026-11-05/06)
+
+User reported real RBI/FD rate changes not showing up in chat despite
+the daily GitHub Actions workflow running. Confirmed the actual cause
+directly, not assumed: the daily workflow (51 real automated commits,
+2026-09-15 through 2026-11-04) has only ever touched
+`data/automation.duckdb` — `git log origin/main --oneline -- data/raw
+indexes/` shows **zero** commits touching either since the very first
+commit. Pipeline B (live fetch -> structured DB -> Compare/Calculator)
+has been working correctly the whole time; Pipeline A (the plain-English
+documents chat and RBI Guidelines actually read from, plus the FAISS
+index built from them) has never been automated at all — this is Gap #1
+from the original HDFC investigation (PROJECT_STATUS.md §44-45),
+confirmed to still be exactly as documented, just with 7+ weeks to
+accumulate instead of one isolated incident.
+
+**Real evidence, not just the theory**: pulled the real current
+`automation.duckdb` from `origin/main` (HDFC fetched as recently as
+2026-11-04) and compared it directly against the static document.
+HDFC's "3 Years 1 day to < 4 Years 7 Months" band — the exact same band
+from the original August incident — had drifted again: document said
+6.50%/7.10%, the real database said 6.6%/7.2%. Fetched RBI's own live
+homepage directly: real current Repo Rate is 5.50%, Reverse Repo/Fixed
+Reverse Repo 3.35%, MSF and Bank Rate both 5.75%, CRR 3.00%, SLR
+18.00% — the document said Repo 5.25%/MSF 5.50%/Bank Rate 5.50% "as of
+5 December 2025," nearly a year stale. One thing confirmed still
+working correctly: RBI Guidelines' live "What's New" banner (a true
+live fetch, never exposed to this problem) — tested directly, showed
+real items dated as recently as 31 October 2026.
+
+**Grep audit of every place a "5.25%" repo-rate figure is hardcoded or
+stored**, as requested, before building anything:
+- `data/raw/rbi/rbi_current_policy_rates.txt` — the document fixed in
+  this step.
+- `data/raw/icici/icici_loan_mortgage.txt` — prose states "RBI Repo
+  Rate, effective 5.25% as of 5 December 2025." Same stale claim, a
+  different document/bank/product. NOT in this step's scope (RBI +
+  HDFC FD only) — flagged for a later step.
+- **`automation/extract_loan_rates.py` lines ~502 and ~950** — a
+  LITERAL Python constant, `"benchmark_rate": 5.25`, inside
+  `extract_punjab_sind_home_loan_rows()` and
+  `extract_punjab_sind_education_rows()`. This will NEVER self-correct
+  by re-fetching — it's not scraped, it's typed into the source code.
+  The most consequential single finding in the audit. Confirmed via the
+  real DB: `loan_rates.benchmark_rate` has exactly ONE value across the
+  entire table that could represent a repo-linked benchmark — `5.25` —
+  on 4 rows (hdfc/kotak home_loan, punjab_sind home_loan/education_loan).
+  The HDFC/Kotak rows are parsed from real page text (not hardcoded) but
+  haven't been successfully re-fetched since 2026-08-19 — a separate,
+  also-real staleness gap in Pipeline B itself for those two specific
+  products, out of scope for this step.
+- `config/banks.json` notes (5 occurrences) — hand-written research-time
+  comments documenting what each bank's page said in Aug 2026. Not
+  served to users, but stale as internal documentation. Low priority.
+- `automation/schema.py` — just an inline code comment ("e.g. 5.25"),
+  not real data.
+- Every `data/raw/<bank>/*_fd_rates.txt` hit (bom, axis, union_bank,
+  iob, canara, indusind, legacy indian_bank) — spot-checked (axis):
+  genuine, unrelated FD interest-rate figures that happen to equal
+  5.25%, nothing to do with the repo rate. Noise from the raw grep, not
+  a real finding.
+
+**The 5-step plan** (building only Step 1 now, per explicit instruction):
+1. Pilot: regenerate the RBI policy-rates document and HDFC's FD
+   document only, from real data, automatically.
+2. Check `verify_retrieval.py` stays at the exact same 11 known cases.
+3. Extend to FD documents for every live-fetched bank — skip Indian
+   Bank/BOI/SBI home loan (confirmed `manual_load_frozen`, not
+   live-fetched, nothing for a generator to regenerate FROM).
+4. Wire the regenerate-and-rebuild step into the daily GitHub Actions
+   workflow; commit `data/raw/`/`indexes/` only if figures actually
+   changed.
+5. A drift check comparing each document's stated figures against the
+   database directly — the automated version of what this investigation
+   did by hand.
+
+**Step 1, built**: new `automation/sync_rag_docs.py`.
+`fetch_rbi_current_rates()` scrapes rbi.org.in's own homepage directly
+— confirmed its "Policy Rates"/"Reserve Ratios" figures render as plain
+`<th>label</th>...<td>: value</td>` pairs, no JS rendering needed, a
+plain fetch sees them (confirmed by first trying a naive text search
+that found nothing, then finding the real markup by hand before writing
+the regex — not guessed). Returns `None` — never a guess, never the old
+value padded back in — if a fetch fails or an expected label goes
+missing, since that means the page changed and the regex can no longer
+be trusted. `regenerate_bank_fd_doc()` reads a bank's real current
+`fd_rates` rows and renders BOTH the summary paragraph and the tenure
+table from the same query result in the same run, so the two can never
+independently drift from each other the way a hand-maintained summary
+sentence could silently disagree with a hand-maintained table (this is
+exactly the shape of inconsistency a prior HDFC fix already had to
+correct once — see the "(Senior)" tag history in digest.py).
+
+**Marker convention**: `[AUTO-GENERATED:START ...]` / `[AUTO-GENERATED:END]`
+lines bound the ONLY region the script ever rewrites; everything outside
+them is hand-written and untouched. The script does nothing to a
+document with no markers — it never introduces markers into a document
+nobody asked to automate. Restructured both target documents by hand
+once, to establish this: HDFC's doc folds its "Senior Citizen Premium"
+exception sentence (previously a second place the same 6.50%/7.10%
+figures were hardcoded) directly into the auto-generated summary instead
+of restating specific numbers outside the marker — so no figure appears
+in more than one place in the whole document, closing the exact
+duplication-drift risk class that caused §45's original bug, not just
+patching today's instance of it.
+
+**A real bug found and fixed while building this, not after**:
+`fd_rates.fetched_at` is stored as `VARCHAR`, confirmed directly via
+`typeof()` — unlike `fetch_log.fetched_at`, a real `TIMESTAMP` column.
+First version called `.strftime()` on it directly and crashed
+(`AttributeError: 'str' object has no attribute 'strftime'`). Fixed to
+treat it as the string it actually is.
+
+**Verified exactly as asked, real evidence both directions**:
+- `verify_index_freshness.py`: 3/3 PASS before, 3/3 PASS after
+  rebuilding both indexes (`other_banks`: 217 -> 225 chunks; `rbi`: 22 ->
+  22 chunks, content changed).
+- `verify_retrieval.py`: 300 checks/11 FAIL/289 PASS before AND after —
+  confirmed the identical 10 printed FAIL rows byte-for-byte in both
+  runs (not just a matching count, which could hide a real swap), so
+  nothing regressed and nothing coincidentally improved either.
+- **Live chat, HDFC band**: bank-scoped HDFC chat answered "General
+  public: 6.6% per annum, Senior citizen: 7.2% per annum," citing
+  `hdfc_fd_rates (2026-11-04)` — exactly the real database value.
+- **Live chat, repo rate**: RBI Guidelines chat answered "The RBI's
+  current Repo Rate is 5.50% per annum, as of 5 November 2026," citing
+  `rbi_current_policy_rates (2026-11-05)` — exactly the real current
+  rate.
+- **One honest complication, found and explained, not hidden**: the
+  FIRST live chat attempt used General Chat (not bank-scoped), and it
+  answered "I do not have that detail" despite retrieving the correct,
+  freshly-dated document as its top source. Checked whether this was a
+  regression from today's changes before reporting it as one: the exact
+  tenure line sits at character 1497 in the new document; in the
+  original pre-existing document (`git show HEAD:...`), the same line
+  sat at character 1549 — ALREADY past General Chat's documented 500-
+  char truncation (`_MAX_CHUNK_CHARS_GENERAL`), before any of today's
+  changes. Pre-existing, already-documented limitation (Section 9 of
+  the project walkthrough names this exact trade-off), not something
+  this step broke — confirmed by retesting the identical fact through
+  bank-scoped chat and RBI Guidelines chat, both of which don't
+  truncate, both of which answered correctly.
+
+**Not done, deliberately, per explicit instruction**: the daily
+workflow (`.github/workflows/daily-refresh.yml`) was not touched. Steps
+2-5 are not built. `icici_loan_mortgage.txt`'s stale repo-rate prose and
+`extract_loan_rates.py`'s hardcoded `5.25` constants are named above,
+not fixed — they're real findings from the requested audit, out of this
+step's explicit RBI+HDFC-only scope.
+
+Files: `automation/sync_rag_docs.py` (new), `data/raw/rbi/
+rbi_current_policy_rates.txt`, `data/raw/hdfc/hdfc_fd_rates.txt` (both
+restructured with AUTO-GENERATED markers and regenerated), `indexes/
+other_banks.index`, `indexes/other_banks_chunks.json`, `indexes/
+rbi.index`, `indexes/rbi_chunks.json` (rebuilt).

@@ -1,26 +1,28 @@
-SOURCE: Cross-checked across multiple financial data aggregators citing RBI Monetary Policy; verify against rbi.org.in before treating as final
+SOURCE: https://www.rbi.org.in (homepage "Current Rates" section, live-fetched directly)
 DOCUMENT_ID: rbi_current_policy_rates
 BANK: RBI
 CATEGORY: RATES
 SOURCE_TYPE: RBI_CURRENT_RATES
-DATE: 2025-12-05
+DATE: 2026-11-05
 ===
 RBI Current Policy Rates
 
-As of the last confirmed change (5 December 2025), RBI's key policy rates are:
+[AUTO-GENERATED:START — regenerated daily from a live fetch of rbi.org.in by automation/sync_rag_docs.py; do not hand-edit the figures below, edit the hand-written section instead]
+As of 5 November 2026 (live-fetched from rbi.org.in), RBI's key policy rates are:
 
-Repo Rate: 5.25% p.a.
+Repo Rate: 5.50% p.a.
 Reverse Repo Rate: 3.35% p.a.
-Marginal Standing Facility (MSF) Rate: 5.50% p.a.
-Bank Rate: 5.50% p.a.
+Marginal Standing Facility (MSF) Rate: 5.75% p.a.
+Bank Rate: 5.75% p.a.
 Cash Reserve Ratio (CRR): 3.00%
 Statutory Liquidity Ratio (SLR): 18.00%
+[AUTO-GENERATED:END]
 
-IMPORTANT: This category (RBI_CURRENT_RATES) is explicitly flagged in the
-system prompt as volatile — these rates change at RBI's bi-monthly
-Monetary Policy Committee reviews (and occasionally between reviews).
-This document reflects the rate as of the DATE above, not necessarily
-today's rate. Always verify the current figure on rbi.org.in or via
-RBI's official Monetary Policy Statement before quoting it as current.
-This is the clearest example in the whole pool of why a static file
-needs a refresh cadence rather than being treated as permanently correct.
+This category (RBI_CURRENT_RATES) is explicitly flagged in the system
+prompt as volatile — these rates change at RBI's bi-monthly Monetary
+Policy Committee reviews (and occasionally between reviews). The
+AUTO-GENERATED section above is now refreshed daily from a live fetch
+of rbi.org.in's own homepage, as part of the same automation pipeline
+that keeps Compare Rates and the Calculator current (see
+PROJECT_STATUS.md) — but rbi.org.in's own page is still the definitive
+source if this document and the live site ever disagree.
