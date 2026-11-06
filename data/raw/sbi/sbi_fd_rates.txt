@@ -38,5 +38,13 @@ just under Rs. 3 crore:
 1 year tenor  -> General: 6.55% p.a. | Senior Citizen: 7.05% p.a.
 2 year tenor  -> General: 6.80% p.a. | Senior Citizen: 7.30% p.a.
 
+Savings Bank Account: 2.50% p.a. (effective 15 June 2025).
+
+Bulk Term Deposits (Rs. 3 crore and above): priced separately — see
+SBI's domestic bulk term deposit rates page for the current table.
+
+Recurring Deposit: follows the same rate table as term deposits of the
+equivalent tenor — no separate RD-specific rate is published.
+
 Rates are subject to change without prior notice and should be confirmed
 on SBI's official website before quoting to a customer as final.

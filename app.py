@@ -3639,6 +3639,37 @@ msgs = st.session_state.messages
 if msgs and msgs[-1]["role"] == "user" and resources_ok:
     query = msgs[-1]["content"]
 
+    # FD-rate shortcut — "what's the N-year FD rate" (optionally a named
+    # bank, "highest"/"top" ranking, or "senior") is answered directly
+    # from compare_for_tenure() (the same function and tie-break Compare
+    # Rates itself uses), bypassing RAG retrieval + the LLM entirely.
+    # Built 2026-11-06 after the verification sheet found retrieval
+    # giving wrong/stale answers to exactly this question shape for
+    # several banks — not a content gap, a structural one, so this
+    # sidesteps retrieval for it rather than trying to out-rank the
+    # problem documents. Not offered in RBI Guidelines mode (no FD
+    # content there). parse_fd_rate_intent() returns None for anything
+    # it isn't confident about — falls through to normal chat below,
+    # never a guessed bank/tenure/ranking.
+    if explore_mode != "RBI Guidelines":
+        from fd_rate_shortcut import parse_fd_rate_intent, render_fd_rate_answer
+        from gap_notes import to_automation_id
+        context_bank_id = to_automation_id(selected_bank) if selected_bank else None
+        fd_intent = parse_fd_rate_intent(query, context_bank_id=context_bank_id)
+        if fd_intent is not None:
+            t0 = time.time()
+            answer = render_fd_rate_answer(fd_intent)
+            retrieved = []
+            elapsed = time.time() - t0
+            st.session_state.messages.append({
+                "role"    : "assistant",
+                "content" : answer,
+                "sources" : retrieved,
+                "time"    : elapsed,
+            })
+            st.session_state.total_queries += 1
+            st.rerun()
+
     # Digest shortcut — a "what changed this week" style question is
     # answered directly from automation/digest.py's real data, bypassing
     # RAG retrieval + the LLM entirely, same discipline as Compare/

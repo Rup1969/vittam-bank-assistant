@@ -61,15 +61,20 @@ Run standalone:
 from __future__ import annotations
 
 import json
+import re
 import sys
 from pathlib import Path
 
 AUTOMATION_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = AUTOMATION_DIR.parents[0]
 sys.path.insert(0, str(PROJECT_ROOT))
+sys.path.insert(0, str(AUTOMATION_DIR))
 
 from sentence_transformers import SentenceTransformer  # noqa: E402
 import faiss  # noqa: E402
+
+from db import get_connection  # noqa: E402
+from tenure_utils import tenure_covers  # noqa: E402
 
 # Must match app.py's real constants exactly — this check has no value if
 # it drifts from what the live app actually does (same precedent as
@@ -184,6 +189,224 @@ TOPICS = {
         "target_doc_by_bank": _std_target_doc_map("loan_education", overrides={"indusind": None}),
     },
 }
+
+
+# ───────────────── FD-rate lookup (added 2026-11-06) ────────────────────
+#
+# The TOPICS above all check ONE thing: is the bank's target DOCUMENT
+# retrieved at all. The verification-sheet investigation found a
+# genuinely different failure mode that check can't see: the right
+# document can be beside the point if a DIFFERENT, unsynced document (a
+# forgotten "*_rates_deposit_structured.txt" mirror) outranks it, or the
+# right document's own internal ordering surfaces the wrong tenure band
+# — the content that's actually retrieved states a rate figure that
+# simply isn't the one Compare Rates would give for that tenure. Real
+# cases found this way: SBI's and BOB's stale structured-doc competitor
+# winning retrieval for 1yr/3yr FD questions (one missing the row
+# entirely, one plain wrong-topic); HDFC's "common tenures first"
+# reordering promoting the wrong neighboring band for 3yr/5yr. Scoped to
+# every bank with an AUTO block (the ones this project actively keeps
+# synced) — a bank with no AUTO block has no commitment to be current by
+# construction, so a miss there isn't this check's business.
+#
+# Ground truth is tenure_covers() — automation/tenure_utils.py — the
+# EXACT function compare_for_tenure() uses for Compare Rates itself, with
+# the same tie-break (the higher general rate wins when more than one
+# band's range includes the target day). This check has no independent
+# opinion of its own about what's "correct"; it only asks whether
+# retrieval agrees with what the rest of the app already shows.
+FD_LOOKUP_TENURES = {"1-year": (1, 365), "3-year": (3, 1095), "5-year": (5, 1825)}
+_PERCENT_RE = re.compile(r"(\d+(?:\.\d+)?)\s*%")
+_AUTO_START_LINE = "<!--AUTO:START-->"
+# A bare "N year(s)"/"N-year" mention in the preview text -- used the same
+# way check_preview_figures() (verify_coverage.py) uses its own 1-year-
+# only version. BUG FOUND while building this check (2026-11-06, testing
+# against the pre-fix state as instructed): a first version compared the
+# expected rate's VALUE against every percentage anywhere in the 500-char
+# preview, with no regard for position -- which produced a false PASS
+# for HDFC's pre-fix 3-year case, because a DIFFERENT, adjacent band
+# ("2 Years 1 day to < 2 Year 11 Months") coincidentally shares the exact
+# same rate (6.55%/7.05%) as the real 3-year band, and that different
+# band's own figure happened to sit inside the truncated preview even
+# though the real 3-year band's figure did not. Checking for the figure
+# NEAR an explicit "N year" mention instead -- not just present anywhere
+# -- closes that gap, the same fix already applied to
+# verify_coverage.py's check_preview_figures().
+_TENURE_MENTION_RE = {
+    n: re.compile(rf"\b{n}[\s-]*years?\b", re.IGNORECASE)
+    for n, _days in FD_LOOKUP_TENURES.values()
+}
+_TENURE_PROXIMITY_CHARS = 60
+# app.py's _MAX_CHUNK_CHARS_GENERAL -- General Chat's own chunk-0 preview
+# budget. Checked against THIS path, not bank-scoped retrieve(), because
+# bank-scoped chat never truncates a chunk at all (confirmed by reading
+# app.py directly: the truncation lives only inside retrieve_general()) --
+# so a bank-scoped full chunk always contains every band's real figure
+# somewhere in its text regardless of ordering, and could never have
+# caught HDFC's actual bug (a reordering issue, not a missing-content
+# one). General Chat's truncated preview is where that bug was real and
+# measurable, and where SBI's/BOB's wrong-document problem is visible too.
+_GENERAL_CHAT_PREVIEW_CHARS = 500
+
+
+def _banks_with_auto_block() -> dict[str, str]:
+    """bank_id -> FAISS 'bank' tag, for every *_fd_rates.txt under
+    data/raw/ that has an AUTO block. Scans the real files rather than
+    hardcoding a list, so this check automatically covers the next bank
+    added to the rollout without needing its own update."""
+    found = {}
+    for fpath in sorted((PROJECT_ROOT / "data" / "raw").rglob("*_fd_rates.txt")):
+        text = fpath.read_text(encoding="utf-8")
+        if not any(l.strip() == _AUTO_START_LINE for l in text.splitlines()):
+            continue
+        bank_id = fpath.parent.name
+        if bank_id in BANKS:
+            found[bank_id] = BANKS[bank_id]
+    return found
+
+
+def check_fd_rate_shortcut() -> list[dict]:
+    """PRIMARY FD-rate check, as of 2026-11-06: does the deterministic
+    fd_rate_shortcut.py chat shortcut (built the same day, see that
+    module's own docstring) state the SAME rate Compare Rates shows, for
+    every AUTO-block bank's 1/3/5-year tenure? This is what chat actually
+    answers with now for this question shape -- RAG retrieval is bypassed
+    entirely for it -- so this is the check that matters; the
+    retrieval-based one below is kept only as an early-warning WARN for
+    the (now much lower-stakes) case where the shortcut itself doesn't
+    fire and chat falls through to RAG.
+
+    Verifies the shortcut's OWN rendered text, not just that it imports
+    the same function Compare Rates uses -- a transcription or
+    field-access bug in render_fd_rate_answer() could still show the
+    wrong number even while calling the right function, and this would
+    catch that."""
+    from fd_rate_shortcut import parse_fd_rate_intent, render_fd_rate_answer
+
+    con = get_connection()
+    results = []
+    for bank_id in _banks_with_auto_block():
+        rows = con.execute(
+            "SELECT tenure_label, interest_rate_general, interest_rate_senior FROM fd_rates "
+            "WHERE bank_id = ? AND product_type = 'fixed_deposit' AND deposit_variant = 'retail'",
+            [bank_id],
+        ).fetchall()
+
+        for label_name, (n, days) in FD_LOOKUP_TENURES.items():
+            matches = [r for r in rows if tenure_covers(r[0], days)]
+            if not matches:
+                results.append({
+                    "bank_id": bank_id, "tenure": label_name, "check": "fd_rate_shortcut",
+                    "status": "SKIP",
+                    "detail": f"no retail band covers day {days} for this bank -- nothing to check",
+                })
+                continue
+            best = max(matches, key=lambda r: r[1])
+            expected_g, expected_s = best[1], best[2]
+
+            intent = parse_fd_rate_intent(f"What is the {n} year FD rate?", context_bank_id=bank_id)
+            if intent is None:
+                results.append({
+                    "bank_id": bank_id, "tenure": label_name, "check": "fd_rate_shortcut",
+                    "status": "FAIL",
+                    "detail": f"shortcut did not recognize its own canonical phrasing for {n} year -- parse_fd_rate_intent returned None",
+                })
+                continue
+            answer = render_fd_rate_answer(intent)
+            found = {round(float(m.group(1)), 2) for m in _PERCENT_RE.finditer(answer)}
+            expected = {round(v, 2) for v in (expected_g, expected_s) if v is not None}
+            passed = expected.issubset(found)
+            results.append({
+                "bank_id": bank_id, "tenure": label_name, "check": "fd_rate_shortcut",
+                "status": "PASS" if passed else "FAIL",
+                "detail": (
+                    f"shortcut states {expected_g:g}%/{expected_s:g}% ({best[0]!r}), matching Compare Rates"
+                    if passed else
+                    f"shortcut answer does not state Compare Rates' figure for {best[0]!r} "
+                    f"({expected_g:g}%/{expected_s:g}%) -- shortcut said: {answer!r}"
+                ),
+            })
+    return results
+
+
+def check_fd_rate_retrieval_preview() -> list[dict]:
+    """SECONDARY, WARN-only as of 2026-11-06 (was the primary FAIL-counted
+    check before fd_rate_shortcut.py existed): does RAG retrieval's top
+    chunk, truncated to General Chat's real 500-char preview, still state
+    the right figure near an explicit tenure mention? Now that
+    check_fd_rate_shortcut() above covers what chat actually answers with
+    for this question shape, a FAIL here just means "if the shortcut
+    doesn't fire, the RAG fallback would also be wrong" -- worth knowing,
+    not worth blocking on, since the shortcut is what real traffic hits.
+
+    The TOPICS above all check ONE thing: is the bank's target DOCUMENT
+    retrieved at all. The verification-sheet investigation found a
+    genuinely different failure mode that check can't see: the right
+    document can be beside the point if a DIFFERENT, unsynced document (a
+    forgotten "*_rates_deposit_structured.txt" mirror, or an unrelated
+    "*_loan_against_deposit.txt") outranks it, or the right document's own
+    internal ordering surfaces the wrong tenure band.
+
+    Ground truth is tenure_covers() — automation/tenure_utils.py — the
+    EXACT function compare_for_tenure() uses for Compare Rates itself,
+    with the same tie-break (the higher general rate wins when more than
+    one band's range includes the target day)."""
+    con = get_connection()
+    model, legacy_index, legacy_chunks, other_index, other_chunks = _load_pools()
+
+    results = []
+    for bank_id, faiss_code in _banks_with_auto_block().items():
+        rows = con.execute(
+            "SELECT tenure_label, interest_rate_general, interest_rate_senior FROM fd_rates "
+            "WHERE bank_id = ? AND product_type = 'fixed_deposit' AND deposit_variant = 'retail'",
+            [bank_id],
+        ).fetchall()
+
+        for label_name, (n, days) in FD_LOOKUP_TENURES.items():
+            matches = [r for r in rows if tenure_covers(r[0], days)]
+            if not matches:
+                results.append({
+                    "bank_id": bank_id, "tenure": label_name, "check": "fd_rate_retrieval_preview",
+                    "status": "SKIP",
+                    "detail": f"no retail band covers day {days} for this bank -- nothing to check",
+                })
+                continue
+            best = max(matches, key=lambda r: r[1])
+            expected = {round(v, 2) for v in (best[1], best[2]) if v is not None}
+
+            query = f"What is the {label_name} FD rate?"
+            gen_selected, _ = _retrieve_general(model, query, legacy_index, legacy_chunks, other_index, other_chunks)
+            bank_chunks = [c for c in gen_selected if c.get("bank", "INDIAN_BANK").upper() == faiss_code.upper()]
+            if not bank_chunks:
+                results.append({
+                    "bank_id": bank_id, "tenure": label_name, "check": "fd_rate_retrieval_preview",
+                    "status": "WARN",
+                    "detail": f"bank excluded from General Chat's round-robin entirely for {query!r}",
+                })
+                continue
+
+            chunk = bank_chunks[0]
+            preview = chunk["text"][:_GENERAL_CHAT_PREVIEW_CHARS]
+            passed = False
+            for mention in _TENURE_MENTION_RE[n].finditer(preview):
+                window = preview[mention.end(): mention.end() + _TENURE_PROXIMITY_CHARS]
+                nearby = {round(float(m.group(1)), 2) for m in _PERCENT_RE.finditer(window)}
+                if expected & nearby:
+                    passed = True
+                    break
+            results.append({
+                "bank_id": bank_id, "tenure": label_name, "check": "fd_rate_retrieval_preview",
+                "status": "OK" if passed else "WARN",
+                "detail": (
+                    f"top chunk ({chunk['doc_id']!r}) preview states Compare Rates' own figure "
+                    f"({best[0]!r}: {best[1]:g}%/{best[2]:g}%) near an explicit {n}-year mention"
+                    if passed else
+                    f"top chunk ({chunk['doc_id']!r}) preview does NOT state Compare Rates' figure for "
+                    f"{best[0]!r} ({best[1]:g}%/{best[2]:g}%) near an explicit {n}-year mention -- "
+                    f"RAG fallback would answer with something else (preview ends: ...{preview[-80:]!r})"
+                ),
+            })
+    return results
 
 
 def _load_pools():
@@ -338,12 +561,19 @@ def run_all() -> list[dict]:
     results = []
     for topic_name in TOPICS:
         results.extend(run_topic(topic_name))
+    results.extend(check_fd_rate_shortcut())
+    results.extend(check_fd_rate_retrieval_preview())
     return results
 
 
 def print_report(results: list[dict]) -> None:
     capacity_fails = [r for r in results if r["check"] == "general_chat_capacity" and r["status"] == "FAIL"]
-    bank_results = [r for r in results if r["check"] != "general_chat_capacity"]
+    fd_shortcut = [r for r in results if r["check"] == "fd_rate_shortcut"]
+    fd_preview = [r for r in results if r["check"] == "fd_rate_retrieval_preview"]
+    bank_results = [
+        r for r in results
+        if r["check"] not in ("general_chat_capacity", "fd_rate_shortcut", "fd_rate_retrieval_preview")
+    ]
 
     print("=" * 100)
     print(f"Retrieval-competition report - {len(TOPICS)} topic(s)")
@@ -378,11 +608,39 @@ def print_report(results: list[dict]) -> None:
                     notes.append(f"general: {gen['detail']}")
                 print(f"{topic_name:<20}{bank_id:<14}{'q' + str(qi + 1):<12}{bs_s:<12}{gen_s:<12}{'; '.join(notes)}")
 
-    total = len(bank_results)
-    failed = [r for r in bank_results if r["status"] == "FAIL"]
+    print()
+    print("=" * 100)
+    print("FD-rate shortcut (PRIMARY) — does the deterministic chat shortcut state the same rate "
+          "Compare Rates shows, for every AUTO-block bank's 1/3/5-year tenure?")
+    print("=" * 100)
+    fd_shortcut_checkable = [r for r in fd_shortcut if r["status"] != "SKIP"]
+    fd_shortcut_failed = [r for r in fd_shortcut_checkable if r["status"] == "FAIL"]
+    for r in fd_shortcut:
+        print(f"  {r['status']:<4}  {r['bank_id']:<14} {r['tenure']:<8} {r['detail']}")
+    print(f"  -> {len(fd_shortcut_checkable)} checked, {len(fd_shortcut_failed)} FAIL, "
+          f"{len(fd_shortcut_checkable) - len(fd_shortcut_failed)} PASS "
+          f"({len(fd_shortcut) - len(fd_shortcut_checkable)} skipped -- no band covers that exact tenure point)")
+
+    print()
+    print("=" * 100)
+    print("FD-rate RAG-retrieval preview (SECONDARY, WARN only) — would the OLD retrieval-only path "
+          "(no shortcut) have stated the right figure? Informational now that the shortcut is primary.")
+    print("=" * 100)
+    fd_preview_checkable = [r for r in fd_preview if r["status"] != "SKIP"]
+    fd_preview_warned = [r for r in fd_preview_checkable if r["status"] == "WARN"]
+    for r in fd_preview:
+        print(f"  {r['status']:<4}  {r['bank_id']:<14} {r['tenure']:<8} {r['detail']}")
+    print(f"  -> {len(fd_preview_checkable)} checked, {len(fd_preview_warned)} WARN "
+          f"(WARN only, not counted in FAIL)")
+
+    total = len(bank_results) + len(fd_shortcut_checkable)
+    failed = [r for r in bank_results if r["status"] == "FAIL"] + fd_shortcut_failed
+    print()
     print("-" * 100)
     print(f"TOTAL: {total} bank-level checks, {len(failed)} FAIL, {total - len(failed)} PASS")
     print(f"       {len(capacity_fails)} structural-ceiling warning(s) (see above, not counted in FAIL)")
+    print(f"       {len(fd_preview_checkable)} RAG-retrieval-preview checks, {len(fd_preview_warned)} WARN "
+          f"(WARN only, not counted in FAIL)")
 
 
 if __name__ == "__main__":

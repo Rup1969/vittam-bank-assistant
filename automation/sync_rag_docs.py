@@ -57,6 +57,7 @@ PROJECT_ROOT = AUTOMATION_DIR.parents[0]
 sys.path.insert(0, str(AUTOMATION_DIR))
 
 from db import get_connection  # noqa: E402
+from tenure_utils import tenure_covers  # noqa: E402
 
 _START_LINE = "<!--AUTO:START-->"
 _END_LINE = "<!--AUTO:END-->"
@@ -192,25 +193,38 @@ def _fd_rows_for_bank(bank_id: str) -> list[tuple]:
 # its own real tenure_label text exactly as the database has it, so
 # there's no risk of mischaracterizing a band as "the N-year rate" when
 # it's actually a sub-variant; it only decides what's shown first.
-# Best-effort by design: some banks don't have a band that starts
-# exactly at one of these points (their table has a gap there instead,
-# e.g. one band ending at 2 years and the next starting just after it,
-# with nothing starting AT 2 years) -- those periods are simply skipped
-# for that bank, never guessed or fabricated.
-_COMMON_TENURE_YEARS = (1, 2, 3, 5)
-_COMMON_TENURE_RE = {
-    n: re.compile(rf"^(?:>|Above\s+)?\s*{n}\s*Years?\b", re.IGNORECASE)
-    for n in _COMMON_TENURE_YEARS
-}
+#
+# BUG FOUND 2026-11-06 (the verification-sheet investigation): the
+# original version matched labels with a simple text-prefix regex
+# ("starts with '3 Years'"), not real day-count math. For HDFC
+# specifically, the actual 3-year and 5-year POINTS (days 1095/1825) fall
+# inside compound bands worded like "2 Years 11 Months 1 day <= 3 Year" --
+# the prefix regex never matches that, so it promoted the WRONG
+# neighboring band (one that starts the day after, not the one that
+# actually covers the point) to the front of the table. Confirmed via the
+# verification sheet: Compare Rates (which already uses tenure_covers()
+# for this exact question) showed 6.55%/7.05% for HDFC's 3-year rate and
+# 6.60%/7.20% for its 5-year rate; the old regex-based reordering
+# surfaced 6.6%/7.2% and 6.6%/7.1% instead -- silently wrong, and
+# inconsistent with what Compare Rates says for the same bank's "3 year"/
+# "5 year" question. Fixed by using tenure_covers() -- the SAME day-count
+# logic compare_for_tenure() already uses -- instead of a parallel,
+# looser implementation. Same tie-break rule too: when more than one
+# row's range includes the target day (a real ambiguity in some banks'
+# own interval wording, not a bug), the higher general rate wins, exactly
+# as compare_for_tenure() already does.
+_COMMON_TENURE_DAYS = {1: 365, 2: 730, 3: 1095, 5: 1825}
 
 
 def _reorder_common_tenures_first(rows: list[tuple]) -> list[tuple]:
     remaining = list(rows)
     front = []
-    for n in _COMMON_TENURE_YEARS:
-        idx = next((i for i, r in enumerate(remaining) if _COMMON_TENURE_RE[n].match(r[0])), None)
-        if idx is not None:
-            front.append(remaining.pop(idx))
+    for days in _COMMON_TENURE_DAYS.values():
+        matches = [i for i, r in enumerate(remaining) if tenure_covers(r[0], days)]
+        if not matches:
+            continue
+        best_i = max(matches, key=lambda i: remaining[i][1])  # r[1] = interest_rate_general
+        front.append(remaining.pop(best_i))
     return front + remaining
 
 

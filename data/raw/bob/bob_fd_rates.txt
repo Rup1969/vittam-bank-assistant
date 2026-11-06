@@ -36,3 +36,11 @@ below Rs. 3 crore — bulk deposits (Rs. 3 crore+) and non-callable
 variants are priced on a separate table. Verify the current rate
 against Bank of Baroda's live page before quoting, since FD rates are
 revised periodically.
+
+Savings Bank Account: 2.50% p.a. for retail balances up to Rs. 10
+crore (effective 22 August 2025).
+
+Recurring Deposit: not separately rate-tabled on Bank of Baroda's
+public pages at the time of writing — generally tracks the equivalent-
+tenor FD rate, consistent with how other banks price RDs; confirm with
+a branch for an exact current RD rate.
