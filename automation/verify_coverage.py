@@ -406,23 +406,58 @@ def check_iba_snapshot_age() -> list[dict]:
 _RAW_DOCS_DIR = PROJECT_ROOT / "data" / "raw"
 _AUTO_START_LINE = "<!--AUTO:START-->"
 _AUTO_END_LINE = "<!--AUTO:END-->"
-_RATE_FIGURE_RE = re.compile(r"\d+(?:\.\d+)?\s*%")
+_PERCENT_TOKEN_RE = re.compile(r"(\d+(?:\.\d+)?)\s*%")
 _PREVIEW_CHARS = 500  # app.py's _MAX_CHUNK_CHARS_GENERAL — General Chat's chunk-0 preview budget
+# Same "starts with 1 Year/1 year, optionally '>'/'Above '" rule
+# sync_rag_docs.py's _reorder_common_tenures_first() uses for its n=1
+# case — kept as its own copy rather than a cross-module import, since
+# the two scripts have no other dependency on each other and this one
+# regex is simple enough not to be worth coupling them over.
+_ONE_YEAR_LABEL_RE = re.compile(r"^(?:>|Above\s+)?\s*1\s*Years?\b", re.IGNORECASE)
+# A standalone "1 year"/"1-year" mention inside the preview text itself
+# (not anchored to line-start like _ONE_YEAR_LABEL_RE, which matches a
+# full tenure_label) — \b1\b keeps this from matching inside "21 year"
+# or "<1 year" wrongly... actually <1 year SHOULD match (a deposit of
+# "less than 1 year" still mentions "1 year"), and \b sits correctly
+# between "<" and "1" either way.
+_ONE_YEAR_MENTION_RE = re.compile(r"\b1[\s-]*years?\b", re.IGNORECASE)
+# How far (characters) a matching rate figure may sit after a "1 year"
+# mention and still count as "visibly attached to it" — found necessary,
+# not arbitrary: an earlier, looser version of this check matched the
+# 1-year rate's VALUE anywhere in the first 500 chars, which produced a
+# real false positive on BOB (its unrelated 211-270-day senior rate
+# happens to also be 6.25%, the same number as BOB's actual 1-year
+# rate) and a borderline one on Canara (the headline sentence's overall
+# max senior rate, 6.90%, happens to equal the 1-year row's own senior
+# rate, but nothing at that point in the text says "1 year"). Requiring
+# the number to sit near an explicit "1 year" mention — not just appear
+# somewhere in the window — is what catches those; confirmed by testing
+# this exact check against both banks' pre-fix (long-marker) text, where
+# it correctly WARNs (see the commit message for the measurements).
+_ONE_YEAR_PROXIMITY_CHARS = 40
 
 
 def check_preview_figures() -> list[dict]:
-    """For every document with an AUTO block (SBI/BOB/Canara/PNB/HDFC's
-    FD docs, RBI's policy-rates doc, as of 2026-11), does General Chat's
-    500-character chunk-0 preview actually contain a rate figure? Found
-    by hand, twice, this same investigation (the old long marker ate the
-    budget; later the generic template's own summary paragraph did) —
-    this check exists so a THIRD such regression surfaces automatically
-    instead of needing another manual measurement. WARN, never FAIL: a
-    document whose preview never included a figure even before any of
-    this automation (SBI's is a known, accepted case — its tenure table
-    starts too late in the chunk regardless) is a disclosed limitation,
-    not a bug to block on; this reports every case so a NEW one doesn't
-    go unnoticed, without blocking anything on an already-accepted one.
+    """For every FD document with an AUTO block (SBI/BOB/Canara/PNB/HDFC,
+    as of 2026-11 — RBI's policy-rates doc has no "1-year FD rate"
+    concept and is out of scope here), does General Chat's 500-character
+    chunk-0 preview contain the SPECIFIC 1-year rate figure, not just any
+    percentage? Tightened 2026-11-06 after the original, looser version
+    (any percentage at all) stayed green through two real regressions in
+    a row (the old long marker ate the budget; later the generic
+    template's own summary paragraph did) — both times because the
+    summary sentence's own headline range% satisfied "contains a
+    figure" even while the specific 1-year line was pushed out of the
+    preview entirely. Checking for the 1-year row's own real
+    general/senior rate closes that gap: a regression that merely
+    removes a DIFFERENT percentage can't accidentally look fine anymore.
+
+    WARN, never FAIL: a document whose preview never included the
+    1-year figure even before any of this automation (SBI's is a known,
+    accepted case — its tenure table starts too late in the chunk
+    regardless) is a disclosed limitation, not a bug to block on; this
+    reports every case so a NEW one doesn't go unnoticed, without
+    blocking anything on an already-accepted one.
 
     Mirrors build_index.py's own header/marker-stripping exactly (not a
     separate parallel implementation) so this measures what General Chat
@@ -431,6 +466,7 @@ def check_preview_figures() -> list[dict]:
     if not _RAW_DOCS_DIR.exists():
         return results
 
+    con = get_connection()
     for fpath in sorted(_RAW_DOCS_DIR.rglob("*.txt")):
         if ".ipynb_checkpoints" in fpath.parts:
             continue
@@ -438,6 +474,29 @@ def check_preview_figures() -> list[dict]:
         lines = text.splitlines()
         if not any(l.strip() == _AUTO_START_LINE for l in lines):
             continue  # no AUTO block -- not in this check's scope at all
+
+        doc_id = next(
+            (l.split(":", 1)[1].strip() for l in lines if l.startswith("DOCUMENT_ID")),
+            fpath.stem,
+        )
+        if not doc_id.endswith("fd_rates"):
+            continue  # scoped to FD documents only, per this check's own purpose
+
+        bank_id = fpath.parent.name
+        rows = con.execute(
+            "SELECT tenure_label, interest_rate_general, interest_rate_senior FROM fd_rates "
+            "WHERE bank_id = ? AND product_type = 'fixed_deposit' AND deposit_variant = 'retail'",
+            [bank_id],
+        ).fetchall()
+        one_year = next((r for r in rows if _ONE_YEAR_LABEL_RE.match(r[0])), None)
+        if one_year is None:
+            results.append({
+                "bank_id": bank_id, "product": fpath.stem, "check": "preview_figures",
+                "status": "WARN",
+                "detail": "no '1 Year...'-labeled retail row found in today's data -- can't check",
+            })
+            continue
+        label, g, s = one_year
 
         body_lines = [
             l for l in lines
@@ -447,16 +506,25 @@ def check_preview_figures() -> list[dict]:
         body = "\n".join(body_lines).strip()
         chunk0_text = " ".join(body.split())[:_PREVIEW_CHARS]
 
-        has_figure = bool(_RATE_FIGURE_RE.search(chunk0_text))
+        wanted = {round(v, 2) for v in (g, s) if v is not None}
+        has_rate = False
+        for mention in _ONE_YEAR_MENTION_RE.finditer(chunk0_text):
+            window = chunk0_text[mention.end(): mention.end() + _ONE_YEAR_PROXIMITY_CHARS]
+            nearby_values = {round(float(m.group(1)), 2) for m in _PERCENT_TOKEN_RE.finditer(window)}
+            if wanted & nearby_values:
+                has_rate = True
+                break
         results.append({
-            "bank_id": fpath.parent.name, "product": fpath.stem, "check": "preview_figures",
-            "status": "OK" if has_figure else "WARN",
+            "bank_id": bank_id, "product": fpath.stem, "check": "preview_figures",
+            "status": "OK" if has_rate else "WARN",
             "detail": (
-                f"first {_PREVIEW_CHARS} chars of General Chat's preview contain a rate figure"
-                if has_figure else
-                f"first {_PREVIEW_CHARS} chars of General Chat's preview contain NO rate figure "
-                f"-- a General Chat answer for this bank/doc may have nothing concrete to quote "
-                f"(ends: ...{chunk0_text[-60:]!r})"
+                f"1-year rate ({g:g}%/{s:g}% for {label!r}) appears in the first {_PREVIEW_CHARS} "
+                f"chars of General Chat's preview"
+                if has_rate else
+                f"1-year rate ({g:g}%/{s:g}% for {label!r}) does NOT appear in the first "
+                f"{_PREVIEW_CHARS} chars of General Chat's preview -- a General Chat answer for "
+                f"this bank's 1-year FD rate may have nothing concrete to quote "
+                f"(preview ends: ...{chunk0_text[-60:]!r})"
             ),
         })
     return results
