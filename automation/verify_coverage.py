@@ -422,6 +422,73 @@ def check_loan_freshness() -> list[dict]:
     return results
 
 
+# Known suffixes fetch_and_track.py's own source_id convention uses for
+# a non-fd_rates url_type (bare bank_id means "fd_rates" -- see its
+# run()'s own comment) -- kept local rather than importing from
+# fetch_and_track.py, since that module also pulls in Playwright (a
+# heavy, Groq-adjacent dependency this check has no other reason to
+# load).
+_SOURCE_ID_PRODUCT_SUFFIXES = ("_home_loan", "_education_loan", "_vehicle_loan")
+
+# Found live, 2026-11-06/07: Axis's FD source had 62 CONSECUTIVE fetch
+# errors (every single fetch from 2026-08-17 through today) before
+# anyone noticed -- a dead, date-stamped PDF URL, same silent-staleness
+# shape as Punjab & Sind's regex bug (fix 1, same investigation). That
+# bug was only found by a human asking "is this still broken?" and
+# reading fetch_log by hand; this check makes the exact same read
+# automatic. A streak longer than this many consecutive errors (most
+# recent fetches first) is a FAIL, regardless of how long ago the
+# streak started -- unlike loan_freshness above (which only cares about
+# the AGE of the last success), this also catches a source that fails
+# every day but happens to have failed only yesterday too, which a
+# pure-age check could still miss for a day or two after it starts.
+_MAX_CONSECUTIVE_FETCH_ERRORS = 3
+
+
+def _source_id_to_bank_and_product(source_id: str) -> tuple[str, str]:
+    for suffix in _SOURCE_ID_PRODUCT_SUFFIXES:
+        if source_id.endswith(suffix):
+            return source_id[: -len(suffix)], suffix.lstrip("_")
+    return source_id, "fd_rates"
+
+
+def check_consecutive_fetch_errors() -> list[dict]:
+    """For every real fetch_log source, how many of its MOST RECENT
+    fetches in a row have `error IS NOT NULL`, counting back from today
+    until the first success (or the start of its history)? A streak
+    longer than `_MAX_CONSECUTIVE_FETCH_ERRORS` is a FAIL -- the pipeline
+    is actively, repeatedly failing for this source right now, not just
+    once. Read-only against fetch_log; never writes anything (per this
+    project's standing rule that the daily workflow is the only writer
+    of automation.duckdb)."""
+    con = get_connection()
+    source_ids = [r[0] for r in con.execute("SELECT DISTINCT source_id FROM fetch_log").fetchall()]
+
+    results = []
+    for source_id in sorted(source_ids):
+        rows = con.execute(
+            "SELECT error FROM fetch_log WHERE source_id = ? ORDER BY fetched_at DESC",
+            [source_id],
+        ).fetchall()
+        streak = 0
+        for (error,) in rows:
+            if error is None:
+                break
+            streak += 1
+        bank_id, product = _source_id_to_bank_and_product(source_id)
+        status = "FAIL" if streak > _MAX_CONSECUTIVE_FETCH_ERRORS else "PASS"
+        results.append({
+            "bank_id": bank_id, "product": product, "check": "consecutive_fetch_errors",
+            "status": status,
+            "detail": f"{streak} consecutive fetch error(s) (most recent fetches first)"
+                      + ("" if status == "PASS" else
+                         f" -- exceeds the {_MAX_CONSECUTIVE_FETCH_ERRORS}-streak bound, "
+                         f"this source is actively failing every run"),
+        })
+    con.close()
+    return results
+
+
 _IBA_SNAPSHOT_MAX_AGE_DAYS = 30
 _IBA_SNAPSHOT_PATH = PROJECT_ROOT / "data" / "iba_snapshot.json"
 
@@ -599,8 +666,8 @@ def check_preview_figures() -> list[dict]:
 
 def run_all() -> list[dict]:
     return (check_tenure_coverage() + check_tenure_label_sanity() + check_missed_changes()
-            + check_benchmark_rate_drift() + check_loan_freshness() + check_iba_snapshot_age()
-            + check_preview_figures())
+            + check_benchmark_rate_drift() + check_loan_freshness() + check_consecutive_fetch_errors()
+            + check_iba_snapshot_age() + check_preview_figures())
 
 
 def print_report(results: list[dict]) -> None:
@@ -610,13 +677,14 @@ def print_report(results: list[dict]) -> None:
     missed = [r for r in results if r["check"] == "missed_changes"]
     drift = [r for r in results if r["check"] == "benchmark_drift"]
     freshness = [r for r in results if r["check"] == "loan_freshness"]
+    error_streaks = [r for r in results if r["check"] == "consecutive_fetch_errors"]
     iba_age = [r for r in results if r["check"] == "iba_snapshot_age"]
     preview_figures = [r for r in results if r["check"] == "preview_figures"]
     # "checkable" = everything that counts toward PASS/FAIL — short-gap
     # INFO rows and the IBA snapshot-age WARN are reported but
     # deliberately excluded, same as verify_retrieval.py's own
     # "general_chat_capacity" precedent.
-    checkable = coverage + label_sanity + missed + drift + freshness
+    checkable = coverage + label_sanity + missed + drift + freshness + error_streaks
 
     print("=" * 100)
     print(f"Tenure coverage — every real fd_rates band vs. Compare's milestones/Special Bands")
@@ -690,6 +758,22 @@ def print_report(results: list[dict]) -> None:
 
     print()
     print("=" * 100)
+    print(f"Consecutive fetch errors — any source failing EVERY fetch right now "
+          f"(>{_MAX_CONSECUTIVE_FETCH_ERRORS} in a row)?")
+    print("=" * 100)
+    error_fails = [r for r in error_streaks if r["status"] == "FAIL"]
+    if not error_streaks:
+        print("No fetch_log sources found -- nothing to check.")
+    elif not error_fails:
+        print(f"All {len(error_streaks)} source(s) have {_MAX_CONSECUTIVE_FETCH_ERRORS} or fewer "
+              f"consecutive fetch errors.")
+    else:
+        print(f"{len(error_fails)} of {len(error_streaks)} source(s):")
+        for r in error_fails:
+            print(f"  FAIL  {r['bank_id']:<14} {r['product']:<16} {r['detail']}")
+
+    print()
+    print("=" * 100)
     print(f"IBA snapshot age — manually refreshed, so this can only WARN, never FAIL")
     print("=" * 100)
     for r in iba_age:
@@ -718,7 +802,7 @@ def print_report(results: list[dict]) -> None:
     print(f"TOTAL: {total} checks, {len(failed)} FAIL, {total - len(failed)} PASS")
     print(f"       {len(coverage)} tenure-coverage checks, {len(label_sanity)} tenure-label-sanity "
           f"checks, {len(missed)} missed-change checks, {len(drift)} benchmark-drift checks, "
-          f"{len(freshness)} loan-freshness checks")
+          f"{len(freshness)} loan-freshness checks, {len(error_streaks)} consecutive-fetch-error checks")
     print(f"       {len(short_gaps)} short-tenure band(s) reported separately (not counted in FAIL)")
     print(f"       {len(iba_age)} IBA snapshot-age check (WARN only, not counted in FAIL)")
     print(f"       {len(preview_figures)} General Chat preview-figure check(s), {len(warned)} WARN "

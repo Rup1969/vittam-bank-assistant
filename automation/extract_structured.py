@@ -1033,46 +1033,76 @@ def extract_kotak_rows(text: str) -> list[dict]:
 # so there's no reason not to use it.
 #
 # Confirmed structure (2026-08-15, reading the real PDF directly before
-# writing this parser): page 1 has two tables — the first is just the
-# page's title banner, the second is the real retail (<5cr overall,
-# split into <3Cr/3-5Cr within it) rate table. Each data row has the
-# tenure label at column index 1 and the four rate values at columns 4
-# (General <3Cr), 7 (General 3-5Cr), 10 (Senior <3Cr), 13 (Senior 3-5Cr)
-# — column 4 and 10 are the ones this pipeline's schema wants, matching
-# the "retail below 3 crore" convention used for every other bank.
+# writing this parser): page 1 had two tables — the first just the
+# page's title banner, the second the real retail (<5cr overall, split
+# into <3Cr/3-5Cr within it) rate table. Tenure label at column index 1,
+# rates at columns 4 (General <3Cr) and 10 (Senior <3Cr).
+#
+# Axis restructured this PDF at the source sometime between 2026-08-16
+# (this project's last successful fetch under the OLD structure) and
+# 2026-10-29 (the first fetch found under a NEW one, via
+# discover_axis_fd_pdf_url(), 2026-11-07 — the bank also split what used
+# to be one combined PDF into separate "<3 crore"/"3 crore and above"
+# documents at the same time). The new "<3 crore" PDF is a SINGLE
+# pdfplumber table (not two) with the tenure label still at column 1 but
+# General/Senior now at columns 3/6, and its "W.e.f." date sits in the
+# page's own plain text rather than inside any table cell. Both shapes
+# are handled below — trend.py re-runs this same function against every
+# historical snapshot (see extract_rows_for_source()'s own docstring),
+# so an older saved PDF under the OLD structure must still parse
+# correctly too, not just today's.
 def extract_axis_rows(file_path: str) -> list[dict]:
     """Deterministic, table-aware parser for Axis's retail PDF rate table
-    — see module-level comment above for the confirmed column layout."""
+    — see module-level comment above for the confirmed column layout
+    (now two, old-structure vs. new-structure)."""
     with pdfplumber.open(file_path) as pdf:
-        tables = pdf.pages[0].extract_tables()
-    if len(tables) < 2:
+        page = pdf.pages[0]
+        tables = page.extract_tables()
+        page_text = page.extract_text() or ""
+
+    if len(tables) >= 2:
+        data_table, period_idx, general_idx, senior_idx = tables[1], 1, 4, 10
+    elif len(tables) == 1:
+        data_table, period_idx, general_idx, senior_idx = tables[0], 1, 3, 6
+    else:
         return []
-    data_table = tables[1]
 
     effective_date = None
-    for row in data_table:
-        for cell in row:
-            if cell and "w.e.f" in cell:
-                m = re.search(r"(\d{1,2})\w*\s*(\w+)\s*(\d{4})", cell)
-                if m:
-                    try:
-                        effective_date = datetime.strptime(
-                            f"{m.group(1)} {m.group(2)} {m.group(3)}", "%d %B %Y"
-                        ).strftime("%Y-%m-%d")
-                    except ValueError:
-                        pass
+    date_match = re.search(r"w\.?e\.?f\.?\s*(\d{1,2})\w*\s*(\w+)\s*(\d{4})", page_text, re.IGNORECASE)
+    if date_match:
+        try:
+            effective_date = datetime.strptime(
+                f"{date_match.group(1)} {date_match.group(2)} {date_match.group(3)}", "%d %B %Y"
+            ).strftime("%Y-%m-%d")
+        except ValueError:
+            pass
+    if effective_date is None:
+        # OLD-structure PDFs had their own "w.e.f" INSIDE a table cell,
+        # not in the page's plain text -- kept as a fallback so a
+        # historical snapshot under that layout still gets a real date.
+        for row in data_table:
+            for cell in row:
+                if cell and "w.e.f" in cell.lower():
+                    m = re.search(r"(\d{1,2})\w*\s*(\w+)\s*(\d{4})", cell)
+                    if m:
+                        try:
+                            effective_date = datetime.strptime(
+                                f"{m.group(1)} {m.group(2)} {m.group(3)}", "%d %B %Y"
+                            ).strftime("%Y-%m-%d")
+                        except ValueError:
+                            pass
+                    break
+            if effective_date:
                 break
-        if effective_date:
-            break
 
     rows = []
     for row in data_table:
-        period = row[1] if len(row) > 1 else None
+        period = row[period_idx] if len(row) > period_idx else None
         if not period or not re.search(r"\d", period):
             continue  # header/blank rows — real tenure labels always contain a number
         try:
-            general = float(row[4])
-            senior = float(row[10])
+            general = float(row[general_idx])
+            senior = float(row[senior_idx])
         except (ValueError, TypeError, IndexError):
             continue
         rows.append({
@@ -1206,7 +1236,7 @@ def run() -> None:
     client = Groq(api_key=settings.GROQ_API_KEY)
 
     changed_rows = con.execute(
-        "SELECT source_id, fetched_at, file_path FROM fetch_log "
+        "SELECT source_id, fetched_at, file_path, resolved_url FROM fetch_log "
         "WHERE changed = TRUE AND error IS NULL ORDER BY fetched_at"
     ).fetchall()
 
@@ -1216,7 +1246,7 @@ def run() -> None:
         return
 
     already_done = 0
-    for source_id, fetched_at, file_path in changed_rows:
+    for source_id, fetched_at, file_path, fetch_log_resolved_url in changed_rows:
         if already_extracted(con, source_id, fetched_at):
             already_done += 1
             continue
@@ -1245,22 +1275,36 @@ def run() -> None:
             html = resolved_path.read_text(encoding="utf-8")
             text = clean_text(html)
 
-        # Need the source's URL for provenance on each record — read it
-        # back out of config rather than re-threading it through fetch_log.
-        # fetch_log also carries composite source_ids for non-fd_rates URL
-        # types (e.g. "bob_home_loan", added when fetch_and_track.py started
-        # looping over every url_type per bank — see Stage 3) — those belong
-        # to extract_loan_rates.py, not this FD-rate-only script. A plain
-        # `next()` used to raise StopIteration the first time one of them
-        # was marked changed=True on the same run as this script (confirmed
-        # 2026-08-19: real crash on a genuinely-changed *_home_loan fetch,
-        # not a hypothetical edge case) — skip gracefully instead.
+        # Need the source's URL for provenance on each record. Prefer
+        # fetch_log's own resolved_url for THIS exact fetch over config's
+        # static urls.fd_rates value -- the two differ for a source whose
+        # real link is discovered fresh each run (Axis's FD PDF, added
+        # 2026-11-07 -- see fetch_and_track.py's discover_axis_fd_pdf_url()
+        # and config's own axis.note). Without this, fd_rates.source_url
+        # for Axis would keep citing the stale, dead, date-stamped URL
+        # that was actually overridden at fetch time -- technically
+        # correct provenance for every OTHER bank (where the two always
+        # match), silently wrong for this one.
+        #
+        # Falls back to config when fetch_log_resolved_url is NULL (every
+        # pre-existing row, before this column existed) rather than
+        # re-threading it through fetch_log unconditionally -- fetch_log
+        # also carries composite source_ids for non-fd_rates URL types
+        # (e.g. "bob_home_loan", added when fetch_and_track.py started
+        # looping over every url_type per bank — see Stage 3) — those
+        # belong to extract_loan_rates.py, not this FD-rate-only script. A
+        # plain `next()` used to raise StopIteration the first time one of
+        # them was marked changed=True on the same run as this script
+        # (confirmed 2026-08-19: real crash on a genuinely-changed
+        # *_home_loan fetch, not a hypothetical edge case) — skip
+        # gracefully instead.
         config = json.loads((PROJECT_ROOT / "config" / "banks.json").read_text(encoding="utf-8"))
-        source_url = next(
+        config_source_url = next(
             (b["urls"]["fd_rates"] for b in config["banks"]
              if b["id"] == source_id and "fd_rates" in b.get("urls", {})),
             None,
         )
+        source_url = fetch_log_resolved_url or config_source_url
         if source_url is None:
             print(f"{source_id}: no fd_rates URL configured for this source_id — skipping (not an FD-rate source)")
             continue

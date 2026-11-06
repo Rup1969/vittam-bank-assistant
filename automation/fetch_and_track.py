@@ -45,6 +45,7 @@ from __future__ import annotations
 import hashlib
 import io
 import json
+import re
 import time
 from datetime import datetime
 from pathlib import Path
@@ -176,6 +177,70 @@ def fetch_pdf_bytes(url: str, page: Page) -> bytes:
     return response.body()
 
 
+_AXIS_FD_PDF_LINK_RE = re.compile(r"domestic[\w-]*fixed-deposit[\w-]*\.pdf", re.IGNORECASE)
+_AXIS_RETAIL_HINT_RE = re.compile(r"less-than-3-crores|below-3-crore|under-3-crore", re.IGNORECASE)
+_AXIS_EXCLUDE_RE = re.compile(r"\bnri\b|fcnr|floating|-plus-|for-fi", re.IGNORECASE)
+_AXIS_PDF_DATE_RE = re.compile(r"(\d{1,2})-([a-zA-Z]+)-(\d{2,4})\.pdf")
+
+
+def discover_axis_fd_pdf_url(page: Page, landing_url: str) -> str:
+    """Axis's real retail FD-rate table only ever exists as a downloadable
+    PDF, and that PDF's own URL is date-stamped in its filename (e.g.
+    "...-29-october-2026.pdf") -- unlike every other bank's stable page
+    URL, a hardcoded copy of this one WILL go stale the moment Axis
+    republishes under a new dated filename. Confirmed for real,
+    2026-11-06: config's previous static URL ("...-14-august-26.pdf")
+    404'd/redirect-looped/timed out on every single fetch from
+    2026-08-17 onward -- 62 consecutive errors, last real success
+    2026-08-16 -- exactly the failure this function exists to stop
+    recurring. Rather than hand-updating the date every time it breaks,
+    this re-reads the bank's own FD-rates landing page and finds
+    whatever the CURRENT link actually is, every time it runs.
+
+    Prefers the "less than 3 crore" retail table (what this project
+    tracks for every other bank) over the "3 crore and above" bulk
+    table, any NRI/FCNR/floating-rate variant, or the "...-plus-..."
+    scheme -- confirmed via a live fetch 2026-11-06 that Axis's landing
+    page links ALL of these as separate, differently-named PDFs, so
+    matching "fixed deposit...pdf" alone is ambiguous. If more than one
+    candidate still matches (e.g. a stale link the page hasn't pruned
+    yet), picks whichever has the latest date parseable from its own
+    filename.
+
+    Raises RuntimeError if nothing matches -- never returns None. The
+    caller wraps this call in the SAME try/except-and-retry block that
+    already handles a raw fetch failure, so a landing-page layout change
+    surfaces as an honest fetch_log error (and, critically, never
+    deletes or overwrites existing fd_rates rows -- extract_structured.py
+    only acts on fetch_log rows with error IS NULL), not a silent wrong
+    answer or an empty table wiping out real data."""
+    page.goto(landing_url, wait_until="networkidle", timeout=30000)
+    hrefs = page.eval_on_selector_all("a[href]", "els => els.map(e => e.href)")
+    candidates = [h for h in hrefs if _AXIS_FD_PDF_LINK_RE.search(h) and not _AXIS_EXCLUDE_RE.search(h)]
+    if not candidates:
+        raise RuntimeError(
+            "Axis FD PDF discovery: no 'domestic fixed deposit...pdf' link "
+            f"found on the landing page ({landing_url}) -- its layout or "
+            "link text may have changed"
+        )
+    retail = [h for h in candidates if _AXIS_RETAIL_HINT_RE.search(h)]
+    pool = retail if retail else candidates
+
+    def _pdf_date(url: str) -> datetime:
+        m = _AXIS_PDF_DATE_RE.search(url)
+        if not m:
+            return datetime.min
+        day, month_name, year = m.group(1), m.group(2), m.group(3)
+        year = f"20{year}" if len(year) == 2 else year
+        try:
+            return datetime.strptime(f"{day}-{month_name}-{year}", "%d-%B-%Y")
+        except ValueError:
+            return datetime.min
+
+    pool.sort(key=_pdf_date, reverse=True)
+    return pool[0]
+
+
 def extract_pdf_text(pdf_bytes: bytes) -> str:
     """Flatten every page's text into one string — the PDF equivalent of
     clean_text() below, used for the same two purposes: hashing for
@@ -294,16 +359,27 @@ def run() -> None:
 
                 fetched_at = datetime.now()
 
+                # The URL actually used for this attempt -- identical to
+                # `url` (config's static value) for every source except
+                # one whose real link is discovered fresh each run (Axis's
+                # FD PDF, see discover_axis_fd_pdf_url()). Re-resolved
+                # inside the SAME try/retry block below, not once up
+                # front, so a discovery failure is caught and recorded by
+                # the exact same error-handling path as any other fetch
+                # failure -- never a separate, un-logged failure mode.
+                resolved_url = url
                 raw_bytes = text = None
                 error = None
                 for attempt in range(1, _MAX_FETCH_ATTEMPTS + 1):
                     try:
                         if is_pdf:
-                            raw_bytes = fetch_pdf_bytes(url, page)
+                            if bank.get("discover_fd_pdf") and url_type == "fd_rates":
+                                resolved_url = discover_axis_fd_pdf_url(page, bank["fd_rates_landing_url"])
+                            raw_bytes = fetch_pdf_bytes(resolved_url, page)
                             text = extract_pdf_text(raw_bytes)
                         else:
                             html = fetch_source(
-                                url, page, interactions=interactions,
+                                resolved_url, page, interactions=interactions,
                                 wait_until=wait_until,
                             )
                             raw_bytes = html.encode("utf-8")
@@ -318,9 +394,10 @@ def run() -> None:
 
                 if error is not None:
                     con.execute(
-                        "INSERT INTO fetch_log VALUES (?, ?, ?, ?, ?, ?)",
+                        "INSERT INTO fetch_log VALUES (?, ?, ?, ?, ?, ?, ?)",
                         [source_id, fetched_at, "", "", False,
-                         f"{error} (failed after {_MAX_FETCH_ATTEMPTS} attempts)"],
+                         f"{error} (failed after {_MAX_FETCH_ATTEMPTS} attempts)",
+                         resolved_url],
                     )
                     results.append((source_id, "ERROR", error))
                     continue
@@ -348,8 +425,8 @@ def run() -> None:
                 # Windows path crashes there outright rather than degrading.
                 relative_file_path = file_path.relative_to(PROJECT_ROOT).as_posix()
                 con.execute(
-                    "INSERT INTO fetch_log VALUES (?, ?, ?, ?, ?, ?)",
-                    [source_id, fetched_at, relative_file_path, text_hash, changed, None],
+                    "INSERT INTO fetch_log VALUES (?, ?, ?, ?, ?, ?, ?)",
+                    [source_id, fetched_at, relative_file_path, text_hash, changed, None, resolved_url],
                 )
                 status = "CHANGED" if changed else "unchanged"
                 results.append((source_id, status, str(file_path)))

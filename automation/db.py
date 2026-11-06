@@ -25,7 +25,8 @@ CREATE TABLE IF NOT EXISTS fetch_log (
     file_path  VARCHAR NOT NULL,
     text_hash  VARCHAR NOT NULL,
     changed    BOOLEAN NOT NULL,
-    error      VARCHAR
+    error      VARCHAR,
+    resolved_url VARCHAR
 );
 
 CREATE TABLE IF NOT EXISTS fd_rates (
@@ -109,6 +110,15 @@ def get_connection() -> duckdb.DuckDBPyConnection:
     con.execute(
         "ALTER TABLE fd_rates ADD COLUMN IF NOT EXISTS "
         "deposit_variant VARCHAR DEFAULT 'retail'"
+    )
+    # The actual URL fetched, as opposed to config/banks.json's own
+    # static urls.<url_type> value -- usually identical, but NOT for a
+    # source whose real URL is discovered at fetch time (Axis's FD PDF,
+    # 2026-11-07 -- see fetch_and_track.py's discover_axis_fd_pdf_url()).
+    # NULL on every pre-existing row (added after fetch_log already had
+    # real history); every ROW inserted from here on fills it in.
+    con.execute(
+        "ALTER TABLE fetch_log ADD COLUMN IF NOT EXISTS resolved_url VARCHAR"
     )
     return con
 
