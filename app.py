@@ -2362,6 +2362,38 @@ def load_embed_and_llm():
     return model, client
 
 
+@st.cache_resource
+def _deployed_version_label() -> str:
+    """A short "what code is this instance actually running" label for
+    the sidebar — built after a real debugging confusion: when a fix is
+    live on Streamlit Cloud is otherwise a guess (Cloud redeploys on its
+    own schedule after a push, not instantly, and there's no other way
+    from inside the app to tell whether a given session picked up the
+    latest commit or an older one still mid-redeploy). Tries the real
+    deployed commit first (`git rev-parse --short HEAD`, run from the
+    project root — Cloud's own clone has a working `.git` directory);
+    falls back to this file's own on-disk modification date if git isn't
+    available (e.g. a tarball deploy with no `.git`, or git simply not
+    on PATH) — still enough to tell "this is today's code" from "this is
+    stale." Cached for the process lifetime: a commit hash/mtime can't
+    change without a redeploy, which restarts the process anyway."""
+    import subprocess
+    from datetime import datetime
+
+    try:
+        result = subprocess.run(
+            ["git", "rev-parse", "--short", "HEAD"],
+            cwd=str(Path(__file__).resolve().parent),
+            capture_output=True, text=True, timeout=5,
+        )
+        if result.returncode == 0 and result.stdout.strip():
+            return f"commit {result.stdout.strip()}"
+    except Exception:
+        pass
+    mtime = datetime.fromtimestamp(Path(__file__).stat().st_mtime)
+    return f"app.py modified {mtime:%Y-%m-%d %H:%M}"
+
+
 def _pools_cache_key() -> tuple[float, float, float]:
     """Real on-disk mtimes of the 3 FAISS index files, recomputed fresh
     on every script rerun (cheap — 3 stat() calls, no file reads) and
@@ -2959,6 +2991,7 @@ with st.sidebar:
         "automation pipeline that keeps it current runs locally, see "
         "the `automation/` folder for the live pipeline."
     )
+    st.caption(f"🏷️ Running: {_deployed_version_label()}")
 
     # Cheap (filesystem timestamps only, no file reads/embeddings) —
     # runs on every rerun, not cached, so this can never itself go
@@ -3652,7 +3685,12 @@ if msgs and msgs[-1]["role"] == "user" and resources_ok:
     # it isn't confident about — falls through to normal chat below,
     # never a guessed bank/tenure/ranking.
     if explore_mode != "RBI Guidelines":
-        from fd_rate_shortcut import parse_fd_rate_intent, render_fd_rate_answer
+        from fd_rate_shortcut import (
+            TENURE_PROMPT,
+            looks_like_unparsed_fd_question,
+            parse_fd_rate_intent,
+            render_fd_rate_answer,
+        )
         from gap_notes import to_automation_id
         context_bank_id = to_automation_id(selected_bank) if selected_bank else None
         fd_intent = parse_fd_rate_intent(query, context_bank_id=context_bank_id)
@@ -3666,6 +3704,23 @@ if msgs and msgs[-1]["role"] == "user" and resources_ok:
                 "content" : answer,
                 "sources" : retrieved,
                 "time"    : elapsed,
+            })
+            st.session_state.total_queries += 1
+            st.rerun()
+        elif looks_like_unparsed_fd_question(query):
+            # A confident FD-rate/ranking question whose tenure genuinely
+            # couldn't be parsed -- found live on Streamlit Cloud that
+            # this used to fall all the way through to normal RAG+Groq
+            # chat silently, which for "Which bank has the highest
+            # 3-year FD rate?" produced a wrong-looking generic text
+            # answer instead of either the real ranking OR a clear ask
+            # for more detail. Never falls through for this shape again.
+            print(f"[fd_shortcut] fell through to tenure prompt (not normal chat) -- {query!r}")
+            st.session_state.messages.append({
+                "role"    : "assistant",
+                "content" : TENURE_PROMPT,
+                "sources" : [],
+                "time"    : 0.0,
             })
             st.session_state.total_queries += 1
             st.rerun()

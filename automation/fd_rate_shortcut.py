@@ -44,14 +44,46 @@ from gap_notes import freshness_label  # noqa: E402
 from db import get_connection  # noqa: E402
 
 _RATE_INTENT_RE = re.compile(r"\b(rate|fd|fixed\s+deposit)\b", re.IGNORECASE)
-_RANKING_RE = re.compile(r"\b(highest|best|lowest|top)\b", re.IGNORECASE)
+# Narrower than _RATE_INTENT_RE on purpose -- "rate" alone also matches a
+# home/education/vehicle/personal loan question, which this shortcut does
+# NOT cover and must never hijack into a tenure prompt (see
+# looks_like_unparsed_fd_question() below).
+_FD_SPECIFIC_RE = re.compile(r"\b(fd|fixed\s+deposit)\b", re.IGNORECASE)
+_OTHER_PRODUCT_RE = re.compile(
+    r"\b(home\s+loan|education\s+loan|vehicle\s+loan|personal\s+loan|"
+    r"gold\s+loan|mortgage|mclr|repo|benchmark)\b", re.IGNORECASE,
+)
+# "which bank(s)" and "maximum" added 2026-11-07 -- found live on
+# Streamlit Cloud that "Which bank has the highest 3-year FD rate?" fell
+# through to the old text answer; "highest" alone already matched, so the
+# real bug there was the tenure phrase (see _TENURE_PHRASE_RE below), but
+# "which bank" is just as clearly a ranking question even WITHOUT another
+# ranking word ("which bank offers the best 3-year FD" has "best" too, but
+# a bare "which bank for a 3 year FD" should still rank, not demand a
+# named bank it was never given).
+_RANKING_RE = re.compile(r"\b(highest|best|lowest|top|maximum|which\s+banks?)\b", re.IGNORECASE)
 _LOWEST_RE = re.compile(r"\blowest\b", re.IGNORECASE)
 _SENIOR_RE = re.compile(r"\bsenior\b", re.IGNORECASE)
 
-_TENURE_PHRASE_RE = re.compile(r"\b(\d+)\s*(day|days|month|months|year|years|yr|yrs)\b", re.IGNORECASE)
+_WORD_NUMBERS = {
+    "one": 1, "two": 2, "three": 3, "four": 4, "five": 5,
+    "six": 6, "seven": 7, "eight": 8, "nine": 9, "ten": 10,
+}
+# [\s-]* (not \s*) between the amount and the unit so "3-year" matches --
+# the exact real-world phrasing that fell through on Streamlit Cloud
+# ("Which bank has the highest 3-year FD rate?" has a hyphen, "highest FD
+# rate for 3 years" doesn't -- only the hyphenated one failed). Bare "y"
+# ("3y") is listed LAST in the unit alternation, same ordering rule
+# tenure_utils.py's own token regex uses, so "years"/"yr"/"yrs" are tried
+# first and a real "3 years" never gets short-matched as "3 y" + "ears".
+_TENURE_PHRASE_RE = re.compile(
+    r"\b(?:(\d+)|(" + "|".join(_WORD_NUMBERS) + r"))[\s-]*"
+    r"(day|days|month|months|year|years|yr|yrs|y)\b",
+    re.IGNORECASE,
+)
 _TENURE_UNIT_DAYS = {
     "day": 1, "days": 1, "month": 30, "months": 30,
-    "year": 365, "years": 365, "yr": 365, "yrs": 365,
+    "year": 365, "years": 365, "yr": 365, "yrs": 365, "y": 365,
 }
 
 # A separate map from app.py's own _BANK_MENTION_PATTERNS -- that one
@@ -94,8 +126,48 @@ def _extract_tenure_days(query: str) -> tuple[int, str] | None:
     matches = list(_TENURE_PHRASE_RE.finditer(query))
     if len(matches) != 1:
         return None
-    amount, unit = int(matches[0].group(1)), matches[0].group(2).lower()
-    return amount * _TENURE_UNIT_DAYS[unit], matches[0].group(0)
+    m = matches[0]
+    digit_str, word_str, unit = m.group(1), m.group(2), m.group(3)
+    amount = int(digit_str) if digit_str else _WORD_NUMBERS[word_str.lower()]
+    unit_l = unit.lower()
+    if unit_l in ("month", "months") and amount % 12 == 0:
+        # "36 months" means exactly 3 years (1095 days), not 36*30=1080 --
+        # a real difference: 1080 falls inside several banks' "2 years to
+        # < 3 years" band, not their "exactly 3 years" one, so the naive
+        # 30-day-month conversion would have silently answered the WRONG
+        # band for any whole-year phrasing stated in months. Only applies
+        # when evenly divisible by 12 -- "18 months" (not a whole number
+        # of years) is intentionally left as 18*30=540, its own genuine
+        # non-year tenure point.
+        days = (amount // 12) * 365
+    else:
+        days = amount * _TENURE_UNIT_DAYS[unit_l]
+    return days, m.group(0)
+
+
+def looks_like_unparsed_fd_question(query: str) -> bool:
+    """True when the query is confidently an FD-rate or FD-ranking
+    question that parse_fd_rate_intent() still returned None for -- the
+    caller should prompt for a tenure rather than silently falling
+    through to normal RAG+Groq chat (found live on Streamlit Cloud:
+    "Which bank has the highest 3-year FD rate?" fell through to the old
+    text answer because its hyphenated "3-year" didn't match the tenure
+    regex at the time -- a confusing silent failure for a question this
+    shortcut clearly should have answered).
+
+    Deliberately narrower than a bare _RATE_INTENT_RE match: a home/
+    education/vehicle/personal loan rate question (or a repo/MCLR/
+    benchmark one) also contains "rate" but isn't an FD question this
+    shortcut covers at all, and must still fall through normally rather
+    than being wrongly told to add a tenure it was never missing."""
+    if _OTHER_PRODUCT_RE.search(query):
+        return False
+    if _FD_SPECIFIC_RE.search(query):
+        return True
+    return bool(_RATE_INTENT_RE.search(query) and _RANKING_RE.search(query))
+
+
+TENURE_PROMPT = "Please include a tenure, e.g. 3 years."
 
 
 def parse_fd_rate_intent(query: str, context_bank_id: str | None = None) -> dict | None:
@@ -107,11 +179,19 @@ def parse_fd_rate_intent(query: str, context_bank_id: str | None = None) -> dict
     directly -- a bank named in the query text is NOT allowed to
     override it, since the user is already looking at that bank's own
     page; silently answering for a different bank would be surprising.
+
+    Every early return here is logged (`print`, so it shows up in
+    Streamlit Cloud's own logs, not just a local console) -- this
+    function returning None used to be a completely silent fall-through
+    to normal chat, which made the "3-year" hyphen bug above invisible
+    until a user happened to notice and report it.
     """
     if not _RATE_INTENT_RE.search(query):
+        print(f"[fd_shortcut] fell through: no rate/FD intent cue -- {query!r}")
         return None
     tenure = _extract_tenure_days(query)
     if tenure is None:
+        print(f"[fd_shortcut] fell through: no single parseable tenure phrase -- {query!r}")
         return None
     days, tenure_phrase = tenure
 
@@ -123,6 +203,7 @@ def parse_fd_rate_intent(query: str, context_bank_id: str | None = None) -> dict
     if not ranking and bank_id is None:
         # No bank in context, none named, and not a ranking question --
         # genuinely ambiguous which bank is meant. Never guess.
+        print(f"[fd_shortcut] fell through: no bank named/in context and not a ranking question -- {query!r}")
         return None
 
     return {
