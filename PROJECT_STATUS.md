@@ -6792,3 +6792,101 @@ updated note; IOB note unchanged from §64), `automation/verify_
 coverage.py` (`_read_only_sources()` replaces `_read_only_bank_ids()`),
 `automation/extract_loan_rates.py` (IOB education marker fix),
 `README.md` (Union Bank bullet rewritten).
+
+## 66. Union Bank FD doc regenerated from the manual snapshot (AUTO block); new rows-per-source-health check (2026-11-07)
+
+**Union Bank FD doc**: `data/raw/union_bank/union_bank_fd_rates.txt`
+converted to the AUTO-block convention and added to `sync_rag_docs.py`
+(`regenerate_union_bank_fd_doc()`, delegating to the shared HDFC-style
+`regenerate_bank_fd_doc()`, same as PNB). Required one real fix to that
+shared function: it had never been called for a bank with **zero**
+senior-citizen data before, and `min(premiums)` on an empty set would
+have crashed -- added a `not seniors` branch ("No senior-citizen rate
+was published alongside this table.") plus an optional
+`manual_snapshot_note` parameter, appended after the table (not before
+it) so it doesn't compete with the 500-char preview budget the same way
+earlier premium-sentence wording already had to be trimmed for.
+
+**A real sequencing problem found and corrected before it shipped
+wrong**: `sync_rag_docs.py` reads directly from `automation.duckdb` --
+since `load_manual_snapshots.py` (§65) has never actually been run
+against the REAL file (per the standing "workflow is the only writer"
+rule), the first regeneration attempt pulled the OLD, pre-manual-
+snapshot union_bank rows instead, producing a document with a senior
+rate and an assumed premium -- the exact opposite of what was asked.
+Fixed by regenerating from a **fresh throwaway copy** of the real DB
+with `load_manual_snapshots.py` applied on top of it (same copy-and-
+redirect `db.DB_PATH` technique §65 used to test the loader itself),
+then writing to the real document path from that corrected state. The
+real `automation.duckdb` was never touched.
+
+**Verified**: the regenerated doc has no senior figures anywhere, the
+"no senior rate published" sentence, the manual-snapshot note, and the
+effective date (4 August 2026) all correct. First 500 characters of
+the indexed text (computed the same way `build_index.py`/
+`check_preview_figures()` do) contain "1 year to 399 days: 6.2%" --
+confirmed directly, not assumed. Index rebuilt (220 chunks, same count -- this was a content edit to an
+already-indexed document, not a new/removed one);
+`verify_retrieval.py`'s original 300-check table is still byte-for-byte
+identical to the long-standing baseline; its FD-rate-shortcut check grew
+from 15 to 18 (Union Bank now has an AUTO block too) -- 18/18 PASS,
+matching Compare Rates exactly, read from the same (currently stale,
+pre-manual-snapshot) real DB both sides already agree on. One known,
+self-resolving artifact: `check_preview_figures()` currently WARNs for
+union_bank because the real DB's own label ("1 Yr to 399 days",
+abbreviated) doesn't match the "1 Year..." regex the new document's
+"1 year to 399 days" (spelled out) does -- this clears on its own the
+first time `load_manual_snapshots.py` actually runs for real and the DB
+catches up to the document.
+
+**New check, `check_rows_per_source_health()`**: compares every
+`live_fetch` FD/loan source's row count against the previous commit
+that touched `automation.duckdb` (extracted via `git show
+<hash>:data/automation.duckdb` into a throwaway temp file, never the
+real one) -- FAILs on a drop to 0 rows or >30% loss, lists every source
+that changed by any amount, silent about the (large majority) that
+didn't. Tested against 4 real recent commit pairs: 3 showed no change,
+1 showed a real, legitimate, non-alarming change (BOB education_loan
+8->7 rows, +12%, correctly PASS).
+
+**Would it have caught the IOB education or Punjab & Sind failures?
+Tested directly against the real historical commit pair (4a89ac9, the
+actual PRLR fix, vs. its parent) -- no, it would not have.** Checked
+why, not just reported the negative: both bugs' row count NEVER
+actually dropped in the committed database history (confirmed: IOB
+education_loan stayed at 13 rows and Punjab & Sind home_loan at 7 rows
+across every commit checked, right through both incidents) -- because
+`extract_structured.py`/`extract_loan_rates.py` already have their own,
+earlier guard (`if raw_rows: DELETE...`) that never replaces existing
+rows with an empty result, so a parser silently returning `[]` just
+freezes the stale count rather than dropping it to zero. That staleness
+is exactly what the EXISTING `loan_freshness` check (age-based, already
+flagging both today) and `consecutive_fetch_errors` (fetch-layer,
+upstream of extraction) already catch -- this new check is
+complementary, not a replacement: it catches a PARTIAL degradation (a
+parser that returns fewer, not zero, rows -- which DOES clear the
+"non-empty" guard and would reach the DB) or a full wipe from a writer
+that has no such guard (confirmed directly: `load_manual_snapshots.py`
+replaces unconditionally). Proved the mechanism itself works by
+simulating the exact zero-row shape of both real bugs on a throwaway
+copy -- both correctly FAIL ("13 -> 0 rows", "7 -> 0 rows").
+
+Verify suite: `verify_all.py` 186/186; `verify_index_freshness.py` 3/3;
+`verify_retrieval.py` unchanged in its original scope (300-table byte-
+identical), 18/18 `fd_rate_shortcut` PASS (up from 15, Union Bank now
+included); `verify_coverage.py` 6 FAIL (same as §65 -- all IOB/
+loan_freshness, nothing new), 0 rows-per-source-health changes against
+the real current DB (expected -- nothing has actually changed there
+yet).
+
+Files: `automation/sync_rag_docs.py` (`regenerate_bank_fd_doc()`'s new
+`not seniors` branch + `manual_snapshot_note` param,
+`regenerate_union_bank_fd_doc()`, wired into `run()`),
+`data/raw/union_bank/union_bank_fd_rates.txt` (AUTO block + the two
+now-redundant/contradicted hand-written paragraphs removed), `data/raw/
+{bob,canara,hdfc,pnb,sbi}/*_fd_rates.txt` (routine date-header refresh
+from the real current DB, no content change), `automation/
+verify_coverage.py` (new `check_rows_per_source_health()` +
+`_git_commits_touching_db()`/`_extract_db_blob()`/`_source_row_counts()`
+helpers), `indexes/other_banks.index`, `indexes/other_banks_chunks.json`
+(rebuilt).

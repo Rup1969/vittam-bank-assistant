@@ -7,7 +7,7 @@ SOURCE_TYPE: PRODUCT_PAGE
 SBI Fixed Deposit Interest Rates (Retail Domestic Term Deposits, below Rs. 3 crore)
 
 <!--AUTO:START-->
-As per SBI's official interest rates page, last updated 28 October 2026, rates
+As per SBI's official interest rates page, last updated 6 November 2026, rates
 effective 15 December 2025 for the general public and senior citizens are:
 
 Tenor: 7 days to 45 days       -> General: 3.05% p.a. | Senior Citizen: 3.55% p.a.

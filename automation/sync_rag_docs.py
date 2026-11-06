@@ -70,6 +70,7 @@ SBI_FD_DOC_PATH = PROJECT_ROOT / "data" / "raw" / "sbi" / "sbi_fd_rates.txt"
 BOB_FD_DOC_PATH = PROJECT_ROOT / "data" / "raw" / "bob" / "bob_fd_rates.txt"
 CANARA_FD_DOC_PATH = PROJECT_ROOT / "data" / "raw" / "canara" / "canara_fd_rates.txt"
 PNB_FD_DOC_PATH = PROJECT_ROOT / "data" / "raw" / "pnb" / "pnb_fd_rates.txt"
+UNION_BANK_FD_DOC_PATH = PROJECT_ROOT / "data" / "raw" / "union_bank" / "union_bank_fd_rates.txt"
 
 
 def _replace_marked_block(text: str, new_body: str) -> str | None:
@@ -228,12 +229,21 @@ def _reorder_common_tenures_first(rows: list[tuple]) -> list[tuple]:
     return front + remaining
 
 
-def regenerate_bank_fd_doc(bank_id: str, doc_path: Path, bank_display_name: str) -> bool:
+def regenerate_bank_fd_doc(
+    bank_id: str, doc_path: Path, bank_display_name: str, manual_snapshot_note: str | None = None,
+) -> bool:
     """Returns True if the document's content actually changed on disk.
     Regenerates BOTH the summary paragraph and the tenure table from the
     same query result, in the same run -- so the two can never disagree
     with each other the way a hand-maintained summary sentence could
-    silently drift from a hand-maintained table."""
+    silently drift from a hand-maintained table.
+
+    `manual_snapshot_note`, if given, is appended as its own sentence --
+    for a bank whose fd_rates rows come from a hand-maintained CSV
+    (`load_manual_snapshots.py`), not a live fetch (Union Bank, added
+    2026-11-07 after its FD page became a persistent WAF block -- see
+    config/banks.json's union_bank note), so the document itself says so
+    rather than reading identically to a live-fetched bank's."""
     rows = _fd_rows_for_bank(bank_id)
     if not rows:
         print(f"[sync_rag_docs] no fd_rates rows found for {bank_id!r} -- skipping")
@@ -245,7 +255,18 @@ def regenerate_bank_fd_doc(bank_id: str, doc_path: Path, bank_display_name: str)
     seniors = [s for _, _, s, _, _ in rows if s is not None]
     min_rate, max_rate = min(generals), max(generals)
     premiums = sorted({round(s - g, 2) for _, g, s, _, _ in rows if g is not None and s is not None})
-    if len(premiums) == 1:
+    if not seniors:
+        # Confirmed 2026-11-07 (Union Bank's manual snapshot): no
+        # senior-citizen rate was found on the bank's own page for this
+        # table at all -- NOT the same case as "every tenure shares one
+        # premium" or "premiums vary by tenure" below. Never invents a
+        # premium (not even by copying one from elsewhere, e.g. an
+        # older, now-superseded hand-written document for the same
+        # bank) -- the per-row table lines already say "not published"
+        # for each one; this sentence just states the same fact once,
+        # up front, instead of leaving it to be inferred 18 times over.
+        premium_sentence = "No senior-citizen rate was published alongside this table."
+    elif len(premiums) == 1:
         premium_sentence = (
             f"with senior citizens earning a flat additional {premiums[0]:g}% over the general rate."
         )
@@ -278,9 +299,13 @@ def regenerate_bank_fd_doc(bank_id: str, doc_path: Path, bank_display_name: str)
     effective_human = _human_date(datetime.strptime(effective_label, "%Y-%m-%d")) \
         if re.match(r"^\d{4}-\d{2}-\d{2}$", effective_label) else effective_label
 
+    # "with senior citizens..." continues the previous sentence after a
+    # comma; the no-senior-data case is its own standalone sentence, so
+    # the line before it needs a period instead.
+    range_line_end = "." if not seniors else ","
     lines = [
         f"{bank_display_name}'s current fixed deposit (FD) interest rate for the general\n",
-        f"public ranges from {min_rate:g}% to {max_rate:g}% per annum across its tenures,\n",
+        f"public ranges from {min_rate:g}% to {max_rate:g}% per annum across its tenures{range_line_end}\n",
         f"{premium_sentence}\n",
         "\n",
         f"Effective {effective_human}, rates by tenure (general public / senior citizen):\n",
@@ -289,6 +314,14 @@ def regenerate_bank_fd_doc(bank_id: str, doc_path: Path, bank_display_name: str)
         g_s = f"{g:g}%" if g is not None else "not published"
         s_s = f"{s:g}%" if s is not None else "not published"
         lines.append(f"- {tenure_label}: {g_s} / {s_s}\n")
+    if manual_snapshot_note:
+        # Appended AFTER the table, not before it -- General Chat's
+        # 500-char preview budget is tight enough already (see the
+        # premium_sentence shortening above, same investigation); this
+        # note is important provenance but not as time-critical as the
+        # 1-year figure actually being inside that window.
+        lines.append("\n")
+        lines.append(f"{manual_snapshot_note}\n")
     new_body = "".join(lines)
 
     new_text = _replace_marked_block(text, new_body)
@@ -560,6 +593,25 @@ def regenerate_pnb_fd_doc() -> bool:
     return regenerate_bank_fd_doc("pnb", PNB_FD_DOC_PATH, "Punjab National Bank")
 
 
+# Union Bank's FD page became a persistent WAF block (confirmed
+# 2026-11-07 -- see config/banks.json's union_bank note and
+# PROJECT_STATUS.md §64/§65); its fd_rates rows now come from a hand-
+# maintained CSV (data/manual/union_bank_fd.csv, loaded by
+# load_manual_snapshots.py) instead of a live fetch. Uses the same
+# generic HDFC-style template as PNB -- no 1:1 row-order/position
+# assumption needed, and the generic template already handles a bank
+# with no senior-citizen data at all (see regenerate_bank_fd_doc()'s
+# `not seniors` branch, added for this bank specifically).
+def regenerate_union_bank_fd_doc() -> bool:
+    return regenerate_bank_fd_doc(
+        "union_bank", UNION_BANK_FD_DOC_PATH, "Union Bank of India",
+        manual_snapshot_note=(
+            "This table is a manually-maintained snapshot (data/manual/union_bank_fd.csv), "
+            "not a live daily fetch -- see README Known Limitations."
+        ),
+    )
+
+
 def run() -> dict[str, bool]:
     """Returns {name: changed?} for every document this pilot covers."""
     results = {}
@@ -569,6 +621,7 @@ def run() -> dict[str, bool]:
     results["bob_fd_rates"] = regenerate_bob_fd_doc()
     results["canara_fd_rates"] = regenerate_canara_fd_doc()
     results["pnb_fd_rates"] = regenerate_pnb_fd_doc()
+    results["union_bank_fd_rates"] = regenerate_union_bank_fd_doc()
     return results
 
 

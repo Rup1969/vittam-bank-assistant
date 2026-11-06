@@ -59,8 +59,11 @@ Run standalone:
 from __future__ import annotations
 
 import json
+import os
 import re
+import subprocess
 import sys
+import tempfile
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -69,7 +72,7 @@ PROJECT_ROOT = AUTOMATION_DIR.parents[0]
 sys.path.insert(0, str(PROJECT_ROOT))
 sys.path.insert(0, str(AUTOMATION_DIR))
 
-from db import get_connection  # noqa: E402
+from db import DB_PATH, get_connection  # noqa: E402
 from tenure_utils import (  # noqa: E402
     STANDARD_TENURE_MILESTONES,
     _EXCLUSIVE_UPPER_RE,
@@ -540,6 +543,163 @@ def check_consecutive_fetch_errors() -> list[dict]:
     return results
 
 
+# >30% of a source's PREVIOUS row count lost in one commit is a FAIL --
+# distinct from "dropped to zero rows", which is always a FAIL
+# regardless of the prior count (even losing 1 of 2 rows is a 50% drop
+# that would already trip this bound, but 0 rows is unambiguous on its
+# own and worth its own clearer message).
+_ROWS_DROP_FAIL_FRACTION = 0.30
+
+
+def _git_commits_touching_db() -> list[str]:
+    """Every commit hash (newest first) that actually changed
+    data/automation.duckdb -- NOT every commit in the repo, most of
+    which never touch this file at all."""
+    result = subprocess.run(
+        ["git", "log", "--format=%H", "--", "data/automation.duckdb"],
+        cwd=str(PROJECT_ROOT), capture_output=True, text=True, check=False,
+    )
+    return [h for h in result.stdout.splitlines() if h.strip()]
+
+
+def _extract_db_blob(commit_hash: str, dest_path: Path) -> bool:
+    """Writes that commit's exact data/automation.duckdb blob to
+    dest_path. False (not an exception) if the commit/path doesn't
+    resolve -- a shallow clone or a commit before this file existed are
+    both real, non-error cases to just report nothing for."""
+    result = subprocess.run(
+        ["git", "show", f"{commit_hash}:data/automation.duckdb"],
+        cwd=str(PROJECT_ROOT), capture_output=True, check=False,
+    )
+    if result.returncode != 0 or not result.stdout:
+        return False
+    dest_path.write_bytes(result.stdout)
+    return True
+
+
+def _source_row_counts(db_path: Path) -> dict[tuple[str, str], int]:
+    """(bank_id, product) -> row count, for every data_source='live_fetch'
+    FD/loan source -- the same scope loan_freshness/benchmark_drift above
+    already treat as this project's real, automatically-refreshed data
+    (manual_load_frozen rows are expected to stay fixed and are out of
+    scope here on purpose). Opens the given file directly and read-only
+    (never through get_connection(), which also runs schema-migration
+    ALTERs this one-off read has no business triggering, especially not
+    against an extracted PAST snapshot)."""
+    import duckdb
+
+    con = duckdb.connect(str(db_path), read_only=True)
+    counts: dict[tuple[str, str], int] = {}
+    for (bank_id,) in con.execute(
+        "SELECT DISTINCT bank_id FROM fd_rates WHERE data_source = 'live_fetch'"
+    ).fetchall():
+        n = con.execute(
+            "SELECT COUNT(*) FROM fd_rates WHERE bank_id = ? AND data_source = 'live_fetch'",
+            [bank_id],
+        ).fetchone()[0]
+        counts[(bank_id, "fd_rates")] = n
+    for bank_id, loan_type in con.execute(
+        "SELECT DISTINCT bank_id, loan_type FROM loan_rates WHERE data_source = 'live_fetch'"
+    ).fetchall():
+        n = con.execute(
+            "SELECT COUNT(*) FROM loan_rates WHERE bank_id = ? AND loan_type = ? AND data_source = 'live_fetch'",
+            [bank_id, loan_type],
+        ).fetchone()[0]
+        counts[(bank_id, loan_type)] = n
+    con.close()
+    return counts
+
+
+def check_rows_per_source_health(
+    current_db_path: Path | None = None, previous_db_path: Path | None = None,
+) -> list[dict]:
+    """Compares each live_fetch FD/loan source's row count in the
+    CURRENT database against its row count as of the previous commit
+    that touched data/automation.duckdb -- catches a real content
+    regression (a parser silently extracting far fewer rows, or none,
+    while the fetch itself still reports success) that neither
+    loan_freshness (only sees AGE, not content) nor
+    consecutive_fetch_errors (only sees the FETCH layer, before
+    extraction even runs) would notice, since both would look perfectly
+    healthy if the fetch succeeds and extraction merely returns less
+    than before.
+
+    `current_db_path`/`previous_db_path` are overridable for testing
+    against two specific snapshots (e.g. two historical commits) without
+    touching the real file; left as None (the normal run_all() case),
+    the current one is the real data/automation.duckdb on disk and the
+    previous one is extracted fresh from git into a temp file, cleaned
+    up before returning.
+
+    Only reports sources whose row count actually CHANGED -- an
+    unchanged count (the normal case for most sources on most days) is
+    not interesting enough to list every single run."""
+    cleanup: list[Path] = []
+    try:
+        if current_db_path is None:
+            current_db_path = DB_PATH
+        if previous_db_path is None:
+            commits = _git_commits_touching_db()
+            if len(commits) < 2:
+                return [{
+                    "bank_id": "-", "product": "-", "check": "rows_per_source_health",
+                    "status": "INFO",
+                    "detail": "fewer than 2 commits touch data/automation.duckdb in this "
+                              "repo's history -- nothing to compare against yet",
+                }]
+            # mkstemp's own fd must be closed immediately -- an open
+            # handle to it blocks duckdb.connect() on Windows ("file is
+            # being used by another process"), and blocks the cleanup
+            # unlink() too.
+            fd, tmp_name = tempfile.mkstemp(suffix=".duckdb")
+            os.close(fd)
+            tmp = Path(tmp_name)
+            cleanup.append(tmp)
+            if not _extract_db_blob(commits[1], tmp):
+                return [{
+                    "bank_id": "-", "product": "-", "check": "rows_per_source_health",
+                    "status": "INFO",
+                    "detail": f"could not extract data/automation.duckdb from commit "
+                              f"{commits[1][:10]} -- skipping this run",
+                }]
+            previous_db_path = tmp
+
+        current_counts = _source_row_counts(current_db_path)
+        previous_counts = _source_row_counts(previous_db_path)
+    finally:
+        for p in cleanup:
+            p.unlink(missing_ok=True)
+
+    results = []
+    for bank_id, product in sorted(set(current_counts) | set(previous_counts)):
+        cur_n = current_counts.get((bank_id, product), 0)
+        prev_n = previous_counts.get((bank_id, product), 0)
+        if cur_n == prev_n:
+            continue  # unchanged -- not interesting, not reported
+        if prev_n == 0:
+            # A brand-new source this run, not a regression -- nothing
+            # to compare its count AGAINST.
+            results.append({
+                "bank_id": bank_id, "product": product, "check": "rows_per_source_health",
+                "status": "PASS",
+                "detail": f"{prev_n} -> {cur_n} rows (new source, no prior baseline)",
+            })
+            continue
+        drop_fraction = (prev_n - cur_n) / prev_n
+        if cur_n == 0:
+            status, reason = "FAIL", "dropped to ZERO rows"
+        elif drop_fraction > _ROWS_DROP_FAIL_FRACTION:
+            status, reason = "FAIL", f"lost {drop_fraction:.0%} of its prior rows (exceeds {_ROWS_DROP_FAIL_FRACTION:.0%} bound)"
+        else:
+            status, reason = "PASS", f"changed by {drop_fraction:+.0%}" if drop_fraction else "changed"
+        results.append({
+            "bank_id": bank_id, "product": product, "check": "rows_per_source_health",
+            "status": status,
+            "detail": f"{prev_n} -> {cur_n} rows ({reason})",
+        })
+    return results
+
+
 _IBA_SNAPSHOT_MAX_AGE_DAYS = 30
 _IBA_SNAPSHOT_PATH = PROJECT_ROOT / "data" / "iba_snapshot.json"
 
@@ -718,7 +878,7 @@ def check_preview_figures() -> list[dict]:
 def run_all() -> list[dict]:
     return (check_tenure_coverage() + check_tenure_label_sanity() + check_missed_changes()
             + check_benchmark_rate_drift() + check_loan_freshness() + check_consecutive_fetch_errors()
-            + check_iba_snapshot_age() + check_preview_figures())
+            + check_rows_per_source_health() + check_iba_snapshot_age() + check_preview_figures())
 
 
 def print_report(results: list[dict]) -> None:
@@ -730,13 +890,15 @@ def print_report(results: list[dict]) -> None:
     freshness = [r for r in results if r["check"] == "loan_freshness"]
     error_streaks = [r for r in results if r["check"] == "consecutive_fetch_errors"]
     known_blocked = [r for r in results if r["check"] == "consecutive_fetch_errors_known_blocked"]
+    rows_health = [r for r in results if r["check"] == "rows_per_source_health"]
+    rows_health_checkable = [r for r in rows_health if r["status"] != "INFO"]
     iba_age = [r for r in results if r["check"] == "iba_snapshot_age"]
     preview_figures = [r for r in results if r["check"] == "preview_figures"]
     # "checkable" = everything that counts toward PASS/FAIL — short-gap
     # INFO rows and the IBA snapshot-age WARN are reported but
     # deliberately excluded, same as verify_retrieval.py's own
     # "general_chat_capacity" precedent.
-    checkable = coverage + label_sanity + missed + drift + freshness + error_streaks
+    checkable = coverage + label_sanity + missed + drift + freshness + error_streaks + rows_health_checkable
 
     print("=" * 100)
     print(f"Tenure coverage — every real fd_rates band vs. Compare's milestones/Special Bands")
@@ -831,6 +993,25 @@ def print_report(results: list[dict]) -> None:
 
     print()
     print("=" * 100)
+    print(f"Rows-per-source health — every live_fetch FD/loan source's row count vs. the "
+          f"previous commit that touched automation.duckdb (>{_ROWS_DROP_FAIL_FRACTION:.0%} drop or 0 rows = FAIL)")
+    print("=" * 100)
+    if not rows_health:
+        print("No source's row count changed since the previous commit that touched automation.duckdb.")
+    elif all(r["status"] == "INFO" for r in rows_health):
+        for r in rows_health:
+            print(f"  INFO  {r['detail']}")
+    else:
+        changed = [r for r in rows_health if r["status"] != "INFO"]
+        if not changed:
+            print("No source's row count changed since the previous commit.")
+        else:
+            print(f"{len(changed)} source(s) changed:")
+            for r in changed:
+                print(f"  {r['status']:<4}  {r['bank_id']:<14} {r['product']:<16} {r['detail']}")
+
+    print()
+    print("=" * 100)
     print(f"IBA snapshot age — manually refreshed, so this can only WARN, never FAIL")
     print("=" * 100)
     for r in iba_age:
@@ -859,7 +1040,8 @@ def print_report(results: list[dict]) -> None:
     print(f"TOTAL: {total} checks, {len(failed)} FAIL, {total - len(failed)} PASS")
     print(f"       {len(coverage)} tenure-coverage checks, {len(label_sanity)} tenure-label-sanity "
           f"checks, {len(missed)} missed-change checks, {len(drift)} benchmark-drift checks, "
-          f"{len(freshness)} loan-freshness checks, {len(error_streaks)} consecutive-fetch-error checks")
+          f"{len(freshness)} loan-freshness checks, {len(error_streaks)} consecutive-fetch-error checks, "
+          f"{len(rows_health_checkable)} rows-per-source-health checks")
     print(f"       {len(short_gaps)} short-tenure band(s) reported separately (not counted in FAIL)")
     print(f"       {len(known_blocked)} source(s) known blocked (config read_only/read_only_products, not counted in FAIL)")
     print(f"       {len(iba_age)} IBA snapshot-age check (WARN only, not counted in FAIL)")
