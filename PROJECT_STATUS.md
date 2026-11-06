@@ -6693,3 +6693,102 @@ now classifies `read_only` banks as known-blocked INFO, not FAIL),
 `config/banks.json` (IOB: `wait_until: "commit"` + updated note; Union
 Bank: note corrected to current reality), `README.md` (Union Bank
 "manually loaded" bullet corrected in place).
+
+## 65. IOB education parser fixed (case-insensitive marker); Union Bank FD switched to a manual CSV snapshot (2026-11-07)
+
+**IOB education_loan**: `extract_iob_education_rows()`'s closing-region
+marker was a case-sensitive `text.find("FIXED RATE OF INTEREST", ...)`
+— the live page (after §64's wait-strategy fix let real content through
+at all) actually prints it as `"Fixed Rate of Interest"` (title case),
+so the marker never matched and the function returned `[]` even though
+the real table was fully present. Fixed with a case-insensitive regex
+search. Verified against the same live-fetched page: **13 rows**
+parsed (Vidya Jyothi 10.00%/8.75%, Vidya Suraksha 10.00%, Vidya Shresht
+7.75%/8.00%, IOB Scholar 10.55%/11.55%/10.25%, Skill/Vocational/Career
+Dream/Bihar Student Credit Card), matching the page's own printed
+table exactly.
+
+**Audited (not fixed) every other literal-string `.find()` region
+marker** in `extract_loan_rates.py` and `extract_structured.py` that
+could break the same way on a wording or case change — reported to the
+user as a plain list, grouped by file/bank, no code touched.
+
+**Union Bank FD**: the WAF block confirmed in §64 showed no sign of
+clearing, so it's now a manual snapshot rather than a live source.
+`data/manual/union_bank_fd.csv` (new) — 18 tenure bands, hand-copied
+from the bank's own page (effective 2026-08-04), general-public rates
+only; no senior-citizen rate was found for this table, so
+`interest_rate_senior` is left genuinely blank rather than assuming the
+0.50% premium an OLDER, already-committed document
+(`data/raw/union_bank/union_bank_fd_rates.txt`) happens to state — that
+older document now disagrees with the new structured snapshot on both
+the senior premium AND the tenure bands (it has one flat "1yr-3yr:
+6.20%" row where the new snapshot has seven distinct bands between
+6.10% and 6.55%); flagged to the user, not corrected here, since it
+wasn't asked for in this pass and touching a RAG-facing document was
+explicitly out of scope ("change nothing else").
+
+New `automation/load_manual_snapshots.py` reads every CSV in
+`data/manual/`, validates each rate against the same 0-15% plausibility
+bound `FDRateRecord` already enforces (refusing to load, not partially
+loading, a CSV with any row outside it — leaves existing fd_rates rows
+untouched on a validation failure), and replaces (never accumulates)
+each (bank_id, product_type) pair's rows. Added as its own step in
+`daily-refresh.yml`, after the extract steps and before the commit
+step — nothing else in the workflow changed. Tested end-to-end against
+a **throwaway copy** of `automation.duckdb` (never the real file,
+per the standing rule that the workflow is the only writer) — confirmed
+18 rows load correctly, and that the 1/3/5-year milestones resolve to
+exactly 6.20%/6.10%/6.00% general, with senior correctly absent
+(`compare_for_tenure(..., "senior")` excludes Union Bank entirely, same
+as any bank with no senior data) and the FD-rate shortcut rendering
+"Senior not published" rather than a fabricated number.
+
+`config/banks.json` gained a new, more granular exclusion mechanism:
+`"read_only_products": [...]` (per-product, alongside the existing
+bank-wide `"read_only": true`) — Union Bank's home_loan PDF is still
+genuinely live-fetched and must not be swept into "known blocked"
+alongside its now-frozen FD page. `verify_coverage.py`'s
+`check_consecutive_fetch_errors()` updated to check both levels.
+README's Known Limitations bullet rewritten to describe the current,
+now-manual state and the refresh steps.
+
+**Noted, not acted on**: 18 of the 18 new labels use the hyphen-range
+style ("46-90 days") already used project-wide for every bank's short-
+tenure ladder (confirmed: `tenure_utils.parse_tenure_range()` collapses
+EVERY such hyphen-range label to a single point at its UPPER value —
+e.g. "46-90 days" parses to (90, 90), not (46, 90) — a pre-existing,
+project-wide behavior, not something newly introduced here, and
+already correctly excluded from Compare's milestone/Special-Bands
+visibility by `is_special_band()`'s own <365-day short-tenure
+exclusion for every bank that uses this style). Doesn't affect the
+1/3/5-year verification below (none of those three milestones fall
+inside a short hyphen-range band for this bank).
+
+**Verified, all 18 parsed (lo, hi) ranges** (via `tenure_utils.
+parse_tenure_range()` directly): 7-14→(14,14), 15-30→(30,30),
+31-45→(45,45), 46-90→(90,90), 91-120→(120,120), 121-180→(180,180),
+181-270→(270,270), 271-364→(364,364), "1 year to 399 days"→(365,399),
+400 days→(400,400), 401-443→(443,443), 444 days→(444,444),
+445-554→(554,554), 555 days→(555,555), 556-996→(996,996), 997
+days→(997,997), "998 days to 3 years"→(998,1095), "above 3 years to 10
+years"→(1095,3650). **1/3/5-year milestones confirmed**: `compare_for_
+tenure(365,"general")`→6.20% ("1 year to 399 days"); `(1095,"general")`
+→6.10% ("998 days to 3 years"); `(1825,"general")`→6.00% ("above 3
+years to 10 years") — all three match exactly.
+
+Verify suite: `verify_all.py` 186/186; `verify_index_freshness.py` 3/3;
+`verify_retrieval.py` unchanged (300-table byte-identical, 15/15
+shortcut); `verify_coverage.py` now 6 FAIL (down from 9 two commits
+ago) + 3 known-blocked INFO (BOI, Indian Bank, Union Bank) — the 3
+remaining FAILs are all IOB (still blocked from GitHub Actions'
+network specifically, confirmed working from this session's own
+network) plus the 3 pre-existing, unrelated `loan_freshness` FAILs.
+
+Files: `data/manual/union_bank_fd.csv` (new), `automation/
+load_manual_snapshots.py` (new), `.github/workflows/daily-refresh.yml`
+(new step), `config/banks.json` (Union Bank: `read_only_products`,
+updated note; IOB note unchanged from §64), `automation/verify_
+coverage.py` (`_read_only_sources()` replaces `_read_only_bank_ids()`),
+`automation/extract_loan_rates.py` (IOB education marker fix),
+`README.md` (Union Bank bullet rewritten).

@@ -1,0 +1,19 @@
+bank_id,product_type,tenure_label,interest_rate_general,interest_rate_senior,effective_date,fetched_at,source_url,data_source
+union_bank,fixed_deposit,7-14 days,2.70,,2026-08-04,2026-11-07,https://www.unionbankofindia.bank.in/en/details/rate-of-interest,manual_load_frozen
+union_bank,fixed_deposit,15-30 days,2.80,,2026-08-04,2026-11-07,https://www.unionbankofindia.bank.in/en/details/rate-of-interest,manual_load_frozen
+union_bank,fixed_deposit,31-45 days,3.00,,2026-08-04,2026-11-07,https://www.unionbankofindia.bank.in/en/details/rate-of-interest,manual_load_frozen
+union_bank,fixed_deposit,46-90 days,4.00,,2026-08-04,2026-11-07,https://www.unionbankofindia.bank.in/en/details/rate-of-interest,manual_load_frozen
+union_bank,fixed_deposit,91-120 days,4.30,,2026-08-04,2026-11-07,https://www.unionbankofindia.bank.in/en/details/rate-of-interest,manual_load_frozen
+union_bank,fixed_deposit,121-180 days,4.75,,2026-08-04,2026-11-07,https://www.unionbankofindia.bank.in/en/details/rate-of-interest,manual_load_frozen
+union_bank,fixed_deposit,181-270 days,5.40,,2026-08-04,2026-11-07,https://www.unionbankofindia.bank.in/en/details/rate-of-interest,manual_load_frozen
+union_bank,fixed_deposit,271-364 days,5.60,,2026-08-04,2026-11-07,https://www.unionbankofindia.bank.in/en/details/rate-of-interest,manual_load_frozen
+union_bank,fixed_deposit,1 year to 399 days,6.20,,2026-08-04,2026-11-07,https://www.unionbankofindia.bank.in/en/details/rate-of-interest,manual_load_frozen
+union_bank,fixed_deposit,400 days,6.25,,2026-08-04,2026-11-07,https://www.unionbankofindia.bank.in/en/details/rate-of-interest,manual_load_frozen
+union_bank,fixed_deposit,401-443 days,6.25,,2026-08-04,2026-11-07,https://www.unionbankofindia.bank.in/en/details/rate-of-interest,manual_load_frozen
+union_bank,fixed_deposit,444 days,6.50,,2026-08-04,2026-11-07,https://www.unionbankofindia.bank.in/en/details/rate-of-interest,manual_load_frozen
+union_bank,fixed_deposit,445-554 days,6.15,,2026-08-04,2026-11-07,https://www.unionbankofindia.bank.in/en/details/rate-of-interest,manual_load_frozen
+union_bank,fixed_deposit,555 days,6.55,,2026-08-04,2026-11-07,https://www.unionbankofindia.bank.in/en/details/rate-of-interest,manual_load_frozen
+union_bank,fixed_deposit,556-996 days,6.15,,2026-08-04,2026-11-07,https://www.unionbankofindia.bank.in/en/details/rate-of-interest,manual_load_frozen
+union_bank,fixed_deposit,997 days,6.10,,2026-08-04,2026-11-07,https://www.unionbankofindia.bank.in/en/details/rate-of-interest,manual_load_frozen
+union_bank,fixed_deposit,998 days to 3 years,6.10,,2026-08-04,2026-11-07,https://www.unionbankofindia.bank.in/en/details/rate-of-interest,manual_load_frozen
+union_bank,fixed_deposit,above 3 years to 10 years,6.00,,2026-08-04,2026-11-07,https://www.unionbankofindia.bank.in/en/details/rate-of-interest,manual_load_frozen

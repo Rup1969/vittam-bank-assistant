@@ -453,15 +453,32 @@ def _source_id_to_bank_and_product(source_id: str) -> tuple[str, str]:
     return source_id, "fd_rates"
 
 
-def _read_only_bank_ids() -> set[str]:
-    """Every bank_id config/banks.json itself marks `"read_only": true` --
-    a site this project has already confirmed is bot-defended/WAF-
-    blocked and loads that bank's data manually instead (Indian Bank,
-    BOI -- see README Known Limitations). Read from config rather than a
-    hardcoded bank_id list here, so the exclusion tracks config's own
-    flag instead of drifting out of sync with it."""
+def _read_only_sources() -> tuple[set[str], set[tuple[str, str]]]:
+    """Two levels of config-flagged "known blocked", mirroring the
+    content_type/content_types split fetch_and_track.py already uses for
+    a similar bank-wide-vs-per-product distinction:
+
+    - `"read_only": true` (bank-wide) -- every url_type for this bank is
+      manually loaded (Indian Bank, BOI: their only url_type IS
+      fd_rates, so this is accurate for them).
+    - `"read_only_products": [...]` (per-product) -- only the NAMED
+      url_type(s) are manually loaded, the rest of the bank's sources
+      are still live (Union Bank, added 2026-11-07: its FD page is a
+      confirmed persistent WAF block, manually snapshotted via
+      load_manual_snapshots.py, but its home_loan PDF is still fetched
+      live and must NOT be swept into "known blocked" alongside it).
+
+    Read from config rather than a hardcoded bank_id list, so this
+    tracks config's own flags instead of drifting out of sync with
+    them."""
     config = json.loads((PROJECT_ROOT / "config" / "banks.json").read_text(encoding="utf-8"))
-    return {b["id"] for b in config["banks"] if b.get("read_only")}
+    bank_wide = {b["id"] for b in config["banks"] if b.get("read_only")}
+    per_product = {
+        (b["id"], product)
+        for b in config["banks"]
+        for product in b.get("read_only_products", [])
+    }
+    return bank_wide, per_product
 
 
 def check_consecutive_fetch_errors() -> list[dict]:
@@ -486,7 +503,7 @@ def check_consecutive_fetch_errors() -> list[dict]:
     and isn't going to "fix" by defeating the block."""
     con = get_connection()
     source_ids = [r[0] for r in con.execute("SELECT DISTINCT source_id FROM fetch_log").fetchall()]
-    read_only_banks = _read_only_bank_ids()
+    read_only_banks, read_only_products = _read_only_sources()
 
     results = []
     for source_id in sorted(source_ids):
@@ -501,12 +518,13 @@ def check_consecutive_fetch_errors() -> list[dict]:
             streak += 1
         bank_id, product = _source_id_to_bank_and_product(source_id)
         exceeds = streak > _MAX_CONSECUTIVE_FETCH_ERRORS
-        if exceeds and bank_id in read_only_banks:
+        if exceeds and (bank_id in read_only_banks or (bank_id, product) in read_only_products):
             results.append({
                 "bank_id": bank_id, "product": product, "check": "consecutive_fetch_errors_known_blocked",
                 "status": "INFO",
-                "detail": f"{streak} consecutive fetch error(s) -- known blocked (config read_only=true, "
-                          f"manual_load_frozen data; see README Known Limitations), not counted as FAIL",
+                "detail": f"{streak} consecutive fetch error(s) -- known blocked (config read_only/"
+                          f"read_only_products, manual_load_frozen data; see README Known Limitations), "
+                          f"not counted as FAIL",
             })
             continue
         status = "FAIL" if exceeds else "PASS"
@@ -806,7 +824,7 @@ def print_report(results: list[dict]) -> None:
         for r in error_fails:
             print(f"  FAIL  {r['bank_id']:<14} {r['product']:<16} {r['detail']}")
     if known_blocked:
-        print(f"\n{len(known_blocked)} source(s) KNOWN BLOCKED (config read_only=true -- "
+        print(f"\n{len(known_blocked)} source(s) KNOWN BLOCKED (config read_only/read_only_products -- "
               f"manual_load_frozen data, not counted in FAIL):")
         for r in known_blocked:
             print(f"  INFO  {r['bank_id']:<14} {r['product']:<16} {r['detail']}")
@@ -843,7 +861,7 @@ def print_report(results: list[dict]) -> None:
           f"checks, {len(missed)} missed-change checks, {len(drift)} benchmark-drift checks, "
           f"{len(freshness)} loan-freshness checks, {len(error_streaks)} consecutive-fetch-error checks")
     print(f"       {len(short_gaps)} short-tenure band(s) reported separately (not counted in FAIL)")
-    print(f"       {len(known_blocked)} source(s) known blocked (config read_only=true, not counted in FAIL)")
+    print(f"       {len(known_blocked)} source(s) known blocked (config read_only/read_only_products, not counted in FAIL)")
     print(f"       {len(iba_age)} IBA snapshot-age check (WARN only, not counted in FAIL)")
     print(f"       {len(preview_figures)} General Chat preview-figure check(s), {len(warned)} WARN "
           f"(WARN only, not counted in FAIL)")

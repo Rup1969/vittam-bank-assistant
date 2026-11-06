@@ -1429,10 +1429,23 @@ _IOB_EDU_SCHEME_NAMES = [
 _IOB_EDU_ROW_RE = re.compile(r"RLLR\s*([+-])\s*([\d.]+)%\s+([\d.]+)%?")
 
 
+_IOB_EDU_END_MARKER_RE = re.compile(r"fixed rate of interest", re.IGNORECASE)
+
+
 def extract_iob_education_rows(text: str) -> list[dict]:
     region_start = text.find("VIDYA JYOTHI")
-    region_end = text.find("FIXED RATE OF INTEREST", region_start)
-    if region_start == -1 or region_end == -1:
+    if region_start == -1:
+        return []
+    # Confirmed 2026-11-07: a live fetch (after fixing the unrelated
+    # wait_until timeout, see config's own note) returned zero rows
+    # even though the real table was fully present -- this closing
+    # marker's literal case-sensitive text.find("FIXED RATE OF
+    # INTEREST", ...) never matched, because the page actually prints
+    # it as "Fixed Rate of Interest" (title case), not all-caps like
+    # most of the surrounding content. Matched case-insensitively now.
+    end_match = _IOB_EDU_END_MARKER_RE.search(text, region_start)
+    region_end = end_match.start() if end_match else -1
+    if region_end == -1:
         return []
 
     positions = []

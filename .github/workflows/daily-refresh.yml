@@ -37,6 +37,9 @@ jobs:
           python automation/extract_structured.py
           python automation/extract_loan_rates.py
 
+      - name: Load manual snapshots
+        run: python automation/load_manual_snapshots.py
+
       - name: Commit and push if data changed
         run: |
           git config user.name "github-actions[bot]"
