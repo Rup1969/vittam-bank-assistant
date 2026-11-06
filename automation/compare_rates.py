@@ -13,7 +13,7 @@ Run standalone for a demo against the real current data:
 from __future__ import annotations
 
 from db import get_connection
-from tenure_utils import is_special_band, parse_tenure_range, tenure_covers
+from tenure_utils import is_bare_number_label, is_special_band, parse_tenure_range, tenure_covers
 
 VALID_CUSTOMER_TYPES = ("general", "senior")
 
@@ -70,6 +70,14 @@ def compare_for_tenure(target_days: int, customer_type: str = "general") -> list
     # bank_id -> {"retail": best-retail-row-or-None, "other": [rows]}
     by_bank: dict[str, dict] = {}
     for bank_id, tenure_label, rate, source_url, variant in rows:
+        if variant == "special_tenor":
+            # A named, fixed-duration scheme (e.g. UCO's 333/444/535/1000/
+            # 2000/3000-day Green Deposits) — not a normal retail/
+            # non-callable product comparable at a standard milestone.
+            # Confirmed 2026-11-06: these must never win or place in a
+            # standard-tenure ranking; they only belong in Special /
+            # Additional Tenure Bands (special_tenure_bands() below).
+            continue
         if not tenure_covers(tenure_label, target_days):
             continue
         entry = {
@@ -137,38 +145,58 @@ def special_tenure_bands(customer_type: str = "general") -> list[dict]:
     < 4 Years 7 Months" band was completely absent from Compare AND
     missed by the digest, because both only ever check the 8 milestones.
 
-    Scoped to `is_special_band()` — a genuinely substantial-duration gap
-    (>=365 days) a customer might plausibly want to compare, not every
-    bank's routine short-tenure laddering (7-14 days, 15-29 days, etc.),
-    which fails to match a milestone too but for an uninteresting reason
-    (milestones are sparse points; short bands are narrow) — surfacing
-    all ~130 of those would bury the ~10 that are actually special.
+    Scoped to retail rows qualifying as `is_special_band()` — a genuinely
+    substantial-duration gap (>=365 days) a customer might plausibly want
+    to compare, not every bank's routine short-tenure laddering (7-14
+    days, 15-29 days, etc.), which fails to match a milestone too but for
+    an uninteresting reason (milestones are sparse points; short bands are
+    narrow) — surfacing all ~130 of those would bury the ~10 that are
+    actually special. PLUS, regardless of duration: every `special_tenor`
+    row (a named fixed-duration scheme, e.g. UCO's 444-day Green Deposit —
+    compare_for_tenure() above deliberately excludes these from standard
+    ranking, so this is the only place they're shown) and every bare-
+    number tenure_label (e.g. Punjab & Sind's "500" — no unit, so its real
+    duration is unknown; shown as-is rather than guessed at, with no day
+    range attached — confirmed 2026-11-06, see is_bare_number_label()).
 
-    One row per qualifying (bank, band) — retail variant only, same
-    scope as compare_for_tenure()'s primary rate. Sorted bank-wise
-    (alphabetical bank_id, then duration within each bank) — per
+    One row per qualifying (bank, band). Sorted bank-wise (alphabetical
+    bank_id, then duration within each bank, bare-number rows last within
+    their bank since they have no known duration to sort by) — per
     explicit request, easier to scan "what does bank X offer" than a
     flat tenure-only ordering that scatters one bank's own bands apart."""
     col = _rate_column(customer_type)
     con = get_connection()
     rows = con.execute(
-        f"SELECT bank_id, tenure_label, {col}, source_url "
-        f"FROM fd_rates WHERE {col} IS NOT NULL AND deposit_variant = 'retail'"
+        f"SELECT bank_id, tenure_label, {col}, source_url, deposit_variant "
+        f"FROM fd_rates WHERE {col} IS NOT NULL"
     ).fetchall()
     con.close()
 
     results = []
-    for bank_id, tenure_label, rate, source_url in rows:
-        if not is_special_band(tenure_label):
+    for bank_id, tenure_label, rate, source_url, variant in rows:
+        bare = is_bare_number_label(tenure_label)
+        if variant == "retail" and not bare:
+            if not is_special_band(tenure_label):
+                continue
+            lo, hi = parse_tenure_range(tenure_label)
+        elif variant == "special_tenor" or bare:
+            lo, hi = (None, None) if bare else parse_tenure_range(tenure_label)
+        else:
+            # A non-retail, non-special_tenor row (e.g. non_callable) that
+            # doesn't otherwise qualify — already surfaced via
+            # compare_for_tenure()'s `secondary` field when it beats
+            # retail, not duplicated here.
             continue
-        lo, hi = parse_tenure_range(tenure_label)
         results.append({
             "bank_id": bank_id, "tenure_label": tenure_label,
             "rate": rate, "source_url": source_url,
             "days_min": lo, "days_max": hi,
         })
 
-    return sorted(results, key=lambda r: (r["bank_id"], r["days_min"]))
+    return sorted(
+        results,
+        key=lambda r: (r["bank_id"], r["days_min"] if r["days_min"] is not None else 99999),
+    )
 
 
 def rank_all_common_tenures(customer_type: str = "general") -> dict[str, list[dict]]:

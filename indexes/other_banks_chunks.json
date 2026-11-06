@@ -634,8 +634,8 @@
     "source_type": "PRODUCT_PAGE",
     "date": "2026-11-05",
     "source": "https://www.canarabank.bank.in/pages/deposit-interest-rates and https://www.canarabank.bank.in/term-deposits-rate-of-interest-p.a.",
-    "text": "Canara Bank Fixed Deposit Interest Rates (below Rs. 3 crore) Effective 2 November 2026 (callable deposits), General Public range: 3.00% to 6.75% p.a. across tenors from 7 days to 10 years. Senior citizens: 3.00% to 6.90% p.a. across the same tenor range (roughly a 0.50% premium on most tenors, as per the bank's general senior-citizen policy). Selected specific tenors reported: - 7-45 days: 3.00% (general public) - 46-90 days: 4.00% (general public) - 1 year: 6.40% (general public) Special-Tenor Deposits: - 444 Days Deposit and 555 Days Deposit — special-tenor schemes with their own rates; the 555-day scheme offers 6.85% p.a. for senior citizens, with an additional 0.60% for super senior citizens. Senior Citizen Premium: an additional 0.50% on deposits below Rs. 2 crore with a tenor of 180 days or more; super senior citizens receive a further 0.60% on select special-tenor (444/555 day) schemes. This is a headline range, not a complete tenor-by-tenor table — the bank's detailed rate page and downloadable rate document should be checked for the exact rate at a specific tenor before quoting, since rates are revised periodically.",
-    "word_count": 183
+    "text": "Canara Bank Fixed Deposit Interest Rates (below Rs. 3 crore) Effective 2 November 2026 (callable deposits), General Public range: 3.00% to 6.75% p.a. across tenors from 7 days to 10 years. Senior citizens: 3.00% to 6.90% p.a. across the same tenor range (roughly a 0.50% premium on most tenors, as per the bank's general senior-citizen policy). Selected specific tenors reported: - 7-45 days: 3.00% (general public) - 46-90 days: 4.00% (general public) - 1 year: 6.40% (general public) Special-Tenor Deposits: - 444 Days Deposit and 555 Days Deposit — special-tenor schemes with their own rates; the 555-day scheme offers 6.85% p.a. for senior citizens, with an additional 0.60% for super senior citizens. Senior Citizen Premium: an additional 0.50% on deposits below Rs. 2 crore with a tenor of 180 days or more; super senior citizens receive a further 0.60% on select special-tenor (444/555 day) schemes. Savings Bank Account: 2.90% to 4.00% p.a. depending on balance slab; all savings accounts are zero-minimum-balance effective June 2026. This is a headline range, not a complete tenor-by-tenor table — the bank's detailed rate page and downloadable rate document should be checked for the exact rate at a specific tenor before quoting, since rates are revised periodically.",
+    "word_count": 202
   },
   {
     "chunk_id": "canara_loan_against_deposit_chunk000",
@@ -746,17 +746,6 @@
     "source": "https://www.canarabank.bank.in/canara-vehicle, https://www.canarabank.bank.in/canara-green-wheels, and https://www.canarabank.bank.in/pages/interest-rate-range-on-loans",
     "text": "Canara Bank Vehicle Loan (Canara Vehicle) Interest Rate: Ranges from 7.45% to 15.00% p.a. (mean rate approximately 9.09%), effective 12 December 2025. Products: - Canara Vehicle — the standard car/vehicle loan product. - Canara Green Wheels — a dedicated electric-vehicle financing scheme, matching the \"green auto loan\" pattern seen at other banks (e.g. SBI's Green Car Loan, Bank of Baroda's not having a direct equivalent named product). For eligibility, exact loan amount, tenure, margin/down-payment, and documents required, check the specific product's own page (Canara Vehicle vs. Canara Green Wheels have separate terms) or a branch.",
     "word_count": 95
-  },
-  {
-    "chunk_id": "canara_rates_deposit_structured_chunk000",
-    "doc_id": "canara_rates_deposit_structured",
-    "bank": "CANARA",
-    "category": "RATES",
-    "source_type": "PRODUCT_PAGE",
-    "date": "2024-12-01",
-    "source": "https://www.canarabank.bank.in/pages/deposit-interest-rates",
-    "text": "Canara Bank — Structured Deposit Rate Table Savings Bank Account: 2.90% to 4.00% p.a. depending on balance slab; all savings accounts are zero-minimum-balance effective June 2026. Fixed Deposits (below Rs. 3 crore), effective 1 December 2024: - General Public range: 4.00% to 7.40% p.a. (7 days to 10 years) - Senior Citizen range: 4.00% to 7.90% p.a. (7 days to 10 years) - 7-45 days: 4.00% (general public) - 46-90 days: 5.25% (general public) - 1 year: 6.85% (general public) - 444 Days / 555 Days special-tenor schemes: 555-day senior citizen rate 7.10%, with an additional 0.60% for super senior citizens on select special-tenor schemes. (This mirrors canara_fd_rates.txt — kept here too so the consolidated rates pool has a single structured reference table per bank, matching the convention used for SBI, Bank of Baroda, and Indian Bank.) Senior Citizen Premium: additional 0.50% on deposits below Rs. 2 crore with tenor 180 days or more. Verify the exact current rate against Canara Bank's live deposit-rates page before quoting, since this data point is dated December 2024 for the standard FD table.",
-    "word_count": 180
   },
   {
     "chunk_id": "canara_rates_lending_structured_chunk000",

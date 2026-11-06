@@ -29,6 +29,9 @@ Senior Citizen Premium: an additional 0.50% on deposits below Rs. 2
 crore with a tenor of 180 days or more; super senior citizens receive
 a further 0.60% on select special-tenor (444/555 day) schemes.
 
+Savings Bank Account: 2.90% to 4.00% p.a. depending on balance slab;
+all savings accounts are zero-minimum-balance effective June 2026.
+
 This is a headline range, not a complete tenor-by-tenor table — the
 bank's detailed rate page and downloadable rate document should be
 checked for the exact rate at a specific tenor before quoting, since

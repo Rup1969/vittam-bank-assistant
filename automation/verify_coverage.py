@@ -71,8 +71,11 @@ sys.path.insert(0, str(AUTOMATION_DIR))
 from db import get_connection  # noqa: E402
 from tenure_utils import (  # noqa: E402
     STANDARD_TENURE_MILESTONES,
+    _EXCLUSIVE_UPPER_RE,
+    is_bare_number_label,
     is_special_band,
     parse_tenure_range,
+    tenure_covers,
 )
 
 # A window wide enough that "was the change within N days" never
@@ -127,6 +130,70 @@ def check_tenure_coverage() -> list[dict]:
                 "detail": f'"{label}" ({lo}-{hi}d) matches no milestone and is <365 days — '
                           f'not shown anywhere in Compare (by design, see is_special_band())',
             })
+
+    return results
+
+
+def check_tenure_label_sanity() -> list[dict]:
+    """Guards the exact class of bug fixed 2026-11-06 (tenure_utils.py's
+    exclusive-upper-bound handling and bare-number labels) so a future
+    regression or a new bank's odd label shape is caught automatically
+    instead of waiting for a user to notice a wrong Compare Rates row.
+
+    1. **Bare-number labels** (e.g. Punjab & Sind's "500", no day/month/
+       year unit at all): `is_bare_number_label()` flags these so
+       `tenure_covers()` can special-case them to never match — a bare
+       number used to fall through to parse_tenure_range()'s "matches
+       everything" (0, 99999) default and silently win every tenure
+       query. FAIL — this is a real, fixable upstream extraction defect
+       (the live page almost always DOES publish a unit, e.g. Punjab &
+       Sind's real row is "500 Days"; this project just isn't storing
+       it), not a design limitation; `compare_for_tenure()` already
+       excludes it from ranking either way, so this FAIL tracks "the
+       underlying data needs a fix," not "chat/Compare currently shows
+       a wrong number."
+
+    2. **A "less than N" (or "under"/"below"/"<") band that still covers
+       exactly N**: the exact shape of the Kotak/SBI/axis/etc. bug this
+       session found (2 Years 11 Months 1 day-offs aside, several real
+       bands' own upper bound was being treated as inclusive instead of
+       exclusive). For every band with such a marker and a real (not
+       single-point) range, the day immediately above its parsed `hi`
+       is the boundary the label names — this asserts that day is NOT
+       covered, i.e. the next band (not this one) owns it."""
+    con = get_connection()
+    rows = con.execute(
+        "SELECT DISTINCT bank_id, tenure_label FROM fd_rates ORDER BY bank_id, tenure_label"
+    ).fetchall()
+    con.close()
+
+    results = []
+    for bank_id, label in rows:
+        if is_bare_number_label(label):
+            results.append({
+                "bank_id": bank_id, "product": "fd", "check": "tenure_label_sanity",
+                "status": "FAIL",
+                "detail": f'"{label}" has no day/month/year unit at all -- real duration unknown, '
+                          f"excluded from tenure_covers()/compare_for_tenure() as a result; "
+                          f"the underlying extraction for this row needs a fix upstream",
+            })
+            continue
+
+        if _EXCLUSIVE_UPPER_RE.search(label.lower()):
+            lo, hi = parse_tenure_range(label)
+            if lo < hi:
+                boundary = hi + 1
+                still_covered = tenure_covers(label, boundary)
+                results.append({
+                    "bank_id": bank_id, "product": "fd", "check": "tenure_label_sanity",
+                    "status": "FAIL" if still_covered else "PASS",
+                    "detail": (
+                        f'"{label}" ({lo}-{hi}d) still covers day {boundary} -- its own exclusive '
+                        f"upper-bound wording ('less than'/'under'/'below'/'<') should have excluded it"
+                        if still_covered else
+                        f'"{label}" ({lo}-{hi}d) correctly excludes day {boundary}, its own named boundary'
+                    ),
+                })
 
     return results
 
@@ -531,13 +598,15 @@ def check_preview_figures() -> list[dict]:
 
 
 def run_all() -> list[dict]:
-    return (check_tenure_coverage() + check_missed_changes() + check_benchmark_rate_drift()
-            + check_loan_freshness() + check_iba_snapshot_age() + check_preview_figures())
+    return (check_tenure_coverage() + check_tenure_label_sanity() + check_missed_changes()
+            + check_benchmark_rate_drift() + check_loan_freshness() + check_iba_snapshot_age()
+            + check_preview_figures())
 
 
 def print_report(results: list[dict]) -> None:
     coverage = [r for r in results if r["check"] == "tenure_coverage"]
     short_gaps = [r for r in results if r["check"] == "tenure_coverage_short_gap"]
+    label_sanity = [r for r in results if r["check"] == "tenure_label_sanity"]
     missed = [r for r in results if r["check"] == "missed_changes"]
     drift = [r for r in results if r["check"] == "benchmark_drift"]
     freshness = [r for r in results if r["check"] == "loan_freshness"]
@@ -547,7 +616,7 @@ def print_report(results: list[dict]) -> None:
     # INFO rows and the IBA snapshot-age WARN are reported but
     # deliberately excluded, same as verify_retrieval.py's own
     # "general_chat_capacity" precedent.
-    checkable = coverage + missed + drift + freshness
+    checkable = coverage + label_sanity + missed + drift + freshness
 
     print("=" * 100)
     print(f"Tenure coverage — every real fd_rates band vs. Compare's milestones/Special Bands")
@@ -570,6 +639,20 @@ def print_report(results: list[dict]) -> None:
               "not counted in FAIL):")
         for r in short_gaps:
             print(f"  [{r['bank_id']}] {r['detail']}")
+
+    print()
+    print("=" * 100)
+    print("Tenure-label sanity — bare-number labels, and 'less than N'/'under'/'below'/'<' "
+          "bands that still cover N")
+    print("=" * 100)
+    if not label_sanity:
+        print("No bare-number labels and no exclusive-upper-bound band found covering its own boundary.")
+    else:
+        fails = [r for r in label_sanity if r["status"] == "FAIL"]
+        print(f"{len(label_sanity)} checked, {len(fails)} FAIL, {len(label_sanity) - len(fails)} PASS")
+        for r in label_sanity:
+            if r["status"] == "FAIL":
+                print(f"  FAIL  {r['bank_id']:<14} {r['detail']}")
 
     print()
     print("=" * 100)
@@ -633,8 +716,9 @@ def print_report(results: list[dict]) -> None:
     print()
     print("-" * 100)
     print(f"TOTAL: {total} checks, {len(failed)} FAIL, {total - len(failed)} PASS")
-    print(f"       {len(coverage)} tenure-coverage checks, {len(missed)} missed-change checks, "
-          f"{len(drift)} benchmark-drift checks, {len(freshness)} loan-freshness checks")
+    print(f"       {len(coverage)} tenure-coverage checks, {len(label_sanity)} tenure-label-sanity "
+          f"checks, {len(missed)} missed-change checks, {len(drift)} benchmark-drift checks, "
+          f"{len(freshness)} loan-freshness checks")
     print(f"       {len(short_gaps)} short-tenure band(s) reported separately (not counted in FAIL)")
     print(f"       {len(iba_age)} IBA snapshot-age check (WARN only, not counted in FAIL)")
     print(f"       {len(preview_figures)} General Chat preview-figure check(s), {len(warned)} WARN "
