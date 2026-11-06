@@ -403,9 +403,68 @@ def check_iba_snapshot_age() -> list[dict]:
     }]
 
 
+_RAW_DOCS_DIR = PROJECT_ROOT / "data" / "raw"
+_AUTO_START_LINE = "<!--AUTO:START-->"
+_AUTO_END_LINE = "<!--AUTO:END-->"
+_RATE_FIGURE_RE = re.compile(r"\d+(?:\.\d+)?\s*%")
+_PREVIEW_CHARS = 500  # app.py's _MAX_CHUNK_CHARS_GENERAL — General Chat's chunk-0 preview budget
+
+
+def check_preview_figures() -> list[dict]:
+    """For every document with an AUTO block (SBI/BOB/Canara/PNB/HDFC's
+    FD docs, RBI's policy-rates doc, as of 2026-11), does General Chat's
+    500-character chunk-0 preview actually contain a rate figure? Found
+    by hand, twice, this same investigation (the old long marker ate the
+    budget; later the generic template's own summary paragraph did) —
+    this check exists so a THIRD such regression surfaces automatically
+    instead of needing another manual measurement. WARN, never FAIL: a
+    document whose preview never included a figure even before any of
+    this automation (SBI's is a known, accepted case — its tenure table
+    starts too late in the chunk regardless) is a disclosed limitation,
+    not a bug to block on; this reports every case so a NEW one doesn't
+    go unnoticed, without blocking anything on an already-accepted one.
+
+    Mirrors build_index.py's own header/marker-stripping exactly (not a
+    separate parallel implementation) so this measures what General Chat
+    actually retrieves, not an approximation of it."""
+    results = []
+    if not _RAW_DOCS_DIR.exists():
+        return results
+
+    for fpath in sorted(_RAW_DOCS_DIR.rglob("*.txt")):
+        if ".ipynb_checkpoints" in fpath.parts:
+            continue
+        text = fpath.read_text(encoding="utf-8")
+        lines = text.splitlines()
+        if not any(l.strip() == _AUTO_START_LINE for l in lines):
+            continue  # no AUTO block -- not in this check's scope at all
+
+        body_lines = [
+            l for l in lines
+            if not l.startswith(("SOURCE", "DOCUMENT_ID", "CATEGORY", "BANK", "SOURCE_TYPE", "DATE", "==="))
+            and l.strip() not in (_AUTO_START_LINE, _AUTO_END_LINE)
+        ]
+        body = "\n".join(body_lines).strip()
+        chunk0_text = " ".join(body.split())[:_PREVIEW_CHARS]
+
+        has_figure = bool(_RATE_FIGURE_RE.search(chunk0_text))
+        results.append({
+            "bank_id": fpath.parent.name, "product": fpath.stem, "check": "preview_figures",
+            "status": "OK" if has_figure else "WARN",
+            "detail": (
+                f"first {_PREVIEW_CHARS} chars of General Chat's preview contain a rate figure"
+                if has_figure else
+                f"first {_PREVIEW_CHARS} chars of General Chat's preview contain NO rate figure "
+                f"-- a General Chat answer for this bank/doc may have nothing concrete to quote "
+                f"(ends: ...{chunk0_text[-60:]!r})"
+            ),
+        })
+    return results
+
+
 def run_all() -> list[dict]:
     return (check_tenure_coverage() + check_missed_changes() + check_benchmark_rate_drift()
-            + check_loan_freshness() + check_iba_snapshot_age())
+            + check_loan_freshness() + check_iba_snapshot_age() + check_preview_figures())
 
 
 def print_report(results: list[dict]) -> None:
@@ -415,6 +474,7 @@ def print_report(results: list[dict]) -> None:
     drift = [r for r in results if r["check"] == "benchmark_drift"]
     freshness = [r for r in results if r["check"] == "loan_freshness"]
     iba_age = [r for r in results if r["check"] == "iba_snapshot_age"]
+    preview_figures = [r for r in results if r["check"] == "preview_figures"]
     # "checkable" = everything that counts toward PASS/FAIL — short-gap
     # INFO rows and the IBA snapshot-age WARN are reported but
     # deliberately excluded, same as verify_retrieval.py's own
@@ -484,6 +544,22 @@ def print_report(results: list[dict]) -> None:
     for r in iba_age:
         print(f"  {r['status']:<4}  {r['detail']}")
 
+    print()
+    print("=" * 100)
+    print(f"General Chat preview figures — first {_PREVIEW_CHARS} chars of every AUTO-block "
+          f"doc's indexed text, WARN only (never FAIL) since some are known, accepted exceptions")
+    print("=" * 100)
+    warned = [r for r in preview_figures if r["status"] == "WARN"]
+    if not preview_figures:
+        print("No documents with an AUTO block found -- nothing to check.")
+    elif not warned:
+        print(f"All {len(preview_figures)} AUTO-block document(s) have a rate figure in the first "
+              f"{_PREVIEW_CHARS} chars.")
+    else:
+        print(f"{len(warned)} of {len(preview_figures)} AUTO-block document(s):")
+        for r in warned:
+            print(f"  WARN  {r['bank_id']:<10} {r['product']:<24} {r['detail']}")
+
     total = len(checkable)
     failed = [r for r in checkable if r["status"] == "FAIL"]
     print()
@@ -493,6 +569,8 @@ def print_report(results: list[dict]) -> None:
           f"{len(drift)} benchmark-drift checks, {len(freshness)} loan-freshness checks")
     print(f"       {len(short_gaps)} short-tenure band(s) reported separately (not counted in FAIL)")
     print(f"       {len(iba_age)} IBA snapshot-age check (WARN only, not counted in FAIL)")
+    print(f"       {len(preview_figures)} General Chat preview-figure check(s), {len(warned)} WARN "
+          f"(WARN only, not counted in FAIL)")
     if failed:
         print("\nFAILURES:")
         for r in failed:

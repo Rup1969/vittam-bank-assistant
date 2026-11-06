@@ -183,6 +183,37 @@ def _fd_rows_for_bank(bank_id: str) -> list[tuple]:
     return rows
 
 
+# The ~1/2/3/5-year points are the tenures people actually ask about
+# most ("what's your 1-year rate") -- pulling them to the front of the
+# generic template's table means they land near the START of the chunk,
+# which matters concretely for General Chat's 500-char preview (PNB's
+# 1-year line was otherwise pushed out by everything before it in the
+# table). This is a pure reordering, not a relabeling -- every row keeps
+# its own real tenure_label text exactly as the database has it, so
+# there's no risk of mischaracterizing a band as "the N-year rate" when
+# it's actually a sub-variant; it only decides what's shown first.
+# Best-effort by design: some banks don't have a band that starts
+# exactly at one of these points (their table has a gap there instead,
+# e.g. one band ending at 2 years and the next starting just after it,
+# with nothing starting AT 2 years) -- those periods are simply skipped
+# for that bank, never guessed or fabricated.
+_COMMON_TENURE_YEARS = (1, 2, 3, 5)
+_COMMON_TENURE_RE = {
+    n: re.compile(rf"^(?:>|Above\s+)?\s*{n}\s*Years?\b", re.IGNORECASE)
+    for n in _COMMON_TENURE_YEARS
+}
+
+
+def _reorder_common_tenures_first(rows: list[tuple]) -> list[tuple]:
+    remaining = list(rows)
+    front = []
+    for n in _COMMON_TENURE_YEARS:
+        idx = next((i for i, r in enumerate(remaining) if _COMMON_TENURE_RE[n].match(r[0])), None)
+        if idx is not None:
+            front.append(remaining.pop(idx))
+    return front + remaining
+
+
 def regenerate_bank_fd_doc(bank_id: str, doc_path: Path, bank_display_name: str) -> bool:
     """Returns True if the document's content actually changed on disk.
     Regenerates BOTH the summary paragraph and the tenure table from the
@@ -202,16 +233,23 @@ def regenerate_bank_fd_doc(bank_id: str, doc_path: Path, bank_display_name: str)
     premiums = sorted({round(s - g, 2) for _, g, s, _, _ in rows if g is not None and s is not None})
     if len(premiums) == 1:
         premium_sentence = (
-            f"with senior citizens earning a flat additional {premiums[0]:g}% "
-            f"over the general rate across every tenure."
+            f"with senior citizens earning a flat additional {premiums[0]:g}% over the general rate."
         )
     else:
+        # Shortened 2026-11-06: the original wording ("...on most tenures
+        # (one or more bands carry a wider premium -- the table below
+        # always shows each band's own real senior rate, never assume a
+        # flat X%).") pushed the table's first row past 500 characters
+        # for both HDFC and PNB -- measured directly, not assumed --
+        # keeping the generic template from ever reaching real tenure
+        # figures within General Chat's preview window even after common
+        # tenures were reordered to the front. Same meaning, ~90 fewer
+        # characters: still names the flat rate, still warns the table
+        # has the real per-band figure.
         flat = min(premiums)  # the common case; any wider premium is named per-row in the table itself
         premium_sentence = (
-            f"with senior citizens earning an additional {flat:g}% over the "
-            f"general rate on most tenures (one or more bands carry a wider "
-            f"premium -- the table below always shows each band's own real "
-            f"senior rate, never assume a flat {flat:g}%)."
+            f"with senior citizens earning {flat:g}% more on most tenures "
+            f"(see the table for each band's exact rate)."
         )
 
     # fd_rates.fetched_at is stored as VARCHAR (confirmed directly, not
@@ -228,13 +266,12 @@ def regenerate_bank_fd_doc(bank_id: str, doc_path: Path, bank_display_name: str)
 
     lines = [
         f"{bank_display_name}'s current fixed deposit (FD) interest rate for the general\n",
-        f"public ranges from {min_rate:g}% to {max_rate:g}% per annum across its full set\n",
-        f"of published tenures, {premium_sentence}\n",
+        f"public ranges from {min_rate:g}% to {max_rate:g}% per annum across its tenures,\n",
+        f"{premium_sentence}\n",
         "\n",
-        f"Effective {effective_human}, domestic retail term deposit rates by tenure\n",
-        "(general public / senior citizen):\n",
+        f"Effective {effective_human}, rates by tenure (general public / senior citizen):\n",
     ]
-    for tenure_label, g, s, _, _ in rows:
+    for tenure_label, g, s, _, _ in _reorder_common_tenures_first(rows):
         g_s = f"{g:g}%" if g is not None else "not published"
         s_s = f"{s:g}%" if s is not None else "not published"
         lines.append(f"- {tenure_label}: {g_s} / {s_s}\n")
