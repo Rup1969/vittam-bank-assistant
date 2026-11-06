@@ -6622,3 +6622,74 @@ backstop), `data/raw/canara/canara_fd_rates.txt` (savings account rate
 added), `data/raw/canara/canara_rates_deposit_structured.txt` (deleted),
 `verification_sheet.md` (new), `indexes/other_banks.index`,
 `indexes/other_banks_chunks.json` (rebuilt).
+
+## 64. Triaged the 9 remaining `check_consecutive_fetch_errors()` FAILs — 2 reclassified, 1 fixed (IOB, wait strategy), 1 confirmed a genuine site block (Union Bank), 3 pre-existing and untouched (2026-11-07)
+
+Report-first triage of everything `verify_coverage.py`'s new
+consecutive-fetch-error check (§63's Axis commit) was flagging, per
+explicit instruction: fix only what's safe, never a block workaround.
+
+**1. BOI and Indian Bank FD reclassified, not silenced.** Confirmed
+directly (`fd_rates.data_source`) both are genuinely
+`manual_load_frozen`, and config already marks both banks
+`"read_only": true` — the exact signal this check now keys off instead
+of a hardcoded bank_id list. `check_consecutive_fetch_errors()` now
+reports these as their own check name/status
+(`consecutive_fetch_errors_known_blocked`, `INFO`), listed separately
+and excluded from FAIL, rather than permanently cluttering a check this
+project already knows the answer to.
+
+**2. Union Bank FD — confirmed a genuine site BLOCK, not a wait-
+strategy or URL problem.** fetch_log's own errors are Playwright
+navigation timeouts ("networkidle", 30000ms) — but a standalone local
+Playwright fetch of the exact same URL resolved in 4.6 seconds and
+returned the WAF's own block page verbatim ("Web Page Blocked! ...
+Attack ID: 20000051"), the same block this project's own config note
+already anticipated as a possibility back on 2026-08-15 ("if a future
+run logs an ERROR here, don't assume it's permanent"). That assumption
+no longer holds — ~59 consecutive errors, not an isolated blip.
+GitHub Actions' network apparently gets no response at all (hence the
+hang-to-timeout) where this session's network gets an explicit fast
+block; either way, the real cause is the WAF, not the wait condition.
+No workaround attempted. `config/banks.json`'s note and README's
+"manually loaded" bullet both corrected in place to the current, now-
+re-blocked reality (previously said bypassed-and-live as of
+2026-08-19) — `load_union_bank_legacy.py`'s manual backstop is the
+documented fallback if this doesn't clear, but switching to it is a
+data-layer decision this report doesn't make unilaterally.
+
+**3. IOB (all three sources) — fixed: the exact IndusInd "networkidle
+never settles" pattern.** All three real pages (fd_rates, home_loan,
+education_loan) loaded locally without any trouble — a plain Playwright
+fetch with the DEFAULT "networkidle" wait succeeded in 9-13 seconds,
+800KB+ of genuine content each, not a block page. Yet the daily
+workflow has hit a 30000ms "networkidle" timeout on EVERY one of ~59
+consecutive attempts. Re-tested all three with `wait_until: "commit"` +
+the existing 8-second settle wait (the same fix already shipped for
+IndusInd) — all three resolved in 9-10 seconds, and `extract_iob_rows()`
+run directly against the fd_rates page's HTML parsed 14 real rows
+matching the live page's own table exactly. Added `"wait_until":
+"commit"` to IOB's config entry (bank-level, applies to all 3 of its
+URLs, same as IndusInd's) — a one-line fix once correctly diagnosed.
+
+**3 FAILs untouched, deliberately**: `central_bank`/`iob`
+education_loan and `iob` home_loan's pre-existing `loan_freshness`
+staleness (unrelated to this investigation's scope — IOB's fetch
+TIMING OUT is now fixed, but these rows won't actually refresh until
+the next real workflow run succeeds end-to-end with today's config
+change).
+
+**Verified**: `verify_all.py` 186/186; `verify_index_freshness.py` 3/3;
+`verify_retrieval.py`'s 300-check table still byte-for-byte identical,
+15/15 `fd_rate_shortcut` PASS; `verify_coverage.py` now reports 7 FAIL
+(down from 9) + 2 known-blocked INFO (BOI, Indian Bank) — the 4
+remaining consecutive-error FAILs (iob x3, union_bank x1) are expected
+to clear for IOB once the daily workflow runs with this commit's config
+change; Union Bank's stays a FAIL by design (a real, unresolved block,
+not something this commit fixes).
+
+Files: `automation/verify_coverage.py` (`check_consecutive_fetch_errors()`
+now classifies `read_only` banks as known-blocked INFO, not FAIL),
+`config/banks.json` (IOB: `wait_until: "commit"` + updated note; Union
+Bank: note corrected to current reality), `README.md` (Union Bank
+"manually loaded" bullet corrected in place).
