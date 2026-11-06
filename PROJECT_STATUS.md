@@ -6478,3 +6478,147 @@ rbi_current_policy_rates.txt`, `data/raw/hdfc/hdfc_fd_rates.txt` (both
 restructured with AUTO-GENERATED markers and regenerated), `indexes/
 other_banks.index`, `indexes/other_banks_chunks.json`, `indexes/
 rbi.index`, `indexes/rbi_chunks.json` (rebuilt).
+
+## 63. Exact-tenure results were wrong for 13 banks — `tenure_utils`'s exclusive-upper-bound handling fixed, plus a real Punjab & Sind extractor bug it surfaced (2026-11-06)
+
+Found while diagnosing why the "highest 3-year FD rate" ranking looked
+wrong (3 specific rows flagged by the user: Punjab & Sind's "500",
+Kotak's "2 years- less than 3 years", IndusInd's "2 Years to 3 Years").
+`tenure_utils.parse_tenure_range()` only ever treated the literal
+substring `"below"` as an exclusive upper bound. Every other real way a
+bank spells the same thing — `"less than X"`, `"under X"`, a bare
+`"< X"` — was silently treated as **inclusive**, so a band like Kotak's
+"2 years- less than 3 years" wrongly matched an exact 3-year (1,095-day)
+query even though the bank's own wording says it shouldn't.
+
+**Root cause fixed**: a single new regex, `_EXCLUSIVE_UPPER_RE =
+re.compile(r"less\s+than|\bunder\b|\bbelow\b|<(?!=)")` (the `(?!=)`
+deliberately excludes `"<="`, which IS inclusive), replaces the old
+`"below"`-only check in `parse_tenure_range()`.
+
+**Blast radius, measured, not assumed**: ran `compare_for_tenure()`
+against a frozen copy of the pre-fix code (via `git show HEAD:...` into
+a throwaway module, imported under a distinct name so both versions
+could run in the same process without colliding) across every bank at
+1/2/3/5-year, general+senior. **40 Compare Rates cells changed** across
+axis, canara, central_bank, indian_bank, iob, kotak, punjab_sind, and
+sbi — every one a case where the wrong neighboring band had been
+winning a ranking it didn't belong in (both numbers are genuine
+published rates; only which one applied to the exact query was wrong).
+Spot-verified the corrected values against each bank's own live page
+where fetchable (IndusInd, Kotak, Punjab & Sind, SBI) and against
+Indian Bank's own already-trusted data — every corrected value matches.
+One notable correction: SBI's 5-year general rate moves from 6.30% to
+6.05% — the 2026-11-05 verification sheet (see `verification_sheet.md`)
+had rationalized the old 6.30% as an intentional "whichever band pays
+more" tie-break; it was actually this same bug, now fixed.
+
+**`verify_coverage.py`'s new `check_tenure_label_sanity()`** flags any
+bare-number `tenure_label` and regression-guards every exclusive-upper
+band to confirm it excludes its own named boundary day. Confirmed
+against the frozen pre-fix code this would have caught **51 real bands
+across 13 banks** — wider than the 40 cells above, since some affected
+bands never happen to land exactly on one of the 4 tested milestones.
+
+**`digest.rate_changes()` checked for phantom changes the parsing fix
+itself might cause** (comparing the SAME historical snapshots under old
+vs. new `tenure_covers()` could, in principle, make a stable rate look
+like it "moved" if the two versions picked different bands at different
+points in time): ran `rate_changes(30, "general")` and `rate_changes(30,
+"senior")` under both versions. **0 changes either way** — nothing to
+report, and nothing spurious introduced.
+
+**A second, unrelated bug the live-verification step for the "500"
+row surfaced**: Punjab & Sind's own fd_rates table has `tenure_label =
+"500"` with no day/month/year unit at all — `parse_tenure_range()`
+couldn't parse a single token from it, fell back to its documented
+"matches everything" (0, 99999) default, and this row silently won
+*every* tenure ranking regardless of the actual query. Fixed the
+symptom first: `tenure_utils.is_bare_number_label()` makes
+`tenure_covers()` return `False` for a bare number instead of "matches
+everything." Then live-fetched Punjab & Sind's own page (via Playwright,
+the same fetcher `fetch_and_track.py` uses — a plain `requests` fetch of
+the same URL produced different cell-spacing and isn't representative)
+to find and fix the real upstream cause:
+
+- The page had been revised the SAME DAY as this fetch
+  ("Revised w.e.f. 06/11/2026"), and its HTML changed its dash-spacing
+  shape at the same time — `"7–14 Days"` (glued) instead of the
+  `"7 – 14 Days"` (spaced) the extractor's `start = text.find(...)`
+  required verbatim. **Before the fix: 0 rows parsed from today's real
+  page at all** — a worse, newly-introduced regression than the "500"
+  bug itself, since the next scheduled daily fetch would have silently
+  stopped updating Punjab & Sind entirely. Fixed by matching the
+  digits/dash/unit shape with a regex (`r"7\s*[–‒\-]\s*14\s*Days"`)
+  instead of one exact literal string. **After the fix: 37 rows
+  parsed**, including `"500 Days"` — correctly, because the per-row
+  regex (`_PSB_ROW_RE`) was never actually the problem; only the
+  start-of-table marker was.
+- Couldn't recover the *exact* historical 2026-11-05 HTML that produced
+  a genuinely bare "500" (the page has since been revised and
+  `data/scraped/` — gitignored, 100MB+ — wasn't locally cached for that
+  date), so the precise mechanism that dropped "Days" that one day isn't
+  provable after the fact. Added a backstop regardless of mechanism:
+  `extract_punjab_sind_rows()` now tracks the last real unit word
+  ("Days"/"Months"/"Year"/...) seen on a normal row, and if a row parses
+  to a bare number, appends that carried-over unit instead of writing
+  an ambiguous label. Verified by directly reproducing the historical
+  shape (`"500"` sandwiched between two real `"Days"`-labeled neighbors
+  in a synthetic string) — recovers `"500 Days"` correctly. Checked
+  the rest of the live-fetched table for other bare-number labels: none
+  (the only other short label, `"5Y"`, already carries its own unit).
+  `automation.duckdb` itself was **not** hand-edited — the fix is in the
+  extractor only; the real row stays `"500"` until the daily workflow's
+  own next fetch rewrites it.
+
+**Calculator and Should I Switch? confirmed to read through the
+corrected function** — neither has its own tenure-matching code; both
+call `compare_rates.compare_for_tenure()` directly (`calculator.
+fd_maturity()` and `switch.should_i_switch()`), so the fix applies
+automatically. Verified with a live 3-year example for each:
+`fd_maturity("kotak", "3 years", 500000.0, "general")` now returns the
+corrected band (`"3 years and above but less than 4 years"`, 6.4%,
+maturity Rs. 604,915.20) instead of the old wrong one (6.8%);
+`should_i_switch("fd", "kotak", 6.8, 500000.0, "3 years", "general")`
+ranks Kotak's 6.8% "current rate" (itself the old wrong figure, used
+deliberately to show the ranking still reads live data, not a cached
+number) against the corrected top alternatives — IndusInd 7.25%, HDFC
+6.55%, ICICI 6.55%, all matching the corrected Compare Rates values.
+
+**Also fixed**: `compare_for_tenure()` now excludes
+`deposit_variant='special_tenor'` rows (e.g. UCO's named Green Deposit
+schemes) from standard-tenure ranking entirely — they only ever belong
+in Special/Additional Tenure Bands. `special_tenure_bands()` widened to
+show both special_tenor and bare-number rows there regardless of the
+usual >=365-day cutoff, so neither disappears from the UI entirely.
+Canara's `canara_rates_deposit_structured.txt` retired (same stale-
+mirror pattern as SBI/BOB, §already fixed 2026-11-05) — its one unique
+fact (savings account rate) moved into `canara_fd_rates.txt` first.
+`verification_sheet.md` created (didn't exist as a repo file before) —
+the 2026-11-05 SBI/HDFC/BOB sheet plus a new Part 2 for IndusInd/Kotak/
+Punjab & Sind at 3 years, each live-checked against the bank's own page.
+
+**Full verify suite, before pushing**:
+- `verify_all.py`: 186/186 PASS.
+- `verify_index_freshness.py`: 3/3 PASS.
+- `verify_retrieval.py`: the original 300-check TOPICS table is
+  byte-for-byte identical to the pre-this-session baseline (same 11
+  FAIL rows, confirmed via `diff`, not just a matching count) — nothing
+  regressed. Its 15 `fd_rate_shortcut` checks: 15/15 PASS, reflecting
+  the corrected values (Canara 3yr/5yr, SBI 5yr).
+- `verify_coverage.py`: new `check_tenure_label_sanity()` — 60/61 PASS.
+  The 1 FAIL is Punjab & Sind's real, disclosed "500" row, which stays
+  a FAIL **by design** until the daily workflow's own next fetch
+  rewrites it — this project's standing rule is that `automation.duckdb`
+  is only ever written by the workflow, never hand-edited here.
+
+Files: `automation/tenure_utils.py` (`_EXCLUSIVE_UPPER_RE`,
+`is_bare_number_label()`), `automation/compare_rates.py`
+(`compare_for_tenure()` special_tenor exclusion, `special_tenure_bands()`
+widened), `automation/verify_coverage.py` (new
+`check_tenure_label_sanity()`), `automation/extract_structured.py`
+(Punjab & Sind's start-marker regex and bare-number unit-recovery
+backstop), `data/raw/canara/canara_fd_rates.txt` (savings account rate
+added), `data/raw/canara/canara_rates_deposit_structured.txt` (deleted),
+`verification_sheet.md` (new), `indexes/other_banks.index`,
+`indexes/other_banks_chunks.json` (rebuilt).

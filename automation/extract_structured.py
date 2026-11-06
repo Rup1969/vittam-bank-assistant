@@ -663,14 +663,26 @@ _PSB_SENIOR_PREMIUM = 0.50
 _PSB_SENIOR_MIN_DAYS = 180
 
 
+_PSB_UNIT_WORD_RE = re.compile(r"\b(day|days|month|months|year|years|yr|yrs)\b", re.IGNORECASE)
+
+
 def extract_punjab_sind_rows(text: str) -> list[dict]:
     """Deterministic parser for Punjab & Sind Bank's retail term-deposit
     table — see module-level comment above for why this bypasses the LLM."""
-    from tenure_utils import parse_tenure_range
+    from tenure_utils import is_bare_number_label, parse_tenure_range
 
-    start = text.find("7 – 14 Days")
-    if start == -1:
-        start = text.find("7 - 14 Days")
+    # The dash between "7" and "14 Days" has been seen BOTH with spaces
+    # ("7 – 14 Days", the 2026-08/11-05 shape) and glued with none
+    # ("7–14 Days") -- confirmed 2026-11-06 by live-fetching the page the
+    # same day it shows "Revised w.e.f. 06/11/2026": the bank's own HTML
+    # changed its cell markup the SAME day it revised its rates, and
+    # BeautifulSoup's get_text(separator=" ") only inserts a space at a
+    # TAG boundary, not inside a single glued text node, so clean_text()
+    # faithfully reproduces whichever shape the page happens to use that
+    # day. A literal `text.find()` on one exact spacing is fragile to
+    # this; matching the digits/dash/unit shape directly survives either.
+    start_match = re.search(r"7\s*[–‒\-]\s*14\s*Days", text)
+    start = start_match.start() if start_match else -1
     end = text.find("(#) Minimum amount")
     if start == -1 or end == -1:
         return []
@@ -683,6 +695,7 @@ def extract_punjab_sind_rows(text: str) -> list[dict]:
     )
 
     rows = []
+    last_unit_word: str | None = None
     for m in _PSB_ROW_RE.finditer(region):
         # A trailing "($)"/"#" marker from the PREVIOUS row can bleed into
         # the start of the next label when it directly precedes the label
@@ -691,6 +704,26 @@ def extract_punjab_sind_rows(text: str) -> list[dict]:
         label = re.sub(r"^[\s($)#]+", "", m.group("period")).strip()
         if not label:
             continue
+        # Confirmed 2026-11-06 (PROJECT_STATUS.md, the §2026-11-06 tenure-
+        # parsing fix): a real production fetch produced a bare "500" row
+        # with no day/month/year unit at all -- is_bare_number_label() in
+        # tenure_utils.py now stops that from silently matching every
+        # tenure query, but the real, better fix is here: never WRITE an
+        # unusable bare-number label in the first place. This table is a
+        # strictly ascending day-count sequence with no unit change
+        # mid-table (confirmed against every real fetch this project has
+        # seen), so a bare number between two "Days"-labeled neighbors
+        # almost certainly meant "Days" too -- recovering the same unit
+        # word the immediately-preceding row used is far more reliable
+        # than writing an ambiguous label and hoping something downstream
+        # catches it.
+        if is_bare_number_label(label):
+            if last_unit_word:
+                label = f"{label} {last_unit_word}"
+        else:
+            unit_match = _PSB_UNIT_WORD_RE.search(label)
+            if unit_match:
+                last_unit_word = unit_match.group(0)
         general = float(m.group("rate"))
         lo_days, _hi_days = parse_tenure_range(label)
         premium = _PSB_SENIOR_PREMIUM if lo_days >= _PSB_SENIOR_MIN_DAYS else 0.0
