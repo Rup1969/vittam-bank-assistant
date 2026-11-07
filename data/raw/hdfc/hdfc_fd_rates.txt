@@ -3,7 +3,7 @@ DOCUMENT_ID: hdfc_fd_rates
 BANK: HDFC
 CATEGORY: DEPOSIT
 SOURCE_TYPE: PRODUCT_PAGE
-DATE: 2026-11-06
+DATE: 2026-11-07
 ===
 HDFC Bank Fixed Deposit Interest Rates (below Rs. 3 crore)
 
