@@ -40,6 +40,48 @@ jobs:
       - name: Load manual snapshots
         run: python automation/load_manual_snapshots.py
 
+      # Regenerates the chat-facing documents (data/raw/*.txt's AUTO
+      # blocks) from the database this run just updated, rebuilds the
+      # FAISS index from them, then runs both content-level verify
+      # tools against the result -- all in one step/shell script (not
+      # four), so a mid-sequence failure is caught by THIS script
+      # itself rather than relying on step-level go/no-further-steps
+      # behavior, and the whole sequence's real stdout/stderr (which
+      # command, what error) lands in one place in the run log.
+      #
+      # All-or-nothing, by design: if any of the four commands fails,
+      # data/raw/ and indexes/ are reverted to HEAD and never staged --
+      # a half-regenerated document set or a half-built index must
+      # never reach a commit. The database commit below still goes
+      # ahead regardless (set +e / exit 0 here, not a hard step
+      # failure, so the next step still runs) -- Phase B (the
+      # structured DB) and Phase A (the chat documents) are
+      # deliberately independent pipelines, and a failure in one was
+      # never meant to block the other. The failure is still fully
+      # visible: ::error:: annotates the job summary, and every
+      # command's own real output stays in this step's log untouched.
+      - name: Sync chat documents, rebuild index, verify
+        run: |
+          set +e
+          FAILED=0
+          python automation/sync_rag_docs.py || FAILED=1
+          python build_index.py || FAILED=1
+          python automation/verify_all.py || FAILED=1
+          python automation/verify_index_freshness.py || FAILED=1
+
+          if [ "$FAILED" -ne 0 ]; then
+            echo "::error::Chat-document sync, index rebuild, or verification failed -- data/raw/ and indexes/ will NOT be committed this run (see the failing command's own output above). The database commit still proceeds separately."
+            git checkout -- data/raw/ indexes/ 2>/dev/null || true
+            exit 0
+          fi
+
+          if git diff --quiet -- data/raw/ indexes/; then
+            echo "documents unchanged"
+          else
+            git add data/raw/ indexes/
+            echo "documents changed -- staged for commit"
+          fi
+
       - name: Commit and push if data changed
         run: |
           git config user.name "github-actions[bot]"

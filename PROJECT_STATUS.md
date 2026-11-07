@@ -10,6 +10,40 @@ and RAG content is authored by hand per bank.
 
 ---
 
+## Later
+
+Deferred items, not yet scheduled — kept here so they don't get lost
+between sessions. Append to this list rather than letting a deferred
+finding only live in a commit message.
+
+- **IOB: local-fetch snapshot.** All three of IOB's sources (fd_rates,
+  home_loan, education_loan) are confirmed blocked specifically from
+  GitHub Actions' cloud network (a short bot-defense challenge page,
+  confirmed via `fetch_log`'s own error text) while loading fine, with
+  real content, from a local/residential network (re-tested directly,
+  2026-11-07 — see `config/banks.json`'s `iob` note and this file's
+  §64-§67). A one-time manual CSV snapshot, fetched locally and loaded
+  the same way Union Bank's FD data now is (`load_manual_snapshots.py`),
+  would unfreeze all three until the cloud block clears on its own or a
+  different fix is found. Not built — no one asked for it yet, and it's
+  a real content-pipeline change (a new CSV + wiring), not a quick fix.
+- **Central Bank of India: `education_loan` has no fetch of its own and
+  is at risk of silently going to zero.** Confirmed directly: `loan_rates`
+  has 6 real `live_fetch` rows for this (bank, product), last refreshed
+  2026-08-19 — but `config/banks.json` has no `education_loan` URL for
+  Central Bank at all, and there's no `central_bank_education_loan`
+  fetch_log source_id. Its 6 rows come from `extract_loan_rates.py`
+  parsing a "20. Education Loans" section OUT OF the home_loan page's
+  own shared fetch (same URL, same `fetch_log` row) — a literal-string
+  `.find("20. Education Loans", ...)` marker, the exact same fragile-
+  marker class flagged (not fixed) in the extract_loan_rates.py/
+  extract_structured.py audit a few commits back. If that marker ever
+  stops matching, `check_rows_per_source_health()` (new, this session)
+  would catch a resulting drop to 0 — but the underlying marker itself
+  hasn't been hardened. Not investigated further or fixed here.
+
+---
+
 ## Session Summary — 2026-08-22
 
 One continuous session built out most of the "Insights & Tools" roadmap

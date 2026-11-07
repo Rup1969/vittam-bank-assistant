@@ -484,6 +484,29 @@ def _read_only_sources() -> tuple[set[str], set[tuple[str, str]]]:
     return bank_wide, per_product
 
 
+def _cloud_blocked_products() -> set[tuple[str, str]]:
+    """`"cloud_blocked_products": [...]` -- a THIRD, distinct category
+    from `_read_only_sources()`'s two: a source that is NOT manually
+    loaded (its data really is live_fetch, and the daily workflow keeps
+    trying it) but is confirmed, directly, to be blocked specifically
+    from the cloud network the daily workflow runs on (a bot-defense
+    challenge page) while loading fine from a local/residential network
+    (IOB, confirmed 2026-11-07 -- see config/banks.json's iob note:
+    re-tested all three of its URLs from this session's own network the
+    same day, real content, no challenge page). Calling this
+    "read_only"/"manual_load_frozen" would be factually wrong -- the
+    data is live, just unreachable from where the workflow happens to
+    run -- so it gets its own config flag and its own report wording
+    ("blocked from cloud, loads locally") rather than being folded into
+    the manual-snapshot category."""
+    config = json.loads((PROJECT_ROOT / "config" / "banks.json").read_text(encoding="utf-8"))
+    return {
+        (b["id"], product)
+        for b in config["banks"]
+        for product in b.get("cloud_blocked_products", [])
+    }
+
+
 def check_consecutive_fetch_errors() -> list[dict]:
     """For every real fetch_log source, how many of its MOST RECENT
     fetches in a row have `error IS NOT NULL`, counting back from today
@@ -507,6 +530,7 @@ def check_consecutive_fetch_errors() -> list[dict]:
     con = get_connection()
     source_ids = [r[0] for r in con.execute("SELECT DISTINCT source_id FROM fetch_log").fetchall()]
     read_only_banks, read_only_products = _read_only_sources()
+    cloud_blocked_products = _cloud_blocked_products()
 
     results = []
     for source_id in sorted(source_ids):
@@ -521,6 +545,14 @@ def check_consecutive_fetch_errors() -> list[dict]:
             streak += 1
         bank_id, product = _source_id_to_bank_and_product(source_id)
         exceeds = streak > _MAX_CONSECUTIVE_FETCH_ERRORS
+        if exceeds and (bank_id, product) in cloud_blocked_products:
+            results.append({
+                "bank_id": bank_id, "product": product, "check": "consecutive_fetch_errors_cloud_blocked",
+                "status": "INFO",
+                "detail": f"{streak} consecutive fetch error(s) -- blocked from cloud, loads locally "
+                          f"(config cloud_blocked_products; see README Known Limitations), not counted as FAIL",
+            })
+            continue
         if exceeds and (bank_id in read_only_banks or (bank_id, product) in read_only_products):
             results.append({
                 "bank_id": bank_id, "product": product, "check": "consecutive_fetch_errors_known_blocked",
@@ -936,6 +968,7 @@ def print_report(results: list[dict]) -> None:
     freshness = [r for r in results if r["check"] == "loan_freshness"]
     error_streaks = [r for r in results if r["check"] == "consecutive_fetch_errors"]
     known_blocked = [r for r in results if r["check"] == "consecutive_fetch_errors_known_blocked"]
+    cloud_blocked = [r for r in results if r["check"] == "consecutive_fetch_errors_cloud_blocked"]
     rows_health = [r for r in results if r["check"] == "rows_per_source_health"]
     rows_health_checkable = [r for r in rows_health if r["status"] != "INFO"]
     iba_age = [r for r in results if r["check"] == "iba_snapshot_age"]
@@ -1036,6 +1069,12 @@ def print_report(results: list[dict]) -> None:
               f"manual_load_frozen data, not counted in FAIL):")
         for r in known_blocked:
             print(f"  INFO  {r['bank_id']:<14} {r['product']:<16} {r['detail']}")
+    if cloud_blocked:
+        print(f"\n{len(cloud_blocked)} source(s) BLOCKED FROM CLOUD, LOADS LOCALLY (config "
+              f"cloud_blocked_products -- data is live_fetch, just unreachable from where the "
+              f"workflow runs; not counted in FAIL):")
+        for r in cloud_blocked:
+            print(f"  INFO  {r['bank_id']:<14} {r['product']:<16} {r['detail']}")
 
     print()
     print("=" * 100)
@@ -1090,6 +1129,7 @@ def print_report(results: list[dict]) -> None:
           f"{len(rows_health_checkable)} rows-per-source-health checks")
     print(f"       {len(short_gaps)} short-tenure band(s) reported separately (not counted in FAIL)")
     print(f"       {len(known_blocked)} source(s) known blocked (config read_only/read_only_products, not counted in FAIL)")
+    print(f"       {len(cloud_blocked)} source(s) blocked from cloud, loads locally (config cloud_blocked_products, not counted in FAIL)")
     print(f"       {len(iba_age)} IBA snapshot-age check (WARN only, not counted in FAIL)")
     print(f"       {len(preview_figures)} General Chat preview-figure check(s), {len(warned)} WARN "
           f"(WARN only, not counted in FAIL)")

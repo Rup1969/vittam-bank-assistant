@@ -333,3 +333,11 @@ def print_report(results: list[dict]) -> None:
 if __name__ == "__main__":
     results = run_all()
     print_report(results)
+    # Non-zero on any real FAIL -- added 2026-11-07 so this script can
+    # gate the daily workflow's chat-document-sync step (a shell `||`
+    # check needs a real exit code; this used to always exit 0
+    # regardless of content, which would have silently defeated that
+    # gate). Never raised before this; a caller that only ever read
+    # stdout is unaffected.
+    if any(r["status"] == "FAIL" for r in results):
+        sys.exit(1)
