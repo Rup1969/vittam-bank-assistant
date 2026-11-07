@@ -975,7 +975,21 @@ _CENTRAL_BANK_EDU_RATE_RE = re.compile(r"(Repo|RBLR)\s*([+-])\s*([\d.]+)%\s+([\d
 
 
 def extract_central_bank_education_rows(text: str) -> list[dict]:
-    start = text.find("20. Education Loans")
+    # The leading section number was "20." when this was written
+    # (2026-08-19) but is "22." on the real page as of 2026-11-07 -- the
+    # bank added two new sections (Cent Gold Loan, Cent Surya Ghar)
+    # before this one, shifting every number after it. Confirmed as the
+    # real cause of 0-rows-extracted on every daily run since 2026-11-05
+    # (when run_education() was first wired into the actual daily
+    # workflow) via extraction_log: "0 accepted, 0 rejected" on every
+    # attempt from 2026-11-05 onward, despite the underlying home_loan
+    # fetch succeeding fresh each time -- the stale DB rows (still
+    # 2026-08-19) were never wiped only because of the "only delete once
+    # there are new rows to replace them with" guard elsewhere, not
+    # because this parser was working. Anchored on the number-
+    # independent part of the heading instead, so a future renumbering
+    # doesn't silently break this again.
+    start = text.find("Education Loans under various Categories")
     end = text.find("Cent Vidyarthi", start)
     if start == -1 or end == -1:
         return []

@@ -7184,3 +7184,63 @@ Files: `automation/verify_coverage.py` (thresholds,
 (`extract_indian_bank_rows()`, dispatch entry), `config/banks.json`
 (Indian Bank's `urls.fd_rates` + `read_only`), `README.md` (daily
 pipeline section, Known Limitations, RBI MPC dates).
+
+## 70. Central Bank of India's education_loan parser fixed — broken silently since the 2026-11-05 run_education() wiring fix (2026-11-07)
+
+Investigating "which banks' rates haven't updated" (user request) turned
+up a real, currently-active bug distinct from Indian Bank/BOI's blocked-
+site situations: `extract_central_bank_education_rows()` has been
+returning **0 rows on every single run since 2026-11-05**, confirmed via
+`extraction_log` (ten-plus consecutive "0 accepted, 0 rejected" entries,
+2026-11-05 through today), even though the underlying `home_loan` fetch
+it reuses has been succeeding fresh multiple times a day the whole time.
+The DB still showed the old 2026-08-19 rows throughout, not because
+anything was refreshing them, but because of the project's own "never
+DELETE until there are new rows to replace them with" guard — the exact
+"stale but looks intact" failure mode this whole investigation was
+looking for.
+
+Root cause: the parser anchors its region start on the literal text
+"20. Education Loans" — a section NUMBER that was correct when this was
+written (2026-08-19) but is now "22." on the real page (Central Bank
+added two new sections, Cent Gold Loan and Cent Surya Ghar, ahead of it
+at some point since). Confirmed directly against today's real fetched
+page (not assumed): "20. Education Loans" is absent, but "Education
+Loans under various Categories" (the number-independent part of the
+same heading) and the "Cent Vidyarthi"/"Effective ROI" anchors around
+it are all still present and unchanged. Fixed by anchoring on that
+number-independent substring instead.
+
+Verified two ways before trusting it: (1) ran the real, unmodified
+`extract_central_bank_education_rows()` against today's real fetched
+page text — 6 rows, matching the original row count, with genuinely
+updated rates (e.g. 6.75%→6.95%, 8.75%→8.15% — real movement, not just
+a re-date). (2) Ran the real, unmodified `run_education()` end to end
+against a throwaway DB copy (same technique as §69's Indian Bank test)
+— confirmed it correctly replaces the 6 stale 2026-08-19 rows with 6
+fresh 2026-11-07 rows. Real DB untouched; takes effect on the next real
+`daily-refresh.yml` run, same as §69's Indian Bank fix.
+
+**IOB's `home_loan`/`education_loan` staleness is a different, already-
+documented situation — re-confirmed, not fixed.** Re-verified directly
+today: all three of IOB's URLs (fd_rates, home_loan, education_loan)
+still fetch fine from this local network (re-ran the project's own
+`fetch_source()` against all three with `wait_until: "commit"`, same as
+production config — all three succeeded, 20-30KB+ of real content
+each) — genuinely still a cloud-specific block (GitHub Actions' network
+gets refused; this network doesn't), not a parser bug like Central
+Bank's turned out to be. A code fix can't help here: the workflow that
+would need to write fresh data can never successfully fetch IOB from
+where it runs. The real unblock needs the same manual-snapshot
+mechanism already built for Union Bank's FD data — except
+`load_manual_snapshots.py` is currently scoped to `fd_rates` only, not
+`loan_rates`, so extending it (or writing an IOB-specific loader) is a
+real, separate piece of work, not done here — raised with the user
+rather than built unprompted, since it's a new capability, not a bug
+fix.
+
+**BOI's `fd_rates` staleness is also unchanged — no new source found.**
+Already investigated and documented in §69; nothing new today.
+
+Files: `automation/extract_loan_rates.py`
+(`extract_central_bank_education_rows()`'s anchor).
