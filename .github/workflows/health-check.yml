@@ -4,11 +4,20 @@ name: Health Check
 # writes anything back to the repo. It just runs the three content-level
 # verify tools against whatever daily-refresh.yml's own run already
 # committed, and fails the job (job goes red) if any of them reports a
-# real FAIL. Each verify script is its own step specifically so GitHub
-# Actions' own normal step-failure behavior does the "exit non-zero on
-# any FAIL" job -- no custom all-or-nothing script needed here the way
-# daily-refresh.yml's sync step needed one, since nothing downstream of
-# these three steps depends on all of them succeeding together.
+# real FAIL.
+#
+# Each verify script is its own step so its own real output is its own
+# clearly-labeled section in the log -- but GitHub Actions' DEFAULT
+# behavior stops at the first failing step and SKIPS every step after
+# it, which a real first test run (2026-11-07) confirmed directly:
+# verify_coverage.py failed, and verify_all.py/verify_index_freshness.py
+# never ran at all that day -- exactly the kind of silent gap this
+# project has hit before (loan_freshness/consecutive_fetch_errors exist
+# because a different check ALSO looked healthy while something nearby
+# was actually broken). `if: always()` on the later two steps fixes
+# this -- they now run regardless of whether an earlier one failed,
+# while the job's own overall status still correctly stays "failure" if
+# ANY step failed (no continue-on-error anywhere here).
 #
 # Scheduled for ~08:30 IST (03:00 UTC), an hour after daily-refresh.yml's
 # own 07:30 IST (02:00 UTC) start -- enough time for that run (fetch +
@@ -42,7 +51,9 @@ jobs:
         run: python automation/verify_coverage.py
 
       - name: verify_all.py
+        if: always()
         run: python automation/verify_all.py
 
       - name: verify_index_freshness.py
+        if: always()
         run: python automation/verify_index_freshness.py
