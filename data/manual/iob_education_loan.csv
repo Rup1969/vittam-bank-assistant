@@ -1,0 +1,14 @@
+bank_id,loan_type,rate_type,benchmark_type,benchmark_rate,rate_min,rate_max,tier_type,tier_label,processing_fee,max_ltv,effective_date,source_url,fetched_at,data_source
+iob,education_loan,floating,RLLR,8.10,10.00,10.00,scheme,Vidya Jyothi (INTEREST RATE FOR PUBLIC),,,,https://www.iob.bank.in/en/Lending-Interest-Rates,2026-11-07,manual_load_frozen
+iob,education_loan,floating,RLLR,8.10,8.75,8.75,scheme,Vidya Jyothi (INTEREST RATE FOR WARDS OF STAFF AND RETIRED STAFF),,,,https://www.iob.bank.in/en/Lending-Interest-Rates,2026-11-07,manual_load_frozen
+iob,education_loan,floating,RLLR,8.10,10.00,10.00,scheme,Vidya Suraksha (LOAN ONLY UP TO Rs 7.50 Lakh),,,,https://www.iob.bank.in/en/Lending-Interest-Rates,2026-11-07,manual_load_frozen
+iob,education_loan,floating,RLLR,8.10,7.75,7.75,scheme,Vidya Shresht (A RATED INSTITUTIONS),,,,https://www.iob.bank.in/en/Lending-Interest-Rates,2026-11-07,manual_load_frozen
+iob,education_loan,floating,RLLR,8.10,8.00,8.00,scheme,Vidya Shresht (B RATED INSTITUTIONS),,,,https://www.iob.bank.in/en/Lending-Interest-Rates,2026-11-07,manual_load_frozen
+iob,education_loan,floating,RLLR,8.10,10.55,10.55,scheme,Iob Scholar (LOAN UP TO Rs. 7.50 Lakh),,,,https://www.iob.bank.in/en/Lending-Interest-Rates,2026-11-07,manual_load_frozen
+iob,education_loan,floating,RLLR,8.10,11.55,11.55,scheme,Iob Scholar (ABOVE Rs. 7.50 lakhs UP TO Rs. 60 Lakh),,,,https://www.iob.bank.in/en/Lending-Interest-Rates,2026-11-07,manual_load_frozen
+iob,education_loan,floating,RLLR,8.10,10.25,10.25,scheme,Iob Scholar (IOB SCHOLAR TO STAFF WARD UP TO Rs. 60 Lakh),,,,https://www.iob.bank.in/en/Lending-Interest-Rates,2026-11-07,manual_load_frozen
+iob,education_loan,floating,RLLR,8.10,9.85,9.85,scheme,Other Education Loan Schemes (SKILL LOAN),,,,https://www.iob.bank.in/en/Lending-Interest-Rates,2026-11-07,manual_load_frozen
+iob,education_loan,floating,RLLR,8.10,11.55,11.55,scheme,Other Education Loan Schemes (VOCATIONAL LOANS),,,,https://www.iob.bank.in/en/Lending-Interest-Rates,2026-11-07,manual_load_frozen
+iob,education_loan,floating,RLLR,8.10,11.80,11.80,scheme,Other Education Loan Schemes (IOB CAREER DREAM UPTO Rs. 2 Lakh BY LIQUID SECURITY),,,,https://www.iob.bank.in/en/Lending-Interest-Rates,2026-11-07,manual_load_frozen
+iob,education_loan,floating,RLLR,8.10,12.00,12.00,scheme,Other Education Loan Schemes (IOB CAREER DREAM ABOVE Rs. 2 Lakh SECURED BY IMMOVABLE),,,,https://www.iob.bank.in/en/Lending-Interest-Rates,2026-11-07,manual_load_frozen
+iob,education_loan,floating,RLLR,8.10,10.55,10.55,scheme,Other Education Loan Schemes (BIHAR STUDENT CREDIT CARD SCHEME UP TO Rs. 4.00 LAKH),,,,https://www.iob.bank.in/en/Lending-Interest-Rates,2026-11-07,manual_load_frozen

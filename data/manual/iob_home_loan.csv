@@ -1,0 +1,13 @@
+bank_id,loan_type,rate_type,benchmark_type,benchmark_rate,rate_min,rate_max,tier_type,tier_label,processing_fee,max_ltv,effective_date,source_url,fetched_at,data_source
+iob,home_loan,floating,RLLR,,7.45,7.45,credit_score,CIC-1 (>= 800) (Salaried),,,,https://www.iob.bank.in/en/lending-interest-rates1,2026-11-07,manual_load_frozen
+iob,home_loan,floating,RLLR,,7.55,7.55,credit_score,CIC-1 (>= 800) (Non-Salaried),,,,https://www.iob.bank.in/en/lending-interest-rates1,2026-11-07,manual_load_frozen
+iob,home_loan,floating,RLLR,,7.50,7.50,credit_score,CIC-2 (775 to 799) (Salaried),,,,https://www.iob.bank.in/en/lending-interest-rates1,2026-11-07,manual_load_frozen
+iob,home_loan,floating,RLLR,,7.60,7.60,credit_score,CIC-2 (775 to 799) (Non-Salaried),,,,https://www.iob.bank.in/en/lending-interest-rates1,2026-11-07,manual_load_frozen
+iob,home_loan,floating,RLLR,,7.80,7.80,credit_score,CIC-3 (750 to 774) (Salaried),,,,https://www.iob.bank.in/en/lending-interest-rates1,2026-11-07,manual_load_frozen
+iob,home_loan,floating,RLLR,,7.90,7.90,credit_score,CIC-3 (750 to 774) (Non-Salaried),,,,https://www.iob.bank.in/en/lending-interest-rates1,2026-11-07,manual_load_frozen
+iob,home_loan,floating,RLLR,,8.10,8.10,credit_score,CIC-4 (725 to 749) & NTC (Salaried),,,,https://www.iob.bank.in/en/lending-interest-rates1,2026-11-07,manual_load_frozen
+iob,home_loan,floating,RLLR,,8.20,8.20,credit_score,CIC-4 (725 to 749) & NTC (Non-Salaried),,,,https://www.iob.bank.in/en/lending-interest-rates1,2026-11-07,manual_load_frozen
+iob,home_loan,floating,RLLR,,8.20,8.20,credit_score,CIC-5 (700 to 724) (Salaried),,,,https://www.iob.bank.in/en/lending-interest-rates1,2026-11-07,manual_load_frozen
+iob,home_loan,floating,RLLR,,8.30,8.30,credit_score,CIC-5 (700 to 724) (Non-Salaried),,,,https://www.iob.bank.in/en/lending-interest-rates1,2026-11-07,manual_load_frozen
+iob,home_loan,floating,RLLR,,8.45,8.45,credit_score,CIC-6 (680 to 699) (Salaried),,,,https://www.iob.bank.in/en/lending-interest-rates1,2026-11-07,manual_load_frozen
+iob,home_loan,floating,RLLR,,8.55,8.55,credit_score,CIC-6 (680 to 699) (Non-Salaried),,,,https://www.iob.bank.in/en/lending-interest-rates1,2026-11-07,manual_load_frozen

@@ -16,31 +16,12 @@ Deferred items, not yet scheduled — kept here so they don't get lost
 between sessions. Append to this list rather than letting a deferred
 finding only live in a commit message.
 
-- **IOB: local-fetch snapshot.** All three of IOB's sources (fd_rates,
-  home_loan, education_loan) are confirmed blocked specifically from
-  GitHub Actions' cloud network (a short bot-defense challenge page,
-  confirmed via `fetch_log`'s own error text) while loading fine, with
-  real content, from a local/residential network (re-tested directly,
-  2026-11-07 — see `config/banks.json`'s `iob` note and this file's
-  §64-§67). A one-time manual CSV snapshot, fetched locally and loaded
-  the same way Union Bank's FD data now is (`load_manual_snapshots.py`),
-  would unfreeze all three until the cloud block clears on its own or a
-  different fix is found. Not built — no one asked for it yet, and it's
-  a real content-pipeline change (a new CSV + wiring), not a quick fix.
-- **Central Bank of India: `education_loan` has no fetch of its own and
-  is at risk of silently going to zero.** Confirmed directly: `loan_rates`
-  has 6 real `live_fetch` rows for this (bank, product), last refreshed
-  2026-08-19 — but `config/banks.json` has no `education_loan` URL for
-  Central Bank at all, and there's no `central_bank_education_loan`
-  fetch_log source_id. Its 6 rows come from `extract_loan_rates.py`
-  parsing a "20. Education Loans" section OUT OF the home_loan page's
-  own shared fetch (same URL, same `fetch_log` row) — a literal-string
-  `.find("20. Education Loans", ...)` marker, the exact same fragile-
-  marker class flagged (not fixed) in the extract_loan_rates.py/
-  extract_structured.py audit a few commits back. If that marker ever
-  stops matching, `check_rows_per_source_health()` (new, this session)
-  would catch a resulting drop to 0 — but the underlying marker itself
-  hasn't been hardened. Not investigated further or fixed here.
+- **IOB's `fd_rates` still has no manual snapshot.** `home_loan` and
+  `education_loan` got one 2026-11-07 (§71) using the now-generalized
+  `load_manual_snapshots.py`; `fd_rates` would use the exact same
+  mechanism (`extract_iob_rows()` already exists and works locally) if
+  someone wants it unfrozen before the cloud block clears on its own.
+  Not built — no one's asked for it yet.
 - **Repo growth from daily database commits.** `data/automation.duckdb`
   (8.1MB) gets a new full-blob commit every day the pipeline runs, plus
   now a small date-only diff most days for the 7 AUTO-block documents
@@ -7244,3 +7225,68 @@ Already investigated and documented in §69; nothing new today.
 
 Files: `automation/extract_loan_rates.py`
 (`extract_central_bank_education_rows()`'s anchor).
+
+## 71. IOB's home_loan/education_loan unfrozen via a generalized manual-snapshot loader (2026-11-07)
+
+User asked to go further on §70's "banks not updated" investigation and
+build the fix for IOB too, with their explicit go-ahead. `load_manual_
+snapshots.py` was written for `fd_rates` only (Union Bank's CSV);
+generalized it to also load `loan_rates`-schema CSVs, dispatched per
+file by its own header (presence of a `loan_type` column vs. a
+`tenure_label` column) rather than filename, so the existing fd glob
+doesn't need per-bank knowledge of which schema applies. Added
+`load_loan_csv()` + a `_LOAN_RATE_MIN/_LOAN_RATE_MAX = 3.0, 25.0` bound
+(matching `LoanRateRecord`'s own validator — loan rates run higher than
+FD rates) alongside the existing fd-only `_validate_rate()`, now
+parameterized to take either bound.
+
+Real data, not fabricated: re-fetched both of IOB's loan pages locally
+today (confirmed, again, that they load fine outside GitHub Actions'
+network — same cloud-specific block as before, unchanged), ran the
+project's own EXISTING, already-working parsers
+(`extract_iob_home_loan_rows()`/`extract_iob_education_rows()`) against
+the fresh fetch, and transcribed their real output into
+`data/manual/iob_home_loan.csv` (12 rows) and `iob_education_loan.csv`
+(13 rows). Real movement from the stale August data, not just a
+re-date — e.g. home loan's CIC-1 salaried tier 7.10%→7.45%, education's
+Vidya Jyothi public rate 9.75%→10.00%, consistent with the broader
+October 2026 rate-rise pattern already seen in Indian Bank's special FD
+schemes (§69) and RBI's October MPC hike. `effective_date` left blank
+for both — the existing live parsers never populated it for these two
+loan types either, so leaving it blank matches what the automated path
+would have produced, rather than inventing a date from a different
+table on the same page.
+
+`config/banks.json`: added `"read_only_products": ["home_loan",
+"education_loan"]` to IOB's entry, alongside its existing
+`"cloud_blocked_products"` (unchanged, same three products) — the two
+flags now do different jobs for the same two products:
+`cloud_blocked_products` still drives `check_consecutive_fetch_errors()`'s
+"blocked from cloud, loads locally" wording (checked first in that
+function, so this doesn't change), while `read_only_products` makes
+`check_rows_per_source_health()`/`check_loan_freshness()` treat the new
+manual snapshot correctly — counted as real data (not a "rows dropped
+to 0" false positive) and excluded from the staleness check (manual
+rows are never expected to auto-refresh), exactly the same fix shape
+§65-66 already applied for Union Bank's FD CSV.
+
+Verified end-to-end on a throwaway DB copy (same technique as §69/§70):
+`load_manual_snapshots.py`'s real, unmodified `run()` against a scratch
+DB with both new CSVs plus the existing Union Bank one present —
+correctly loaded all three (12 + 13 + 18 rows), each into the right
+table via header-based routing, with no cross-contamination. Reran
+`check_loan_freshness()` against that same scratch DB: IOB's two
+entries are now gone entirely (correctly excluded as manual, not
+flagged stale) rather than showing PASS with a suspiciously-fresh date.
+`verify_all.py` unaffected (186/186, real DB untouched — this only adds
+new CSVs + code; the actual DB write happens on the next real
+`daily-refresh.yml` run).
+
+IOB's `fd_rates` itself is NOT included in this fix — no CSV built for
+it, left for the Later list; `extract_iob_rows()` already exists and
+works locally, so the same mechanism would apply if/when wanted.
+
+Files: `automation/load_manual_snapshots.py` (loan-rates support),
+`data/manual/iob_home_loan.csv` (new), `data/manual/iob_education_loan.csv`
+(new), `config/banks.json` (IOB's `read_only_products`), `README.md`
+(Known Limitations).

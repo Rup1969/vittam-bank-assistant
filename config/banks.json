@@ -85,6 +85,7 @@
       "read_only": false,
       "wait_until": "commit",
       "cloud_blocked_products": ["fd_rates", "home_loan", "education_loan"],
+      "read_only_products": ["home_loan", "education_loan"],
       "urls": {
         "fd_rates": "https://www.iob.bank.in/en/retail-deposit-interest-rates-domestic-nro-and-nre",
         "home_loan": "https://www.iob.bank.in/en/lending-interest-rates1",
