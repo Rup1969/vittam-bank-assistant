@@ -7353,3 +7353,58 @@ the next `daily-refresh.yml` run except this one, which only needed
 
 Files: `data/manual/boi_fd.csv` (new), `README.md` (daily pipeline
 section, Known Limitations).
+
+## 73. "No verified source" freshness-badge fix + lightweight usage logging (2026-11-07)
+
+**Freshness badge fix.** The user spotted this live: Central Bank's
+education_loan rate updated for real (§70) but its "Data" column still
+read "No verified source" in Compare Rates, same as five other banks
+(bob, pnb, union_bank, punjab_sind, uco). Root cause confirmed against
+the real `fetch_log`, not assumed: these six banks' education_loan
+rows are parsed OUT OF their home_loan page's own fetch (no dedicated
+`education_loan` fetch_log source_id exists for any of them — the
+other 11 banks all have one). `gap_notes.freshness_label()` only ever
+looked up the dedicated source_id, so it always came up empty for
+exactly these six. Fixed with an optional `fallback_source_id` param,
+tried only when the primary lookup is empty; wired in at `app.py`'s
+`_freshness_column()` for the education_loan tab specifically (the
+only tab with this reused-fetch pattern — home_loan/vehicle_loan/
+fd_rates all have their own dedicated fetch per bank, untouched).
+Confirmed directly against the real DB: all six banks now correctly
+show "verified 07 Nov 2026" instead of "No verified source."
+
+**Usage logging**, per explicit spec (console-only, no new dependency,
+no persistence): `app.py` gained `_log_usage(event, extra="")`, one
+line per trigger — `[usage] ts=<ISO> user=<username> event=<type>` —
+at exactly five points: `login` (right after a successful sign-in),
+`chat_question` (inside `generate_answer()`, with a real `tokens=<n>`
+read from the Groq completion's own `usage.total_tokens`, not a
+rolling-window estimate — falls back to the existing TPM-window figure
+only if a future response shape ever lacks `.usage`; also fires with
+`tokens=0` on the "no retrieved_chunks" early return, since a question
+was still genuinely asked and answered), `compare_rates_view` (top of
+the `if compare_on:` block), `shortcut_answer` (the FD-rate/digest/
+calculator shortcuts — three call sites, one event name, since these
+bypass Groq entirely and have no token count to report), and
+`groq_error` (the existing exception handler, alongside the diagnostic
+print already there). Never logs question text, answer text, or a
+password. `settings.USAGE_LOG_EXCLUDE_OWNER`/`USAGE_LOG_OWNER_USERNAME`
+(`.env`) skip one named account entirely.
+
+Verified without touching real login credentials (correctly blocked
+from reading the real `secrets.toml` — credential materialization —
+so a real browser login wasn't attempted): `ast`-extracted the real,
+unmodified `_log_usage()` function straight out of `app.py` and
+executed it against a fake `st.session_state`/`settings`, confirming
+all five event lines format correctly and the owner-exclusion flag
+actually skips one user while still logging another. Separately
+confirmed the token-extraction snippet (`getattr(usage, "total_tokens",
+...)`) against a realistic fake Groq response shape. `verify_all.py`
+186/186, `verify_coverage.py` 320/320 (0 FAIL — confirms every fix from
+§69-72 is now fully live in the real, committed database, not just
+code), `verify_index_freshness.py` 3/3.
+
+Files: `app.py` (`_log_usage()`, 5 call sites, `_freshness_column()`'s
+fallback param), `automation/gap_notes.py` (`freshness_label()`'s
+`fallback_source_id`), `settings.py` (`USAGE_LOG_EXCLUDE_OWNER`/
+`USAGE_LOG_OWNER_USERNAME`), `README.md` (Known Limitations).

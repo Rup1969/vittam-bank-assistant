@@ -101,6 +101,14 @@ except Exception:
 # prompts at the existing MAX_TOKENS budget.
 GROQ_MODEL: str = os.getenv("GROQ_MODEL", "openai/gpt-oss-20b")
 
+# ── Usage logging ──────────────────────────────────────────────────
+# Console-only, no persistence (see app.py's _log_usage()). Set
+# USAGE_LOG_EXCLUDE_OWNER=true and USAGE_LOG_OWNER_USERNAME=<your
+# login username> in .env to skip logging your own day-to-day use of
+# your own deployment — everyone else's usage still gets logged.
+USAGE_LOG_EXCLUDE_OWNER: bool = _bool_env("USAGE_LOG_EXCLUDE_OWNER", default=False)
+USAGE_LOG_OWNER_USERNAME: str = os.getenv("USAGE_LOG_OWNER_USERNAME", "")
+
 # ── Known sources / metadata taxonomy ────────────────────────────────
 # Three separate axes, deliberately kept independent (see chat):
 #   BANK         -> who said it

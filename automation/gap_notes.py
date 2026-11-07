@@ -91,13 +91,29 @@ def _fetch_log_latest(source_id: str):
 
 
 def freshness_label(bank_id: str, category: str, data_source: str | None = None,
-                     source_id: str | None = None) -> dict:
+                     source_id: str | None = None,
+                     fallback_source_id: str | None = None) -> dict:
     """category is 'rate' (7-day threshold) or 'content' (30-day threshold).
 
     `data_source` (from fd_rates/loan_rates) short-circuits everything else:
     a manually-loaded row is always "Frozen", regardless of age — there is
     no refresh cycle to measure it against, so calling it "stale" would
     imply a freshness process that doesn't exist for that row.
+
+    `fallback_source_id` covers a real, confirmed case: several banks'
+    education_loan rates are parsed OUT OF their home_loan page's own
+    fetch rather than a dedicated education_loan fetch (extract_loan_
+    rates.py's run_education(), "Batch 1" banks — bob, pnb, union_bank,
+    central_bank, punjab_sind, uco, confirmed 2026-11-07 against the real
+    fetch_log: none of them has ever had an "f'{bank_id}_education_loan'"
+    row at all, only "f'{bank_id}_home_loan'"). Without this, this
+    function always looked up the dedicated source_id, found nothing for
+    exactly those six banks, and showed "No verified source" even on a
+    day their rate was genuinely re-extracted fresh (confirmed: Central
+    Bank's education_loan rate changed for real 2026-11-07, same day its
+    freshness badge still read "No verified source"). Tried only when
+    the primary source_id comes up empty, so a bank WITH its own
+    dedicated fetch (the other 11) is completely unaffected.
 
     Returns {"label": str, "state": "fresh"|"stale"|"frozen"|"unknown", "detail": str}
     — `state` drives the badge color, `label`/`detail` are the display text.
@@ -107,6 +123,8 @@ def freshness_label(bank_id: str, category: str, data_source: str | None = None,
 
     sid = source_id or bank_id
     fetched_at = _fetch_log_latest(sid)
+    if fetched_at is None and fallback_source_id:
+        fetched_at = _fetch_log_latest(fallback_source_id)
     if fetched_at is None:
         return {"label": "No verified source", "state": "unknown", "detail": ""}
 

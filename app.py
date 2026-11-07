@@ -4,6 +4,7 @@ import sys
 import json
 import time
 import traceback
+from datetime import datetime
 import streamlit as st
 from groq import Groq
 from pathlib import Path
@@ -1996,6 +1997,29 @@ def render_banker_rbi_excerpts() -> None:
             st.caption(chunk.get("source", "No source note on file."))
 
 
+def _log_usage(event: str, extra: str = "") -> None:
+    """Lightweight usage logging -- one line to the server console,
+    nothing written to disk or any database table (no new dependency,
+    no persistence, per the explicit request this was built for).
+    `event` is one of a small fixed set (login/chat_question/
+    compare_rates_view/shortcut_answer/groq_error); `extra` is optional
+    plain key=value text appended to the same line (currently just
+    "tokens=<n>" for chat_question) -- never question text, answer
+    text, or a password.
+
+    Skips the configured owner account entirely when
+    USAGE_LOG_EXCLUDE_OWNER is set, so one person's own routine use of
+    their own deployment doesn't clutter a log meant to show who ELSE
+    is using it."""
+    user = st.session_state.get("username", "?")
+    if settings.USAGE_LOG_EXCLUDE_OWNER and user and user == settings.USAGE_LOG_OWNER_USERNAME:
+        return
+    line = f"[usage] ts={datetime.now().isoformat(timespec='seconds')} user={user} event={event}"
+    if extra:
+        line += f" {extra}"
+    print(line, flush=True)
+
+
 def check_login():
     if st.session_state.get("authenticated"):
         return True
@@ -2263,6 +2287,7 @@ def check_login():
                     ALLOWED_USERS[username] == password):
                 st.session_state.authenticated = True
                 st.session_state.username      = username
+                _log_usage("login")
                 st.rerun()
             else:
                 st.error("Invalid username or password.")
@@ -2619,6 +2644,7 @@ def retrieve_general(query, pools, model, k=17):
 
 def generate_answer(query, retrieved_chunks, client, fallback_hint=""):
     if not retrieved_chunks:
+        _log_usage("chat_question", "tokens=0")
         return (
             "I could not find relevant information. "
             "Please check the relevant bank's official website or a branch."
@@ -2660,7 +2686,15 @@ def generate_answer(query, retrieved_chunks, client, fallback_hint=""):
         except Exception:
             st.session_state.tpm_used = "?"
 
-        return response.parse().choices[0].message.content
+        parsed = response.parse()
+        # The completion's own usage.total_tokens (this exact call's real
+        # cost, not the rolling-window figure above) is the "approximate
+        # token count" the usage log wants -- falls back to that window
+        # figure only if a future response shape ever lacks .usage.
+        usage = getattr(parsed, "usage", None)
+        token_count = getattr(usage, "total_tokens", None) or st.session_state.get("tpm_used", "?")
+        _log_usage("chat_question", f"tokens={token_count}")
+        return parsed.choices[0].message.content
 
     except Exception as e:
         # User-facing message stays deliberately simple/safe regardless of
@@ -2671,6 +2705,7 @@ def generate_answer(query, retrieved_chunks, client, fallback_hint=""):
         # for diagnosis anymore).
         print(f"[generate_answer] {type(e).__name__}: {e}", flush=True)
         traceback.print_exc()
+        _log_usage("groq_error")
         err = str(e)
         if "429" in err or "rate" in err.lower():
             return (
@@ -3231,6 +3266,7 @@ if explore_mode == "RBI Guidelines" and not in_tool_panel:
 # database (automation/), no RAG retrieval, no LLM call.
 # ══════════════════════════════════════════════════════════════════════
 if compare_on:
+    _log_usage("compare_rates_view")
     from compare_rates import compare_for_tenure, special_tenure_bands
     from compare_loan_rates import compare_home_loan, compare_loan
     from gap_notes import freshness_label
@@ -3277,12 +3313,16 @@ if compare_on:
         con.close()
         return {bank_id: data_source for bank_id, data_source in rows}
 
-    def _freshness_column(results: list[dict], data_sources: dict, fetch_suffix: str = "") -> list[str]:
+    def _freshness_column(
+        results: list[dict], data_sources: dict, fetch_suffix: str = "",
+        fallback_suffix: str | None = None,
+    ) -> list[str]:
         return [
             freshness_label(
                 r["bank_id"], "rate",
                 data_source=data_sources.get(r["bank_id"]),
                 source_id=f'{r["bank_id"]}{fetch_suffix}',
+                fallback_source_id=f'{r["bank_id"]}{fallback_suffix}' if fallback_suffix else None,
             )["label"]
             for r in results
         ]
@@ -3421,7 +3461,8 @@ if compare_on:
             st.info("No education loan data available.")
         else:
             edu_data_sources = _bank_data_sources("loan_rates", "loan_type", "education_loan")
-            edu_freshness = _freshness_column(edu_results, edu_data_sources, "_education_loan")
+            edu_freshness = _freshness_column(
+                edu_results, edu_data_sources, "_education_loan", fallback_suffix="_home_loan")
             st.table([
                 {"Rank": i, "Bank": resolve_bank_label(r["bank_id"]),
                  "Rate": (f'{r["rate_min"]}% – {r["rate_max"]}%' if r["rate_max"] != r["rate_min"]
@@ -3699,6 +3740,7 @@ if msgs and msgs[-1]["role"] == "user" and resources_ok:
             answer = render_fd_rate_answer(fd_intent)
             retrieved = []
             elapsed = time.time() - t0
+            _log_usage("shortcut_answer")
             st.session_state.messages.append({
                 "role"    : "assistant",
                 "content" : answer,
@@ -3735,6 +3777,7 @@ if msgs and msgs[-1]["role"] == "user" and resources_ok:
         answer = render_digest(days=7)
         retrieved = []
         elapsed = time.time() - t0
+        _log_usage("shortcut_answer")
         st.session_state.messages.append({
             "role"    : "assistant",
             "content" : answer,
@@ -3761,6 +3804,7 @@ if msgs and msgs[-1]["role"] == "user" and resources_ok:
             answer = render_calculator_answer(parsed)
         retrieved = []
         elapsed = time.time() - t0
+        _log_usage("shortcut_answer")
         st.session_state.messages.append({
             "role"    : "assistant",
             "content" : answer,
