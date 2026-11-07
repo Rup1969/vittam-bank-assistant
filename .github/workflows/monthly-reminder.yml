@@ -22,6 +22,20 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
+        # No heredoc -- a previous version used `cat <<'BODY' ... BODY`,
+        # but YAML's block-literal indentation means the closing "BODY"
+        # line is never actually at column 0 the way a heredoc
+        # terminator must be, so bash never found it and just hung
+        # waiting for more input forever (confirmed directly: a real
+        # test run sat "in progress" for 11+ minutes with nothing
+        # happening, toward GitHub's 6-hour default job timeout, before
+        # being cancelled). printf with one double-quoted line per
+        # argument avoids the problem entirely -- no heredoc, no
+        # indentation-sensitive terminator -- and double quotes (not
+        # single) are required here since the real body text has
+        # apostrophes ("Union Bank's", "banks' own") that would end a
+        # single-quoted string early; the two literal backticks are
+        # escaped so they don't trigger command substitution.
         run: |
           QUERY='"Monthly Vittam check" in:title'
           EXISTING=$(gh issue list --search "$QUERY" --state open --json number --jq 'length')
@@ -29,12 +43,12 @@ jobs:
             echo "An open 'Monthly Vittam check' issue already exists -- skipping."
             exit 0
           fi
-          gh issue create --title "Monthly Vittam check" --body "$(cat <<'BODY'
-          Monthly manual check-in. Go through each item and check it off; close this issue once all four are done.
-
-          - [ ] Ask 5 chat questions (a mix of General Chat and at least one bank-scoped question) and confirm the answers look right.
-          - [ ] Compare 3 FD/loan rates shown in Compare Rates against the banks' own published pages.
-          - [ ] Refresh the IBA News snapshot (`python automation/iba_news.py --snapshot`).
-          - [ ] Re-copy Union Bank's FD rate table from its own page into `data/manual/union_bank_fd.csv`.
-          BODY
-          )"
+          printf "%s\n" \
+            "Monthly manual check-in. Go through each item and check it off; close this issue once all four are done." \
+            "" \
+            "- [ ] Ask 5 chat questions (a mix of General Chat and at least one bank-scoped question) and confirm the answers look right." \
+            "- [ ] Compare 3 FD/loan rates shown in Compare Rates against the banks' own published pages." \
+            "- [ ] Refresh the IBA News snapshot (\`python automation/iba_news.py --snapshot\`)." \
+            "- [ ] Re-copy Union Bank's FD rate table from its own page into \`data/manual/union_bank_fd.csv\`." \
+            > issue_body.md
+          gh issue create --title "Monthly Vittam check" --body-file issue_body.md
