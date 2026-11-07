@@ -7290,3 +7290,66 @@ Files: `automation/load_manual_snapshots.py` (loan-rates support),
 `data/manual/iob_home_loan.csv` (new), `data/manual/iob_education_loan.csv`
 (new), `config/banks.json` (IOB's `read_only_products`), `README.md`
 (Known Limitations).
+
+## 72. BOI's FD rate refreshed from a real user-supplied source — closes the §69-71 staleness list (2026-11-07)
+
+BOI's site was re-confirmed genuinely still blocked (three URLs/domains,
+same as §69) before asking the user for a source — consistent with this
+session's own precedent of re-verifying rather than trusting a prior
+finding. Rather than patch from the partial November news coverage
+found earlier (real, but incomplete — a new "BOI Akshay" 500-day scheme
+plus a few band changes, not a full table), the user opened BOI's own
+live page themselves (not blocked for a real browser, only for
+automated fetchers) and pasted its actual current content in two parts:
+general-public rates first, then senior/super-senior rates after being
+asked for them specifically.
+
+The result is a complete, real, dated table: 16 tenure rows, "w.e.f
+02.11.2026" (5 days old at the time), general + senior citizen rates
+(super senior also published but not stored — this project's schema
+only tracks two tiers, matching every other bank). Checked for internal
+consistency before trusting it, not just taken at face value: the
+page's own stated senior-citizen rule ("+0.50% for 180 days to <3
+years... +0.75% for 3 years & above") matches every single row's
+general-vs-senior delta exactly (0.50 for the 180d-<3yr bands, 0.75 for
+3yr-10yr, 0 below 180 days per the page's own "benefit applies to 180
+days & above" note) — a real cross-check that would have surfaced a
+transcription error if one existed, not just hope the paste was right.
+
+One real correctness issue caught before loading: the table's "Above 1
+Year to less than 2 Years (Except 500 Days)" band and its separate "500
+Days (BOI Akshay Fixed Deposit)" row are both present on the page, but
+`tenure_utils.parse_tenure_range()` has no logic for an "(Except N
+Days)" exclusion — confirmed directly, not assumed, that the wide band
+still numerically covers day 500 too. Checked how this project already
+handles the identical shape elsewhere (IOB/Canara/BOB/PNB/Union
+Bank/Punjab & Sind's 444/555-day schemes all have this same
+wide-band-plus-carved-out-day pattern) and found it already works by
+construction: `load_manual_snapshots.py` tags every row `deposit_variant
+= 'retail'`, and `compare_for_tenure()` picks the HIGHEST-rated retail
+row among a bank's matches at a given tenure — since a named scheme's
+whole point is paying more than the generic band it's carved from, the
+higher number always wins regardless of the exclusion logic gap.
+Confirmed directly against the real loaded data: `compare_for_tenure(500)`
+returns BOI's 6.85% special row, `compare_for_tenure(400)` returns the
+6.70% generic band — both correct, not just asserted.
+
+`data/manual/boi_fd.csv` loads via the same generalized
+`load_manual_snapshots.py` as Union Bank/IOB — no new code needed, the
+fd-rates schema path already existed. Verified end-to-end on a
+throwaway DB copy before touching the real one: 16 rows loaded
+correctly, `check_tenure_label_sanity()` all PASS for BOI, and
+`check_manual_data_age()`'s BOI entry flips from FAIL (75.8d, over the
+70-day bound) to PASS (0.5d) — the age check this whole §69-72
+investigation started from. `verify_all.py` unaffected (186/186, real
+DB untouched).
+
+This closes the full list of "banks not updated" findings from §69-71:
+Indian Bank (live-fetch fix), Central Bank education_loan (parser fix),
+IOB home/education loan (manual snapshot), BOI FD (manual snapshot,
+user-supplied source). All four take effect on the real database on
+the next `daily-refresh.yml` run except this one, which only needed
+`load_manual_snapshots.py` — also gated the same way, same next run.
+
+Files: `data/manual/boi_fd.csv` (new), `README.md` (daily pipeline
+section, Known Limitations).

@@ -1,0 +1,17 @@
+bank_id,product_type,tenure_label,interest_rate_general,interest_rate_senior,effective_date,fetched_at,source_url,data_source
+boi,fixed_deposit,7 days to 14 days,3.00,3.00,2026-11-02,2026-11-07,https://bankofindia.bank.in/interest-rate/rupee-term-deposit-rate,manual_load_frozen
+boi,fixed_deposit,15 days to 30 days,3.00,3.00,2026-11-02,2026-11-07,https://bankofindia.bank.in/interest-rate/rupee-term-deposit-rate,manual_load_frozen
+boi,fixed_deposit,31 days to 45 days,3.00,3.00,2026-11-02,2026-11-07,https://bankofindia.bank.in/interest-rate/rupee-term-deposit-rate,manual_load_frozen
+boi,fixed_deposit,46 days to 90 days,4.50,4.50,2026-11-02,2026-11-07,https://bankofindia.bank.in/interest-rate/rupee-term-deposit-rate,manual_load_frozen
+boi,fixed_deposit,91 days to 179 days,4.25,4.25,2026-11-02,2026-11-07,https://bankofindia.bank.in/interest-rate/rupee-term-deposit-rate,manual_load_frozen
+boi,fixed_deposit,180 days to 210 days,5.50,6.00,2026-11-02,2026-11-07,https://bankofindia.bank.in/interest-rate/rupee-term-deposit-rate,manual_load_frozen
+boi,fixed_deposit,211 days to 269 days,5.50,6.00,2026-11-02,2026-11-07,https://bankofindia.bank.in/interest-rate/rupee-term-deposit-rate,manual_load_frozen
+boi,fixed_deposit,270 days to less than 1 Year,5.50,6.00,2026-11-02,2026-11-07,https://bankofindia.bank.in/interest-rate/rupee-term-deposit-rate,manual_load_frozen
+boi,fixed_deposit,1 Year,6.60,7.10,2026-11-02,2026-11-07,https://bankofindia.bank.in/interest-rate/rupee-term-deposit-rate,manual_load_frozen
+boi,fixed_deposit,Above 1 Year to less than 2 Years (Except 500 Days),6.70,7.20,2026-11-02,2026-11-07,https://bankofindia.bank.in/interest-rate/rupee-term-deposit-rate,manual_load_frozen
+boi,fixed_deposit,500 Days (BOI Akshay Fixed Deposit),6.85,7.35,2026-11-02,2026-11-07,https://bankofindia.bank.in/interest-rate/rupee-term-deposit-rate,manual_load_frozen
+boi,fixed_deposit,2 Years to less than 3 Years,6.70,7.20,2026-11-02,2026-11-07,https://bankofindia.bank.in/interest-rate/rupee-term-deposit-rate,manual_load_frozen
+boi,fixed_deposit,3 Years,6.70,7.45,2026-11-02,2026-11-07,https://bankofindia.bank.in/interest-rate/rupee-term-deposit-rate,manual_load_frozen
+boi,fixed_deposit,Above 3 Years to less than 5 Years,6.25,7.00,2026-11-02,2026-11-07,https://bankofindia.bank.in/interest-rate/rupee-term-deposit-rate,manual_load_frozen
+boi,fixed_deposit,5 Years to less than 8 Years,6.00,6.75,2026-11-02,2026-11-07,https://bankofindia.bank.in/interest-rate/rupee-term-deposit-rate,manual_load_frozen
+boi,fixed_deposit,8 years and above to up to 10 Years,6.00,6.75,2026-11-02,2026-11-07,https://bankofindia.bank.in/interest-rate/rupee-term-deposit-rate,manual_load_frozen
