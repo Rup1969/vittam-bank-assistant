@@ -1,0 +1,40 @@
+name: Monthly Vittam Check
+
+# Opens a GitHub Issue on the 1st of each month with a short manual
+# checklist -- things no automated workflow in this repo checks for
+# itself (does chat actually sound right, do the numbers match the
+# banks' own pages, are the manual snapshots still current). Skips
+# creating a new issue if one with the same title is still open, so a
+# month someone hasn't gotten to it yet doesn't pile up duplicates.
+on:
+  schedule:
+    - cron: '0 3 1 * *'
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+jobs:
+  monthly-reminder:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create monthly check issue (skip if one is already open)
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          QUERY='"Monthly Vittam check" in:title'
+          EXISTING=$(gh issue list --search "$QUERY" --state open --json number --jq 'length')
+          if [ "$EXISTING" -gt 0 ]; then
+            echo "An open 'Monthly Vittam check' issue already exists -- skipping."
+            exit 0
+          fi
+          gh issue create --title "Monthly Vittam check" --body "$(cat <<'BODY'
+          Monthly manual check-in. Go through each item and check it off; close this issue once all four are done.
+
+          - [ ] Ask 5 chat questions (a mix of General Chat and at least one bank-scoped question) and confirm the answers look right.
+          - [ ] Compare 3 FD/loan rates shown in Compare Rates against the banks' own published pages.
+          - [ ] Refresh the IBA News snapshot (`python automation/iba_news.py --snapshot`).
+          - [ ] Re-copy Union Bank's FD rate table from its own page into `data/manual/union_bank_fd.csv`.
+          BODY
+          )"

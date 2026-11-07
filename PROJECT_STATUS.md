@@ -7007,3 +7007,54 @@ candidate fixes were proposed (filter date-only diff lines before
 staging; stop embedding today's literal date in RBI's body text) —
 **neither was built.** The explicit decision: accept this churn as the
 cost of simplicity, not worth the added complexity right now.
+
+## 68. Two new workflows: a daily read-only health-check, and a monthly manual-checklist reminder (2026-11-07)
+
+`.github/workflows/health-check.yml` (new) — runs `verify_coverage.py`,
+`verify_all.py`, `verify_index_freshness.py` daily at ~08:30 IST (an
+hour after daily-refresh.yml's own 07:30 IST start), each as its own
+step so a normal GitHub Actions step failure already makes the whole
+job go red — no custom all-or-nothing script needed here, unlike
+daily-refresh.yml's sync step, since nothing downstream depends on all
+three succeeding together. Read-only: `permissions: contents: read`,
+no checkout-and-commit, no write of any kind.
+
+New `verify_coverage.py` check, `check_manual_data_age()`: FAILs the
+IBA snapshot past 35 days and Union Bank's/Indian Bank's/BOI's manual
+FD data past 45 days (the existing `check_iba_snapshot_age()` stays as
+it was — WARN-only, used by app.py's sidebar — this is a separate,
+stricter, FAIL-capable check for the new workflow to actually gate on).
+Deliberately scoped to `fd_rates` only for these three banks, not every
+`manual_load_frozen` row in the DB -- vehicle_loan (manual for ~13
+banks, §31) and SBI's home_loan are already documented as permanently
+stale with no refresh expectation; flagging those here would just be
+permanent noise nobody can act on. `verify_coverage.py`'s own
+`__main__` now exits 1 on any real FAIL too (it never had to before —
+nothing ran it automatically until this workflow).
+
+**Found something real on the very first run**: Indian Bank's manual
+FD snapshot is 104.8 days old (last loaded 2026-07-25) and BOI's is
+75.7 days old (2026-08-23) — both genuinely past the new 45-day bound.
+Not fixed here (out of scope — the monthly reminder below is the
+mechanism for a human to act on this, not an automated re-fetch, since
+both sources are bot-defended and this project doesn't try to defeat
+that).
+
+`.github/workflows/monthly-reminder.yml` (new) — opens a GitHub Issue
+titled "Monthly Vittam check" on the 1st of each month via the `gh` CLI
+(no checkout needed — `gh issue create`/`list` talk to the API
+directly), with a 4-item checklist (5 chat questions, 3 rates compared
+against the banks' own pages, refresh the IBA snapshot, re-copy Union
+Bank's FD table). Skips creating a duplicate if one with that exact
+title is already open (`gh issue list --search '"Monthly Vittam check"
+in:title' --state open`).
+
+Verify suite: `verify_all.py` 186/186; `verify_index_freshness.py` 3/3;
+`verify_retrieval.py` unchanged; `verify_coverage.py` now 5 FAIL (3
+pre-existing `loan_freshness` + the 2 new, real `manual_data_age`
+findings above) — confirmed via a local run before pushing, not
+assumed.
+
+Files: `.github/workflows/health-check.yml` (new),
+`.github/workflows/monthly-reminder.yml` (new), `automation/
+verify_coverage.py` (`check_manual_data_age()`, `__main__` exit code).

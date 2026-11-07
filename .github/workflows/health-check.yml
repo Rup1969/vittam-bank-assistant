@@ -1,0 +1,48 @@
+name: Health Check
+
+# Read-only, no commits -- unlike daily-refresh.yml, this workflow never
+# writes anything back to the repo. It just runs the three content-level
+# verify tools against whatever daily-refresh.yml's own run already
+# committed, and fails the job (job goes red) if any of them reports a
+# real FAIL. Each verify script is its own step specifically so GitHub
+# Actions' own normal step-failure behavior does the "exit non-zero on
+# any FAIL" job -- no custom all-or-nothing script needed here the way
+# daily-refresh.yml's sync step needed one, since nothing downstream of
+# these three steps depends on all of them succeeding together.
+#
+# Scheduled for ~08:30 IST (03:00 UTC), an hour after daily-refresh.yml's
+# own 07:30 IST (02:00 UTC) start -- enough time for that run (fetch +
+# extract + chat-doc sync + its own verify + commit) to finish first, so
+# this always checks the FRESHLY refreshed database/documents, not
+# whatever was left over from the previous day.
+on:
+  schedule:
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  health-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: verify_coverage.py
+        run: python automation/verify_coverage.py
+
+      - name: verify_all.py
+        run: python automation/verify_all.py
+
+      - name: verify_index_freshness.py
+        run: python automation/verify_index_freshness.py

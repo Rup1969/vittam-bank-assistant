@@ -820,6 +820,102 @@ def check_iba_snapshot_age() -> list[dict]:
     }]
 
 
+_IBA_MANUAL_FAIL_AGE_DAYS = 35
+_MANUAL_FD_FAIL_AGE_DAYS = 45
+# Scoped to fd_rates specifically, not every manual_load_frozen row in
+# the DB -- vehicle_loan is manual_load_frozen for ~13 banks (a one-time
+# project-wide historical load, §31) and SBI's home_loan is too, but
+# both are ALREADY documented in README as permanently stale with no
+# refresh expectation (nobody is going to "re-copy" vehicle-loan rates
+# monthly) -- flagging those as FAIL here would just be permanent,
+# un-actionable noise. These three banks' FD data, by contrast, is
+# exactly what the monthly reminder (monthly-reminder.yml) asks a human
+# to re-copy, so an age check that can actually go stale and get fixed
+# belongs here.
+_MANUAL_FD_BANKS = ("union_bank", "indian_bank", "boi")
+
+
+def check_manual_data_age() -> list[dict]:
+    """FAILs when a manually-maintained snapshot is older than its own
+    bound: the IBA News snapshot (>35 days) and each of Union Bank's/
+    Indian Bank's/BOI's manually-loaded FD data (>45 days). Distinct
+    from `check_iba_snapshot_age()` above (kept as-is, WARN-only, used
+    by app.py's sidebar reminder) -- this one is deliberately stricter
+    and FAIL-capable, built for health-check.yml to actually go red on,
+    not just nudge a human reading the sidebar.
+
+    Never reports a `cloud_blocked_products` source (IOB) here -- IOB
+    isn't manual data at all, it's live data the pipeline can't
+    currently reach from GitHub Actions specifically;
+    `check_consecutive_fetch_errors()` already reports that under its
+    own, correct label, and conflating the two would double-count the
+    same real-world fact as two different kinds of problem."""
+    import json
+
+    results = []
+    now = datetime.now(timezone.utc)
+
+    if not _IBA_SNAPSHOT_PATH.exists():
+        results.append({
+            "bank_id": "iba", "product": "iba_snapshot", "check": "manual_data_age",
+            "status": "FAIL",
+            "detail": f"{_IBA_SNAPSHOT_PATH.name} does not exist",
+        })
+    else:
+        try:
+            payload = json.loads(_IBA_SNAPSHOT_PATH.read_text(encoding="utf-8"))
+            fetched_at = datetime.fromisoformat(payload["fetched_at"])
+            if fetched_at.tzinfo is None:
+                fetched_at = fetched_at.replace(tzinfo=timezone.utc)
+            age_days = (now - fetched_at).total_seconds() / 86400
+            status = "FAIL" if age_days > _IBA_MANUAL_FAIL_AGE_DAYS else "PASS"
+            results.append({
+                "bank_id": "iba", "product": "iba_snapshot", "check": "manual_data_age",
+                "status": status,
+                "detail": f"{age_days:.1f} days old ({fetched_at:%Y-%m-%d})"
+                          + ("" if status == "PASS" else
+                             f" -- exceeds the {_IBA_MANUAL_FAIL_AGE_DAYS}-day bound, needs a manual refresh"),
+            })
+        except Exception as exc:
+            results.append({
+                "bank_id": "iba", "product": "iba_snapshot", "check": "manual_data_age",
+                "status": "FAIL",
+                "detail": f"could not read fetched_at from {_IBA_SNAPSHOT_PATH.name}: {type(exc).__name__}: {exc}",
+            })
+
+    con = get_connection()
+    for bank_id in _MANUAL_FD_BANKS:
+        row = con.execute(
+            "SELECT MAX(fetched_at) FROM fd_rates WHERE bank_id = ? AND data_source = 'manual_load_frozen'",
+            [bank_id],
+        ).fetchone()
+        raw_fetched_at = row[0] if row else None
+        if raw_fetched_at is None:
+            results.append({
+                "bank_id": bank_id, "product": "fd_rates", "check": "manual_data_age",
+                "status": "FAIL",
+                "detail": "no manual_load_frozen fd_rates row found",
+            })
+            continue
+        # fd_rates.fetched_at is VARCHAR (confirmed project-wide, unlike
+        # fetch_log's own real TIMESTAMP column) -- parse explicitly
+        # rather than assume a datetime object comes back.
+        dt = raw_fetched_at if isinstance(raw_fetched_at, datetime) else datetime.fromisoformat(str(raw_fetched_at))
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        age_days = (now - dt).total_seconds() / 86400
+        status = "FAIL" if age_days > _MANUAL_FD_FAIL_AGE_DAYS else "PASS"
+        results.append({
+            "bank_id": bank_id, "product": "fd_rates", "check": "manual_data_age",
+            "status": status,
+            "detail": f"{age_days:.1f} days old ({dt:%Y-%m-%d})"
+                      + ("" if status == "PASS" else
+                         f" -- exceeds the {_MANUAL_FD_FAIL_AGE_DAYS}-day bound, needs a manual re-copy"),
+        })
+    con.close()
+    return results
+
+
 _RAW_DOCS_DIR = PROJECT_ROOT / "data" / "raw"
 _AUTO_START_LINE = "<!--AUTO:START-->"
 _AUTO_END_LINE = "<!--AUTO:END-->"
@@ -956,7 +1052,8 @@ def check_preview_figures() -> list[dict]:
 def run_all() -> list[dict]:
     return (check_tenure_coverage() + check_tenure_label_sanity() + check_missed_changes()
             + check_benchmark_rate_drift() + check_loan_freshness() + check_consecutive_fetch_errors()
-            + check_rows_per_source_health() + check_iba_snapshot_age() + check_preview_figures())
+            + check_rows_per_source_health() + check_manual_data_age() + check_iba_snapshot_age()
+            + check_preview_figures())
 
 
 def print_report(results: list[dict]) -> None:
@@ -971,13 +1068,15 @@ def print_report(results: list[dict]) -> None:
     cloud_blocked = [r for r in results if r["check"] == "consecutive_fetch_errors_cloud_blocked"]
     rows_health = [r for r in results if r["check"] == "rows_per_source_health"]
     rows_health_checkable = [r for r in rows_health if r["status"] != "INFO"]
+    manual_age = [r for r in results if r["check"] == "manual_data_age"]
     iba_age = [r for r in results if r["check"] == "iba_snapshot_age"]
     preview_figures = [r for r in results if r["check"] == "preview_figures"]
     # "checkable" = everything that counts toward PASS/FAIL — short-gap
     # INFO rows and the IBA snapshot-age WARN are reported but
     # deliberately excluded, same as verify_retrieval.py's own
     # "general_chat_capacity" precedent.
-    checkable = coverage + label_sanity + missed + drift + freshness + error_streaks + rows_health_checkable
+    checkable = (coverage + label_sanity + missed + drift + freshness + error_streaks
+                 + rows_health_checkable + manual_age)
 
     print("=" * 100)
     print(f"Tenure coverage — every real fd_rates band vs. Compare's milestones/Special Bands")
@@ -1097,6 +1196,17 @@ def print_report(results: list[dict]) -> None:
 
     print()
     print("=" * 100)
+    print(f"Manual-data age — IBA snapshot (>{_IBA_MANUAL_FAIL_AGE_DAYS}d) and Union Bank/Indian "
+          f"Bank/BOI's manual FD data (>{_MANUAL_FD_FAIL_AGE_DAYS}d): FAIL, not WARN")
+    print("=" * 100)
+    if not manual_age:
+        print("No manual-data sources found -- nothing to check.")
+    else:
+        for r in manual_age:
+            print(f"  {r['status']:<4}  {r['bank_id']:<14} {r['product']:<16} {r['detail']}")
+
+    print()
+    print("=" * 100)
     print(f"IBA snapshot age — manually refreshed, so this can only WARN, never FAIL")
     print("=" * 100)
     for r in iba_age:
@@ -1126,7 +1236,7 @@ def print_report(results: list[dict]) -> None:
     print(f"       {len(coverage)} tenure-coverage checks, {len(label_sanity)} tenure-label-sanity "
           f"checks, {len(missed)} missed-change checks, {len(drift)} benchmark-drift checks, "
           f"{len(freshness)} loan-freshness checks, {len(error_streaks)} consecutive-fetch-error checks, "
-          f"{len(rows_health_checkable)} rows-per-source-health checks")
+          f"{len(rows_health_checkable)} rows-per-source-health checks, {len(manual_age)} manual-data-age checks")
     print(f"       {len(short_gaps)} short-tenure band(s) reported separately (not counted in FAIL)")
     print(f"       {len(known_blocked)} source(s) known blocked (config read_only/read_only_products, not counted in FAIL)")
     print(f"       {len(cloud_blocked)} source(s) blocked from cloud, loads locally (config cloud_blocked_products, not counted in FAIL)")
@@ -1142,3 +1252,11 @@ def print_report(results: list[dict]) -> None:
 if __name__ == "__main__":
     results = run_all()
     print_report(results)
+    # Non-zero on any real FAIL -- added 2026-11-07 so this script can
+    # gate health-check.yml the same way verify_all.py/
+    # verify_index_freshness.py already gate daily-refresh.yml's sync
+    # step. Only "FAIL" counts -- "INFO" (known-blocked/cloud-blocked)
+    # and "WARN" rows are deliberately excluded everywhere above and
+    # stay excluded here too.
+    if any(r["status"] == "FAIL" for r in results):
+        sys.exit(1)
