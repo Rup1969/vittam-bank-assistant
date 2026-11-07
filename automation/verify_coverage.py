@@ -577,35 +577,74 @@ def _extract_db_blob(commit_hash: str, dest_path: Path) -> bool:
     return True
 
 
-def _source_row_counts(db_path: Path) -> dict[tuple[str, str], int]:
+def _source_row_counts(
+    db_path: Path, read_only_products: set[tuple[str, str]] = frozenset(),
+) -> dict[tuple[str, str], int]:
     """(bank_id, product) -> row count, for every data_source='live_fetch'
     FD/loan source -- the same scope loan_freshness/benchmark_drift above
-    already treat as this project's real, automatically-refreshed data
-    (manual_load_frozen rows are expected to stay fixed and are out of
-    scope here on purpose). Opens the given file directly and read-only
-    (never through get_connection(), which also runs schema-migration
-    ALTERs this one-off read has no business triggering, especially not
-    against an extracted PAST snapshot)."""
+    already treat as this project's real, automatically-refreshed data.
+
+    A source listed in `read_only_products` (Union Bank's fd_rates,
+    switched to a manual CSV snapshot -- see config/banks.json,
+    §65/§66) counts BOTH 'live_fetch' AND 'manual_load_frozen' rows
+    instead -- confirmed as a real false positive 2026-11-07: comparing
+    live_fetch-only counts across the commit where that switch actually
+    happened read as "18 -> 0 rows, FAIL" (true in a narrow sense -- the
+    live_fetch count really did go to zero -- but the real row count,
+    counting the manual snapshot that replaced it, didn't drop at all).
+    This compares like with like: a source's TOTAL currently-trusted row
+    count (whichever data_source it's expected to carry), not just
+    whichever single data_source happened to apply last time. A bank-
+    wide `read_only` source (Indian Bank, BOI) is deliberately NOT
+    included here -- it already has zero live_fetch rows under the old
+    scope (so it never appeared in this check at all before), and
+    `read_only_products` is the flag this fix was asked to key off, not
+    the bank-wide one.
+
+    Opens the given file directly and read-only (never through
+    get_connection(), which also runs schema-migration ALTERs this
+    one-off read has no business triggering, especially not against an
+    extracted PAST snapshot)."""
     import duckdb
 
     con = duckdb.connect(str(db_path), read_only=True)
     counts: dict[tuple[str, str], int] = {}
-    for (bank_id,) in con.execute(
+
+    live_fetch_fd_banks = {r[0] for r in con.execute(
         "SELECT DISTINCT bank_id FROM fd_rates WHERE data_source = 'live_fetch'"
-    ).fetchall():
+    ).fetchall()}
+    manual_fd_banks = {bank_id for bank_id, product in read_only_products if product == "fd_rates"}
+    for bank_id in sorted(live_fetch_fd_banks | manual_fd_banks):
+        if (bank_id, "fd_rates") in read_only_products:
+            data_sources = ("live_fetch", "manual_load_frozen")
+        else:
+            data_sources = ("live_fetch",)
+        placeholders = ", ".join("?" for _ in data_sources)
         n = con.execute(
-            "SELECT COUNT(*) FROM fd_rates WHERE bank_id = ? AND data_source = 'live_fetch'",
-            [bank_id],
+            f"SELECT COUNT(*) FROM fd_rates WHERE bank_id = ? AND data_source IN ({placeholders})",
+            [bank_id, *data_sources],
         ).fetchone()[0]
         counts[(bank_id, "fd_rates")] = n
-    for bank_id, loan_type in con.execute(
-        "SELECT DISTINCT bank_id, loan_type FROM loan_rates WHERE data_source = 'live_fetch'"
-    ).fetchall():
+
+    live_fetch_loans = {
+        (r[0], r[1]) for r in con.execute(
+            "SELECT DISTINCT bank_id, loan_type FROM loan_rates WHERE data_source = 'live_fetch'"
+        ).fetchall()
+    }
+    manual_loans = {(bank_id, product) for bank_id, product in read_only_products if product != "fd_rates"}
+    for bank_id, loan_type in sorted(live_fetch_loans | manual_loans):
+        if (bank_id, loan_type) in read_only_products:
+            data_sources = ("live_fetch", "manual_load_frozen")
+        else:
+            data_sources = ("live_fetch",)
+        placeholders = ", ".join("?" for _ in data_sources)
         n = con.execute(
-            "SELECT COUNT(*) FROM loan_rates WHERE bank_id = ? AND loan_type = ? AND data_source = 'live_fetch'",
-            [bank_id, loan_type],
+            f"SELECT COUNT(*) FROM loan_rates WHERE bank_id = ? AND loan_type = ? "
+            f"AND data_source IN ({placeholders})",
+            [bank_id, loan_type, *data_sources],
         ).fetchone()[0]
         counts[(bank_id, loan_type)] = n
+
     con.close()
     return counts
 
@@ -664,8 +703,9 @@ def check_rows_per_source_health(
                 }]
             previous_db_path = tmp
 
-        current_counts = _source_row_counts(current_db_path)
-        previous_counts = _source_row_counts(previous_db_path)
+        _, read_only_products = _read_only_sources()
+        current_counts = _source_row_counts(current_db_path, read_only_products)
+        previous_counts = _source_row_counts(previous_db_path, read_only_products)
     finally:
         for p in cleanup:
             p.unlink(missing_ok=True)
@@ -859,14 +899,20 @@ def check_preview_figures() -> list[dict]:
             if wanted & nearby_values:
                 has_rate = True
                 break
+        # A bank with no senior-citizen rate at all (Union Bank's manual
+        # snapshot, §65/§66) has s = None here -- f"{s:g}" crashes on
+        # that directly; "not published" matches the wording the FD-rate
+        # shortcut/Compare Rates already use for the same case elsewhere.
+        g_s = f"{g:g}%" if g is not None else "not published"
+        s_s = f"{s:g}%" if s is not None else "not published"
         results.append({
             "bank_id": bank_id, "product": fpath.stem, "check": "preview_figures",
             "status": "OK" if has_rate else "WARN",
             "detail": (
-                f"1-year rate ({g:g}%/{s:g}% for {label!r}) appears in the first {_PREVIEW_CHARS} "
+                f"1-year rate ({g_s}/{s_s} for {label!r}) appears in the first {_PREVIEW_CHARS} "
                 f"chars of General Chat's preview"
                 if has_rate else
-                f"1-year rate ({g:g}%/{s:g}% for {label!r}) does NOT appear in the first "
+                f"1-year rate ({g_s}/{s_s} for {label!r}) does NOT appear in the first "
                 f"{_PREVIEW_CHARS} chars of General Chat's preview -- a General Chat answer for "
                 f"this bank's 1-year FD rate may have nothing concrete to quote "
                 f"(preview ends: ...{chunk0_text[-60:]!r})"

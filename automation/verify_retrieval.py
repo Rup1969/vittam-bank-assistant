@@ -316,14 +316,19 @@ def check_fd_rate_shortcut() -> list[dict]:
             found = {round(float(m.group(1)), 2) for m in _PERCENT_RE.finditer(answer)}
             expected = {round(v, 2) for v in (expected_g, expected_s) if v is not None}
             passed = expected.issubset(found)
+            # A bank with no senior-citizen rate at all (Union Bank's
+            # manual snapshot, §65/§66) has expected_s = None here --
+            # f"{expected_s:g}" crashes on that directly.
+            expected_g_s = f"{expected_g:g}%" if expected_g is not None else "not published"
+            expected_s_s = f"{expected_s:g}%" if expected_s is not None else "not published"
             results.append({
                 "bank_id": bank_id, "tenure": label_name, "check": "fd_rate_shortcut",
                 "status": "PASS" if passed else "FAIL",
                 "detail": (
-                    f"shortcut states {expected_g:g}%/{expected_s:g}% ({best[0]!r}), matching Compare Rates"
+                    f"shortcut states {expected_g_s}/{expected_s_s} ({best[0]!r}), matching Compare Rates"
                     if passed else
                     f"shortcut answer does not state Compare Rates' figure for {best[0]!r} "
-                    f"({expected_g:g}%/{expected_s:g}%) -- shortcut said: {answer!r}"
+                    f"({expected_g_s}/{expected_s_s}) -- shortcut said: {answer!r}"
                 ),
             })
     return results
@@ -394,15 +399,20 @@ def check_fd_rate_retrieval_preview() -> list[dict]:
                 if expected & nearby:
                     passed = True
                     break
+            # A bank with no senior-citizen rate at all (Union Bank's
+            # manual snapshot, §65/§66) has best[2] = None here --
+            # f"{best[2]:g}" crashes on that directly.
+            best_g_s = f"{best[1]:g}%" if best[1] is not None else "not published"
+            best_s_s = f"{best[2]:g}%" if best[2] is not None else "not published"
             results.append({
                 "bank_id": bank_id, "tenure": label_name, "check": "fd_rate_retrieval_preview",
                 "status": "OK" if passed else "WARN",
                 "detail": (
                     f"top chunk ({chunk['doc_id']!r}) preview states Compare Rates' own figure "
-                    f"({best[0]!r}: {best[1]:g}%/{best[2]:g}%) near an explicit {n}-year mention"
+                    f"({best[0]!r}: {best_g_s}/{best_s_s}) near an explicit {n}-year mention"
                     if passed else
                     f"top chunk ({chunk['doc_id']!r}) preview does NOT state Compare Rates' figure for "
-                    f"{best[0]!r} ({best[1]:g}%/{best[2]:g}%) near an explicit {n}-year mention -- "
+                    f"{best[0]!r} ({best_g_s}/{best_s_s}) near an explicit {n}-year mention -- "
                     f"RAG fallback would answer with something else (preview ends: ...{preview[-80:]!r})"
                 ),
             })
