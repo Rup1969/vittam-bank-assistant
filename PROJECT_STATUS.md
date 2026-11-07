@@ -41,6 +41,40 @@ finding only live in a commit message.
   stops matching, `check_rows_per_source_health()` (new, this session)
   would catch a resulting drop to 0 — but the underlying marker itself
   hasn't been hardened. Not investigated further or fixed here.
+- **Repo growth from daily database commits.** `data/automation.duckdb`
+  (8.1MB) gets a new full-blob commit every day the pipeline runs, plus
+  now a small date-only diff most days for the 7 AUTO-block documents
+  and their index entries (§67 — accepted, not fixed). Neither the
+  DB's own growth curve nor the combined effect of both has been
+  measured over time; worth a real check once there's enough history
+  to measure against, not a guess now.
+- **Most banks' documents have no AUTO block at all.** Only 7 of this
+  project's ~17 banks (HDFC, SBI, BOB, Canara, PNB, Union Bank's FD +
+  RBI's policy rates) are wired into `sync_rag_docs.py`'s daily refresh
+  — ICICI, Kotak, Axis, IndusInd, IOB, BOI, Indian Bank, Central Bank,
+  UCO, BOM, Punjab & Sind, and the rest still rely on whatever hand-
+  written content was last committed, with no automated check that it
+  still agrees with the live database (the original DB↔RAG drift class
+  of bug, §44-45/§62, structurally still possible for every one of
+  these banks). Extending AUTO-block coverage to more banks is real,
+  unscoped work — not started.
+- **No deterministic loan-rate chat shortcut.** The FD-rate shortcut
+  (`automation/fd_rate_shortcut.py`) sidesteps RAG retrieval entirely
+  for "what's the N-year FD rate" questions, reading straight from
+  `compare_for_tenure()`. Home/education/vehicle loan questions have no
+  equivalent — they still go through ordinary RAG retrieval, with
+  whatever ranking/staleness risk that carries (the same risk class the
+  FD shortcut was built to eliminate). Not built.
+- **The literal-string `.find()` region-marker audit was reported, not
+  fixed.** `extract_loan_rates.py` and `extract_structured.py` have
+  ~25+ parsers locating their table region with an exact-text
+  `.find("...")` call — IOB's education-loan marker (§65) and Punjab &
+  Sind's dash-spacing marker (§65-adjacent) are the two that have
+  actually broken so far, both from the live page changing wording/
+  formatting slightly. The rest are the same shape and the same risk,
+  listed but untouched — hardening them (case-insensitive matching, or
+  a regex instead of a literal string) is real, repetitive work across
+  many functions, not a quick fix.
 
 ---
 
@@ -6924,3 +6958,52 @@ verify_coverage.py` (new `check_rows_per_source_health()` +
 `_git_commits_touching_db()`/`_extract_db_blob()`/`_source_row_counts()`
 helpers), `indexes/other_banks.index`, `indexes/other_banks_chunks.json`
 (rebuilt).
+
+## 67. The daily pipeline as it actually stands today — a snapshot, plus the date-only-churn decision (2026-11-07)
+
+Documenting state, not a new fix. §64-§66 (IOB/Union Bank triage,
+manual snapshots, chat-doc sync wiring) left the pipeline materially
+different from its last written description — this is the accurate
+current picture, confirmed against real `fetch_log`/config, not
+assumed from memory of what was built when.
+
+**Refreshed daily, automatically** (`.github/workflows/daily-refresh.yml`):
+`fd_rates` and `loan_rates` for every configured bank/URL (fetch
+attempted even for a currently-blocked source — nothing is skipped,
+it just keeps failing visibly); the 7 AUTO-block chat documents (HDFC,
+SBI, BOB, Canara, PNB, Union Bank FD + RBI's policy-rates doc) and
+their FAISS index entries, regenerated from that same refreshed
+database; `verify_all.py`/`verify_index_freshness.py`, gating whether
+the regenerated documents/index get committed (§66) — the database
+commit itself is never gated on this.
+
+**Manual, not daily**: IBA News's snapshot (refreshed by hand,
+~monthly, `python automation/iba_news.py --snapshot`); Union Bank's
+FD rates (`data/manual/union_bank_fd.csv`, hand-copied from the bank's
+own page, loaded fresh every run by `load_manual_snapshots.py` but not
+re-fetched — `config/banks.json`'s `read_only_products`); Indian Bank
+and BOI's FD/loan data (sourced once, frozen, `config/banks.json`'s
+bank-wide `read_only`).
+
+**Blocked from the cloud specifically, confirmed working locally**:
+IOB's three sources (fd_rates, home_loan, education_loan —
+`cloud_blocked_products`) and IBA News (both get a bot-defense/403
+response from GitHub Actions' and Streamlit Cloud's IP ranges, real
+content from a local/residential network the same day). Neither is
+"fixed" — no workaround attempted, per this project's standing rule.
+
+**Decision made today: date-only churn is accepted, not fixed.**
+Confirmed directly (two throwaway-clone tests, no real repo touched):
+re-running `sync_rag_docs.py`/`build_index.py` with zero underlying
+rate change produces a completely empty diff on the SAME day, but a
+small one-line `DATE:`-header diff (plus a matching metadata-only
+`"date"` field in the chunks JSON — the actual FAISS vectors are
+unaffected) on a NEW day for any bank whose live fetch merely
+succeeds, rate unchanged. RBI is a real step further: its AUTO block's
+own body text ("As of {today}...") is *embedded*, not a stripped
+header, so `rbi.index` (36KB) genuinely gets re-embedded and rewritten
+every day regardless of whether RBI's real rates moved at all. Two
+candidate fixes were proposed (filter date-only diff lines before
+staging; stop embedding today's literal date in RBI's body text) —
+**neither was built.** The explicit decision: accept this churn as the
+cost of simplicity, not worth the added complexity right now.

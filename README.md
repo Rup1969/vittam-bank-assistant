@@ -105,6 +105,13 @@ Retrieval (`retrieve()` in `app.py`) does a FAISS similarity search, then filter
 
 Structured rate data (`fd_rates`, `loan_rates` in DuckDB) is fetched and parsed independently of the RAG text content via `automation/fetch_and_track.py` + per-bank parsers in `automation/extract_structured.py` / `automation/extract_loan_rates.py`. The Calculator, Compare Rates, and Should-I-Switch tools all read from this structured DB, not from RAG retrieval — deterministic numeric answers instead of LLM-derived ones.
 
+**The daily pipeline, as it stands now** (`.github/workflows/daily-refresh.yml`, GitHub Actions):
+
+- **Refreshed automatically, every day**: `fd_rates` and `loan_rates` for every configured bank (a currently-blocked source still gets a fetch attempt — it just keeps failing visibly, nothing is silently skipped); the 7 AUTO-block chat documents (HDFC, SBI, BOB, Canara, PNB, Union Bank FD + RBI's policy-rates doc) and their FAISS index entries, regenerated from that same database and gated on `verify_all.py`/`verify_index_freshness.py` passing before being committed.
+- **Manual, not daily**: IBA News's snapshot (refreshed by hand, ~monthly); Union Bank's FD rates (a hand-copied CSV, re-loaded every run but not re-fetched); Indian Bank's and BOI's FD/loan data (sourced once, frozen).
+- **Blocked from the cloud specifically, confirmed working from a local network**: IOB's three sources (FD, home loan, education loan) and IBA News — both get a bot-defense response from GitHub Actions'/Streamlit Cloud's IP ranges. No workaround attempted, per this project's standing rule.
+- **Accepted, not fixed**: a day where a live fetch succeeds but no rate actually changed still produces a small commit (a `DATE:` header line, mostly) — see `PROJECT_STATUS.md`'s Later section.
+
 ---
 
 ## Setup
