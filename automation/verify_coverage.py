@@ -820,25 +820,38 @@ def check_iba_snapshot_age() -> list[dict]:
     }]
 
 
-_IBA_MANUAL_FAIL_AGE_DAYS = 35
-_MANUAL_FD_FAIL_AGE_DAYS = 45
+# Raised 2026-11-07, matching the real manual-refresh rhythm these
+# sources actually get (monthly-reminder.yml -> the bi-monthly
+# "Post-MPC Vittam check", roughly every 2 months) rather than a bound
+# tighter than the thing that's supposed to clear it. Was 35/45.
+_IBA_MANUAL_FAIL_AGE_DAYS = 65
+_MANUAL_FD_FAIL_AGE_DAYS = 70
 # Scoped to fd_rates specifically, not every manual_load_frozen row in
 # the DB -- vehicle_loan is manual_load_frozen for ~13 banks (a one-time
 # project-wide historical load, §31) and SBI's home_loan is too, but
 # both are ALREADY documented in README as permanently stale with no
 # refresh expectation (nobody is going to "re-copy" vehicle-loan rates
 # monthly) -- flagging those as FAIL here would just be permanent,
-# un-actionable noise. These three banks' FD data, by contrast, is
-# exactly what the monthly reminder (monthly-reminder.yml) asks a human
-# to re-copy, so an age check that can actually go stale and get fixed
+# un-actionable noise. These two banks' FD data, by contrast, is exactly
+# what the monthly reminder (monthly-reminder.yml) asks a human to
+# re-copy, so an age check that can actually go stale and get fixed
 # belongs here.
-_MANUAL_FD_BANKS = ("union_bank", "indian_bank", "boi")
+#
+# Indian Bank was removed from this tuple 2026-11-07, when its fd_rates
+# source went back to live_fetch (see extract_structured.py's
+# extract_indian_bank_rows and config/banks.json -- the real blocked URL
+# was /category/term-deposits/, but /en/deposit-rates on the same domain
+# was reachable all along). Leaving it listed here would have this check
+# FAIL forever once that live fetch actually lands (no manual_load_frozen
+# row left to find at all), for a bank that no longer has a staleness
+# problem to report.
+_MANUAL_FD_BANKS = ("union_bank", "boi")
 
 
 def check_manual_data_age() -> list[dict]:
     """FAILs when a manually-maintained snapshot is older than its own
-    bound: the IBA News snapshot (>35 days) and each of Union Bank's/
-    Indian Bank's/BOI's manually-loaded FD data (>45 days). Distinct
+    bound: the IBA News snapshot (>65 days) and Union Bank's/BOI's
+    manually-loaded FD data (>70 days). Distinct
     from `check_iba_snapshot_age()` above (kept as-is, WARN-only, used
     by app.py's sidebar reminder) -- this one is deliberately stricter
     and FAIL-capable, built for health-check.yml to actually go red on,

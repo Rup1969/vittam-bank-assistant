@@ -3,9 +3,8 @@
     {
       "id": "indian_bank",
       "name": "Indian Bank",
-      "read_only": true,
       "urls": {
-        "fd_rates": "https://indianbank.bank.in/category/term-deposits/"
+        "fd_rates": "https://indianbank.bank.in/en/deposit-rates"
       }
     },
     {

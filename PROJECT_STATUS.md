@@ -7058,3 +7058,129 @@ assumed.
 Files: `.github/workflows/health-check.yml` (new),
 `.github/workflows/monthly-reminder.yml` (new), `automation/
 verify_coverage.py` (`check_manual_data_age()`, `__main__` exit code).
+
+## 69. Manual-refresh rhythm changed to match RBI's MPC cycle; Indian Bank's fd_rates fixed back to live, BOI reconfirmed genuinely blocked (2026-11-07)
+
+**Thresholds raised** (no data touched): `verify_coverage.py`'s
+`_IBA_MANUAL_FAIL_AGE_DAYS` 35→65, `_MANUAL_FD_FAIL_AGE_DAYS` 35→70 —
+the bi-monthly cadence below (§68's monthly reminder, renamed) is what's
+actually supposed to clear these, so the bound needed to be looser than
+that cycle, not tighter. Current ages against the new limits, rerun for
+real: IBA snapshot 2.1d (limit 65, PASS), Union Bank FD 0.5d (limit 70,
+PASS), BOI FD 75.8d (limit 70, still FAIL — see below). Indian Bank was
+removed from `_MANUAL_FD_BANKS` entirely rather than just re-checked —
+see the live-fetch fix below for why leaving it in would make this
+check FAIL forever once that fix actually lands in the real DB.
+
+**`monthly-reminder.yml` renamed and rescheduled**: `cron` changed from
+monthly (`0 3 1 * *`) to bi-monthly (`0 3 1 */2 *`, fires the 1st of
+Jan/Mar/May/Jul/Sep/Nov — a plain `*/2` cadence, not aligned to RBI's
+own real MPC dates, see below), title/issue search string changed from
+"Monthly Vittam check" to "Post-MPC Vittam check (RBI policy meeting
+just held)", and the checklist's 5th item changed from "re-copy the
+Indian Bank and BOI FD tables" to BOI only — Indian Bank's fd_rates no
+longer needs manual re-copying at all once the fix below lands. Tested
+with the same stubbed-`gh` technique used for §67's original heredoc
+fix (both the skip-if-open-issue branch and the create branch) before
+touching the real workflow — confirmed no hang, correct 5-item body,
+apostrophes/backticks safe.
+
+**Indian Bank's `fd_rates` fixed back to live** (the separate "fix the
+Indian Bank and BOI issue" request). Re-verified the actual block
+first, directly, rather than assuming the existing `read_only` note was
+still accurate: a fresh fetch against the configured URL
+(`indianbank.bank.in/category/term-deposits/`) got a real WAF "Request
+Rejected" response, confirmed via both a standalone headless Playwright
+fetch and the real browser pane — genuinely still blocked, not a stale
+finding. But a web search for the bank's own current rate card turned
+up `indianbank.bank.in/en/deposit-rates` — same domain, different path
+— which loaded cleanly in both the browser pane and headless Playwright
+(378KB of real content, the real retail term-deposit table, no WAF
+response at all). Not a workaround: a different real URL for the same
+real page, found by searching for it, not by evading anything.
+
+Built a new deterministic parser, `extract_indian_bank_rows()`
+(`extract_structured.py`), tested against the real fetched/cleaned page
+text before trusting it: the table interleaves 14 standard tenure bands
+with 4 named special schemes (IND Supreme 2.0/300 days, Ind Green/500
+days, Ind Grow/555 days, Ind Prosper/777 days) that print two numbers
+each (Existing Rate, Revised Rate) — takes the Revised column, and
+separates the named schemes out (every one contains "ind" in its label;
+no standard band does) rather than storing them as additional tenure
+rows, since they're distinct deposit products with their own
+eligibility, not points on the plain tenure curve. `config/banks.json`
+updated: `urls.fd_rates` → the new URL, `read_only` removed entirely
+(Indian Bank's only configured product was fd_rates, so this is scoped
+correctly with no effect on anything else).
+
+Verified the WHOLE real pipeline end to end on a throwaway DB copy, not
+just the parser in isolation — monkeypatched `db.PROJECT_ROOT`/
+`DB_PATH` and `fetch_and_track.PROJECT_ROOT`/`SCRAPED_DIR`/
+`CONFIG_PATH` to a scratch directory holding a copy of the real DB and
+config, ran a real Playwright fetch against the new URL, inserted the
+real `fetch_log` row the same way `fetch_and_track.run()` would, then
+ran `extract_structured.py`'s actual `run()` unmodified against that
+scratch DB: **14 rows accepted, 0 rejected**, replacing the old 12
+`manual_load_frozen` rows (stale since 2026-02-04) with 14 `live_fetch`
+rows dated 2026-10-23 — and the values for every tenure band this
+project already had are unchanged (the bank's real rates on these
+bands haven't moved since February; only the named special schemes
+got raised in October, which is exactly why they're excluded from the
+stored tenure table rather than silently averaged in). Also ran
+`check_tenure_label_sanity()` against the same scratch DB — all PASS,
+no regressions from the new labels ("15 days to 29 days" is a genuinely
+new band this table has that the old frozen snapshot never carried).
+
+Real DB is untouched — this only changes code/config. The actual
+switch to live data happens on the next real `daily-refresh.yml` run;
+until then, `verify_coverage.py`'s `check_consecutive_fetch_errors()`
+correctly reports Indian Bank's fd_rates as a genuine FAIL (80
+consecutive errors against the now-dead old URL), since it's no longer
+classified `read_only`/known-blocked — this is expected and will clear
+on its own once that run succeeds.
+
+**BOI stays as-is — reconfirmed blocked, not re-sourced.** Tried three
+different real URLs before concluding this (not from memory of the old
+note): `bankofindia.bank.in`'s rate page, that domain's bare homepage,
+and the historical `bankofindia.co.in` domain — all three returned
+Cloudflare's "Just a moment..." challenge or a straight 403, via both
+headless Playwright and the real browser pane. A web search did turn up
+a real, multiply-reported November 2026 rate change (a new 500-day
+"Star Akshay" scheme at 6.85%/7.35%/7.50%, and revisions to the 1-year
+and >1–3-year bands) — deliberately **not** applied: it's a partial
+table, not a full one, and this project's own standing rule (set when
+BOI's data was first sourced, see README Known Limitations) is not to
+invent precision by patching some bands from a partial secondary source
+while leaving the rest looking equally current. BOI's real fix is the
+same as before: a human sourcing a complete official tenure table by
+hand, which is exactly what the renamed bi-monthly checklist's BOI item
+now asks for.
+
+**RBI MPC dates for the README.** Found the FY2026-27 schedule (April
+6–8, June 3–5, August 3–5, October 5–7, December 2–4 2026, February
+3–5 2027) via a web search citing RBI's own press release dated
+2026-03-23. Tried to independently re-verify against the live RBI site
+directly: the specific press-release URL
+(`rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=62422`) redirects
+to RBI's homepage rather than loading, both cold and after visiting the
+homepage first — that page is no longer live at that URL. Partial
+independent confirmation: RBI's own current homepage "What's New"
+ticker lists "Minutes of the Monetary Policy Committee Meeting, October
+5 to 7, 2026" verbatim, matching the October entry from the
+secondary-sourced schedule exactly. Documented in README with that
+caveat spelled out rather than presented as fully primary-source
+verified — no date invented, and the one date that could be checked
+against a live RBI page was checked.
+
+Verify suite after all of the above: `verify_coverage.py` now 5 FAIL —
+the pre-existing 3 `loan_freshness` FAILs (central_bank/iob, unrelated
+to this work), the new expected `indian_bank` `consecutive_fetch_errors`
+FAIL described above (self-clearing), and BOI's `manual_data_age` FAIL
+(genuinely unresolved, documented, not fabricated around).
+
+Files: `automation/verify_coverage.py` (thresholds,
+`_MANUAL_FD_BANKS`), `.github/workflows/monthly-reminder.yml`
+(cron, title, checklist), `automation/extract_structured.py`
+(`extract_indian_bank_rows()`, dispatch entry), `config/banks.json`
+(Indian Bank's `urls.fd_rates` + `read_only`), `README.md` (daily
+pipeline section, Known Limitations, RBI MPC dates).

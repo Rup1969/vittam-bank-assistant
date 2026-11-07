@@ -480,6 +480,90 @@ def extract_bob_rows(text: str) -> list[dict]:
     return rows
 
 
+# Indian Bank was bank-wide "read_only" (config) until 2026-11-07: its
+# fd_rates URL pointed at /category/term-deposits/, which a real WAF
+# ("Request Rejected", confirmed directly via both headless Playwright and
+# the built-in browser pane) blocks outright — but the SAME domain's
+# /en/deposit-rates page, found via web search for the bank's own current
+# rate card, is NOT blocked (confirmed the same way) and carries the real
+# retail term-deposit table. Fixed by pointing config at that URL and
+# removing read_only, rather than continuing to hand-refresh a manual
+# snapshot for a bank whose real page was reachable all along under a
+# different path.
+#
+# The table prints TWO numbers per period — "Existing Rate" and "Revised
+# Rate (w.e.f <date>)" — takes the second (current) one. Four of its
+# periods are named special schemes (IND Supreme 2.0, Ind Green, Ind Grow,
+# Ind Prosper) interleaved with the standard day/month/year bands rather
+# than in a separate table; every one of those four labels contains
+# "ind" (case-insensitive) while no standard tenure label does, which is
+# what distinguishes them — confirmed against the real fetched page before
+# trusting it. Skipped here rather than stored as additional tenure rows:
+# they're named deposit products with their own distinct eligibility, not
+# a point on the plain tenure curve, and mixing them in would misrepresent
+# "what rate applies to a deposit of N days" for ordinary tenure lookups.
+_IB_VALUE_RE = re.compile(r"\d{1,2}\.\d{2}")
+_IB_SENIOR_PREMIUM = 0.50  # stated flat addendum for Domestic Retail Term Deposits
+
+
+def extract_indian_bank_rows(text: str) -> list[dict]:
+    """Deterministic parser for Indian Bank's retail term-deposit table —
+    see module-level comment above for why this bypasses the LLM entirely."""
+    table_start = text.find("Period / Tenor of Deposit")
+    table_end = text.find("New Retail Term Deposit Product", table_start)
+    if table_start == -1 or table_end == -1:
+        return []
+    table_text = text[table_start:table_end]
+
+    date_match = re.search(
+        r"Revised Rate\s*\(w\.e\.f\s+(\d{1,2})\.(\d{1,2})\.(\d{4})\)", table_text
+    )
+    effective_date = None
+    if date_match:
+        try:
+            effective_date = datetime.strptime(
+                f"{date_match.group(1)}.{date_match.group(2)}.{date_match.group(3)}",
+                "%d.%m.%Y",
+            ).strftime("%Y-%m-%d")
+        except ValueError:
+            effective_date = None
+
+    # Skip past the two "(% per annum )" column-unit labels in the header
+    # row so tokenizing starts at the first real period, not the header.
+    header_end = table_text.find("(% per annum )")
+    header_end = table_text.find("(% per annum )", header_end + 1)
+    body = table_text[header_end + len("(% per annum )"):] if header_end != -1 else table_text
+
+    tokens = [t.strip() for t in re.split(f"({_IB_VALUE_RE.pattern})", body) if t.strip()]
+
+    rows = []
+    current_period, current_values = None, []
+    for token in tokens:
+        if _IB_VALUE_RE.fullmatch(token):
+            current_values.append(token)
+        else:
+            if current_period is not None and current_values:
+                rows.append((current_period, current_values))
+            current_period, current_values = token, []
+    if current_period is not None and current_values:
+        rows.append((current_period, current_values))
+
+    out = []
+    for period, values in rows:
+        if "ind" in period.lower():
+            continue  # named special scheme, not a standard tenure band
+        if len(values) < 2:
+            continue
+        general = float(values[-1])  # "Revised Rate" column, the current one
+        out.append({
+            "tenure_label": period,
+            "interest_rate_general": general,
+            "interest_rate_senior": round(general + _IB_SENIOR_PREMIUM, 2),
+            "effective_date": effective_date,
+        })
+    return out
+
+
 # Central Bank of India's retail (<3Cr) table prints FOUR numbers per row —
 # General-Rate, General-Yield, Senior-Rate, Senior-Yield — same Rate-vs-Yield
 # shape as Canara, confirmed against the real 2026-08-19 fetch (e.g. "180 –
@@ -1201,6 +1285,8 @@ def extract_rows_for_source(
         return extract_iob_rows(text)
     elif source_id == "bob":
         return extract_bob_rows(text)
+    elif source_id == "indian_bank":
+        return extract_indian_bank_rows(text)
     elif source_id == "icici":
         return extract_icici_rows(text)
     elif source_id == "hdfc":
