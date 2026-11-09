@@ -3,7 +3,7 @@ DOCUMENT_ID: pnb_fd_rates
 BANK: PNB
 CATEGORY: DEPOSIT
 SOURCE_TYPE: PRODUCT_PAGE
-DATE: 2026-11-08
+DATE: 2026-11-09
 ===
 Punjab National Bank Fixed (Term) Deposit Interest Rates (below Rs. 3 crore)
 
