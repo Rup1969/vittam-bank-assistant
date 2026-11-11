@@ -3,12 +3,12 @@ DOCUMENT_ID: rbi_current_policy_rates
 BANK: RBI
 CATEGORY: RATES
 SOURCE_TYPE: RBI_CURRENT_RATES
-DATE: 2026-11-10
+DATE: 2026-11-11
 ===
 RBI Current Policy Rates
 
 <!--AUTO:START-->
-As of 10 November 2026 (live-fetched from rbi.org.in), RBI's key policy rates are:
+As of 11 November 2026 (live-fetched from rbi.org.in), RBI's key policy rates are:
 
 Repo Rate: 5.50% p.a.
 Reverse Repo Rate: 3.35% p.a.

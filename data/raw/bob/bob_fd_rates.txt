@@ -3,7 +3,7 @@ DOCUMENT_ID: bob_fd_rates
 BANK: BOB
 CATEGORY: DEPOSIT
 SOURCE_TYPE: PRODUCT_PAGE
-DATE: 2026-11-10
+DATE: 2026-11-11
 ===
 Bank of Baroda Fixed Deposit Interest Rates (Callable, below Rs. 3 crore)
 
