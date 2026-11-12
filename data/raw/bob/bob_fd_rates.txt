@@ -3,12 +3,12 @@ DOCUMENT_ID: bob_fd_rates
 BANK: BOB
 CATEGORY: DEPOSIT
 SOURCE_TYPE: PRODUCT_PAGE
-DATE: 2026-11-11
+DATE: 2026-11-12
 ===
 Bank of Baroda Fixed Deposit Interest Rates (Callable, below Rs. 3 crore)
 
 <!--AUTO:START-->
-Effective 12 June 2026, General Public | Senior Citizen:
+Effective 12 November 2026, General Public | Senior Citizen:
 - 7-14 days:                3.50% | 4.00%
 - 15-45 days:               3.50% | 4.00%
 - 46-90 days:               5.00% | 5.50%
@@ -24,7 +24,7 @@ Effective 12 June 2026, General Public | Senior Citizen:
 
 Special-Tenor Deposits:
 - bob Square Drive (444 days): 6.45% | 6.95%
-- bob Golden Goal (555 days):  6.75% | 7.25%
+- bob Golden Goal (555 days):  6.85% | 7.35%
 <!--AUTO:END-->
 
 Senior citizens generally receive a 0.50% premium over the general
