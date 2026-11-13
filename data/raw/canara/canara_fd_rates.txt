@@ -3,7 +3,7 @@ DOCUMENT_ID: canara_fd_rates
 BANK: CANARA
 CATEGORY: DEPOSIT
 SOURCE_TYPE: PRODUCT_PAGE
-DATE: 2026-11-12
+DATE: 2026-11-13
 ===
 Canara Bank Fixed Deposit Interest Rates (below Rs. 3 crore)
 
